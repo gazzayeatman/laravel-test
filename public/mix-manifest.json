@@ -1,7 +1,5 @@
 {
     "/js/index.js": "/js/index.js",
-    "/app.js": "/app.js",
     "/css/app.css": "/css/app.css",
-    "/resources/dist/js/app.js": "/resources/dist/js/app.js",
-    "/resources/dist/sass/app.scss": "/resources/dist/sass/app.scss"
+    "/resources/dist/js/app.js": "/resources/dist/js/app.js"
 }

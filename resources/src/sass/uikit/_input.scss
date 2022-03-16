@@ -1,0 +1,16 @@
+.input {
+    &--text {
+        font-size: 25px;
+        outline: none;
+        border-bottom: 1px solid $color-oxford-blue;
+        width: 100%;
+    }
+
+    &__message {
+        font-size: 12px;
+
+        &--error {
+            color: red;
+        }
+    }
+}
