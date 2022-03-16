@@ -15,6 +15,12 @@
         &:first-of-type {
             margin: 0px 15px 0px 0px;
         }
+
+        &--auth-panel {
+            border-left: 1px solid $color-platinum;
+            padding: 0px 0px 0px 30px;
+            display: flex;
+        }
     }
 
     &__link {
