@@ -1,0 +1,14 @@
+footer {
+    background: green;
+}
+.navbar {
+    &__wrapper {
+        padding: 25px;
+        background-color: red;
+    }
+}
+.test {
+    &--yas {
+        background: red;
+    }
+}
