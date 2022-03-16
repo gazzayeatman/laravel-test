@@ -16,17 +16,24 @@ mix.js('resources/src/index.js', 'public/js')
     .scripts([
         'resources/src/js/**/*.src.js',
         'resources/src/js/index.js'
-    ], 'resources/dist/js/app.js');
+    ], 'resources/dist/js/app.js').then(() => {
+        mix.js([
+            'public/js/index.js',
+            'resources/dist/js/app.js'
+        ], 'app.js');
+    });
 
-mix.js([
-    'public/js/index.js',
-    'resources/dist/js/app.js'
-], 'app.js');
-
-mix.styles([
-    'resources/src/sass/**/*.scss',
-], 'resources/dist/sass/app.scss');
-
-mix.sass('resources/dist/sass/app.scss', 'public/css', [
+mix.sass('resources/src/sass/app.scss', 'public/css', [
     //
 ]);
+
+mix.webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.scss/,
+          loader: 'import-glob-loader'
+        }
+      ]
+    }
+});

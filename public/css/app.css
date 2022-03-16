@@ -1,12 +1,107 @@
+body {
+  background-color: #e5e5e5ff;
+}
+
+.btn.btn-primary {
+  padding: 10px 35px;
+  font-size: 18px;
+  transition: background-color 0.2s;
+}
+.btn.btn-primary:hover, .btn.btn-primary:focus {
+  background-color: #fca311ff;
+  cursor: pointer;
+}
+.btn.btn-link {
+  box-shadow: 0px 1px 0px #000000ff;
+  transition: box-shadow 0.2s;
+}
+.btn.btn-link:hover, .btn.btn-link:focus {
+  box-shadow: 0px 1px 0px #fca311ff;
+}
+
+.input--text {
+  font-size: 25px;
+  outline: none;
+  border-bottom: 1px solid #14213dff;
+  width: 100%;
+}
+.input__message {
+  font-size: 12px;
+}
+.input__message--error {
+  color: red;
+}
+
 footer {
   background: green;
 }
 
-.navbar__wrapper {
-  padding: 25px;
-  background-color: red;
+.login-form {
+  background-color: #ffffffff;
+  padding: 50px 100px;
+  border-radius: 35px;
+  width: 700px;
+}
+.login-form__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: -1;
+}
+.login-form__input-field {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 0px;
+}
+.login-form__input-field:first-of-type {
+  margin: 0px 0px 25px 0px;
+}
+.login-form__input-field--horizontal {
+  flex-direction: row;
+}
+.login-form__input-label {
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 0px 0px 15px 0px;
+}
+.login-form__action-panel {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.login-form__action-panel--right {
+  justify-content: flex-end;
+}
+.login-form__action-panel-group {
+  display: flex;
+  align-items: center;
 }
 
-.test--yas {
-  background: red;
+.navbar {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+.navbar__wrapper {
+  padding: 25px;
+  background-color: #000000ff;
+  color: #e5e5e5ff;
+}
+.navbar__item {
+  margin: 0px 15px;
+}
+.navbar__item:first-of-type {
+  margin: 0px 15px 0px 0px;
+}
+.navbar__link {
+  box-shadow: 0px 1px 0px #ffffffff;
+}
+.navbar__link:hover, .navbar__link:focus {
+  box-shadow: 0px 1px 0px #fca311ff;
 }
