@@ -2,10 +2,10 @@
 @section('content')
     <div class="container">
         <div class="login-form__wrapper">
-            <form class="login-form" method="POST" action="{{ route('register') }}">
+            <form class="login-form" method="POST" action="/users/add-user">
                 @csrf
                 <h1 class="login-form__title">
-                    Register
+                    Add user
                 </h1>
                 <div class="login-form__input-field">
                     <label for="name" class="login-form__input-label">
@@ -49,7 +49,7 @@
                 <div class="login-form__action-panel login-form__action-panel--right">
                     <div class="login-form__action-panel-group">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Register') }}
+                            {{ __('Save') }}
                         </button>
                     </div>
                 </div>

@@ -1,8 +1,15 @@
 .btn {
+    &--danger.btn--danger.btn--danger {
+        background-color: #FF0000;
+    }
+
     &.btn-primary {
         padding: 10px 35px;
         font-size: 18px;
+        background-color: $color-oxford-blue;
+        color: $color-white;
         transition: background-color .2s;
+        height: 100%;
 
         &:hover,
         &:focus {

@@ -4,6 +4,9 @@
         <div class="login-form__wrapper">
             <form class="login-form" method="POST" action="{{ route('login') }}">
                 @csrf
+                <h1 class="login-form__title">
+                    Login
+                </h1>
                 <div class="login-form__input-field">
                     <label class="login-form__input-label" for="email">
                         Email Address
