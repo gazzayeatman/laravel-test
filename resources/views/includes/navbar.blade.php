@@ -3,7 +3,7 @@
         @guest
             @if (Route::has('login'))
                 <li class="navbar__item">
-                    <a class="navbar__link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a @if url()->current() @endif class="navbar__link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
             @endif
 
