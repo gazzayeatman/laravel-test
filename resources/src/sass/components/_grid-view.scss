@@ -1,0 +1,54 @@
+.grid-view {
+    display: flex;
+    width: 100%;
+    background-color: $color-white;
+    margin: 5px 0px;
+    flex-direction: row;
+
+    &:hover,
+    &:focus {
+        .grid-view__id {
+            background-color: $color-oxford-blue;
+            color: $color-white;
+        }
+    }
+
+    &:first-of-type {
+        margin: 0px 0px 5px 0px;
+    }
+
+    &:last-of-type {
+        margin: 5px 0px 0px 0px;
+    }
+
+    &__wrapper {
+        display: block;
+    }
+
+    &__information {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__actions {
+        display: flex;
+        margin: 0 0 0 auto;
+    }
+
+    &__id {
+        background-color: $color-orange-web;
+        display: flex;
+        align-items: center;
+        padding: 0px 15px;
+        transition: background-color .2s, color .2s;
+    }
+
+    &__column {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        font-size: 20px;
+        width: 200px;
+        text-overflow: ellipsis;
+    }
+}

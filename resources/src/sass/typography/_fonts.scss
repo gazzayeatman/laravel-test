@@ -1,76 +1,76 @@
-/* Fonts */
+// /* Fonts */
 
-// Note: rucksake font helper process doesn't yet work with sass variables
-// the font-url: '../../../themes/default/fonts/fontname/';
+// // Note: rucksake font helper process doesn't yet work with sass variables
+// // the font-url: '../../../themes/default/fonts/fontname/';
 
-// Uses the rucksake font helper
-@font-face {
-	font-family: 'Montserrat';
-	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Regular'; // auto generates the file urls needed
-	font-weight: normal;
-	font-style: normal;
-}
+// // Uses the rucksake font helper
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Regular'; // auto generates the file urls needed
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Montserrat';
-	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Light'; // auto generates the file urls needed
-	font-weight: 300;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Light'; // auto generates the file urls needed
+// 	font-weight: 300;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Montserrat';
-	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Thin'; // auto generates the file urls needed
-	font-weight: 100;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Thin'; // auto generates the file urls needed
+// 	font-weight: 100;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Montserrat';
-	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Bold'; // auto generates the file urls needed
-	font-weight: 700;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-Bold'; // auto generates the file urls needed
+// 	font-weight: 700;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Montserrat';
-	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-ExtraBold'; // auto generates the file urls needed
-	font-weight: 900;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Montserrat';
+// 	font-path: '../../../theme-default/dist/fonts/Montserrat/Montserrat-ExtraBold'; // auto generates the file urls needed
+// 	font-weight: 900;
+// 	font-style: normal;
+// }
 
-// Raleway
-@font-face {
-	font-family: 'Raleway';
-	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Regular'; // auto generates the file urls needed
-	font-weight: normal;
-	font-style: normal;
-}
+// // Raleway
+// @font-face {
+// 	font-family: 'Raleway';
+// 	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Regular'; // auto generates the file urls needed
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Raleway';
-	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Light'; // auto generates the file urls needed
-	font-weight: 300;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Raleway';
+// 	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Light'; // auto generates the file urls needed
+// 	font-weight: 300;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Raleway';
-	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Thin'; // auto generates the file urls needed
-	font-weight: 100;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Raleway';
+// 	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Thin'; // auto generates the file urls needed
+// 	font-weight: 100;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Raleway';
-	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Bold'; // auto generates the file urls needed
-	font-weight: 700;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Raleway';
+// 	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-Bold'; // auto generates the file urls needed
+// 	font-weight: 700;
+// 	font-style: normal;
+// }
 
-@font-face {
-	font-family: 'Raleway';
-	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-ExtraBold'; // auto generates the file urls needed
-	font-weight: 900;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'Raleway';
+// 	font-path: '../../../theme-default/dist/fonts/Raleway/Raleway-ExtraBold'; // auto generates the file urls needed
+// 	font-weight: 900;
+// 	font-style: normal;
+// }

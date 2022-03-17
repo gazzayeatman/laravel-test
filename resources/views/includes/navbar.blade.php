@@ -38,6 +38,11 @@
                     Sites
                 </a>
             </li>
+            <li class="navbar__item">
+                <a href="/users" class="navbar__link">
+                    Users
+                </a>
+            </li>
             <li class="navbar__item navbar__item--auth-panel">
                 <a class="navbar__link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();

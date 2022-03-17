@@ -200,39 +200,16 @@ body {
   background-color: #e5e5e5ff;
 }
 
-/*
-# Breadcrumbs
-
-Site breadcrumbs
-
-Template: Components/Breadcrumbs
-
-Styleguide 4.1
-*/
-.breadcrumbs-list {
-  margin: 15px 0 10px 0;
-  padding: 0;
+.btn--danger.btn--danger.btn--danger {
+  background-color: #FF0000;
 }
-.breadcrumbs-item {
-  display: inline;
-  font-size: 0.8em;
-}
-.breadcrumbs-link {
-  position: relative;
-  padding-right: 17px;
-}
-.breadcrumbs-link:after {
-  display: block;
-  content: ">";
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .btn.btn-primary {
   padding: 10px 35px;
   font-size: 18px;
+  background-color: #14213dff;
+  color: #ffffffff;
   transition: background-color 0.2s;
+  height: 100%;
 }
 .btn.btn-primary:hover, .btn.btn-primary:focus {
   background-color: #fca311ff;
@@ -246,96 +223,6 @@ Styleguide 4.1
   box-shadow: 0px 1px 0px #fca311ff;
 }
 
-/*
-# Hamburger
-
-The animated mobile menu icon.
-
-Template: UIKit/Hamburger
-
-SectionTemplate: BenManu/StyleGuide/Layout/SGSectionDark
-
-Styleguide 4.3
-*/
-.hamburger {
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: inline-block;
-  font: inherit;
-  margin: 0;
-  padding: 15px 0 15px;
-  overflow: visible;
-  text-transform: none;
-  transition-timing-function: linear;
-  transition-duration: 0.15s;
-  transition-property: opacity, filter;
-}
-.hamburger.pure-button:hover, .hamburger.pure-button:focus, .hamburger.pure-button:active {
-  border: 0;
-  box-shadow: none;
-  background: transparent;
-  filter: none;
-}
-@media screen and (min-width: 48em) {
-  .menu .hamburger {
-    display: none;
-  }
-}
-.hamburger-box {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 13px;
-}
-.hamburger-inner {
-  background-color: #fff;
-  display: block;
-  height: 1px;
-  margin-top: -2px;
-  position: absolute;
-  top: 50%;
-  transition-duration: 0.1s;
-  transition-property: transform;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  width: 20px;
-}
-.hamburger-inner:before, .hamburger-inner:after {
-  content: "";
-  display: block;
-  height: 1px;
-  position: absolute;
-  transition-duration: 0.15s;
-  transition-property: transform;
-  transition-timing-function: ease;
-  width: 20px;
-  background-color: #fff;
-}
-.hamburger-inner:before {
-  top: -6px;
-  transition: top 0.1s 0.14s ease, opacity 0.1s ease;
-}
-.hamburger-inner:after {
-  bottom: -6px;
-  transition: bottom 0.1s 0.14s ease, transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-.hamburger-active .hamburger-inner {
-  transition-delay: 0.14s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: rotate(45deg);
-}
-.hamburger-active .hamburger-inner:before {
-  top: 0;
-  transition: top 0.1s ease, opacity 0.1s 0.14s ease;
-  opacity: 0;
-}
-.hamburger-active .hamburger-inner:after {
-  bottom: 0;
-  transition: bottom 0.1s ease, transform 0.1s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: rotate(-90deg);
-}
-
 .input--text {
   font-size: 25px;
   outline: none;
@@ -347,156 +234,6 @@ Styleguide 4.3
 }
 .input__message--error {
   color: red;
-}
-
-/*
-#Loader
-
-Markup:
-<span class="loader loader--dark"><span class="loader-text">Loading</span></span>
-
-Loading indicator. Based on http://projects.lukehaas.me/css-loaders
-
-Styleguide 4.4
-*/
-.ie9 .loader {
-  text-indent: 0;
-  line-height: 110px;
-  border: 0;
-  background: none;
-}
-.ie9 .loader:before, .ie9 .loader:after {
-  display: none;
-}
-.loader, .loader:before, .loader:after {
-  border-radius: 50%;
-}
-.loader:before, .loader:after {
-  position: absolute;
-  content: "";
-}
-.loader:before {
-  width: 5.2em;
-  height: 10.2em;
-  background: #ffffffff;
-  border-radius: 10.2em 0 0 10.2em;
-  top: -0.1em;
-  left: -0.1em;
-  transform-origin: 5.2em 5.1em;
-  -webkit-animation: load 1.5s infinite ease 1s;
-  animation: load 1.5s infinite ease 1s;
-}
-.loader.loader--dark:before {
-  background: #fff;
-}
-
-.loader {
-  box-shadow: inset 0 0 0 1em;
-  color: #ffffff;
-  display: block;
-  font-size: 11px;
-  height: 10em;
-  margin: 0 auto;
-  position: relative;
-  text-indent: -9999em;
-  transform: translateZ(0);
-  width: 10em;
-}
-.loader--dark {
-  color: #ffffffff;
-}
-.loader-text {
-  color: #fff;
-  font-size: 12px;
-  display: block;
-  text-transform: uppercase;
-}
-.loader--dark .loader-text {
-  color: #ffffffff;
-}
-.loader:after {
-  width: 5.2em;
-  height: 10.2em;
-  background: #ffffffff;
-  border-radius: 0 10.2em 10.2em 0;
-  top: -0.1em;
-  left: 5.1em;
-  transform-origin: 0px 5.1em;
-  -webkit-animation: load 1.5s infinite ease;
-  animation: load 1.5s infinite ease;
-}
-.loader.loader--dark:after {
-  background: #fff;
-}
-
-@-webkit-keyframes load {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes load {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-/*
-# Nested links
-
-This provides the ability to visually nest links within links, where both the inner and outerlink
-are selectable. NOTE: the outer-link must have a sr-only description for accessibility
-
-Markup:
-<div class="nestedlink">
-	<a href="/" class="nestedlink-outer">
-		<span class="sr-only">Click anywhere in the block to go here</span>
-	</a>
-	<div>
-		<a href="http://google.com" class="nestedlink-inner">Click to go somewhere else</a>
-	</div>
-</div>
-
-Styleguide 4.5
-*/
-.nestedlink {
-  position: relative;
-}
-.nestedlink-inner, .nestedlink-outer ~ a,
-.nestedlink-outer ~ * a {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 11;
-  zoom: 1;
-}
-.nestedlink-outer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  display: block;
-}
-.nestedlink-outer:hover, .nestedlink-outer:focus, .nestedlink-outer:active {
-  border: 0;
-}
-.nestedlink-outer:focus {
-  outline: 1px dotted #aaa;
-}
-.nestedlink-outer:focus:active {
-  outline: none;
-}
-.nestedlink-outer ~ div *, .nestedlink-outer ~ div {
-  cursor: pointer;
-  z-index: 0;
-  position: relative;
 }
 
 /*
@@ -4421,67 +4158,6 @@ Styleguide 2.1.5
     flex-direction: row-reverse;
   }
 }
-/* Fonts */
-@font-face {
-  font-family: "Montserrat";
-  font-path: "../../../theme-default/dist/fonts/Montserrat/Montserrat-Regular";
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-path: "../../../theme-default/dist/fonts/Montserrat/Montserrat-Light";
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-path: "../../../theme-default/dist/fonts/Montserrat/Montserrat-Thin";
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-path: "../../../theme-default/dist/fonts/Montserrat/Montserrat-Bold";
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-path: "../../../theme-default/dist/fonts/Montserrat/Montserrat-ExtraBold";
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  font-path: "../../../theme-default/dist/fonts/Raleway/Raleway-Regular";
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  font-path: "../../../theme-default/dist/fonts/Raleway/Raleway-Light";
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  font-path: "../../../theme-default/dist/fonts/Raleway/Raleway-Thin";
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  font-path: "../../../theme-default/dist/fonts/Raleway/Raleway-Bold";
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  font-path: "../../../theme-default/dist/fonts/Raleway/Raleway-ExtraBold";
-  font-weight: 900;
-  font-style: normal;
-}
 /*
 #Headings
 
@@ -4584,174 +4260,6 @@ dl dd {
   padding-top: 5px;
   margin-left: 0;
   margin-bottom: 20px;
-}
-
-/*
-#Images
-
-Template: StyleGuide/SGCMSImages
-
-Styling for CMS images inserted via tinymce. Options are: <br /><br />
-&bull; Left, text wrapping<br />
-&bull; Right, text wrapping<br />
-&bull; Left alone (no text wrapping)<br />
-&bull; Centered alone (no text wrapping)<br /><br />
-... with optional captions
-
-
-Styleguide 3.4
-*/
-svg {
-  max-width: 100%;
-}
-
-iframe {
-  border: 0;
-  max-width: 100%;
-  max-height: 230px;
-}
-@media screen and (min-width: 35.5em) {
-  iframe {
-    max-height: 300px;
-  }
-}
-@media screen and (min-width: 48em) {
-  iframe {
-    max-height: 350px;
-  }
-}
-@media screen and (min-width: 64em) {
-  iframe {
-    max-height: 415px;
-  }
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-img.right {
-  float: right;
-  clear: right;
-  margin: 30px 0 30px 50px;
-}
-img.left {
-  float: left;
-  clear: left;
-  margin: 30px 50px 30px 0px;
-}
-img.leftAlone {
-  margin: 30px 50px 30px 0;
-  float: none;
-  display: block;
-  clear: both;
-}
-img.center {
-  display: block;
-  margin: 30px auto 30px auto;
-  clear: both;
-}
-
-/*
-#Media (youtube, etc)
-
-CMS Styling for youtube, vimeo etc media included via oembed. These work much the same as images. Options are: <br /><br />
-&bull; Left, text wrapping<br />
-&bull; Right, text wrapping<br />
-&bull; Left alone (no text wrapping)<br />
-&bull; Centered alone (no text wrapping)
-
-Template: StyleGuide/SGCMSMedia
-
-Styleguide 3.4.1
-*/
-/* Media insert formatting  (Youtube embed) */
-.media.center {
-  margin: 0 auto;
-  text-align: center;
-}
-.media.left {
-  float: left;
-  clear: left;
-  margin: 0 50px 30px 0px;
-}
-.media.leftAlone {
-  margin: 0 50px 30px 0;
-  float: none;
-  display: block;
-  clear: both;
-}
-.media.right {
-  float: right;
-  clear: right;
-  margin: 0 0 30px 50px;
-}
-
-figure.featured-image img {
-  margin-bottom: 0;
-}
-
-.captionImage,
-figure.featured-image {
-  max-width: 100%;
-}
-.captionImage.left,
-figure.featured-image.left {
-  float: left;
-  margin: 5px 50px 30px 20px;
-}
-.captionImage.right,
-figure.featured-image.right {
-  float: right;
-  margin: 5px 0 30px 50px;
-}
-.captionImage.leftAlone,
-figure.featured-image.leftAlone {
-  float: none;
-  margin: 5px 50px 30px 0px;
-}
-.captionImage.center,
-figure.featured-image.center {
-  margin: 5px auto 30px;
-}
-@media screen and (min-width: 35.5em) {
-  .captionImage.left, .captionImage.right, .captionImage.leftAlone, .captionImage.center,
-figure.featured-image.left,
-figure.featured-image.right,
-figure.featured-image.leftAlone,
-figure.featured-image.center {
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-  .captionImage.left p, .captionImage.right p, .captionImage.leftAlone p, .captionImage.center p,
-figure.featured-image.left p,
-figure.featured-image.right p,
-figure.featured-image.leftAlone p,
-figure.featured-image.center p {
-    text-align: center;
-    margin: 0px 0 0 20px;
-  }
-}
-.captionImage p,
-figure.featured-image p {
-  clear: both;
-  margin: 0px;
-  text-align: center;
-  padding-top: 1px;
-  font-weight: normal;
-  font-family: "Raleway", helvetica, arial, sans-serif;
-  padding-bottom: 2px;
-}
-.typography .captionImage p,
-.typography figure.featured-image p {
-  font-size: 0.8em;
-  line-height: 1.5em;
-}
-.captionImage img,
-figure.featured-image img {
-  margin: 0 0 5px 0;
-  border: 0;
 }
 
 /*
@@ -4873,8 +4381,58 @@ table tbody tr:first-child td {
   border-top: 0;
 }
 
+.action-panel {
+  display: flex;
+  justify-content: flex-end;
+  margin: 50px 0px 75px 0px;
+}
+
 footer {
   background: green;
+}
+
+.grid-view {
+  display: flex;
+  width: 100%;
+  background-color: #ffffffff;
+  margin: 5px 0px;
+  flex-direction: row;
+}
+.grid-view:hover .grid-view__id, .grid-view:focus .grid-view__id {
+  background-color: #14213dff;
+  color: #ffffffff;
+}
+.grid-view:first-of-type {
+  margin: 0px 0px 5px 0px;
+}
+.grid-view:last-of-type {
+  margin: 5px 0px 0px 0px;
+}
+.grid-view__wrapper {
+  display: block;
+}
+.grid-view__information {
+  display: flex;
+  flex-direction: row;
+}
+.grid-view__actions {
+  display: flex;
+  margin: 0 0 0 auto;
+}
+.grid-view__id {
+  background-color: #fca311ff;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.grid-view__column {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 20px;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 
 .login-form {

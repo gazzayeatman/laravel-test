@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <h1>
-            Dashboard Test
+            Dashboard
         </h1>
     </div>
 @endsection
