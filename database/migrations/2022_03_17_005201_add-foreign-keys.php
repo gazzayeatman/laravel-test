@@ -127,7 +127,7 @@ class AddForeignKeys extends Migration
     public function down()
     {
         Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn('custome_idD');
+            $table->dropColumn('customer_id');
         });
 
         Schema::table('customers', function (Blueprint $table) {
