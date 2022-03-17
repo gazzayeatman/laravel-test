@@ -21,8 +21,11 @@
         "vue-loader": "^17.0.0"
     },
     "dependencies": {
+        "fast-sass-loader": "^2.0.1",
         "import-glob-loader": "^1.1.0",
         "node-sass": "^7.0.1",
+        "purecss": "^2.1.0",
+        "sass-resources-loader": "^2.2.4",
         "vue": "^3.2.31"
     }
 }

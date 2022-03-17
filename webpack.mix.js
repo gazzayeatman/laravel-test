@@ -29,11 +29,11 @@ mix.sass('resources/src/sass/app.scss', 'public/css', [
 
 mix.webpackConfig({
     module: {
-      rules: [
-        {
-          test: /\.scss/,
-          loader: 'import-glob-loader'
-        }
-      ]
+        rules: [
+            {
+                test: /\.scss/,
+                loader: 'import-glob-loader'
+            }
+        ]
     }
 });

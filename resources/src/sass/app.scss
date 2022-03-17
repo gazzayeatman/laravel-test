@@ -1,4 +1,10 @@
 @import './colours.scss';
+@import "utilities/functions";
+@import "utilities/var-globals";
+@import "utilities/respond";
+@import "utilities/classes";
 @import './main.scss';
-@import './uikit/**/*.scss';
+@import './ui-kit/**/*.scss';
+@import './layout/**/*.scss';
+@import './typography/**/*.scss';
 @import './components/**/*.scss';
