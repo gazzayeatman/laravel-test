@@ -22,12 +22,17 @@
         "vue-loader": "^17.0.0"
     },
     "dependencies": {
+        "@apollo/client": "^3.5.10",
+        "@vue/apollo-option": "*",
         "@vue/cli-shared-utils": "^5.0.3",
         "fast-sass-loader": "^2.0.1",
+        "graphql": "^15.8.0",
+        "graphql-tag": "^2.12.6",
         "import-glob-loader": "^1.1.0",
         "node-sass": "^7.0.1",
         "purecss": "^2.1.0",
         "sass-resources-loader": "^2.2.4",
-        "vue": "^3.2.31"
+        "vue": "^3.2.30",
+        "vuex": "^4.0.2"
     }
 }

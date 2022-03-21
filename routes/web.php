@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('layouts.dashboard');
 })->middleware('auth');
 
 Route::get('/users', 'App\Http\Controllers\UsersDashboardController@index');
