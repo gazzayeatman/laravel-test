@@ -2,7 +2,8 @@ import { createStore } from 'vuex';
 
 const store = createStore({
     state: {
-        editUserModalOpen: false
+        editUserModalOpen: false,
+        currentUser: false
     },
     mutations: {
         setEditUserModalOpen(state) {
@@ -10,19 +11,27 @@ const store = createStore({
         },
         setEditUserModalClosed(state) {
             state.editUserModalOpen = false;
+        },
+        setCurrentUser(state, user) {
+            state.currentUser = user;
         }
     },
     actions: {
-        setEditUserModalOpen({commit}) {
+        setEditUserModalOpen({commit}, user) {
             commit('setEditUserModalOpen');
+            commit('setCurrentUser', user);
         },
         setEditUserModalClosed({commit}) {
             commit('setEditUserModalClosed');
+            commit('setCurrentUser', false)
         }
     },
     getters: {
         getEditUserModalOpen() {
             return state.editUserModalOpen;
+        },
+        getCurrentUser() {
+            return state.currentUser;
         }
     }
 });

@@ -22587,6 +22587,7 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "grid-view__actions"
 };
+var _hoisted_11 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_edit_user_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-user-modal");
 
@@ -22598,12 +22599,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.name), 1
     /* TEXT */
     )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: _cache[0] || (_cache[0] = function ($event) {
-        return _ctx.$store.dispatch('setEditUserModalOpen');
-      }),
+      onClick: function onClick($event) {
+        return _ctx.$store.dispatch('setEditUserModalOpen', user);
+      },
       "class": "btn btn-primary"
-    }, " Edit "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: _cache[1] || (_cache[1] = function () {
+    }, " Edit ", 8
+    /* PROPS */
+    , _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: _cache[0] || (_cache[0] = function () {
         return $options.handleDelete && $options.handleDelete.apply($options, arguments);
       }),
       "class": "btn btn-primary btn--danger"
@@ -22674,11 +22677,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_4 = [_hoisted_3];
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
   "class": "dialog__form"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__input-field"
@@ -22703,7 +22702,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$store.dispatch('setEditUserModalClosed');
     }),
     "class": "dialog__close-btn"
-  }, _hoisted_4), _hoisted_5, _hoisted_6])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.currentUser.name), 1
+  /* TEXT */
+  ), _hoisted_5])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -22762,9 +22763,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/src/bootstrap.js");
 
 
 
+
 var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_4__.InMemoryCache(),
     apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__.ApolloClient({
-  uri: 'http://laravel.test/public/graphql',
+  uri: 'http://laravel.test/graphql',
   cache: cache
 }),
     apolloProvider = (0,_vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__.createApolloProvider)({
@@ -22793,7 +22795,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
   state: {
-    editUserModalOpen: false
+    editUserModalOpen: false,
+    currentUser: false
   },
   mutations: {
     setEditUserModalOpen: function setEditUserModalOpen(state) {
@@ -22801,21 +22804,29 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
     },
     setEditUserModalClosed: function setEditUserModalClosed(state) {
       state.editUserModalOpen = false;
+    },
+    setCurrentUser: function setCurrentUser(state, user) {
+      state.currentUser = user;
     }
   },
   actions: {
-    setEditUserModalOpen: function setEditUserModalOpen(_ref) {
+    setEditUserModalOpen: function setEditUserModalOpen(_ref, user) {
       var commit = _ref.commit;
       commit('setEditUserModalOpen');
+      commit('setCurrentUser', user);
     },
     setEditUserModalClosed: function setEditUserModalClosed(_ref2) {
       var commit = _ref2.commit;
       commit('setEditUserModalClosed');
+      commit('setCurrentUser', false);
     }
   },
   getters: {
     getEditUserModalOpen: function getEditUserModalOpen() {
       return state.editUserModalOpen;
+    },
+    getCurrentUser: function getCurrentUser() {
+      return state.currentUser;
     }
   }
 });

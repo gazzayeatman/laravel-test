@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="grid-view__actions">
-                    <button @click="$store.dispatch('setEditUserModalOpen')" class="btn btn-primary">
+                    <button @click="$store.dispatch('setEditUserModalOpen', user)" class="btn btn-primary">
                         Edit
                     </button>
                     <button @click="handleDelete" class="btn btn-primary btn--danger">

@@ -7,7 +7,7 @@
                 </span>
             </button>
             <h2>
-
+                Edit {{ $store.state.currentUser.name }}
             </h2>
             <form class="dialog__form">
                 <div class="form__input-field">
