@@ -1,26 +1,26 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['userDashboardStore'].editUserModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['userDashboardStore'].addUserModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('userDashboardStore/setEditUserModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('userDashboardStore/setAddUserModalClosed')" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
             </button>
             <h2>
-                Edit {{ currentUser.name }}
+                Add a new user
             </h2>
             <form class="dialog__form">
                 <div class="form__input-field">
                     <label class="form__input-label" for="email">
                         Email Address
                     </label>
-                    <input id="email" type="email" class="input input--text" name="email" :placeholder="currentUser.email" autocomplete="off" autofocus />
+                    <input id="email" type="email" class="input input--text" name="email" autocomplete="off" autofocus />
                 </div>
                  <div class="form__input-field">
                     <label class="form__input-label" for="name">
                         Name
                     </label>
-                    <input id="name" type="name" class="input input--text" name="name" :placeholder="currentUser.name" autocomplete="off" />
+                    <input id="name" type="name" class="input input--text" name="name" autocomplete="off" />
                 </div>
                 <div class="form__action-panel form__action-panel--right">
                     <div class="form__action-panel-group">
@@ -36,10 +36,9 @@
 
 <script>
     export default {
-        methods: {},
         computed: {
-            currentUser() {
-                return this.$store.state['userDashboardStore'].currentUser;
+            modalOpened() {
+                return this.$store.state['userDashboardStore'].getAddUserModalOpen;
             }
         }
     }
