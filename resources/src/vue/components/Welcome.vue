@@ -1,8 +1,10 @@
 <template>
-    <div>    
-        <h1>{{ title }}</h1>
-        <UserDashboard />
-    </div>
+    <w-app>
+        <div>    
+            <h1>{{ title }}</h1>
+            <UserDashboard />
+        </div>
+    </w-app>
 </template>
 <script>
 import UserDashboard from './UserDashboard.vue';

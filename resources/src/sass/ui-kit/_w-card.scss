@@ -1,0 +1,26 @@
+.w-card {
+    background-color: $color-white;
+    height: auto;
+    width: auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 25px 75px 50px 75px;
+    position: relative;
+
+    &__close-btn {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 24px;
+        width: 24px;
+        background: svg-load('close.svg');
+        transition: background .2s;
+
+        &:hover,
+        &:focus {
+            background: svg-load('close.svg', fill=$color-orange-web);
+        }
+    }
+}

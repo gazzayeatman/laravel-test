@@ -2,9 +2,10 @@ require('./bootstrap');
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
-import Vue3Material from 'vue3-material';
 import Welcome from './vue/components/Welcome';
 import Store from './store';
+import WaveUI from 'wave-ui'
+import 'wave-ui/dist/wave-ui.css'
 
 const cache = new InMemoryCache(),
     apolloClient = new ApolloClient({
@@ -15,6 +16,10 @@ const cache = new InMemoryCache(),
         defaultClient: apolloClient,
     }),
     app = createApp({});
+
+    new WaveUI(app, {
+        // Some Wave UI options.
+    })
 
     app.use(apolloProvider);
     app.use(Store);
