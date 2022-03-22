@@ -1,14 +1,14 @@
 @extends('index')
 @section('content')
     <div class="container">
-        <div class="login-form__wrapper">
-            <form class="login-form" method="POST" action="{{ route('register') }}">
+        <div class="form__wrapper">
+            <form class="form" method="POST" action="{{ route('register') }}">
                 @csrf
-                <h1 class="login-form__title">
+                <h1 class="form__title">
                     Register
                 </h1>
-                <div class="login-form__input-field">
-                    <label for="name" class="login-form__input-label">
+                <div class="form__input-field">
+                    <label for="name" class="form__input-label">
                         {{ __('Name') }}
                     </label>
                     <input id="name" type="text" class="input input--text @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus />
@@ -18,8 +18,8 @@
                         </span>
                     @enderror
                 </div>
-                <div class="login-form__input-field">
-                    <label for="email" class="login-form__input-label">
+                <div class="form__input-field">
+                    <label for="email" class="form__input-label">
                         {{ __('Email Address') }}
                     </label>
                     <input id="email" type="email" class="input input--text @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" />
@@ -29,8 +29,8 @@
                         </span>
                     @enderror
                 </div>
-                <div class="login-form__input-field">
-                    <label for="password" class="login-form__input-label">
+                <div class="form__input-field">
+                    <label for="password" class="form__input-label">
                         {{ __('Password') }}
                     </label>
                     <input id="password" type="password" class="input input--text @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" />
@@ -40,14 +40,14 @@
                         </span>
                     @enderror
                 </div>
-                <div class="login-form__input-field">
-                    <label for="password-confirm" class="login-form__input-label">
+                <div class="form__input-field">
+                    <label for="password-confirm" class="form__input-label">
                         {{ __('Confirm Password') }}
                     </label>
                     <input id="password-confirm" type="password" class="input input--text" name="password_confirmation" required autocomplete="new-password">
                 </div>
-                <div class="login-form__action-panel login-form__action-panel--right">
-                    <div class="login-form__action-panel-group">
+                <div class="form__action-panel form__action-panel--right">
+                    <div class="form__action-panel-group">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>

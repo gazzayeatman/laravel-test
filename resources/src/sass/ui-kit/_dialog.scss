@@ -1,0 +1,42 @@
+.dialog {
+    background-color: $color-white;
+    height: auto;
+    width: auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 25px 75px 50px;
+    position: relative;
+    width: 100%;
+
+    &__close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 24px;
+        width: 24px;
+        background: svg-load('close.svg', fill=$color-black);
+        transition: background .2s;
+
+        &:hover,
+        &:focus {
+            background: svg-load('close.svg', fill=$color-orange-web);
+        }
+    }
+
+    &__wrapper {
+        position: fixed;
+        display: flex;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba($color-black, 0.3);
+    }
+
+    &__title {
+        font-size: 36px;
+        margin: 0px 0px 25px 0px;
+    }
+}

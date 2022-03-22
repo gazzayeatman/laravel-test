@@ -23,8 +23,14 @@ mix.js('resources/src/index.js', 'public/js')
         ], 'app.js');
     });
 
-mix.sass('resources/src/sass/app.scss', 'public/css', [
-    //
+mix.sass('resources/src/sass/app.scss', 'public/css', {}, [
+    require('postcss-inline-svg')({
+        paths: [
+            './resources/src/svg',
+            './public/resources/svg'
+        ]
+    }),
+    require('autoprefixer')
 ]);
 
 mix.webpackConfig({
