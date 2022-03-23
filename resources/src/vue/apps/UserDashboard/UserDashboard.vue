@@ -8,7 +8,7 @@
                 Add User
             </button>
         </div>
-        <div class="grid-view__wrapper" v-for="user of users.data">
+        <div class="grid-view__wrapper" v-for="user of users">
             <div class="grid-view">
                 <div class="grid-view__information">
                     <div class="grid-view__id">
@@ -36,41 +36,41 @@
     <add-user-modal />
 </template>
 <script>
-import EditUserModal from '../../modals/EditUserModal.vue';
-import AddUserModal from '../../modals/AddUserModal.vue';
-import { getUsersQuery } from './user-dashboard-store';
-import { deleteUserMutation } from './user-dashboard-store';
+    import EditUserModal from '../../modals/EditUserModal.vue';
+    import AddUserModal from '../../modals/AddUserModal.vue';
+    import { getUsersQuery } from './user-dashboard-store';
+    import { deleteUserMutation } from './user-dashboard-store';
 
-export default {
-    data() {
-        return {
-            users: []
+    export default {
+        data() {
+            return {
+                users: []
+            }
+        },
+        methods: {
+            deleteUser(id) {
+                this.$apollo.mutate({
+                    mutation: deleteUserMutation,
+                    variables: {
+                        id: id
+                    }
+                }).then((result) => {
+                    this.$apollo.queries.users.refetch();
+                }).catch((error) => {
+                    console.log(error);
+                    alert('there was an error deleting this user');
+                });
+            }
+        },
+        components: {
+            'edit-user-modal': EditUserModal,
+            'add-user-modal': AddUserModal
+        },
+        apollo: {
+            users: getUsersQuery
+        },
+        mounted() {
+            this.$store.dispatch('userDashboardStore/setApolloClient', this.$apollo);
         }
-    },
-    methods: {
-        deleteUser(id) {
-            this.$apollo.mutate({
-                mutation: deleteUserMutation,
-                variables: {
-                    id: id
-                }
-            }).then((result) => {
-                this.$apollo.queries.users.refetch();
-            }).catch((error) => {
-                console.log(error);
-                alert('there was an error deleting this user');
-            });
-
-            this.$apollo.queries.users.refresh();
-        }
-    },
-    components: {
-        'edit-user-modal': EditUserModal,
-        'add-user-modal': AddUserModal
-    },
-    apollo: {
-        users: getUsersQuery
     }
-}
-
 </script>

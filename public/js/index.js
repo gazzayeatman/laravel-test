@@ -22513,7 +22513,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
         alert('there was an error deleting this user');
       });
-      this.$apollo.queries.users.refresh();
     }
   },
   components: {
@@ -22522,6 +22521,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   apollo: {
     users: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
+  },
+  mounted: function mounted() {
+    this.$store.dispatch('userDashboardStore/setApolloClient', this.$apollo);
   }
 });
 
@@ -22538,7 +22540,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    };
+  },
+  methods: {
+    addUser: function addUser() {
+      var store = this.$store,
+          state = store.state['userDashboardStore'],
+          apollo = state.apollo;
+      this.$apollo.mutate({
+        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
+        variables: {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        }
+      }).then(function (result) {
+        apollo.queries.users.refetch();
+        store.dispatch('userDashboardStore/setAddUserModalClosed');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.addUser();
+    }
+  },
   computed: {
     modalOpened: function modalOpened() {
       return this.$store.state['userDashboardStore'].getAddUserModalOpen;
@@ -22559,12 +22595,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  methods: {},
+  data: function data() {
+    this.name = '';
+    this.email = '';
+  },
   computed: {
     currentUser: function currentUser() {
+      this.name = '';
+      this.email = '';
       return this.$store.state['userDashboardStore'].currentUser;
     }
+  },
+  methods: {
+    editUser: function editUser() {
+      var store = this.$store,
+          state = store.state['userDashboardStore'],
+          apollo = state.apollo;
+      this.$apollo.mutate({
+        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
+        variables: {
+          id: this.currentUser.id,
+          name: this.name,
+          email: this.email
+        }
+      }).then(function (result) {
+        apollo.queries.users.refetch();
+        store.dispatch('userDashboardStore/setEditUserModalClosed');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.editUser();
+    }
+  },
+  mounted: function mounted() {
+    this.name = this.currentUser.name;
+    this.email = this.currentUser.email;
   }
 });
 
@@ -22648,7 +22719,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$store.dispatch('userDashboardStore/setAddUserModalOpen');
     }),
     "class": "btn btn-primary"
-  }, " Add User ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.users.data, function (user) {
+  }, " Add User ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.users, function (user) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.id), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.email), 1
@@ -22708,7 +22779,59 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_4 = [_hoisted_3];
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2> Add a new user </h2><form class=\"dialog__form\"><div class=\"form__input-field\"><label class=\"form__input-label\" for=\"email\"> Email Address </label><input id=\"email\" type=\"email\" class=\"input input--text\" name=\"email\" autocomplete=\"off\" autofocus></div><div class=\"form__input-field\"><label class=\"form__input-label\" for=\"name\"> Name </label><input id=\"name\" type=\"name\" class=\"input input--text\" name=\"name\" autocomplete=\"off\"></div><div class=\"form__action-panel form__action-panel--right\"><div class=\"form__action-panel-group\"><button type=\"submit\" class=\"btn btn-primary\"> Save </button></div></div></form>", 2);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "dialog__title"
+}, " Add a new user ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "email"
+}, " Email Address ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "form__input-field"
+};
+var _hoisted_9 = ["model"];
+var _hoisted_10 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "password"
+}, " Password ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "confirm-password"
+}, " Confirm Password ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.$store.state['userDashboardStore'].addUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -22716,7 +22839,65 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$store.dispatch('userDashboardStore/setAddUserModalClosed');
     }),
     "class": "dialog__close-btn"
-  }, _hoisted_4), _hoisted_5])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.email = $event;
+    }),
+    id: "email",
+    type: "email",
+    "class": "input input--text",
+    name: "email",
+    autocomplete: "off",
+    autofocus: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    model: $data.name,
+    "class": "form__input-label",
+    "for": "name"
+  }, " Name ", 8
+  /* PROPS */
+  , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.name = $event;
+    }),
+    id: "name",
+    type: "name",
+    "class": "input input--text",
+    name: "name",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.password = $event;
+    }),
+    id: "password",
+    type: "password",
+    "class": "input input--text",
+    name: "password",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.confirmPassword = $event;
+    }),
+    id: "confirm-password",
+    type: "password",
+    "class": "input input--text",
+    name: "confirm-password",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]])]), _hoisted_14], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -22750,7 +22931,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_4 = [_hoisted_3];
 var _hoisted_5 = {
-  "class": "dialog__form"
+  "class": "dialog__title"
 };
 var _hoisted_6 = {
   "class": "form__input-field"
@@ -22794,9 +22975,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$store.dispatch('userDashboardStore/setEditUserModalClosed');
     }),
     "class": "dialog__close-btn"
-  }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentUser.name), 1
+  }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentUser.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.email = $event;
+    }),
     id: "email",
     type: "email",
     "class": "input input--text",
@@ -22806,7 +22995,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autofocus: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.name = $event;
+    }),
     id: "name",
     type: "name",
     "class": "input input--text",
@@ -22815,7 +23007,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 8
   /* PROPS */
-  , _hoisted_11)]), _hoisted_12])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), _hoisted_12], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -22923,60 +23117,70 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewUserMutation": () => (/* binding */ addNewUserMutation),
 /* harmony export */   "deleteUserMutation": () => (/* binding */ deleteUserMutation),
+/* harmony export */   "editUserMutation": () => (/* binding */ editUserMutation),
 /* harmony export */   "getUsersQuery": () => (/* binding */ getUsersQuery),
 /* harmony export */   "userDashboardStore": () => (/* binding */ userDashboardStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            data {\n                id\n                name\n                email\n            }\n        }\n    }\n"]))),
+var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            id\n            name\n            email\n        }\n    }\n"]))),
     deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
+    addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!\n        ) {\n            addNewUser(\n                name: $name,\n                email: $email,\n                password: $password\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
+    editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
     userDashboardStore = {
   namespaced: true,
   state: {
     editUserModalOpen: false,
     addUserModalOpen: false,
-    currentUser: false
+    currentUser: false,
+    apollo: false,
+    users: []
   },
   mutations: {
-    setEditUserModalOpen: function setEditUserModalOpen(state) {
-      state.editUserModalOpen = true;
+    setEditUserModalState: function setEditUserModalState(state, payload) {
+      state.editUserModalOpen = payload;
     },
-    setEditUserModalClosed: function setEditUserModalClosed(state) {
-      state.editUserModalOpen = false;
-    },
-    setAddUserModalOpen: function setAddUserModalOpen(state) {
-      state.addUserModalOpen = true;
-    },
-    setAddUserModalClosed: function setAddUserModalClosed(state) {
-      state.addUserModalOpen = false;
+    setAddUserModalState: function setAddUserModalState(state, payload) {
+      state.addUserModalOpen = payload;
     },
     setCurrentUser: function setCurrentUser(state, user) {
       state.currentUser = user;
+    },
+    setApolloClient: function setApolloClient(state, apollo) {
+      state.apollo = apollo;
+    },
+    setUsers: function setUsers(state, users) {
+      state.users = users;
     }
   },
   actions: {
     setEditUserModalOpen: function setEditUserModalOpen(_ref, user) {
       var commit = _ref.commit;
-      commit('setEditUserModalOpen');
+      commit('setEditUserModalState', true);
       commit('setCurrentUser', user);
     },
     setEditUserModalClosed: function setEditUserModalClosed(_ref2) {
       var commit = _ref2.commit;
-      commit('setEditUserModalClosed');
+      commit('setEditUserModalState', false);
       commit('setCurrentUser', false);
     },
     setAddUserModalOpen: function setAddUserModalOpen(_ref3) {
       var commit = _ref3.commit;
-      commit('setAddUserModalOpen');
+      commit('setAddUserModalState', true);
     },
     setAddUserModalClosed: function setAddUserModalClosed(_ref4) {
       var commit = _ref4.commit;
-      commit('setAddUserModalClosed');
+      commit('setAddUserModalState', false);
+    },
+    setApolloClient: function setApolloClient(_ref5, apollo) {
+      var commit = _ref5.commit;
+      commit('setApolloClient', apollo);
     }
   },
   getters: {
@@ -22988,6 +23192,12 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     },
     getCurrentUser: function getCurrentUser() {
       return state.currentUser;
+    },
+    getUsers: function getUsers() {
+      return state.users;
+    },
+    getApolloClient: function getApolloClient() {
+      return state.apollo;
     }
   }
 };

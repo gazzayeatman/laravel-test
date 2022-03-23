@@ -258,7 +258,8 @@ body {
 }
 .dialog__title {
   font-size: 36px;
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 50px 0px;
+  display: block;
 }
 
 .input {
@@ -4469,7 +4470,7 @@ footer {
 .form__input-label {
   font-weight: 700;
   text-decoration: underline;
-  margin: 0px 0px 15px 0px;
+  margin: 0px 0px 5px 0px;
   font-size: 14px;
 }
 .form__action-panel {
