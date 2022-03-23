@@ -25,7 +25,7 @@
                     <button @click="$store.dispatch('userDashboardStore/setEditUserModalOpen', user)" class="btn btn-primary">
                         Edit
                     </button>
-                    <button @click="handleDelete" class="btn btn-primary btn--danger">
+                    <button @click="deleteUser(user.id)" class="btn btn-primary btn--danger">
                         Delete
                     </button>
                 </div>
@@ -36,9 +36,10 @@
     <add-user-modal />
 </template>
 <script>
-import gql from 'graphql-tag';
 import EditUserModal from '../../modals/EditUserModal.vue';
 import AddUserModal from '../../modals/AddUserModal.vue';
+import { getUsersQuery } from './user-dashboard-store';
+import { deleteUserMutation } from './user-dashboard-store';
 
 export default {
     data() {
@@ -47,23 +48,28 @@ export default {
         }
     },
     methods: {
+        deleteUser(id) {
+            this.$apollo.mutate({
+                mutation: deleteUserMutation,
+                variables: {
+                    id: id
+                }
+            }).then((result) => {
+                this.$apollo.queries.users.refetch();
+            }).catch((error) => {
+                console.log(error);
+                alert('there was an error deleting this user');
+            });
+
+            this.$apollo.queries.users.refresh();
+        }
     },
     components: {
         'edit-user-modal': EditUserModal,
         'add-user-modal': AddUserModal
     },
     apollo: {
-        users: gql`
-            {
-                users {
-                    data {
-                        id
-                        name
-                        email
-                    }
-                }
-            }
-        `
+        users: getUsersQuery
     }
 }
 

@@ -1,5 +1,6 @@
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
+# Queries
 type Query {
     user(
       id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
@@ -11,7 +12,13 @@ type Query {
     ): [User!]! @paginate(defaultCount: 10)
 }
 
-"Account of a person who utilizes this application."
+# Mutations
+
+type Mutation {
+  deleteUser(id: ID!) : User @delete
+}
+
+# Types
 type User {
     id: ID!
     name: String!

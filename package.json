@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@apollo/client": "^3.5.10",
+        "@vue/apollo-composable": "*",
         "@vue/apollo-option": "*",
         "@vue/cli-shared-utils": "^5.0.3",
         "fast-sass-loader": "^2.0.1",

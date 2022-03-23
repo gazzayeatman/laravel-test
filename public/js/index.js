@@ -22485,12 +22485,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
 /* harmony import */ var _modals_EditUserModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../modals/EditUserModal.vue */ "./resources/src/vue/modals/EditUserModal.vue");
 /* harmony import */ var _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddUserModal.vue */ "./resources/src/vue/modals/AddUserModal.vue");
-var _templateObject;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+/* harmony import */ var _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
 
 
 
@@ -22501,13 +22498,30 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
       users: []
     };
   },
-  methods: {},
+  methods: {
+    deleteUser: function deleteUser(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.deleteUserMutation,
+        variables: {
+          id: id
+        }
+      }).then(function (result) {
+        _this.$apollo.queries.users.refetch();
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+      this.$apollo.queries.users.refresh();
+    }
+  },
   components: {
     'edit-user-modal': _modals_EditUserModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     'add-user-modal': _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   apollo: {
-    users: (0,graphql_tag__WEBPACK_IMPORTED_MODULE_2__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n            {\n                users {\n                    data {\n                        id\n                        name\n                        email\n                    }\n                }\n            }\n        "])))
+    users: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
   }
 });
 
@@ -22623,6 +22637,7 @@ var _hoisted_10 = {
   "class": "grid-view__actions"
 };
 var _hoisted_11 = ["onClick"];
+var _hoisted_12 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_edit_user_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-user-modal");
 
@@ -22648,11 +22663,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, " Edit ", 8
     /* PROPS */
     , _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: _cache[1] || (_cache[1] = function () {
-        return _ctx.handleDelete && _ctx.handleDelete.apply(_ctx, arguments);
-      }),
+      onClick: function onClick($event) {
+        return $options.deleteUser(user.id);
+      },
       "class": "btn btn-primary btn--danger"
-    }, " Delete ")])])]);
+    }, " Delete ", 8
+    /* PROPS */
+    , _hoisted_12)])])]);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_user_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_user_modal)], 64
@@ -22890,7 +22907,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
   modules: {
-    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__["default"]
+    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.userDashboardStore
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
@@ -22906,9 +22923,19 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "deleteUserMutation": () => (/* binding */ deleteUserMutation),
+/* harmony export */   "getUsersQuery": () => (/* binding */ getUsersQuery),
+/* harmony export */   "userDashboardStore": () => (/* binding */ userDashboardStore)
 /* harmony export */ });
-var userDashboardStore = {
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            data {\n                id\n                name\n                email\n            }\n        }\n    }\n"]))),
+    deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
+    userDashboardStore = {
   namespaced: true,
   state: {
     editUserModalOpen: false,
@@ -22964,7 +22991,7 @@ var userDashboardStore = {
     }
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userDashboardStore);
+
 
 /***/ }),
 
