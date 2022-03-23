@@ -41,7 +41,8 @@ type Mutation {
     streetNumber: String,
     streetName: String,
     suburb: String,
-    city: String
+    city: String,
+    customer_id: ID
   ) : Location @create
 
   addNewCustomer(
@@ -82,5 +83,5 @@ type Location {
   streetName: String
   suburb: String
   city: String
-  customer: Customer @belongsTo
+  customer_id: ID
 }

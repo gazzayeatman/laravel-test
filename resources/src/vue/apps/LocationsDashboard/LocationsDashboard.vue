@@ -15,10 +15,7 @@
                         {{ location.id }}
                     </div>
                     <div class="grid-view__column">
-                        {{ location.address }}
-                    </div>
-                    <div class="grid-view__column">
-                        {{ location.customer.name }}
+                        {{ location.unitNumber }} {{ location.streetNumber }} {{ location.streetName }} {{ location.suburb }} {{ location.city }} 
                     </div>
                 </div>
                 <div class="grid-view__actions">

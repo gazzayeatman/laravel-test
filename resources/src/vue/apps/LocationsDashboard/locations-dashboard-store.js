@@ -9,9 +9,6 @@ const getLocationsQuery = gql`
             streetName
             suburb
             city
-            customer {
-                id
-            }
         }
     }
 `,

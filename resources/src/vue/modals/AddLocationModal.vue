@@ -44,12 +44,9 @@
                     <label class="form__input-label" for="customer">
                         Customer
                     </label>
-                   <select name="customer">
-                       <option>
-                           Lorem ipsum
-                        </option>
-                       <option>
-                           Dolor sit
+                   <select name="customer" v-model="customerID">
+                       <option :value="customer.id" v-for="customer in customers">
+                           {{ customer.name }}
                         </option>
                     </select>
                 </div>
@@ -66,6 +63,7 @@
 </template>
 
 <script>
+    import { getCustomersQuery } from '../apps/CustomersDashboard/customers-dashboard-store';
     import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-dashboard-store';
     export default {
         data() {
@@ -74,13 +72,17 @@
                 streetNumber: '',
                 streetName: '',
                 suburb: '',
-                city: ''
+                city: '',
+                customerID: 0,
+                customers: []
             }
         },
         methods: {
             addLocation() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
+
+                console.log(this.customerID);
 
                 this.$apollo.mutate({
                     mutation: addNewLocationMutation,
@@ -90,7 +92,8 @@
                         streetNumber: this.streetNumber,
                         streetName: this.streetName,
                         suburb: this.suburb,
-                        city: this.city
+                        city: this.city,
+                        customer_id: this.customerID
                     }
                 }).then((result) => {
                     apollo.queries.locations.refetch();
@@ -103,6 +106,9 @@
             handleFormSubmit() {
                this.addLocation();
             }
+        },
+        apollo: {
+            customers: getCustomersQuery
         },
         computed: {
             modalOpened() {
