@@ -2,7 +2,8 @@ require('./bootstrap');
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
-import App from './App';
+import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
+import LocationsDashboard from './vue/apps/LocationsDashboard/LocationsDashboard';
 import Store from './store';
 
 const cache = new InMemoryCache(),
@@ -17,5 +18,6 @@ const cache = new InMemoryCache(),
 
     app.use(apolloProvider);
     app.use(Store);
-    app.component('welcome', App);
+    app.component('users-dashboard', UserDashboard);
+    app.component('locations-dashboard', LocationsDashboard);
     app.mount('#app');

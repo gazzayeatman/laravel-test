@@ -254,7 +254,8 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: scroll;
 }
 .dialog__title {
   font-size: 36px;

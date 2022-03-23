@@ -22453,10 +22453,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22464,11 +22464,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _vue_apps_UserDashboard_UserDashboard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/UserDashboard.vue */ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue");
+/* harmony import */ var _locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      locations: []
+    };
+  },
+  apollo: {
+    locations: _locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getLocationsQuery
+  },
   components: {
-    'user-dashboard': _vue_apps_UserDashboard_UserDashboard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    this.$store.dispatch('locationsDashboardStore/setApolloClient', this.$apollo);
   }
 });
 
@@ -22524,6 +22537,65 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.$store.dispatch('userDashboardStore/setApolloClient', this.$apollo);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      unitNumber: '',
+      streetNumber: '',
+      streetName: '',
+      suburb: '',
+      city: ''
+    };
+  },
+  methods: {
+    addLocation: function addLocation() {
+      var store = this.$store,
+          state = store.state['locationsDashboardStore'],
+          apollo = state.apollo;
+      this.$apollo.mutate({
+        mutation: _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewLocationMutation,
+        variables: {
+          name: this.name,
+          unitNumber: this.unitNumber,
+          streetNumber: this.streetNumber,
+          streetName: this.streetName,
+          suburb: this.suburb,
+          city: this.city
+        }
+      }).then(function (result) {
+        apollo.queries.locations.refetch();
+        store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this location');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.addLocation();
+    }
+  },
+  computed: {
+    modalOpened: function modalOpened() {
+      return this.$store.state['locationsDashboardStore'].getAddUserModalOpen;
+    }
   }
 });
 
@@ -22641,10 +22713,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=template&id=ab9f5064":
-/*!***************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=template&id=ab9f5064 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22654,10 +22726,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_user_dashboard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("user-dashboard");
+var _hoisted_1 = {
+  "class": "container"
+};
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_user_dashboard)]);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, " Locations Dashboard ", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "action-panel"
+};
+var _hoisted_4 = {
+  "class": "grid-view__wrapper"
+};
+var _hoisted_5 = {
+  "class": "grid-view"
+};
+var _hoisted_6 = {
+  "class": "grid-view__information"
+};
+var _hoisted_7 = {
+  "class": "grid-view__id"
+};
+var _hoisted_8 = {
+  "class": "grid-view__column"
+};
+var _hoisted_9 = {
+  "class": "grid-view__column"
+};
+var _hoisted_10 = {
+  "class": "grid-view__actions"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
+    }),
+    "class": "btn btn-primary"
+  }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.locations, function (location) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.address), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
+    /* TEXT */
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\n                        Edit\n                    </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: _cache[1] || (_cache[1] = function ($event) {
+        return _ctx.deleteUser(_ctx.user.id);
+      }),
+      "class": "btn btn-primary btn--danger"
+    }, " Delete ")])])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal)]);
 }
 
 /***/ }),
@@ -22746,6 +22870,171 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_user_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_user_modal)], 64
   /* STABLE_FRAGMENT */
   );
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "dialog__title"
+}, " Add a new location ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "unit-number"
+}, " Unit Number ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "street-number"
+}, " Street Number ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "street-name"
+}, " Street Name ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "suburb"
+}, " Suburb ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "city"
+}, " City ", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form__input-field\"><label class=\"form__input-label\" for=\"customer\"> Customer </label><select name=\"customer\"><option> Lorem ipsum </option><option> Dolor sit </option></select></div><div class=\"form__action-panel form__action-panel--right\"><div class=\"form__action-panel-group\"><button type=\"submit\" class=\"btn btn-primary\"> Save </button></div></div>", 2);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['locationsDashboardStore'].addLocationsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.unitNumber = $event;
+    }),
+    id: "unit-number",
+    type: "text",
+    "class": "input input--text",
+    name: "unit-number",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.unitNumber]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.streetNumber = $event;
+    }),
+    id: "street-number",
+    type: "text",
+    "class": "input input--text",
+    name: "sreeet-number",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.streetNumber]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.streetName = $event;
+    }),
+    id: "street-name",
+    type: "text",
+    "class": "input input--text",
+    name: "street-name",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.streetName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.suburb = $event;
+    }),
+    id: "suburb",
+    type: "text",
+    "class": "input input--text",
+    name: "suburb",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.suburb]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.city = $event;
+    }),
+    id: "city",
+    type: "text",
+    "class": "input input--text",
+    name: "city",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]])]), _hoisted_16], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -23055,12 +23344,13 @@ __webpack_require__(/*! purecss */ "./node_modules/purecss/build/pure-min.css");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
 /* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/apollo-option */ "./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./resources/src/App.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
+/* harmony import */ var _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/apps/UserDashboard/UserDashboard */ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue");
+/* harmony import */ var _vue_apps_LocationsDashboard_LocationsDashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/LocationsDashboard */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/src/bootstrap.js");
 
 
@@ -23068,8 +23358,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/src/bootstrap.js");
 
 
 
-var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_4__.InMemoryCache(),
-    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__.ApolloClient({
+
+var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__.InMemoryCache(),
+    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_6__.ApolloClient({
   uri: 'http://laravel.test/graphql',
   cache: cache
 }),
@@ -23078,8 +23369,9 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_4__.InMemoryCache()
 }),
     app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({});
 app.use(apolloProvider);
-app.use(_store__WEBPACK_IMPORTED_MODULE_3__["default"]);
-app.component('welcome', _App__WEBPACK_IMPORTED_MODULE_2__["default"]);
+app.use(_store__WEBPACK_IMPORTED_MODULE_4__["default"]);
+app.component('users-dashboard', _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_2__["default"]);
+app.component('locations-dashboard', _vue_apps_LocationsDashboard_LocationsDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.mount('#app');
 
 /***/ }),
@@ -23095,16 +23387,89 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+/* harmony import */ var _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
 
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
+
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
   modules: {
-    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.userDashboardStore
+    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.userDashboardStore,
+    locationsDashboardStore: _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__.locationsDashboardStore
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js":
+/*!********************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewLocationMutation": () => (/* binding */ addNewLocationMutation),
+/* harmony export */   "getLocationsQuery": () => (/* binding */ getLocationsQuery),
+/* harmony export */   "locationsDashboardStore": () => (/* binding */ locationsDashboardStore)
+/* harmony export */ });
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n            }\n        }\n    }\n"]))),
+    addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String\n        ) {\n            addNewLocation(\n                unitNumber: $unitNumber,\n                streetNumber: $streetNumber,\n                streetName: $streetName,\n                suburb: $suburb,\n                city: $city,\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n            }\n        }\n    "]))),
+    locationsDashboardStore = {
+  namespaced: true,
+  state: {
+    locations: [],
+    addLocationsModalOpen: false,
+    apollo: false
+  },
+  mutations: {
+    setAddLocationsModalState: function setAddLocationsModalState(state, payload) {
+      state.addLocationsModalOpen = payload;
+    },
+    setApolloClient: function setApolloClient(state, apollo) {
+      state.apollo = apollo;
+    }
+  },
+  actions: {
+    setEditUserModalOpen: function setEditUserModalOpen(_ref, user) {
+      var commit = _ref.commit;
+      commit('setEditUserModalState', true);
+      commit('setCurrentUser', user);
+    },
+    setEditUserModalClosed: function setEditUserModalClosed(_ref2) {
+      var commit = _ref2.commit;
+      commit('setEditUserModalState', false);
+      commit('setCurrentUser', false);
+    },
+    setAddLocationModalOpen: function setAddLocationModalOpen(_ref3) {
+      var commit = _ref3.commit;
+      commit('setAddLocationsModalState', true);
+    },
+    setAddLocationModalClosed: function setAddLocationModalClosed(_ref4) {
+      var commit = _ref4.commit;
+      commit('setAddLocationsModalState', false);
+    },
+    setApolloClient: function setApolloClient(_ref5, apollo) {
+      var commit = _ref5.commit;
+      commit('setApolloClient', apollo);
+    }
+  },
+  getters: {
+    getAddLocationModalOpen: function getAddLocationModalOpen() {
+      return state.addLocationsModalOpen;
+    }
+  }
+};
+
 
 /***/ }),
 
@@ -41474,10 +41839,10 @@ exports["default"] = (sfc, props) => {
 
 /***/ }),
 
-/***/ "./resources/src/App.vue":
-/*!*******************************!*\
-  !*** ./resources/src/App.vue ***!
-  \*******************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -41485,15 +41850,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _App_vue_vue_type_template_id_ab9f5064__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=ab9f5064 */ "./resources/src/App.vue?vue&type=template&id=ab9f5064");
-/* harmony import */ var _App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js */ "./resources/src/App.vue?vue&type=script&lang=js");
+/* harmony import */ var _LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsDashboard.vue?vue&type=template&id=701cff3e */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e");
+/* harmony import */ var _LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsDashboard.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js");
 /* harmony import */ var _Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_ab9f5064__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/App.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -41522,6 +41887,34 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,_Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/UserDashboard/UserDashboard.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddLocationModal.vue":
+/*!*******************************************************!*\
+  !*** ./resources/src/vue/modals/AddLocationModal.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddLocationModal_vue_vue_type_template_id_19924ac4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddLocationModal.vue?vue&type=template&id=19924ac4 */ "./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4");
+/* harmony import */ var _AddLocationModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddLocationModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddLocationModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddLocationModal_vue_vue_type_template_id_19924ac4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/AddLocationModal.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -41586,18 +41979,18 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/src/App.vue?vue&type=script&lang=js":
-/*!*******************************************************!*\
-  !*** ./resources/src/App.vue?vue&type=script&lang=js ***!
-  \*******************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./App.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsDashboard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -41614,6 +42007,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserDashboard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddLocationModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddLocationModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddLocationModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -41650,18 +42059,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/App.vue?vue&type=template&id=ab9f5064":
-/*!*************************************************************!*\
-  !*** ./resources/src/App.vue?vue&type=template&id=ab9f5064 ***!
-  \*************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e":
+/*!********************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e ***!
+  \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_template_id_ab9f5064__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_template_id_ab9f5064__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./App.vue?vue&type=template&id=ab9f5064 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/App.vue?vue&type=template&id=ab9f5064");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsDashboard.vue?vue&type=template&id=701cff3e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e");
 
 
 /***/ }),
@@ -41678,6 +42087,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserDashboard.vue?vue&type=template&id=f1958cdc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=template&id=f1958cdc");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4":
+/*!*************************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4 ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddLocationModal_vue_vue_type_template_id_19924ac4__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddLocationModal_vue_vue_type_template_id_19924ac4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddLocationModal.vue?vue&type=template&id=19924ac4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddLocationModal.vue?vue&type=template&id=19924ac4");
 
 
 /***/ }),

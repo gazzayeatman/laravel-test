@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__link">
+                <a href="/customers" class="navbar__link">
                     Customers
                 </a>
             </li>
@@ -34,8 +34,8 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="#" class="navbar__link">
-                    Sites
+                <a href="/locations" class="navbar__link">
+                    Locations
                 </a>
             </li>
             <li class="navbar__item">

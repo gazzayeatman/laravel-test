@@ -19,5 +19,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/users', 'App\Http\Controllers\UsersDashboardController@index');
+Route::get('/locations', 'App\Http\Controllers\LocationsDashboardController@index');
+Route::get('/customers', 'App\Http\Controllers\CustomersDashboardController@index');
 
 Auth::routes();

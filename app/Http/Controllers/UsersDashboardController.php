@@ -26,13 +26,8 @@ class UsersDashboardController extends Controller
      */
     public function index()
     {
-        $users = User::get();
-
         return view(
-            'layouts.users-dashboard',
-            [
-                'users' => $users
-            ]
+            'layouts.users-dashboard'
         );
     }
 
