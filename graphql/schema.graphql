@@ -11,9 +11,12 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @all
 
-    locations(
+    locations: [Location!]! @all
+
+    customers(
+      id: ID @eq
       name: String @where(operator: "like")
-    ): [Location!]! @all
+    ): [Customer!]! @all
 }
 
 # Mutations
@@ -40,6 +43,11 @@ type Mutation {
     suburb: String,
     city: String
   ) : Location @create
+
+  addNewCustomer(
+    name: String
+    main_contact_id: Int
+  ) : Customer @create
 }
 
 # Types
@@ -64,7 +72,7 @@ type Contact {
 type Customer {
   id: ID!
   name: String
-  contact: Contact
+  main_contact_id: Int
 }
 
 type Location {
@@ -74,5 +82,5 @@ type Location {
   streetName: String
   suburb: String
   city: String
-  customer: Customer
+  customer: Customer @belongsTo
 }

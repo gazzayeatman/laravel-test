@@ -51,9 +51,8 @@
         },
         methods: {
             editUser() {
-                const store = this.$store,
-                    state = store.state['userDashboardStore'],
-                    apollo = state.apollo;
+                const apollo = this.$store.state.apollo,
+                    store = this.$store;
 
                 this.$apollo.mutate({
                     mutation: editUserMutation,

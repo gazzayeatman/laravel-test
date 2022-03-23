@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class CustomerDashboardController extends Controller
+class CustomersDashboardController extends Controller
 {
     /**
      * Create a new controller instance.

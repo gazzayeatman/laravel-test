@@ -4,6 +4,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
 import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
 import LocationsDashboard from './vue/apps/LocationsDashboard/LocationsDashboard';
+import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
 import Store from './store';
 
 const cache = new InMemoryCache(),
@@ -20,4 +21,5 @@ const cache = new InMemoryCache(),
     app.use(Store);
     app.component('users-dashboard', UserDashboard);
     app.component('locations-dashboard', LocationsDashboard);
+    app.component('customers-dashboard', CustomersDashboard);
     app.mount('#app');

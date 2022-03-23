@@ -79,9 +79,8 @@
         },
         methods: {
             addLocation() {
-                const store = this.$store,
-                    state = store.state['locationsDashboardStore'],
-                    apollo = state.apollo;
+                const apollo = this.$store.state.apollo,
+                    store = this.$store;
 
                 this.$apollo.mutate({
                     mutation: addNewLocationMutation,

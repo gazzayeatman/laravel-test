@@ -70,7 +70,7 @@
             users: getUsersQuery
         },
         mounted() {
-            this.$store.dispatch('userDashboardStore/setApolloClient', this.$apollo);
+            this.$store.dispatch('setApolloClient', this.$apollo);
         }
     }
 </script>
