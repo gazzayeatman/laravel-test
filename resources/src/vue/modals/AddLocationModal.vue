@@ -93,7 +93,7 @@
                         streetName: this.streetName,
                         suburb: this.suburb,
                         city: this.city,
-                        customer_id: this.customerID
+                        customer_id: this.customerID ? this.customerID : 0
                     }
                 }).then((result) => {
                     apollo.queries.locations.refetch();

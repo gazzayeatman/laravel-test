@@ -9,6 +9,10 @@ const getLocationsQuery = gql`
             streetName
             suburb
             city
+            customer {
+                id
+                name
+            }
         }
     }
 `,
@@ -18,7 +22,8 @@ const getLocationsQuery = gql`
             $streetNumber: String,
             $streetName: String,
             $suburb: String,
-            $city: String
+            $city: String,
+            $customer_id: ID
         ) {
             addNewLocation(
                 unitNumber: $unitNumber,
@@ -26,6 +31,7 @@ const getLocationsQuery = gql`
                 streetName: $streetName,
                 suburb: $suburb,
                 city: $city,
+                customer_id: $customer_id
             ) {
                 id
                 unitNumber
@@ -33,6 +39,10 @@ const getLocationsQuery = gql`
                 streetName
                 suburb
                 city
+                customer {
+                    id
+                    name
+                }
             }
         }
     `,

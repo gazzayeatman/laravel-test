@@ -4435,6 +4435,19 @@ table tbody tr:first-child td {
   margin: 50px 0px 75px 0px;
 }
 
+.customer-card {
+  padding: 15px 15px 25px 15px;
+  background-color: #ffffffff;
+}
+.customer-card__wrapper {
+  width: 280px;
+  margin: 10px;
+}
+.customer-card__title {
+  text-decoration: underline;
+  font-size: 26px;
+}
+
 footer {
   background: green;
 }

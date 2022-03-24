@@ -58,7 +58,7 @@
                     mutation: addNewCustomer,
                     variables: {
                         name: this.name,
-                        main_contact_id: this.customer && this.customer.id ? this.customer.id : null
+                        contact: this.customer && this.customer.id ? this.customer.id : null
                     }
                 }).then((result) => {
                     apollo.queries.customers.refetch();

@@ -11,11 +11,11 @@ const getCustomersQuery = gql`
     addNewCustomer = gql`
          mutation (
             $name: String,
-            $main_contact_id: Int
+            $contact: Int,
         ) {
             addNewCustomer(
                 name: $name,
-                main_contact_id: $main_contact_id
+                contact: $contact
             ) {
                 id
                 name

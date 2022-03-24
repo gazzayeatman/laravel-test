@@ -47,7 +47,7 @@ type Mutation {
 
   addNewCustomer(
     name: String
-    main_contact_id: Int
+    mainContact: Contact
   ) : Customer @create
 }
 
@@ -73,7 +73,7 @@ type Contact {
 type Customer {
   id: ID!
   name: String
-  main_contact_id: Int
+  mainContact: Contact
 }
 
 type Location {
@@ -83,5 +83,5 @@ type Location {
   streetName: String
   suburb: String
   city: String
-  customer_id: ID
+  customer: Customer @belongsTo
 }

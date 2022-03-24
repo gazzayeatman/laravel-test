@@ -21,7 +21,7 @@ class Customer extends Model
 
     public function mainContact()
     {
-        return $this->hasOne(Contact::class);
+        return $this->hasOne(Contact::class. 'main_contact_id');
     }
 
     public function bookings()

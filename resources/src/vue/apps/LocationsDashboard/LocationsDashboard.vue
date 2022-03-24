@@ -17,6 +17,9 @@
                     <div class="grid-view__column">
                         {{ location.unitNumber }} {{ location.streetNumber }} {{ location.streetName }} {{ location.suburb }} {{ location.city }} 
                     </div>
+                    <div class="grid-view__column" v-if="location.customer && location.customer.name">
+                        {{ location.customer.name }} 
+                    </div>
                 </div>
                 <div class="grid-view__actions">
                     <!-- <button @click="$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)" class="btn btn-primary">

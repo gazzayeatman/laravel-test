@@ -11,12 +11,12 @@ class BookingTime extends Model
 
     public function booking()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(Booking::class, 'booking_id');
     }
 
     public function driver()
     {
-        return $this->hasOne(Driver::class);
+        return $this->hasOne(Driver::class, 'driver_id');
     }
 
     public function notes()

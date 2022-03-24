@@ -8,23 +8,14 @@
                 Add Customer
             </button>
         </div>
-        <div class="grid-view__wrapper" v-for="customer of customers">
-            <div class="grid-view">
-                <div class="grid-view__information">
-                    <div class="grid-view__id">
-                        {{ customer.id }}
+        <div v-masonry="containerId" transition-duration="0.3s" item-selector=".customer-card__wrapper">
+            <div v-masonry-tile class="customer-cards__wrapper" v-for="(customer, index) in customers">
+                <div class="customer-card__wrapper">
+                    <div class="customer-card">
+                        <h3 class="customer-card__title">
+                            {{ customer.name }}
+                        </h3>
                     </div>
-                    <div class="grid-view__column">
-                        {{ customer.name }}
-                    </div>
-                </div>
-                <div class="grid-view__actions">
-                    <button @click="$store.dispatch('customersDashboardStore/setEditUserModalOpen', user)" class="btn btn-primary">
-                        Edit
-                    </button>
-                    <button @click="deleteUser(user.id)" class="btn btn-primary btn--danger">
-                        Delete
-                    </button>
                 </div>
             </div>
         </div>
