@@ -16,16 +16,16 @@ class Note extends Model
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
     public function location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class, 'location_id');
     }
 
     public function bookingTime()
     {
-        return $this->belongsTo(BookingTime::class);
+        return $this->belongsTo(BookingTime::class, 'booking_id');
     }
 }

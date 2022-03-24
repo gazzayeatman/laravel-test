@@ -254,11 +254,13 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: scroll;
 }
 .dialog__title {
   font-size: 36px;
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 50px 0px;
+  display: block;
 }
 
 .input {
@@ -4433,6 +4435,28 @@ table tbody tr:first-child td {
   margin: 50px 0px 75px 0px;
 }
 
+.customer-card {
+  padding: 15px 15px 25px 15px;
+  background-color: #ffffffff;
+}
+.customer-card__wrapper {
+  width: 280px;
+  margin: 10px;
+  position: relative;
+}
+.customer-card__title {
+  text-decoration: underline;
+  font-size: 26px;
+}
+.customer-card__tag {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #14213dff;
+  color: #ffffffff;
+  padding: 5px 10px;
+}
+
 footer {
   background: green;
 }
@@ -4469,7 +4493,7 @@ footer {
 .form__input-label {
   font-weight: 700;
   text-decoration: underline;
-  margin: 0px 0px 15px 0px;
+  margin: 0px 0px 5px 0px;
   font-size: 14px;
 }
 .form__action-panel {

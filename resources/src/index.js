@@ -2,7 +2,11 @@ require('./bootstrap');
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
-import App from './App';
+import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
+import LocationsDashboard from './vue/apps/LocationsDashboard/LocationsDashboard';
+import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
+import { VueMasonryPlugin } from 'vue-masonry';
+import mitt from 'mitt';
 import Store from './store';
 
 const cache = new InMemoryCache(),
@@ -13,9 +17,14 @@ const cache = new InMemoryCache(),
     apolloProvider = createApolloProvider({
         defaultClient: apolloClient,
     }),
-    app = createApp({});
+    app = createApp({}),
+    emitter = mitt();
 
     app.use(apolloProvider);
     app.use(Store);
-    app.component('welcome', App);
+    app.config.globalProperties.emitter = emitter
+    app.use(VueMasonryPlugin);
+    app.component('users-dashboard', UserDashboard);
+    app.component('locations-dashboard', LocationsDashboard);
+    app.component('customers-dashboard', CustomersDashboard);
     app.mount('#app');

@@ -14,7 +14,7 @@ class AddForeignKeys extends Migration
     public function up()
     {
         Schema::table('contacts', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')
@@ -23,7 +23,7 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('customers', function (Blueprint $table) {
-            $table->unsignedBigInteger('main_contact_id');
+            $table->unsignedBigInteger('main_contact_id')->nullable();
             $table->foreign('main_contact_id')
                 ->references('id')
                 ->on('contacts')
@@ -32,28 +32,28 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('bookings', function (Blueprint $table) {
-            $table->unsignedBigInteger('vehicle_id');
+            $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->foreign('vehicle_id')
                 ->references('id')
                 ->on('vehicles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('location_id')->nullable();
             $table->foreign('location_id')
                 ->references('id')
                 ->on('locations')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('main_contact_id');
+            $table->unsignedBigInteger('main_contact_id')->nullable();
             $table->foreign('main_contact_id')
                 ->references('id')
                 ->on('contacts')
@@ -62,7 +62,7 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('locations', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')
@@ -71,7 +71,7 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('vehicles', function (Blueprint $table) {
-            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')
                 ->references('id')
                 ->on('users')
@@ -80,21 +80,21 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('notes', function (Blueprint $table) {
-            $table->unsignedBigInteger('booking_id');
+            $table->unsignedBigInteger('booking_id')->nullable();
             $table->foreign('booking_id')
                 ->references('id')
                 ->on('bookings')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('vehicle_id');
+            $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->foreign('vehicle_id')
                 ->references('id')
                 ->on('vehicles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('location_id')->nullable();
             $table->foreign('location_id')
                 ->references('id')
                 ->on('locations')
@@ -103,14 +103,14 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('booking_times', function (Blueprint $table) {
-            $table->unsignedBigInteger('booking_id');
+            $table->unsignedBigInteger('booking_id')->nullable();
             $table->foreign('booking_id')
                 ->references('id')
                 ->on('bookings')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')
                 ->references('id')
                 ->on('users')
