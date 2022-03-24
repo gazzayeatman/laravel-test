@@ -12,6 +12,9 @@
             <div v-masonry-tile class="customer-cards__wrapper" v-for="(customer, index) in customers">
                 <div class="customer-card__wrapper">
                     <div class="customer-card">
+                        <span class="customer-card__tag" v-if="customer.locations.length > 0">
+                            Locations: {{ customer.locations.length }}
+                        </span>
                         <h3 class="customer-card__title">
                             {{ customer.name }}
                         </h3>

@@ -5,21 +5,24 @@ const getCustomersQuery = gql`
         customers {
             id
             name
+            locations {
+                id
+            }
+            contacts {
+                id
+                firstName
+                lastName
+            }
         }
     }
 `,
     addNewCustomer = gql`
          mutation (
-            $name: String,
-            $contact: Int,
+            $name: String
         ) {
             addNewCustomer(
-                name: $name,
-                contact: $contact
-            ) {
-                id
-                name
-            }
+                name: $name
+            )
         }
     `,
     customersDashboardStore = {

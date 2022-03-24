@@ -22602,8 +22602,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$apollo.mutate({
         mutation: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewCustomer,
         variables: {
-          name: this.name,
-          contact: this.customer && this.customer.id ? this.customer.id : null
+          name: this.name
         }
       }).then(function (result) {
         apollo.queries.customers.refetch();
@@ -22836,6 +22835,10 @@ var _hoisted_7 = {
   "class": "customer-card"
 };
 var _hoisted_8 = {
+  key: 0,
+  "class": "customer-card__tag"
+};
+var _hoisted_9 = {
   "class": "customer-card__title"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -22851,7 +22854,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "btn btn-primary"
   }, " Add Customer ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customers, function (customer, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(customer.name), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_8, " Locations: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(customer.locations.length), 1
+    /* TEXT */
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(customer.name), 1
     /* TEXT */
     )])])])), [[_directive_masonry_tile]]);
   }), 256
@@ -23069,7 +23074,16 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form__input-field\"><label class=\"form__input-label\" for=\"customer\"> Customer </label><select name=\"customer\"><option> Lorem ipsum </option><option> Dolor sit </option></select></div><div class=\"form__action-panel form__action-panel--right\"><div class=\"form__action-panel-group\"><button type=\"submit\" class=\"btn btn-primary\"> Save </button></div></div>", 2);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.$store.state['customersDashboardStore'].addCustomersModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -23713,8 +23727,8 @@ var _templateObject, _templateObject2;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n        }\n    }\n"]))),
-    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String,\n            $contact: Int,\n        ) {\n            addNewCustomer(\n                name: $name,\n                contact: $contact\n            ) {\n                id\n                name\n            }\n        }\n    "]))),
+var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n        }\n    }\n"]))),
+    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                name: $name\n            )\n        }\n    "]))),
     customersDashboardStore = {
   namespaced: true,
   state: {

@@ -5,10 +5,20 @@
     &__wrapper {
         width: 280px;
         margin: 10px;
+        position: relative;
     }
 
     &__title {
         text-decoration: underline;
         font-size: 26px;
+    }
+
+    &__tag {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: $color-oxford-blue;
+        color: $color-white;
+        padding: 5px 10px;
     }
 }

@@ -4442,10 +4442,19 @@ table tbody tr:first-child td {
 .customer-card__wrapper {
   width: 280px;
   margin: 10px;
+  position: relative;
 }
 .customer-card__title {
   text-decoration: underline;
   font-size: 26px;
+}
+.customer-card__tag {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #14213dff;
+  color: #ffffffff;
+  padding: 5px 10px;
 }
 
 footer {

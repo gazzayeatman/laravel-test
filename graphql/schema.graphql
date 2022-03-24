@@ -74,6 +74,8 @@ type Customer {
   id: ID!
   name: String
   mainContact: Contact
+  locations: [Location] @hasMany
+  contacts: [Contact] @hasMany
 }
 
 type Location {

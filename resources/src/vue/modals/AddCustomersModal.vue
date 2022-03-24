@@ -16,19 +16,6 @@
                     </label>
                     <input v-model="name" id="name" type="text" class="input input--text" name="name" autocomplete="off" />
                 </div>
-                <div class="form__input-field">
-                    <label class="form__input-label" for="customer">
-                        Customer
-                    </label>
-                   <select name="customer">
-                       <option>
-                           Lorem ipsum
-                        </option>
-                       <option>
-                           Dolor sit
-                        </option>
-                    </select>
-                </div>
                 <div class="form__action-panel form__action-panel--right">
                     <div class="form__action-panel-group">
                         <button type="submit" class="btn btn-primary">
@@ -46,7 +33,7 @@
     export default {
         data() {
             return {
-                name: ''
+                name: '',
             }
         },
         methods: {
@@ -57,8 +44,7 @@
                 this.$apollo.mutate({
                     mutation: addNewCustomer,
                     variables: {
-                        name: this.name,
-                        contact: this.customer && this.customer.id ? this.customer.id : null
+                        name: this.name
                     }
                 }).then((result) => {
                     apollo.queries.customers.refetch();
