@@ -17,6 +17,8 @@ type Query {
       id: ID @eq
       name: String @where(operator: "like")
     ): [Customer!]! @all
+
+    currentUser: User @auth
 }
 
 # Mutations

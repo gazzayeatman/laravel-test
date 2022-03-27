@@ -26,13 +26,10 @@
     </div>
 </template>
 <script>
-    import { getCustomersQuery } from './customers-dashboard-store';
-    import AddCustomersModal from '../../modals/AddCustomersModal.vue';
-
     export default {
         data() {
             return {
-                customers: []
+                customer: []
             }
         },
         apollo: {
