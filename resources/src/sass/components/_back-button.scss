@@ -1,0 +1,21 @@
+.back-button {
+    position: relative;
+    display: flex;
+
+    &:before {
+        content: '';
+        position: relative;
+        background: svg-load('arrow-left.svg', fill=$color-orange-web);
+        height: 25px;
+        width: 25px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0px 12px 0px 0px;
+    }
+
+    &__wrapper {
+        display: flex;
+        width: 100%;
+        margin: 25px 0px;
+    }
+}
