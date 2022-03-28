@@ -23,6 +23,11 @@ const getCustomersQuery = gql`
                 name
                 locations {
                     id
+                    unitNumber
+                    streetNumber
+                    streetName
+                    suburb
+                    city
                 }
                 contacts {
                     id

@@ -40,7 +40,7 @@
                     </label>
                     <input v-model="city" id="city" type="text" class="input input--text" name="city" autocomplete="off" />
                 </div>
-                <div class="form__input-field">
+                <div class="form__input-field" v-if="!customer">
                     <label class="form__input-label" for="customer">
                         Customer
                     </label>
@@ -77,12 +77,20 @@
                 customers: []
             }
         },
+        props: {
+            customer: {}
+        },
         methods: {
+            getCurrentCustomerID() {
+                if (this.customer) {
+                    return this.customer.id;
+                }
+
+                return this.customerID;
+            },
             addLocation() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
-
-                console.log(this.customerID);
 
                 this.$apollo.mutate({
                     mutation: addNewLocationMutation,
@@ -93,10 +101,13 @@
                         streetName: this.streetName,
                         suburb: this.suburb,
                         city: this.city,
-                        customer_id: this.customerID ? this.customerID : 0
+                        customer_id: this.getCurrentCustomerID()
                     }
                 }).then((result) => {
-                    apollo.queries.locations.refetch();
+                    if (apollo.queries.locations) {
+                        apollo.queries.locations.refetch();
+                    }
+                    
                     store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
                 }).catch((error) => {
                     console.log(error);
