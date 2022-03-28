@@ -50,15 +50,11 @@ const getLocationsQuery = gql`
         namespaced: true,
         state: {
             locations: [],
-            addLocationsModalOpen: false,
-            apollo: false
+            addLocationsModalOpen: false
         },
         mutations: {
             setAddLocationsModalState(state, payload) {
                 state.addLocationsModalOpen = payload
-            },
-            setApolloClient(state, apollo) {
-                state.apollo = apollo;
             }
         },
         actions: {
@@ -75,9 +71,6 @@ const getLocationsQuery = gql`
             },
             setAddLocationModalClosed({commit}) {
                 commit('setAddLocationsModalState', false);
-            },
-            setApolloClient({commit}, apollo) {
-                commit('setApolloClient', apollo);
             }
         },
         getters: {

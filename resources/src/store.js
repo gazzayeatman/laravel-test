@@ -4,25 +4,40 @@ import { locationsDashboardStore } from './vue/apps/LocationsDashboard/locations
 import { customersDashboardStore } from './vue/apps/CustomersDashboard/customers-dashboard-store';
 
 const store = createStore({
-    state: {
-        apollo: false
-    },
-    mutations: {
-        setApolloClient(state, apollo) {
-            state.apollo = apollo;
+        state: {
+            apollo: false,
+            currentUser: false,
+            loginModalOpen: false
+        },
+        mutations: {
+            setApolloClient(state, apollo) {
+                state.apollo = apollo;
+            },
+            setCurrentUser(state, payload) {
+                state.currentUser = payload;
+            },
+            setLoginModalOpen(state, payload) {
+                state.loginModalOpen = payload;
+            }
+        },
+        actions: {
+            setApolloClient({commit}, apollo) {
+                commit('setApolloClient', apollo);
+            },
+            setCurrentUser({commit}, payload) {
+                commit('setCurrentUser', payload);
+            },
+            setLoginModalOpen({commit}, payload) {
+                commit('setLoginModalOpen', payload);
+            }
+        },
+        modules: {
+            userDashboardStore,
+            locationsDashboardStore,
+            customersDashboardStore
         }
-    },
-    actions: {
-        setApolloClient({commit}, apollo) {
-            commit('setApolloClient', apollo);
-        }
-    },
-    getters: { },
-    modules: {
-        userDashboardStore,
-        locationsDashboardStore,
-        customersDashboardStore
-    }
-});
+    });
 
-export default store;
+export {
+    store
+};

@@ -1,0 +1,34 @@
+.detail-page {
+    &__wrapper {
+
+    }
+
+    &__title {
+        margin: 0px 0px 25px 0px;
+    }
+
+    &__detail-grid {
+        &--empty {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $color-white;
+            width: fit-content;
+            padding: 25px 100px;
+            margin: 0 auto;
+        }
+    }
+
+    &__detail-grid-action-panel {
+        display: block;
+        margin: 25px 0px 0px 0px;
+    }
+
+    &__detail-grid-content {
+        display: block;
+    }
+
+    &__sub-title {
+
+    }
+}

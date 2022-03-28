@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::any('/login', function() {
+    return view('auth.login');
 })->middleware('auth');
 
-Route::get('/users', 'App\Http\Controllers\UsersDashboardController@index');
-Route::get('/locations', 'App\Http\Controllers\LocationsDashboardController@index');
-Route::get('/customers', 'App\Http\Controllers\CustomersDashboardController@index');
+Route::any('/{all}', function () {
+    return view('layouts.app');
+})->where(['all' => '.*'])
+    ->middleware('auth');
 
 Auth::routes();

@@ -10,7 +10,7 @@
         </div>
         <div v-masonry="containerId" transition-duration="0.3s" item-selector=".customer-card__wrapper">
             <div v-masonry-tile class="customer-cards__wrapper" v-for="(customer, index) in customers">
-                <div class="customer-card__wrapper">
+                <router-link class="customer-card__wrapper" :to="{ path: '/customers/view-customer/' + customer.id }">
                     <div class="customer-card">
                         <span class="customer-card__tag" v-if="customer.locations.length > 0">
                             Locations: {{ customer.locations.length }}
@@ -19,7 +19,7 @@
                             {{ customer.name }}
                         </h3>
                     </div>
-                </div>
+                </router-link >
             </div>
         </div>
         <add-customer-modal />
@@ -40,9 +40,6 @@
         },
         components: {
             'add-customer-modal': AddCustomersModal
-        },
-        mounted() {
-            this.$store.dispatch('setApolloClient', this.$apollo);
         }
     }
 </script>

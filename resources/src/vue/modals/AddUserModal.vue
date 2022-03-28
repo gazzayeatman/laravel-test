@@ -60,7 +60,7 @@
         },
         methods: {
             addUser() {
-                const apollo = this.$store.state.apollo
+                const apollo = this.$store.state.apollo,
                     store = this.$store;
 
                 this.$apollo.mutate({

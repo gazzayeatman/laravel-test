@@ -12,9 +12,9 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="/customers" class="navbar__link">
+               <router-link class="navbar__link" :to="{ path: '/customers' }">
                     Customers
-                </a>
+                </router-link>
             </li>
             <li class="navbar__item">
                 <a href="#" class="navbar__link">
@@ -22,9 +22,9 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <a href="/locations" class="navbar__link">
+                <router-link class="navbar__link" :to="{ path: '/locations' }">
                     Locations
-                </a>
+                </router-link>
             </li>
             <li class="navbar__item">
                 <router-link class="navbar__link" :to="{ path: '/users' }">

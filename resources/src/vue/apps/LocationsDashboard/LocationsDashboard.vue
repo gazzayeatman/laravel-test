@@ -49,9 +49,6 @@
         },
         components: {
             'add-location-modal': AddLocationModal
-        },
-        mounted() {
-            this.$store.dispatch('setApolloClient', this.$apollo);
         }
     }
 </script>

@@ -2,21 +2,25 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 
 # Queries
 type Query {
-    user(
-      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
+  user(
+    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+    email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+  ): User @find
 
-    users(
-      name: String @where(operator: "like")
-    ): [User!]! @all
+  users(
+    name: String @where(operator: "like")
+  ): [User!]! @all
 
-    locations: [Location!]! @all
+  locations: [Location!]! @all
 
-    customers(
-      id: ID @eq
-      name: String @where(operator: "like")
-    ): [Customer!]! @all
+  customers(
+    id: ID @eq
+    name: String @where(operator: "like")
+  ): [Customer!]! @all
+
+  customer(
+    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+  ): Customer @find
 }
 
 # Mutations

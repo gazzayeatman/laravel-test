@@ -1,4 +1,7 @@
 .btn {
+    display: flex;
+    align-items: center;
+
     &--danger.btn--danger.btn--danger {
         background-color: #FF0000;
     }
