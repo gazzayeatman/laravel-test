@@ -16,13 +16,31 @@ const getCustomersQuery = gql`
         }
     }
 `,
+    getCustomer = gql`
+        query($id: ID!) {
+            customer(id: $id) {
+                id
+                name
+                locations {
+                    id
+                }
+                contacts {
+                    id
+                    firstName
+                    lastName
+                }
+            }
+        }
+    `,
     addNewCustomer = gql`
          mutation (
             $name: String
         ) {
             addNewCustomer(
                 name: $name
-            )
+            ) {
+                name
+            }
         }
     `,
     customersDashboardStore = {
@@ -49,5 +67,6 @@ const getCustomersQuery = gql`
 export {
     customersDashboardStore,
     getCustomersQuery,
-    addNewCustomer
+    addNewCustomer,
+    getCustomer
 }

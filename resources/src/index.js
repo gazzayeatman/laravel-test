@@ -6,6 +6,7 @@ import App from './vue/App.vue';
 import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
 import LocationsDashboard from './vue/apps/LocationsDashboard/LocationsDashboard';
 import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
+import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import Navbar from './vue/compoments/Navbar';
 import { VueMasonryPlugin } from 'vue-masonry';
 import { createRouter, createWebHistory } from 'vue-router';

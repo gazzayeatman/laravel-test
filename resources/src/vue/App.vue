@@ -1,9 +1,10 @@
 <template>
     <navbar />
+    <login-modal />
     <router-view></router-view>
 </template>
 <script>
-    import { getCurrentUserQuery } from '../store';
+    import LoginModal from './modals/LoginModal.vue';
 
     export default {
         data() {
@@ -12,8 +13,8 @@
                 apollo: false
             }
         },
-        apollo: {
-            me: getCurrentUserQuery
+        components: {
+            'login-modal': LoginModal
         },
         mounted() {
             this.$store.dispatch('setApolloClient', this.$apollo);

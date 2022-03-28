@@ -2,20 +2,12 @@ import { createStore } from 'vuex';
 import { userDashboardStore } from './vue/apps/UserDashboard/user-dashboard-store';
 import { locationsDashboardStore } from './vue/apps/LocationsDashboard/locations-dashboard-store';
 import { customersDashboardStore } from './vue/apps/CustomersDashboard/customers-dashboard-store';
-import gql from 'graphql-tag';
 
-const getCurrentUserQuery = gql`
-    {
-        currentUser {
-            name
-            email
-        }
-    }
-`,
-    store = createStore({
+const store = createStore({
         state: {
             apollo: false,
-            currentUser: false
+            currentUser: false,
+            loginModalOpen: false
         },
         mutations: {
             setApolloClient(state, apollo) {
@@ -23,6 +15,9 @@ const getCurrentUserQuery = gql`
             },
             setCurrentUser(state, payload) {
                 state.currentUser = payload;
+            },
+            setLoginModalOpen(state, payload) {
+                state.loginModalOpen = payload;
             }
         },
         actions: {
@@ -31,6 +26,9 @@ const getCurrentUserQuery = gql`
             },
             setCurrentUser({commit}, payload) {
                 commit('setCurrentUser', payload);
+            },
+            setLoginModalOpen({commit}, payload) {
+                commit('setLoginModalOpen', payload);
             }
         },
         modules: {
@@ -41,6 +39,5 @@ const getCurrentUserQuery = gql`
     });
 
 export {
-    store,
-    getCurrentUserQuery
+    store
 };
