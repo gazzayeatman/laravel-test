@@ -7,6 +7,11 @@
                     {{ customer.name }}
                 </h2>
             </div>
+            <div class="action-panel">
+                <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalOpen')" class="btn btn-primary">
+                    Edit {{ customer.name }}
+                </button>
+            </div>
             <div class="detail-page__content">
                 <h3 class="detail-page__sub-title">
                     Locations
@@ -34,7 +39,7 @@
                                 <!-- <button @click="$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)" class="btn btn-primary">
                                     Edit
                                 </button> -->
-                                <button @click="deleteUser(user.id)" class="btn btn-primary btn--danger">
+                                <button @click="deleteLocation(location.id)" class="btn btn-primary btn--danger">
                                     Delete
                                 </button>
                             </div>
@@ -51,7 +56,7 @@
                         </button>
                     </div>
                 </div>
-                <h3 class="detail-page__sub-title">
+                <!-- <h3 class="detail-page__sub-title">
                     Contacts
                 </h3>
                 <div v-if="customer.contacts > 0" class="detail-page__detail-grid">
@@ -66,44 +71,45 @@
                             Add a new contact
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <add-location-modal :customer="customer" />
     </div>
 </template>
 <script>
-    import { getCustomer } from '../customers-dashboard-store';
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
     import AddLocationModal from '../../../modals/AddLocationModal.vue';
+    import { deleteLocationMutation } from '../../LocationsDashboard/locations-dashboard-store';
 
     export default {
-        data() {
-            return {
-                customer: false
-            }
-        },
         computed: {
             customer() {
-                console.log(this.customer);
-                return this.customer;
+                return this.$store.state['customersDashboardStore'].currentCustomer;
             }
         },
         created() {
+            const store = this.$store;
+
             this.customerID = useRoute().params.id;
 
-            this.$apollo.query(
-                {
-                    query: getCustomer,
+            store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+        },
+        methods: {
+            deleteLocation(id) {
+                this.$apollo.mutate({
+                    mutation: deleteLocationMutation,
                     variables: {
-                        id: this.customerID
+                        id: id
                     }
-                }
-            ).then((result) => {
-                this.customer = result.data.customer;
-            })
-            .catch((err) => console.log(err));
+                }).then(() => {
+                    this.$store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+                }).catch((error) => {
+                    console.log(error);
+                    alert('there was an error deleting this user');
+                });
+            }
         },
         components: {
             'back-button': BackButton,

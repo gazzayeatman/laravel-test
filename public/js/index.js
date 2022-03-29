@@ -22525,44 +22525,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      customer: false
-    };
-  },
   computed: {
     customer: function customer() {
-      console.log(this.customer);
-      return this.customer;
+      return this.$store.state['customersDashboardStore'].currentCustomer;
     }
   },
   created: function created() {
-    var _this = this;
-
+    var store = this.$store;
     this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute)().params.id;
-    this.$apollo.query({
-      query: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomer,
-      variables: {
-        id: this.customerID
-      }
-    }).then(function (result) {
-      _this.customer = result.data.customer;
-    })["catch"](function (err) {
-      return console.log(err);
-    });
+    store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+  },
+  methods: {
+    deleteLocation: function deleteLocation(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.deleteLocationMutation,
+        variables: {
+          id: id
+        }
+      }).then(function () {
+        _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customerID);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    }
   },
   components: {
-    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -22710,6 +22711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -22734,6 +22736,8 @@ __webpack_require__.r(__webpack_exports__);
       return this.customerID;
     },
     addLocation: function addLocation() {
+      var _this = this;
+
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
@@ -22750,6 +22754,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (apollo.queries.locations) {
           apollo.queries.locations.refetch();
+        }
+
+        if (_this.customer) {
+          _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customer.id);
         }
 
         store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
@@ -23039,81 +23047,60 @@ var _hoisted_4 = {
   "class": "detail-page__title"
 };
 var _hoisted_5 = {
+  "class": "action-panel"
+};
+var _hoisted_6 = {
   "class": "detail-page__content"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "detail-page__sub-title"
 }, " Locations ", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_8 = {
   key: 0,
   "class": "detail-page__detail-grid"
 };
-var _hoisted_8 = {
+var _hoisted_9 = {
   "class": "action-panel"
 };
-var _hoisted_9 = {
+var _hoisted_10 = {
   "class": "grid-view__wrapper"
 };
-var _hoisted_10 = {
+var _hoisted_11 = {
   "class": "grid-view"
 };
-var _hoisted_11 = {
+var _hoisted_12 = {
   "class": "grid-view__information"
 };
-var _hoisted_12 = {
+var _hoisted_13 = {
   "class": "grid-view__id"
 };
-var _hoisted_13 = {
-  "class": "grid-view__column"
-};
 var _hoisted_14 = {
-  key: 0,
   "class": "grid-view__column"
 };
 var _hoisted_15 = {
-  "class": "grid-view__actions"
+  key: 0,
+  "class": "grid-view__column"
 };
 var _hoisted_16 = {
+  "class": "grid-view__actions"
+};
+var _hoisted_17 = ["onClick"];
+var _hoisted_18 = {
   key: 1,
   "class": "detail-page__detail-grid detail-page__detail-grid--empty"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "detail-page__detail-grid-content"
 }, " Nothing here?, Add a location now ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = {
-  "class": "detail-page__detail-grid-action-panel"
-};
-
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "detail-page__sub-title"
-}, " Contacts ", -1
-/* HOISTED */
-);
-
 var _hoisted_20 = {
-  key: 2,
-  "class": "detail-page__detail-grid"
-};
-var _hoisted_21 = {
-  key: 3,
-  "class": "detail-page__detail-grid detail-page__detail-grid--empty"
-};
-
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "detail-page__detail-grid-content"
-}, " Nothing here?, Add a contact now ", -1
-/* HOISTED */
-);
-
-var _hoisted_23 = {
   "class": "detail-page__detail-grid-action-panel"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -23123,37 +23110,41 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, $options.customer.locations && $options.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('customersDashboardStore/setEditCustomerModalOpen');
+    }),
+    "class": "btn btn-primary"
+  }, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, $options.customer.locations && $options.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
     }),
     "class": "btn btn-primary"
   }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.locations, function (location) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
     /* TEXT */
-    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
+    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
     /* TEXT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\r\n                                    Edit\r\n                                </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: _cache[1] || (_cache[1] = function ($event) {
-        return _ctx.deleteUser(_ctx.user.id);
-      }),
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\r\n                                    Edit\r\n                                </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick($event) {
+        return $options.deleteLocation(location.id);
+      },
       "class": "btn btn-primary btn--danger"
-    }, " Delete ")])])]);
+    }, " Delete ", 8
+    /* PROPS */
+    , _hoisted_17)])])]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
     })
-  }, " Add a new location ")])])), _hoisted_19, $options.customer.contacts > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
-    })
-  }, " Add a new contact ")])]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
+  }, " Add a new location ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h3 class=\"detail-page__sub-title\">\r\n                    Contacts\r\n                </h3>\r\n                <div v-if=\"customer.contacts > 0\" class=\"detail-page__detail-grid\">\r\n\r\n                </div>\r\n                <div v-else class=\"detail-page__detail-grid detail-page__detail-grid--empty\">\r\n                    <div class=\"detail-page__detail-grid-content\">\r\n                        Nothing here?, Add a contact now\r\n                    </div>\r\n                    <div class=\"detail-page__detail-grid-action-panel\">\r\n                        <button class=\"btn btn-primary\"  @click=\"$store.dispatch('locationsDashboardStore/setAddLocationModalOpen')\">\r\n                            Add a new contact\r\n                        </button>\r\n                    </div>\r\n                </div> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
     customer: $options.customer
   }, null, 8
   /* PROPS */
@@ -24331,11 +24322,15 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
   namespaced: true,
   state: {
     customers: [],
-    addCustomersModalOpen: false
+    addCustomersModalOpen: false,
+    currentCustomer: false
   },
   mutations: {
     setAddCustomersModalState: function setAddCustomersModalState(state, payload) {
       state.addCustomersModalOpen = payload;
+    },
+    setCurrentCustomer: function setCurrentCustomer(state, payload) {
+      state.currentCustomer = payload;
     }
   },
   actions: {
@@ -24346,6 +24341,25 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     setAddCustomersModalClosed: function setAddCustomersModalClosed(_ref2) {
       var commit = _ref2.commit;
       commit('setAddCustomersModalState', false);
+    },
+    setCurrentCustomer: function setCurrentCustomer(_ref3, payload) {
+      var commit = _ref3.commit;
+
+      if (!payload) {
+        commit('setCurrentCustomer', false);
+      }
+
+      this.state.apollo.query({
+        query: getCustomer,
+        fetchPolicy: 'no-cache',
+        variables: {
+          id: payload
+        }
+      }).then(function (result) {
+        commit('setCurrentCustomer', result.data.customer);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 };
@@ -24363,17 +24377,19 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewLocationMutation": () => (/* binding */ addNewLocationMutation),
+/* harmony export */   "deleteLocationMutation": () => (/* binding */ deleteLocationMutation),
 /* harmony export */   "getLocationsQuery": () => (/* binding */ getLocationsQuery),
 /* harmony export */   "locationsDashboardStore": () => (/* binding */ locationsDashboardStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n                name\n            }\n        }\n    }\n"]))),
     addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String,\n            $customer_id: ID\n        ) {\n            addNewLocation(\n                unitNumber: $unitNumber,\n                streetNumber: $streetNumber,\n                streetName: $streetName,\n                suburb: $suburb,\n                city: $city,\n                customer_id: $customer_id\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n                customer {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
+    deleteLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteLocation(id: $id) {\n                id\n            }\n        }\n    "]))),
     locationsDashboardStore = {
   namespaced: true,
   state: {

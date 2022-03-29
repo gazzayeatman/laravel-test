@@ -46,6 +46,13 @@ const getLocationsQuery = gql`
             }
         }
     `,
+    deleteLocationMutation = gql`
+        mutation ($id: ID!) {
+            deleteLocation(id: $id) {
+                id
+            }
+        }
+    `,
     locationsDashboardStore = {
         namespaced: true,
         state: {
@@ -83,5 +90,6 @@ const getLocationsQuery = gql`
 export {
     locationsDashboardStore,
     getLocationsQuery,
-    addNewLocationMutation
+    addNewLocationMutation,
+    deleteLocationMutation
 }

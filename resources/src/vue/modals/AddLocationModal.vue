@@ -65,6 +65,8 @@
 <script>
     import { getCustomersQuery } from '../apps/CustomersDashboard/customers-dashboard-store';
     import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-dashboard-store';
+    import { getCustomer } from '../apps/CustomersDashboard/customers-dashboard-store';
+
     export default {
         data() {
             return {
@@ -107,7 +109,11 @@
                     if (apollo.queries.locations) {
                         apollo.queries.locations.refetch();
                     }
-                    
+
+                    if (this.customer) {
+                        this.$store.dispatch('customersDashboardStore/setCurrentCustomer', this.customer.id);
+                    }
+
                     store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
                 }).catch((error) => {
                     console.log(error);

@@ -52,11 +52,15 @@ const getCustomersQuery = gql`
         namespaced: true,
         state: {
             customers: [],
-            addCustomersModalOpen: false
+            addCustomersModalOpen: false,
+            currentCustomer: false
         },
         mutations: {
             setAddCustomersModalState(state, payload) {
                 state.addCustomersModalOpen = payload
+            },
+            setCurrentCustomer(state, payload) {
+                state.currentCustomer = payload
             }
         },
         actions: {
@@ -65,6 +69,23 @@ const getCustomersQuery = gql`
             },
             setAddCustomersModalClosed({commit}) {
                 commit('setAddCustomersModalState', false);
+            },
+            setCurrentCustomer({commit}, payload) {
+                if (!payload) {
+                    commit('setCurrentCustomer', false);
+                }
+
+                this.state.apollo.query(
+                    {
+                        query: getCustomer,
+                        fetchPolicy: 'no-cache',
+                        variables: {
+                            id: payload
+                        }
+                    }
+                ).then((result) => {
+                    commit('setCurrentCustomer', result.data.customer);
+                }).catch((err) => console.log(err));
             }
         }
     };
