@@ -281,6 +281,9 @@ body {
 .input--text:focus {
   box-shadow: 0px 2px 0px 0px #fca311ff;
 }
+.input--checkbox {
+  display: flex;
+}
 .input__message {
   font-size: 12px;
 }

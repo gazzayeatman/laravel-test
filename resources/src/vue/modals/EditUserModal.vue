@@ -44,8 +44,6 @@
         },
         computed: {
             currentUser() {
-                this.name = '';
-                this.email = '';
                 return this.$store.state['userDashboardStore'].currentUser;
             }
         },

@@ -5,6 +5,7 @@ import { createApp } from 'vue';
 import App from './vue/App.vue';
 import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
 import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
+import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import Navbar from './vue/compoments/Navbar';
 import { VueMasonryPlugin } from 'vue-masonry';
@@ -26,7 +27,8 @@ const cache = new InMemoryCache(),
         { path: '/', component: App },
         { path: '/users', component: UserDashboard },
         { path: '/customers', component: CustomersDashboard },
-        { path: '/customers/view-customer/:id', component: ViewCustomer }
+        { path: '/customers/view-customer/:id', component: ViewCustomer },
+        { path: '/vehicles', component: VehiclesDashboard }
     ],
     router = createRouter({
         history: createWebHistory(),
@@ -43,4 +45,5 @@ const cache = new InMemoryCache(),
     app.component('navbar', Navbar);
     app.component('users-dashboard', UserDashboard);
     app.component('customers-dashboard', CustomersDashboard);
+    app.component('vehicles-dashboard', VehiclesDashboard);
     app.mount('#app');
