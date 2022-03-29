@@ -4459,6 +4459,19 @@ table tbody tr:first-child td {
   margin: 25px 0px;
 }
 
+.contact-card {
+  padding: 15px 15px 25px 15px;
+  background-color: #ffffffff;
+}
+.contact-card__wrapper {
+  width: 280px;
+  margin: 10px;
+  position: relative;
+}
+.contact-card__title {
+  text-decoration: underline;
+  font-size: 20px;
+}
 .customer-card {
   padding: 15px 15px 25px 15px;
   background-color: #ffffffff;

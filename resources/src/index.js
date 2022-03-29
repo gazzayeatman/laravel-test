@@ -4,7 +4,6 @@ import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
 import App from './vue/App.vue';
 import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
-import LocationsDashboard from './vue/apps/LocationsDashboard/LocationsDashboard';
 import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import Navbar from './vue/compoments/Navbar';
@@ -26,7 +25,6 @@ const cache = new InMemoryCache(),
     routes = [
         { path: '/', component: App },
         { path: '/users', component: UserDashboard },
-        { path: '/locations', component: LocationsDashboard },
         { path: '/customers', component: CustomersDashboard },
         { path: '/customers/view-customer/:id', component: ViewCustomer }
     ],
@@ -44,6 +42,5 @@ const cache = new InMemoryCache(),
     app.component('app', App);
     app.component('navbar', Navbar);
     app.component('users-dashboard', UserDashboard);
-    app.component('locations-dashboard', LocationsDashboard);
     app.component('customers-dashboard', CustomersDashboard);
     app.mount('#app');

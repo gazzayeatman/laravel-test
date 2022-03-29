@@ -22,11 +22,6 @@
                 </a>
             </li>
             <li class="navbar__item">
-                <router-link class="navbar__link" :to="{ path: '/locations' }">
-                    Locations
-                </router-link>
-            </li>
-            <li class="navbar__item">
                 <router-link class="navbar__link" :to="{ path: '/users' }">
                     Users
                 </router-link>

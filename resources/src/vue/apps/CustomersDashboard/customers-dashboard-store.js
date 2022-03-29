@@ -33,6 +33,8 @@ const getCustomersQuery = gql`
                     id
                     firstName
                     lastName
+                    emailAddress
+                    phoneNumber
                 }
             }
         }
@@ -48,19 +50,62 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    updateCustomerMutation = gql`
+        mutation (
+            $id: ID!
+            $name: String
+        ) {
+            updateCustomer(
+                id: $id
+                name: $name
+            ) {
+                name
+            }
+        }
+    `,
+    addNewContactMutation = gql`
+        mutation (
+            $firstName: String,
+            $lastName: String,
+            $phoneNumber: String,
+            $emailAddress: String,
+            $customer_id: ID!
+        ) {
+            addNewContact(
+                firstName: $firstName
+                lastName: $lastName,
+                emailAddress: $emailAddress,
+                phoneNumber: $phoneNumber,
+                customer_id: $customer_id
+            ) {
+                firstName,
+                lastName,
+                phoneNumber,
+                emailAddress
+            }
+        }
+    `,
     customersDashboardStore = {
         namespaced: true,
         state: {
             customers: [],
             addCustomersModalOpen: false,
+            editCustomerModalOpen: false,
+            addContactsModalOpen: false,
             currentCustomer: false
         },
         mutations: {
             setAddCustomersModalState(state, payload) {
-                state.addCustomersModalOpen = payload
+                state.addCustomersModalOpen = payload;
+            },
+            setEditCustomerModalState(state, payload) {
+                state.editCustomerModalOpen = payload;
+            },
+            setAddContactsModalState(state, payload) {
+                state.addContactsModalOpen = payload;
             },
             setCurrentCustomer(state, payload) {
-                state.currentCustomer = payload
+                state.currentCustomer = payload;
             }
         },
         actions: {
@@ -69,6 +114,12 @@ const getCustomersQuery = gql`
             },
             setAddCustomersModalClosed({commit}) {
                 commit('setAddCustomersModalState', false);
+            },
+            setEditCustomerModalState({commit}, payload) {
+                commit('setEditCustomerModalState', payload);
+            },
+            setAddContactsModalState({commit}, payload) {
+                commit('setAddContactsModalState', payload);
             },
             setCurrentCustomer({commit}, payload) {
                 if (!payload) {
@@ -94,5 +145,7 @@ export {
     customersDashboardStore,
     getCustomersQuery,
     addNewCustomer,
-    getCustomer
+    getCustomer,
+    updateCustomerMutation,
+    addNewContactMutation
 }

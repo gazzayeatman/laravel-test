@@ -65,7 +65,6 @@
 <script>
     import { getCustomersQuery } from '../apps/CustomersDashboard/customers-dashboard-store';
     import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-dashboard-store';
-    import { getCustomer } from '../apps/CustomersDashboard/customers-dashboard-store';
 
     export default {
         data() {

@@ -8,7 +8,7 @@
                 </h2>
             </div>
             <div class="action-panel">
-                <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalOpen')" class="btn btn-primary">
+                <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalState', true)" class="btn btn-primary">
                     Edit {{ customer.name }}
                 </button>
             </div>
@@ -56,31 +56,58 @@
                         </button>
                     </div>
                 </div>
-                <!-- <h3 class="detail-page__sub-title">
+                <h3 class="detail-page__sub-title">
                     Contacts
                 </h3>
-                <div v-if="customer.contacts > 0" class="detail-page__detail-grid">
-
+                <div v-if="customer.contacts && customer.contacts.length > 0" class="detail-page__detail-grid">
+                    <div class="action-panel">
+                        <button class="btn btn-primary"  @click="$store.dispatch('customersDashboardStore/setAddContactsModalState', true)">
+                            Add a new contact
+                        </button>
+                    </div>
+                    <div v-masonry="containerId" transition-duration="0.3s" item-selector=".contact-card__wrapper">
+                        <div v-masonry-tile class="contact-cards__wrapper" v-for="(contact, index) in customer.contacts">
+                            <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-contact/' + contact.id }">
+                                <div class="contact-card">
+                                    <h3 class="contact-card__title">
+                                        {{ contact.emailAddress }}
+                                    </h3>
+                                    <ul class="contact-card__list">
+                                        <li class="contact-card__list-item">
+                                            {{ contact.firstName }} {{ contact.lastName }}
+                                        </li>
+                                        <li class="contact-card__list-item">
+                                            {{ contact.phoneNumber }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </router-link >
+                        </div>
+                    </div>
                 </div>
                 <div v-else class="detail-page__detail-grid detail-page__detail-grid--empty">
                     <div class="detail-page__detail-grid-content">
                         Nothing here?, Add a contact now
                     </div>
                     <div class="detail-page__detail-grid-action-panel">
-                        <button class="btn btn-primary"  @click="$store.dispatch('locationsDashboardStore/setAddLocationModalOpen')">
+                        <button class="btn btn-primary"  @click="$store.dispatch('customersDashboardStore/setAddContactsModalState', true)">
                             Add a new contact
                         </button>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <add-location-modal :customer="customer" />
+        <edit-customer-modal :customer="customer" />
+        <add-contact-modal :customer="customer" />
     </div>
 </template>
 <script>
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
     import AddLocationModal from '../../../modals/AddLocationModal.vue';
+    import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
+    import AddContactModal from '../../../modals/AddContactModal.vue';
     import { deleteLocationMutation } from '../../LocationsDashboard/locations-dashboard-store';
 
     export default {
@@ -113,7 +140,9 @@
         },
         components: {
             'back-button': BackButton,
-            'add-location-modal': AddLocationModal
+            'add-location-modal': AddLocationModal,
+            'edit-customer-modal': EditCustomerModal,
+            'add-contact-modal': AddContactModal
         }
     }
 </script>

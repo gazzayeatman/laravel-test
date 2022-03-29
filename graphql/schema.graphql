@@ -41,6 +41,11 @@ type Mutation {
     email: String
   ) : User @update
 
+  updateCustomer(
+    id: ID!,
+    name: String
+  ) : Customer @update
+
   addNewLocation(
     unitNumber: String,
     streetNumber: String,
@@ -49,6 +54,14 @@ type Mutation {
     city: String,
     customer_id: ID
   ) : Location @create
+
+  addNewContact(
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    emailAddress: String,
+    customer_id: ID!
+  ) : Contact @create
 
   addNewCustomer(
     name: String

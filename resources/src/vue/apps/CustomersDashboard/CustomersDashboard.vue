@@ -36,7 +36,10 @@
             }
         },
         apollo: {
-            customers: getCustomersQuery
+            customers: {
+                query: getCustomersQuery,
+                fetchPolicy: 'no-cache'
+            }
         },
         components: {
             'add-customer-modal': AddCustomersModal
