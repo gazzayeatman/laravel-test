@@ -114,6 +114,9 @@ const getVehiclesQuery = gql`
         getters: {
             getApolloClient() {
                 return state.apollo;
+            },
+            getCurrentVehicle() {
+                return state.vehicle;
             }
         }
     };
