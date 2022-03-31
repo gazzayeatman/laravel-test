@@ -32,6 +32,7 @@ type Mutation {
   deleteUser(id: ID!) : User @delete
   deleteLocation(id: ID!) : Location @delete
   deleteVehicle(id: ID!) : Vehicle @delete
+  deleteCustomer(id: ID!) : Customer @delete
 
   addNewUser(
     name: String!,

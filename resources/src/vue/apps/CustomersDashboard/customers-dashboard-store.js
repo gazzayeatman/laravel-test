@@ -85,6 +85,15 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    deleteCustomerMutation = gql`
+        mutation(
+            $id: ID!
+        ) {
+            deleteCustomer(id: $id) {
+                id
+            }
+        }
+    `,
     customersDashboardStore = {
         namespaced: true,
         state: {
@@ -147,5 +156,6 @@ export {
     addNewCustomer,
     getCustomer,
     updateCustomerMutation,
-    addNewContactMutation
+    addNewContactMutation,
+    deleteCustomerMutation
 }

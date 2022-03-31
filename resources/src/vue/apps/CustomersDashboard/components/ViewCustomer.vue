@@ -8,6 +8,9 @@
                 </h2>
             </div>
             <div class="action-panel">
+                <button @click="deleteCustomer(customer.id)" class="btn btn-primary btn--danger">
+                    Delete {{ customer.name }}
+                </button>
                 <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalState', true)" class="btn btn-primary">
                     Edit {{ customer.name }}
                 </button>
@@ -109,6 +112,7 @@
     import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
     import AddContactModal from '../../../modals/AddContactModal.vue';
     import { deleteLocationMutation } from '../../LocationsDashboard/locations-dashboard-store';
+    import { deleteCustomerMutation } from '../customers-dashboard-store';
 
     export default {
         computed: {
@@ -120,10 +124,22 @@
             const store = this.$store;
 
             this.customerID = useRoute().params.id;
-
             store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
         },
         methods: {
+            deleteCustomer(id) {
+                this.$apollo.mutate({
+                    mutation: deleteCustomerMutation,
+                    variables: {
+                        id: id
+                    }
+                }).then(() => {
+                    this.$router.push('/customers') 
+                }).catch((error) => {
+                    console.log(error);
+                    alert('there was an error deleting this user');
+                });
+            },
             deleteLocation(id) {
                 this.$apollo.mutate({
                     mutation: deleteLocationMutation,

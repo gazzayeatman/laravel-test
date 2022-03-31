@@ -22528,12 +22528,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
 /* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
 /* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
 /* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
 /* harmony import */ var _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
+/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+
 
 
 
@@ -22548,12 +22550,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var store = this.$store;
-    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRoute)().params.id;
+    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)().params.id;
     store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
   },
   methods: {
-    deleteLocation: function deleteLocation(id) {
+    deleteCustomer: function deleteCustomer(id) {
       var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_5__.deleteCustomerMutation,
+        variables: {
+          id: id
+        }
+      }).then(function () {
+        _this.$router.push('/customers');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    },
+    deleteLocation: function deleteLocation(id) {
+      var _this2 = this;
 
       this.$apollo.mutate({
         mutation: _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_4__.deleteLocationMutation,
@@ -22561,7 +22578,7 @@ __webpack_require__.r(__webpack_exports__);
           id: id
         }
       }).then(function () {
-        _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customerID);
+        _this2.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this2.customerID);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error deleting this user');
@@ -23433,13 +23450,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.deleteCustomer($options.customer.id);
+    }),
+    "class": "btn btn-primary btn--danger"
+  }, " Delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('customersDashboardStore/setEditCustomerModalState', true);
     }),
     "class": "btn btn-primary"
   }, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, $options.customer.locations && $options.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[1] || (_cache[1] = function ($event) {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
     }),
     "class": "btn btn-primary"
@@ -23462,12 +23486,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
       return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
     })
   }, " Add a new location ")])])), _hoisted_21, $options.customer.contacts && $options.customer.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
+    onClick: _cache[4] || (_cache[4] = function ($event) {
       return _ctx.$store.dispatch('customersDashboardStore/setAddContactsModalState', true);
     })
   }, " Add a new contact ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.contacts, function (contact, index) {
@@ -23496,7 +23520,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
-    onClick: _cache[4] || (_cache[4] = function ($event) {
+    onClick: _cache[5] || (_cache[5] = function ($event) {
       return _ctx.$store.dispatch('customersDashboardStore/setAddContactsModalState', true);
     })
   }, " Add a new contact ")])]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
@@ -25381,12 +25405,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
 /* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
 /* harmony export */   "customersDashboardStore": () => (/* binding */ customersDashboardStore),
+/* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
 /* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
 /* harmony export */   "getCustomersQuery": () => (/* binding */ getCustomersQuery),
 /* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -25396,6 +25421,7 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
     addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
+    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
     customersDashboardStore = {
   namespaced: true,
   state: {
