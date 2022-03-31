@@ -3,7 +3,7 @@
     background-color: $color-white;
 
     &__wrapper {
-        width: 280px;
+        width: 265px;
         margin: 10px;
         position: relative;
     }
@@ -11,13 +11,5 @@
     &__title {
         text-decoration: underline;
         font-size: 20px;
-    }
-
-    &__list {
-
-    }
-
-    &__list-item {
-
     }
 }

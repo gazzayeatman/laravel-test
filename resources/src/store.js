@@ -3,6 +3,7 @@ import { userDashboardStore } from './vue/apps/UserDashboard/user-dashboard-stor
 import { locationsDashboardStore } from './vue/apps/LocationsDashboard/locations-dashboard-store';
 import { customersDashboardStore } from './vue/apps/CustomersDashboard/customers-dashboard-store';
 import { vehiclesDashboardStore } from './vue/apps/VehiclesDashboard/vehicles-dashboard-store';
+import { contactsStore } from './vue/apps/VehiclesDashboard/contacts-store';
 
 const store = createStore({
         state: {
