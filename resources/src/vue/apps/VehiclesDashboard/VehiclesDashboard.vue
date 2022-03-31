@@ -26,7 +26,7 @@
                         <button @click="$store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', { open: true, vehicle: vehicle})" class="btn btn-primary">
                             Edit
                         </button>
-                        <button @click="deleteUser(user.id)" class="btn btn-primary btn--danger">
+                        <button @click="deleteVehicle(vehicle.id)" class="btn btn-primary btn--danger">
                             Delete
                         </button>
                     </div>
@@ -38,7 +38,7 @@
     </router-view>
 </template>
 <script>
-    import { getVehiclesQuery } from './vehicles-dashboard-store';
+    import { getVehiclesQuery, deleteVehicle } from './vehicles-dashboard-store';
     import AddVehicleModal from '../../modals/AddVehicleModal.vue';
     import EditVehicleModal from '../../modals/EditVehicleModal.vue';
 
@@ -50,6 +50,21 @@
         },
         apollo: {
             vehicles: getVehiclesQuery
+        },
+        methods: {
+            deleteVehicle(id) {
+                this.$apollo.mutate({
+                    mutation: deleteVehicle,
+                    variables: {
+                        id: id
+                    }
+                }).then((result) => {
+                    this.$apollo.queries.vehicles.refetch();
+                }).catch((error) => {
+                    console.log(error);
+                    alert('there was an error adding this user');
+                });
+            }
         },
         components: {
             'add-vehicle-modal': AddVehicleModal,

@@ -99,6 +99,7 @@
                         isActive: this.isActive
                     }
                 }).then((result) => {
+                    apollo.queries.vehicles.refetch();
                     store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false);
                 }).catch((error) => {
                     console.log(error);

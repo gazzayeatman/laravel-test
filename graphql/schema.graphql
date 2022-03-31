@@ -31,6 +31,7 @@ type Query {
 type Mutation {
   deleteUser(id: ID!) : User @delete
   deleteLocation(id: ID!) : Location @delete
+  deleteVehicle(id: ID!) : Vehicle @delete
 
   addNewUser(
     name: String!,

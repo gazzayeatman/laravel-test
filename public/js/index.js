@@ -22656,6 +22656,23 @@ __webpack_require__.r(__webpack_exports__);
   apollo: {
     vehicles: _vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getVehiclesQuery
   },
+  methods: {
+    deleteVehicle: function deleteVehicle(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.deleteVehicle,
+        variables: {
+          id: id
+        }
+      }).then(function (result) {
+        _this.$apollo.queries.vehicles.refetch();
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    }
+  },
   components: {
     'add-vehicle-modal': _modals_AddVehicleModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     'edit-vehicle-modal': _modals_EditVehicleModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -22948,6 +22965,7 @@ __webpack_require__.r(__webpack_exports__);
           isActive: this.isActive
         }
       }).then(function (result) {
+        apollo.queries.vehicles.refetch();
         store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false);
       })["catch"](function (error) {
         console.log(error);
@@ -23639,6 +23657,7 @@ var _hoisted_10 = {
   "class": "grid-view__actions"
 };
 var _hoisted_11 = ["onClick"];
+var _hoisted_12 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_edit_vehicle_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-vehicle-modal");
 
@@ -23671,11 +23690,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, " Edit ", 8
         /* PROPS */
         , _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          onClick: _cache[1] || (_cache[1] = function ($event) {
-            return _ctx.deleteUser(_ctx.user.id);
-          }),
+          onClick: function onClick($event) {
+            return $options.deleteVehicle(vehicle.id);
+          },
           "class": "btn btn-primary btn--danger"
-        }, " Delete ")])])]);
+        }, " Delete ", 8
+        /* PROPS */
+        , _hoisted_12)])])]);
       }), 256
       /* UNKEYED_FRAGMENT */
       )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_vehicle_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_vehicle_modal)])];
@@ -25611,12 +25632,13 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewVehicleMutation": () => (/* binding */ addNewVehicleMutation),
+/* harmony export */   "deleteVehicle": () => (/* binding */ deleteVehicle),
 /* harmony export */   "getVehiclesQuery": () => (/* binding */ getVehiclesQuery),
 /* harmony export */   "updateVehicleMutation": () => (/* binding */ updateVehicleMutation),
 /* harmony export */   "vehiclesDashboardStore": () => (/* binding */ vehiclesDashboardStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -25624,6 +25646,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        vehicles {\n            id\n            title\n            registration\n            loadWeight\n            liftWeight\n            wofExpiry\n            registrationExpiry\n            isActive\n        }\n    }\n"]))),
     addNewVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String\n            $registration: String,\n            $loadWeight: String,\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            addNewVehicle(\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
     updateVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $title: String\n            $registration: String\n            $loadWeight: String\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            updateVehicle(\n                id: $id,\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
+    deleteVehicle = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation($id: ID!) {\n            deleteVehicle(id: $id) {\n                id\n            }\n        }\n    "]))),
     vehiclesDashboardStore = {
   namespaced: true,
   state: {
@@ -25642,9 +25665,6 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
     setCurrentVehicle: function setCurrentVehicle(state, payload) {
       state.currentVehicle = payload;
       console.log(state.currentVehicle);
-    },
-    setApolloClient: function setApolloClient(state, apollo) {
-      state.apollo = apollo;
     }
   },
   actions: {

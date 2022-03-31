@@ -76,6 +76,13 @@ const getVehiclesQuery = gql`
             }
         }
     `,
+    deleteVehicle = gql`
+        mutation($id: ID!) {
+            deleteVehicle(id: $id) {
+                id
+            }
+        }
+    `,
     vehiclesDashboardStore = {
         namespaced: true,
         state: {
@@ -94,9 +101,6 @@ const getVehiclesQuery = gql`
             setCurrentVehicle(state, payload) {
                 state.currentVehicle = payload;
                 console.log(state.currentVehicle);
-            },
-            setApolloClient(state, apollo) {
-                state.apollo = apollo;
             }
         },
         actions: {
@@ -125,5 +129,6 @@ export {
     vehiclesDashboardStore,
     getVehiclesQuery,
     addNewVehicleMutation,
-    updateVehicleMutation
+    updateVehicleMutation,
+    deleteVehicle
 }
