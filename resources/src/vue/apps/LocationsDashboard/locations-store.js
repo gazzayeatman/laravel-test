@@ -53,7 +53,7 @@ const getLocationsQuery = gql`
             }
         }
     `,
-    locationsDashboardStore = {
+    locationsStore = {
         namespaced: true,
         state: {
             locations: [],
@@ -88,7 +88,7 @@ const getLocationsQuery = gql`
     };
 
 export {
-    locationsDashboardStore,
+    locationsStore,
     getLocationsQuery,
     addNewLocationMutation,
     deleteLocationMutation

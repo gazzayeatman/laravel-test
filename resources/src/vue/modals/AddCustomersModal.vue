@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['customersDashboardStore'].addCustomersModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['customersStore'].addCustomersModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('customersDashboardStore/setAddCustomersModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('customersStore/setAddCustomersModalClosed')" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import { addNewCustomer } from '../apps/CustomersDashboard/customers-dashboard-store';
+    import { addNewCustomer } from '../apps/CustomersDashboard/customers-store';
     export default {
         data() {
             return {
@@ -48,7 +48,7 @@
                     }
                 }).then((result) => {
                     apollo.queries.customers.refetch();
-                    store.dispatch('customersDashboardStore/setAddCustomersModalClosed');
+                    store.dispatch('customersStore/setAddCustomersModalClosed');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this location');

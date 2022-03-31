@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['locationsDashboardStore'].addLocationsModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['locationsStore'].addLocationsModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('locationsDashboardStore/setAddLocationModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('locationsStore/setAddLocationModalClosed')" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -63,8 +63,8 @@
 </template>
 
 <script>
-    import { getCustomersQuery } from '../apps/CustomersDashboard/customers-dashboard-store';
-    import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-dashboard-store';
+    import { getCustomersQuery } from '../apps/CustomersDashboard/customers-store';
+    import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-store';
 
     export default {
         data() {
@@ -110,10 +110,10 @@
                     }
 
                     if (this.customer) {
-                        this.$store.dispatch('customersDashboardStore/setCurrentCustomer', this.customer.id);
+                        this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
                     }
 
-                    store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+                    store.dispatch('locationsStore/setAddLocationModalClosed');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this location');
@@ -128,7 +128,7 @@
         },
         computed: {
             modalOpened() {
-                return this.$store.state['locationsDashboardStore'].getAddUserModalOpen;
+                return this.$store.state['locationsStore'].getAddUserModalOpen;
             }
         }
     }

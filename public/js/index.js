@@ -22494,7 +22494,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 /* harmony import */ var _modals_AddCustomersModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddCustomersModal.vue */ "./resources/src/vue/modals/AddCustomersModal.vue");
 
 
@@ -22506,7 +22506,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   apollo: {
     customers: {
-      query: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery,
+      query: _customers_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery,
       fetchPolicy: 'no-cache'
     }
   },
@@ -22533,8 +22533,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
 /* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
 /* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
-/* harmony import */ var _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
-/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _customers_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 
 
@@ -22545,20 +22545,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     customer: function customer() {
-      return this.$store.state['customersDashboardStore'].currentCustomer;
+      return this.$store.state['customersStore'].currentCustomer;
     }
   },
   created: function created() {
     var store = this.$store;
     this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)().params.id;
-    store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+    store.dispatch('customersStore/setCurrentCustomer', this.customerID);
   },
   methods: {
     deleteCustomer: function deleteCustomer(id) {
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_5__.deleteCustomerMutation,
+        mutation: _customers_store__WEBPACK_IMPORTED_MODULE_5__.deleteCustomerMutation,
         variables: {
           id: id
         }
@@ -22573,12 +22573,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.$apollo.mutate({
-        mutation: _LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_4__.deleteLocationMutation,
+        mutation: _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_4__.deleteLocationMutation,
         variables: {
           id: id
         }
       }).then(function () {
-        _this2.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this2.customerID);
+        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customerID);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error deleting this user');
@@ -22608,8 +22608,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modals_EditUserModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../modals/EditUserModal.vue */ "./resources/src/vue/modals/EditUserModal.vue");
 /* harmony import */ var _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddUserModal.vue */ "./resources/src/vue/modals/AddUserModal.vue");
-/* harmony import */ var _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
-
+/* harmony import */ var _users_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 
 
@@ -22624,7 +22623,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.deleteUserMutation,
+        mutation: _users_store__WEBPACK_IMPORTED_MODULE_2__.deleteUserMutation,
         variables: {
           id: id
         }
@@ -22641,7 +22640,7 @@ __webpack_require__.r(__webpack_exports__);
     'add-user-modal': _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   apollo: {
-    users: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
+    users: _users_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
   }
 });
 
@@ -22658,7 +22657,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vehicles-dashboard-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js");
+/* harmony import */ var _vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
 /* harmony import */ var _modals_AddVehicleModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddVehicleModal.vue */ "./resources/src/vue/modals/AddVehicleModal.vue");
 /* harmony import */ var _modals_EditVehicleModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modals/EditVehicleModal.vue */ "./resources/src/vue/modals/EditVehicleModal.vue");
 
@@ -22671,14 +22670,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   apollo: {
-    vehicles: _vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getVehiclesQuery
+    vehicles: _vehicles_store__WEBPACK_IMPORTED_MODULE_0__.getVehiclesQuery
   },
   methods: {
     deleteVehicle: function deleteVehicle(id) {
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.deleteVehicle,
+        mutation: _vehicles_store__WEBPACK_IMPORTED_MODULE_0__.deleteVehicle,
         variables: {
           id: id
         }
@@ -22709,7 +22708,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22730,7 +22729,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewContactMutation,
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewContactMutation,
         variables: {
           firstName: this.firstName,
           lastName: this.lastName,
@@ -22739,9 +22738,9 @@ __webpack_require__.r(__webpack_exports__);
           customer_id: this.customer.id
         }
       }).then(function (result) {
-        _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customer.id);
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
 
-        store.dispatch('customersDashboardStore/setAddContactsModalState', false);
+        store.dispatch('customersStore/setAddContactsModalState', false);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -22766,7 +22765,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22779,13 +22778,13 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewCustomer,
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewCustomer,
         variables: {
           name: this.name
         }
       }).then(function (result) {
         apollo.queries.customers.refetch();
-        store.dispatch('customersDashboardStore/setAddCustomersModalClosed');
+        store.dispatch('customersStore/setAddCustomersModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this location');
@@ -22810,8 +22809,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
-/* harmony import */ var _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -22843,7 +22842,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__.addNewLocationMutation,
+        mutation: _apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.addNewLocationMutation,
         variables: {
           name: this.name,
           unitNumber: this.unitNumber,
@@ -22859,10 +22858,10 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (_this.customer) {
-          _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customer.id);
+          _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
         }
 
-        store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+        store.dispatch('locationsStore/setAddLocationModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this location');
@@ -22873,11 +22872,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   apollo: {
-    customers: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery
+    customers: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery
   },
   computed: {
     modalOpened: function modalOpened() {
-      return this.$store.state['locationsDashboardStore'].getAddUserModalOpen;
+      return this.$store.state['locationsStore'].getAddUserModalOpen;
     }
   }
 });
@@ -22895,7 +22894,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+/* harmony import */ var _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22911,7 +22910,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
+        mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
         variables: {
           name: this.name,
           email: this.email,
@@ -22919,7 +22918,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         apollo.queries.users.refetch();
-        store.dispatch('userDashboardStore/setAddUserModalClosed');
+        store.dispatch('usersStore/setAddUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -22931,7 +22930,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     modalOpened: function modalOpened() {
-      return this.$store.state['userDashboardStore'].getAddUserModalOpen;
+      return this.$store.state['usersStore'].getAddUserModalOpen;
     }
   }
 });
@@ -22949,7 +22948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-dashboard-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js");
+/* harmony import */ var _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22971,7 +22970,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewVehicleMutation,
+        mutation: _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.addNewVehicleMutation,
         variables: {
           title: this.title,
           registration: this.registration,
@@ -22983,7 +22982,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         apollo.queries.vehicles.refetch();
-        store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false);
+        store.dispatch('vehiclesStore/setAddVehicleModalState', false);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -23008,7 +23007,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -23024,15 +23023,15 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.updateCustomerMutation,
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.updateCustomerMutation,
         variables: {
           id: this.customer.id,
           name: this.name
         }
       }).then(function (result) {
-        _this.$store.dispatch('customersDashboardStore/setCurrentCustomer', _this.customer.id);
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
 
-        store.dispatch('customersDashboardStore/setEditCustomerModalState');
+        store.dispatch('customersStore/setEditCustomerModalState');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -23060,7 +23059,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+/* harmony import */ var _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -23069,7 +23068,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentUser: function currentUser() {
-      return this.$store.state['userDashboardStore'].currentUser;
+      return this.$store.state['usersStore'].currentUser;
     }
   },
   methods: {
@@ -23077,7 +23076,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
+        mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
         variables: {
           id: this.currentUser.id,
           name: this.name,
@@ -23085,7 +23084,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         apollo.queries.users.refetch();
-        store.dispatch('userDashboardStore/setEditUserModalClosed');
+        store.dispatch('usersStore/setEditUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -23114,7 +23113,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-dashboard-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js");
+/* harmony import */ var _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -23122,7 +23121,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentVehicle: function currentVehicle() {
-      return this.$store.state['vehiclesDashboardStore'].currentVehicle;
+      return this.$store.state['vehiclesStore'].currentVehicle;
     }
   },
   methods: {
@@ -23130,7 +23129,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.updateVehicleMutation,
+        mutation: _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.updateVehicleMutation,
         variables: {
           id: this.currentVehicle.id,
           title: this.title,
@@ -23142,7 +23141,7 @@ __webpack_require__.r(__webpack_exports__);
           isActive: this.isActive
         }
       }).then(function (result) {
-        store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', {
+        store.dispatch('vehiclesStore/setEditVehicleModalState', {
           open: false,
           vehicle: false
         });
@@ -23269,7 +23268,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddCustomersModalOpen');
+      return _ctx.$store.dispatch('customersStore/setAddCustomersModalOpen');
     }),
     "class": "btn btn-primary"
   }, " Add Customer ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customers, function (customer, index) {
@@ -23463,14 +23462,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setEditCustomerModalState', true);
+      return _ctx.$store.dispatch('customersStore/setEditCustomerModalState', true);
     }),
     "class": "btn btn-primary"
   }, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, $options.customer.locations && $options.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
     }),
     "class": "btn btn-primary"
   }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.locations, function (location) {
@@ -23493,12 +23492,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
     })
   }, " Add a new location ")])]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, $options.customer.contacts && $options.customer.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[4] || (_cache[4] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddContactsModalState', true);
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
     })
   }, " Add a new contact ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.contacts, function (contact, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
@@ -23527,7 +23526,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddContactsModalState', true);
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
     })
   }, " Add a new contact ")])]))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
     customer: $options.customer
@@ -23604,7 +23603,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.$store.dispatch('userDashboardStore/setAddUserModalOpen');
+          return _ctx.$store.dispatch('usersStore/setAddUserModalOpen');
         }),
         "class": "btn btn-primary"
       }, " Add User ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.users, function (user) {
@@ -23616,7 +23615,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           onClick: function onClick($event) {
-            return _ctx.$store.dispatch('userDashboardStore/setEditUserModalOpen', user);
+            return _ctx.$store.dispatch('usersStore/setEditUserModalOpen', user);
           },
           "class": "btn btn-primary"
         }, " Edit ", 8
@@ -23699,7 +23698,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.$store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', true);
+          return _ctx.$store.dispatch('vehiclesStore/setAddVehicleModalState', true);
         }),
         "class": "btn btn-primary"
       }, " Add Vehicle ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.vehicles, function (vehicle) {
@@ -23711,7 +23710,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           onClick: function onClick($event) {
-            return _ctx.$store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', {
+            return _ctx.$store.dispatch('vehiclesStore/setEditVehicleModalState', {
               open: true,
               vehicle: vehicle
             });
@@ -23957,9 +23956,9 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['customersDashboardStore'].addContactsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['customersStore'].addContactsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddContactsModalState', false);
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', false);
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -24077,9 +24076,9 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['customersDashboardStore'].addCustomersModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['customersStore'].addCustomersModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddCustomersModalClosed');
+      return _ctx.$store.dispatch('customersStore/setAddCustomersModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -24221,9 +24220,9 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['locationsDashboardStore'].addLocationsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['locationsStore'].addLocationsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -24392,9 +24391,9 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['userDashboardStore'].addUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['usersStore'].addUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('userDashboardStore/setAddUserModalClosed');
+      return _ctx.$store.dispatch('usersStore/setAddUserModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -24584,9 +24583,9 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['vehiclesDashboardStore'].AddVehiclesModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['vehiclesStore'].AddVehiclesModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false);
+      return _ctx.$store.dispatch('vehiclesStore/setAddVehicleModalState', false);
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -24734,9 +24733,9 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['customersDashboardStore'].editCustomerModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['customersStore'].editCustomerModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setEditCustomerModalState', false);
+      return _ctx.$store.dispatch('customersStore/setEditCustomerModalState', false);
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.customer.name), 1
@@ -24833,9 +24832,9 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['userDashboardStore'].editUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['usersStore'].editUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('userDashboardStore/setEditUserModalClosed');
+      return _ctx.$store.dispatch('usersStore/setEditUserModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentUser.name), 1
@@ -25005,9 +25004,9 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['vehiclesDashboardStore'].EditVehicleModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['vehiclesStore'].EditVehicleModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', false, false);
+      return _ctx.$store.dispatch('vehiclesStore/setEditVehicleModalState', false, false);
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentVehicle.title) + ": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentVehicle.registration), 1
@@ -25348,11 +25347,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "store": () => (/* binding */ store)
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
-/* harmony import */ var _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
-/* harmony import */ var _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
-/* harmony import */ var _vue_apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
-/* harmony import */ var _vue_apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/vehicles-dashboard-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './vue/apps/VehiclesDashboard/contacts-store'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _vue_apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
+/* harmony import */ var _vue_apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _vue_apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _vue_apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+/* harmony import */ var _vue_apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/contacts-store */ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js");
 
 
 
@@ -25391,20 +25390,45 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
     }
   },
   modules: {
-    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.userDashboardStore,
-    locationsDashboardStore: _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__.locationsDashboardStore,
-    customersDashboardStore: _vue_apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.customersDashboardStore,
-    vehiclesDashboardStore: _vue_apps_VehiclesDashboard_vehicles_dashboard_store__WEBPACK_IMPORTED_MODULE_3__.vehiclesDashboardStore
+    usersStore: _vue_apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.usersStore,
+    locationsStore: _vue_apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.locationsStore,
+    customersStore: _vue_apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_2__.customersStore,
+    vehiclesStore: _vue_apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_3__.vehiclesStore,
+    contactsStore: _vue_apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_4__.contactsStore
   }
 });
 
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js":
-/*!********************************************************************************!*\
-  !*** ./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js ***!
-  \********************************************************************************/
+/***/ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js":
+/*!********************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/contacts-store.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "contactsStore": () => (/* binding */ contactsStore)
+/* harmony export */ });
+
+var contactsStore = {
+  namespaced: true,
+  state: {
+    contacts: []
+  },
+  mutations: {},
+  actions: {}
+};
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/CustomersDashboard/customers-store.js":
+/*!**********************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/customers-store.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25412,7 +25436,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
 /* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
-/* harmony export */   "customersDashboardStore": () => (/* binding */ customersDashboardStore),
+/* harmony export */   "customersStore": () => (/* binding */ customersStore),
 /* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
 /* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
 /* harmony export */   "getCustomersQuery": () => (/* binding */ getCustomersQuery),
@@ -25430,7 +25454,7 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
     addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
     deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
-    customersDashboardStore = {
+    customersStore = {
   namespaced: true,
   state: {
     customers: [],
@@ -25495,10 +25519,10 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js":
-/*!********************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js ***!
-  \********************************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/locations-store.js":
+/*!**********************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/locations-store.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25507,7 +25531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addNewLocationMutation": () => (/* binding */ addNewLocationMutation),
 /* harmony export */   "deleteLocationMutation": () => (/* binding */ deleteLocationMutation),
 /* harmony export */   "getLocationsQuery": () => (/* binding */ getLocationsQuery),
-/* harmony export */   "locationsDashboardStore": () => (/* binding */ locationsDashboardStore)
+/* harmony export */   "locationsStore": () => (/* binding */ locationsStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
 var _templateObject, _templateObject2, _templateObject3;
@@ -25518,7 +25542,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n                name\n            }\n        }\n    }\n"]))),
     addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String,\n            $customer_id: ID\n        ) {\n            addNewLocation(\n                unitNumber: $unitNumber,\n                streetNumber: $streetNumber,\n                streetName: $streetName,\n                suburb: $suburb,\n                city: $city,\n                customer_id: $customer_id\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n                customer {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
     deleteLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteLocation(id: $id) {\n                id\n            }\n        }\n    "]))),
-    locationsDashboardStore = {
+    locationsStore = {
   namespaced: true,
   state: {
     locations: [],
@@ -25559,10 +25583,10 @@ var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js":
-/*!**********************************************************************!*\
-  !*** ./resources/src/vue/apps/UserDashboard/user-dashboard-store.js ***!
-  \**********************************************************************/
+/***/ "./resources/src/vue/apps/UserDashboard/users-store.js":
+/*!*************************************************************!*\
+  !*** ./resources/src/vue/apps/UserDashboard/users-store.js ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25572,7 +25596,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteUserMutation": () => (/* binding */ deleteUserMutation),
 /* harmony export */   "editUserMutation": () => (/* binding */ editUserMutation),
 /* harmony export */   "getUsersQuery": () => (/* binding */ getUsersQuery),
-/* harmony export */   "userDashboardStore": () => (/* binding */ userDashboardStore)
+/* harmony export */   "usersStore": () => (/* binding */ usersStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
@@ -25584,7 +25608,7 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
     addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!\n        ) {\n            addNewUser(\n                name: $name,\n                email: $email,\n                password: $password\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
     editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
-    userDashboardStore = {
+    usersStore = {
   namespaced: true,
   state: {
     editUserModalOpen: false,
@@ -25656,10 +25680,10 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js":
-/*!******************************************************************************!*\
-  !*** ./resources/src/vue/apps/VehiclesDashboard/vehicles-dashboard-store.js ***!
-  \******************************************************************************/
+/***/ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js":
+/*!********************************************************************!*\
+  !*** ./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25669,7 +25693,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteVehicle": () => (/* binding */ deleteVehicle),
 /* harmony export */   "getVehiclesQuery": () => (/* binding */ getVehiclesQuery),
 /* harmony export */   "updateVehicleMutation": () => (/* binding */ updateVehicleMutation),
-/* harmony export */   "vehiclesDashboardStore": () => (/* binding */ vehiclesDashboardStore)
+/* harmony export */   "vehiclesStore": () => (/* binding */ vehiclesStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
@@ -25681,7 +25705,7 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
     addNewVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String\n            $registration: String,\n            $loadWeight: String,\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            addNewVehicle(\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
     updateVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $title: String\n            $registration: String\n            $loadWeight: String\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            updateVehicle(\n                id: $id,\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
     deleteVehicle = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation($id: ID!) {\n            deleteVehicle(id: $id) {\n                id\n            }\n        }\n    "]))),
-    vehiclesDashboardStore = {
+    vehiclesStore = {
   namespaced: true,
   state: {
     apollo: false,

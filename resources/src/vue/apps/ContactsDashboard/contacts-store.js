@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const customersDashboardStore = {
+const contactsStore = {
     namespaced: true,
     state: {
         contacts: [],
@@ -12,5 +12,5 @@ const customersDashboardStore = {
 };
 
 export {
-    customersDashboardStore
+    contactsStore
 }

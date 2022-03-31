@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['customersDashboardStore'].editCustomerModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['customersStore'].editCustomerModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalState', false)" class="dialog__close-btn">
+            <button @click="$store.dispatch('customersStore/setEditCustomerModalState', false)" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import { updateCustomerMutation } from '../apps/CustomersDashboard/customers-dashboard-store';
+    import { updateCustomerMutation } from '../apps/CustomersDashboard/customers-store';
 
     export default {
         data() {
@@ -50,8 +50,8 @@
                         name: this.name
                     }
                 }).then((result) => {
-                    this.$store.dispatch('customersDashboardStore/setCurrentCustomer', this.customer.id);
-                    store.dispatch('customersDashboardStore/setEditCustomerModalState');
+                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
+                    store.dispatch('customersStore/setEditCustomerModalState');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this user');

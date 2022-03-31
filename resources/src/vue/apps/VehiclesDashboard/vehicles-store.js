@@ -83,7 +83,7 @@ const getVehiclesQuery = gql`
             }
         }
     `,
-    vehiclesDashboardStore = {
+    vehiclesStore = {
         namespaced: true,
         state: {
             apollo: false,
@@ -126,7 +126,7 @@ const getVehiclesQuery = gql`
     };
 
 export {
-    vehiclesDashboardStore,
+    vehiclesStore,
     getVehiclesQuery,
     addNewVehicleMutation,
     updateVehicleMutation,

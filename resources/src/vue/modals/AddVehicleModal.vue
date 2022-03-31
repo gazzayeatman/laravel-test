@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['vehiclesDashboardStore'].AddVehiclesModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['vehiclesStore'].AddVehiclesModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false)" class="dialog__close-btn">
+            <button @click="$store.dispatch('vehiclesStore/setAddVehicleModalState', false)" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-    import { addNewVehicleMutation } from '../apps/VehiclesDashboard/vehicles-dashboard-store';
+    import { addNewVehicleMutation } from '../apps/VehiclesDashboard/vehicles-store';
 
     export default {
         data() {
@@ -100,7 +100,7 @@
                     }
                 }).then((result) => {
                     apollo.queries.vehicles.refetch();
-                    store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', false);
+                    store.dispatch('vehiclesStore/setAddVehicleModalState', false);
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this user');

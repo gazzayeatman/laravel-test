@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['vehiclesDashboardStore'].EditVehicleModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['vehiclesStore'].EditVehicleModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', false, false)" class="dialog__close-btn">
+            <button @click="$store.dispatch('vehiclesStore/setEditVehicleModalState', false, false)" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-    import { updateVehicleMutation } from '../apps/VehiclesDashboard/vehicles-dashboard-store';
+    import { updateVehicleMutation } from '../apps/VehiclesDashboard/vehicles-store';
 
     export default {
         data() {
@@ -79,7 +79,7 @@
         },
         computed: {
             currentVehicle() {
-                return this.$store.state['vehiclesDashboardStore'].currentVehicle;
+                return this.$store.state['vehiclesStore'].currentVehicle;
             }
         },
         methods: {
@@ -100,7 +100,7 @@
                         isActive: this.isActive
                     }
                 }).then((result) => {
-                    store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', { open: false, vehicle: false });
+                    store.dispatch('vehiclesStore/setEditVehicleModalState', { open: false, vehicle: false });
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this user');

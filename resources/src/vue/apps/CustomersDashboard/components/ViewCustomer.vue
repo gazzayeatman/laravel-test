@@ -11,7 +11,7 @@
                 <button @click="deleteCustomer(customer.id)" class="btn btn-primary btn--danger">
                     Delete {{ customer.name }}
                 </button>
-                <button @click="$store.dispatch('customersDashboardStore/setEditCustomerModalState', true)" class="btn btn-primary">
+                <button @click="$store.dispatch('customersStore/setEditCustomerModalState', true)" class="btn btn-primary">
                     Edit {{ customer.name }}
                 </button>
             </div>
@@ -22,7 +22,7 @@
                     </h3>
                     <div v-if="customer.locations && customer.locations.length > 0" class="detail-page__detail-grid">
                         <div class="action-panel">
-                            <button @click="$store.dispatch('locationsDashboardStore/setAddLocationModalOpen')" class="btn btn-primary">
+                            <button @click="$store.dispatch('locationsStore/setAddLocationModalOpen')" class="btn btn-primary">
                                 Add Location
                             </button>
                         </div>
@@ -55,7 +55,7 @@
                             Nothing here?, Add a location now
                         </div>
                         <div class="detail-page__detail-grid-action-panel">
-                            <button class="btn btn-primary" @click="$store.dispatch('locationsDashboardStore/setAddLocationModalOpen')">
+                            <button class="btn btn-primary" @click="$store.dispatch('locationsStore/setAddLocationModalOpen')">
                                 Add a new location
                             </button>
                         </div>
@@ -67,7 +67,7 @@
                     </h3>
                     <div v-if="customer.contacts && customer.contacts.length > 0" class="detail-page__detail-grid">
                         <div class="action-panel">
-                            <button class="btn btn-primary"  @click="$store.dispatch('customersDashboardStore/setAddContactsModalState', true)">
+                            <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
                                 Add a new contact
                             </button>
                         </div>
@@ -96,7 +96,7 @@
                             Nothing here?, Add a contact now
                         </div>
                         <div class="detail-page__detail-grid-action-panel">
-                            <button class="btn btn-primary"  @click="$store.dispatch('customersDashboardStore/setAddContactsModalState', true)">
+                            <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
                                 Add a new contact
                             </button>
                         </div>
@@ -115,20 +115,20 @@
     import AddLocationModal from '../../../modals/AddLocationModal.vue';
     import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
     import AddContactModal from '../../../modals/AddContactModal.vue';
-    import { deleteLocationMutation } from '../../LocationsDashboard/locations-dashboard-store';
-    import { deleteCustomerMutation } from '../customers-dashboard-store';
+    import { deleteLocationMutation } from '../../LocationsDashboard/locations-store';
+    import { deleteCustomerMutation } from '../customers-store';
 
     export default {
         computed: {
             customer() {
-                return this.$store.state['customersDashboardStore'].currentCustomer;
+                return this.$store.state['customersStore'].currentCustomer;
             }
         },
         created() {
             const store = this.$store;
 
             this.customerID = useRoute().params.id;
-            store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+            store.dispatch('customersStore/setCurrentCustomer', this.customerID);
         },
         methods: {
             deleteCustomer(id) {
@@ -151,7 +151,7 @@
                         id: id
                     }
                 }).then(() => {
-                    this.$store.dispatch('customersDashboardStore/setCurrentCustomer', this.customerID);
+                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customerID);
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error deleting this user');

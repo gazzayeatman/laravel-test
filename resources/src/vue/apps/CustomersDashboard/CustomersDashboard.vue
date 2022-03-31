@@ -4,7 +4,7 @@
             Customers Dashboard
         </h1>
         <div class="action-panel">
-            <button @click="$store.dispatch('customersDashboardStore/setAddCustomersModalOpen')" class="btn btn-primary">
+            <button @click="$store.dispatch('customersStore/setAddCustomersModalOpen')" class="btn btn-primary">
                 Add Customer
             </button>
         </div>
@@ -26,7 +26,7 @@
     </div>
 </template>
 <script>
-    import { getCustomersQuery } from './customers-dashboard-store';
+    import { getCustomersQuery } from './customers-store';
     import AddCustomersModal from '../../modals/AddCustomersModal.vue';
 
     export default {

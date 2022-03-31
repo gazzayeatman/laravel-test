@@ -94,7 +94,7 @@ const getCustomersQuery = gql`
             }
         }
     `,
-    customersDashboardStore = {
+    customersStore = {
         namespaced: true,
         state: {
             customers: [],
@@ -151,7 +151,7 @@ const getCustomersQuery = gql`
     };
 
 export {
-    customersDashboardStore,
+    customersStore,
     getCustomersQuery,
     addNewCustomer,
     getCustomer,

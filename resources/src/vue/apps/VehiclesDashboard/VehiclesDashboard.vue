@@ -5,7 +5,7 @@
                 Vehicles Dashboard
             </h1>
             <div class="action-panel">
-                <button @click="$store.dispatch('vehiclesDashboardStore/setAddVehicleModalState', true)" class="btn btn-primary">
+                <button @click="$store.dispatch('vehiclesStore/setAddVehicleModalState', true)" class="btn btn-primary">
                     Add Vehicle
                 </button>
             </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="grid-view__actions">
-                        <button @click="$store.dispatch('vehiclesDashboardStore/setEditVehicleModalState', { open: true, vehicle: vehicle})" class="btn btn-primary">
+                        <button @click="$store.dispatch('vehiclesStore/setEditVehicleModalState', { open: true, vehicle: vehicle})" class="btn btn-primary">
                             Edit
                         </button>
                         <button @click="deleteVehicle(vehicle.id)" class="btn btn-primary btn--danger">
@@ -38,7 +38,7 @@
     </router-view>
 </template>
 <script>
-    import { getVehiclesQuery, deleteVehicle } from './vehicles-dashboard-store';
+    import { getVehiclesQuery, deleteVehicle } from './vehicles-store';
     import AddVehicleModal from '../../modals/AddVehicleModal.vue';
     import EditVehicleModal from '../../modals/EditVehicleModal.vue';
 
