@@ -24,6 +24,10 @@ type Query {
   customer(
     id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
   ): Customer @find
+
+  contact(
+    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+  ): Contact @find
 }
 
 # Mutations
@@ -33,6 +37,7 @@ type Mutation {
   deleteLocation(id: ID!) : Location @delete
   deleteVehicle(id: ID!) : Vehicle @delete
   deleteCustomer(id: ID!) : Customer @delete
+  deleteContact(id: ID!) : Contact @delete
 
   addNewUser(
     name: String!,
