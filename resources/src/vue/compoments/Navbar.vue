@@ -16,11 +16,11 @@
                     Customers
                 </router-link>
             </li>
-            <li class="navbar__item">
+            <!-- <li class="navbar__item">
                 <a href="#" class="navbar__link">
                     Workers
                 </a>
-            </li>
+            </li> -->
             <li class="navbar__item">
                 <router-link class="navbar__link" :to="{ path: '/users' }">
                     Users

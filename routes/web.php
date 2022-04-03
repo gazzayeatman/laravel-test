@@ -18,9 +18,18 @@ Route::any('/login', function() {
     return view('auth.login');
 })->middleware('auth');
 
+Route::any('/register', function() {
+    return view('auth.register');
+})->middleware('auth');
+
+
 Route::any('/{all}', function () {
     return view('layouts.app');
 })->where(['all' => '.*'])
     ->middleware('auth');
 
 Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
