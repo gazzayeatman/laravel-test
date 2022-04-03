@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('../js/bootstrap');
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
