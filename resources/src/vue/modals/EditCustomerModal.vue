@@ -1,20 +1,20 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['customersStore'].addCustomersModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['customersStore'].editCustomerModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('customersStore/setAddCustomersModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('customersStore/setEditCustomerModalState', false)" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
             </button>
             <h2 class="dialog__title">
-                Add a new customer
+                Edit {{ customer.name }}
             </h2>
             <form class="dialog__form" @submit.prevent="handleFormSubmit">
                 <div class="form__input-field">
                     <label class="form__input-label" for="name">
                         Name
                     </label>
-                    <input v-model="name" id="name" type="text" class="input input--text" name="name" autocomplete="off" />
+                    <input v-model="name" id="name" type="name" class="input input--text" name="name" :placeholder="customer.name" autocomplete="off" />
                 </div>
                 <div class="form__action-panel form__action-panel--right">
                     <div class="form__action-panel-group">
@@ -29,34 +29,40 @@
 </template>
 
 <script>
-    import { addNewCustomer } from '../apps/CustomersDashboard/customers-store';
+    import { updateCustomerMutation } from '../apps/CustomersDashboard/customers-store';
+
     export default {
         data() {
-            return {
-                name: '',
-            }
+            this.name = '';
+        },
+        props: {
+            customer: {}
         },
         methods: {
-            addCustomer() {
+            editCustomer() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
 
                 this.$apollo.mutate({
-                    mutation: addNewCustomer,
+                    mutation: updateCustomerMutation,
                     variables: {
+                        id: this.customer.id,
                         name: this.name
                     }
                 }).then((result) => {
-                    apollo.queries.customers.refetch();
-                    store.dispatch('customersStore/setAddCustomersModalClosed');
+                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
+                    store.dispatch('customersStore/setEditCustomerModalState');
                 }).catch((error) => {
                     console.log(error);
-                    alert('there was an error adding this location');
+                    alert('there was an error adding this user');
                 });
             },
             handleFormSubmit() {
-               this.addCustomer();
+               this.editCustomer();
             }
+        },
+        mounted() {
+            this.name = this.customer.name;
         }
     }
 </script>

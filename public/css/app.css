@@ -281,6 +281,9 @@ body {
 .input--text:focus {
   box-shadow: 0px 2px 0px 0px #fca311ff;
 }
+.input--checkbox {
+  display: flex;
+}
 .input__message {
   font-size: 12px;
 }
@@ -4459,6 +4462,20 @@ table tbody tr:first-child td {
   margin: 25px 0px;
 }
 
+.contact-card {
+  padding: 15px 15px 25px 15px;
+  background-color: #ffffffff;
+}
+.contact-card__wrapper {
+  width: 265px;
+  margin: 10px;
+  position: relative;
+}
+.contact-card__title {
+  text-decoration: underline;
+  font-size: 20px;
+}
+
 .customer-card {
   padding: 15px 15px 25px 15px;
   background-color: #ffffffff;
@@ -4502,6 +4519,16 @@ table tbody tr:first-child td {
 .detail-page__detail-grid-content {
   display: block;
 }
+.detail-page__section {
+  padding: 50px 25px;
+  margin: 25px 0px;
+  background-color: #f2f2f2;
+  box-shadow: 1px 1px 5px #14213dff;
+}
+.detail-page__sub-title {
+  margin: 0px 0px 12px 0px;
+}
+
 footer {
   background: green;
 }

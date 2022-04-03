@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['locationsDashboardStore'].addLocationsModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['locationsStore'].addLocationsModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('locationsDashboardStore/setAddLocationModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('locationsStore/setAddLocationModalClosed')" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -40,7 +40,7 @@
                     </label>
                     <input v-model="city" id="city" type="text" class="input input--text" name="city" autocomplete="off" />
                 </div>
-                <div class="form__input-field">
+                <div class="form__input-field" v-if="!customer">
                     <label class="form__input-label" for="customer">
                         Customer
                     </label>
@@ -63,8 +63,9 @@
 </template>
 
 <script>
-    import { getCustomersQuery } from '../apps/CustomersDashboard/customers-dashboard-store';
-    import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-dashboard-store';
+    import { getCustomersQuery } from '../apps/CustomersDashboard/customers-store';
+    import { addNewLocationMutation } from '../apps/LocationsDashboard/locations-store';
+
     export default {
         data() {
             return {
@@ -77,12 +78,20 @@
                 customers: []
             }
         },
+        props: {
+            customer: {}
+        },
         methods: {
+            getCurrentCustomerID() {
+                if (this.customer) {
+                    return this.customer.id;
+                }
+
+                return this.customerID;
+            },
             addLocation() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
-
-                console.log(this.customerID);
 
                 this.$apollo.mutate({
                     mutation: addNewLocationMutation,
@@ -93,11 +102,18 @@
                         streetName: this.streetName,
                         suburb: this.suburb,
                         city: this.city,
-                        customer_id: this.customerID ? this.customerID : 0
+                        customer_id: this.getCurrentCustomerID()
                     }
                 }).then((result) => {
-                    apollo.queries.locations.refetch();
-                    store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+                    if (apollo.queries.locations) {
+                        apollo.queries.locations.refetch();
+                    }
+
+                    if (this.customer) {
+                        this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
+                    }
+
+                    store.dispatch('locationsStore/setAddLocationModalClosed');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this location');
@@ -112,7 +128,7 @@
         },
         computed: {
             modalOpened() {
-                return this.$store.state['locationsDashboardStore'].getAddUserModalOpen;
+                return this.$store.state['locationsStore'].getAddUserModalOpen;
             }
         }
     }

@@ -1,4 +1,5 @@
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 # Queries
 type Query {
@@ -11,6 +12,8 @@ type Query {
     name: String @where(operator: "like")
   ): [User!]! @all
 
+  vehicles: [Vehicle!]! @all
+
   locations: [Location!]! @all
 
   customers(
@@ -21,12 +24,20 @@ type Query {
   customer(
     id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
   ): Customer @find
+
+  contact(
+    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+  ): Contact @find
 }
 
 # Mutations
 
 type Mutation {
   deleteUser(id: ID!) : User @delete
+  deleteLocation(id: ID!) : Location @delete
+  deleteVehicle(id: ID!) : Vehicle @delete
+  deleteCustomer(id: ID!) : Customer @delete
+  deleteContact(id: ID!) : Contact @delete
 
   addNewUser(
     name: String!,
@@ -40,6 +51,22 @@ type Mutation {
     email: String
   ) : User @update
 
+  updateCustomer(
+    id: ID!,
+    name: String
+  ) : Customer @update
+
+  updateVehicle(
+    id: ID!
+    title: String,
+    registration: String,
+    loadWeight: String,
+    liftWeight: String,
+    wofExpiry: Date,
+    registrationExpiry: Date,
+    isActive: Boolean
+  ) : Vehicle @update
+
   addNewLocation(
     unitNumber: String,
     streetNumber: String,
@@ -48,6 +75,24 @@ type Mutation {
     city: String,
     customer_id: ID
   ) : Location @create
+
+  addNewVehicle(
+    title: String,
+    registration: String,
+    loadWeight: String,
+    liftWeight: String,
+    wofExpiry: Date,
+    registrationExpiry: Date,
+    isActive: Boolean
+  ) : Vehicle @create
+
+  addNewContact(
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    emailAddress: String,
+    customer_id: ID!
+  ) : Contact @create
 
   addNewCustomer(
     name: String
@@ -90,4 +135,15 @@ type Location {
   suburb: String
   city: String
   customer: Customer @belongsTo
+}
+
+type Vehicle {
+  id: ID!
+  title: String
+  registration: String
+  loadWeight: String
+  liftWeight: String
+  wofExpiry: Date
+  registrationExpiry: Date
+  isActive: Boolean
 }

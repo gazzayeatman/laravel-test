@@ -1,8 +1,4 @@
 .detail-page {
-    &__wrapper {
-
-    }
-
     &__title {
         margin: 0px 0px 25px 0px;
     }
@@ -28,7 +24,14 @@
         display: block;
     }
 
+    &__section {
+        padding: 50px 25px;
+        margin: 25px 0px;
+        background-color: lighten($color-platinum, 5);
+        box-shadow: 1px 1px 5px $color-oxford-blue;
+    }
+    
     &__sub-title {
-
+        margin: 0px 0px 12px 0px;
     }
 }

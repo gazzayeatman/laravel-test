@@ -1,7 +1,9 @@
 import { createStore } from 'vuex';
-import { userDashboardStore } from './vue/apps/UserDashboard/user-dashboard-store';
-import { locationsDashboardStore } from './vue/apps/LocationsDashboard/locations-dashboard-store';
-import { customersDashboardStore } from './vue/apps/CustomersDashboard/customers-dashboard-store';
+import { usersStore } from './vue/apps/UserDashboard/users-store';
+import { locationsStore } from './vue/apps/LocationsDashboard/locations-store';
+import { customersStore } from './vue/apps/CustomersDashboard/customers-store';
+import { vehiclesStore } from './vue/apps/VehiclesDashboard/vehicles-store';
+import { contactsStore } from './vue/apps/ContactsDashboard/contacts-store';
 
 const store = createStore({
         state: {
@@ -32,9 +34,11 @@ const store = createStore({
             }
         },
         modules: {
-            userDashboardStore,
-            locationsDashboardStore,
-            customersDashboardStore
+            usersStore,
+            locationsStore,
+            customersStore,
+            vehiclesStore,
+            contactsStore
         }
     });
 

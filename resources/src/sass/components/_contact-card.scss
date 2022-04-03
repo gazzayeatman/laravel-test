@@ -1,0 +1,15 @@
+.contact-card {
+    padding: 15px 15px 25px 15px;
+    background-color: $color-white;
+
+    &__wrapper {
+        width: 265px;
+        margin: 10px;
+        position: relative;
+    }
+
+    &__title {
+        text-decoration: underline;
+        font-size: 20px;
+    }
+}

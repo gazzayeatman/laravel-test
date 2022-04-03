@@ -22483,6 +22483,62 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _contacts_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contacts-store */ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: {
+    contact: function contact() {
+      return this.$store.state['contactsStore'].currentContact;
+    }
+  },
+  created: function created() {
+    var store = this.$store;
+    this.contactID = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)().params.id;
+    store.dispatch('contactsStore/setCurrentContact', this.contactID);
+  },
+  methods: {
+    deleteContact: function deleteContact(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _contacts_store__WEBPACK_IMPORTED_MODULE_1__.deleteContact,
+        variables: {
+          id: id
+        }
+      }).then(function (result) {
+        console.log(result.data.deleteContact);
+
+        _this.$store.dispatch('contactsStore/setCurrentContact', false);
+
+        _this.$router.push("/customers/view-customer/".concat(result.data.deleteContact.customer.id));
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    }
+  },
+  components: {
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=script&lang=js":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=script&lang=js ***!
@@ -22494,7 +22550,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 /* harmony import */ var _modals_AddCustomersModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddCustomersModal.vue */ "./resources/src/vue/modals/AddCustomersModal.vue");
 
 
@@ -22505,7 +22561,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   apollo: {
-    customers: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery
+    customers: {
+      query: _customers_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery,
+      fetchPolicy: 'no-cache'
+    }
   },
   components: {
     'add-customer-modal': _modals_AddCustomersModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -22525,71 +22584,68 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
+/* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
+/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _customers_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+
+
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      customerID: false,
-      customer: false
-    };
+  computed: {
+    customer: function customer() {
+      return this.$store.state['customersStore'].currentCustomer;
+    }
   },
   created: function created() {
-    var _this = this;
+    var store = this.$store;
+    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)().params.id;
+    store.dispatch('customersStore/setCurrentCustomer', this.customerID);
+  },
+  methods: {
+    deleteCustomer: function deleteCustomer(id) {
+      var _this = this;
 
-    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute)().params.id;
-    this.$apollo.query({
-      query: _customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomer,
-      variables: {
-        id: this.customerID
-      }
-    }).then(function (result) {
-      _this.customer = result.data.customer;
-      console.log(_this.customer);
-    })["catch"](function (err) {
-      return console.log(err);
-    });
+      this.$apollo.mutate({
+        mutation: _customers_store__WEBPACK_IMPORTED_MODULE_5__.deleteCustomerMutation,
+        variables: {
+          id: id
+        }
+      }).then(function () {
+        _this.$router.push('/customers');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    },
+    deleteLocation: function deleteLocation(id) {
+      var _this2 = this;
+
+      this.$apollo.mutate({
+        mutation: _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_4__.deleteLocationMutation,
+        variables: {
+          id: id
+        }
+      }).then(function () {
+        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customerID);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    }
   },
   components: {
-    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js":
-/*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js ***!
-  \******************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      locations: []
-    };
-  },
-  apollo: {
-    locations: _locations_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getLocationsQuery
-  },
-  components: {
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'add-contact-modal': _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 });
 
@@ -22608,8 +22664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modals_EditUserModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../modals/EditUserModal.vue */ "./resources/src/vue/modals/EditUserModal.vue");
 /* harmony import */ var _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddUserModal.vue */ "./resources/src/vue/modals/AddUserModal.vue");
-/* harmony import */ var _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
-
+/* harmony import */ var _users_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 
 
@@ -22624,7 +22679,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.deleteUserMutation,
+        mutation: _users_store__WEBPACK_IMPORTED_MODULE_2__.deleteUserMutation,
         variables: {
           id: id
         }
@@ -22641,7 +22696,115 @@ __webpack_require__.r(__webpack_exports__);
     'add-user-modal': _modals_AddUserModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   apollo: {
-    users: _user_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
+    users: _users_store__WEBPACK_IMPORTED_MODULE_2__.getUsersQuery
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+/* harmony import */ var _modals_AddVehicleModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddVehicleModal.vue */ "./resources/src/vue/modals/AddVehicleModal.vue");
+/* harmony import */ var _modals_EditVehicleModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modals/EditVehicleModal.vue */ "./resources/src/vue/modals/EditVehicleModal.vue");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      vehicles: []
+    };
+  },
+  apollo: {
+    vehicles: _vehicles_store__WEBPACK_IMPORTED_MODULE_0__.getVehiclesQuery
+  },
+  methods: {
+    deleteVehicle: function deleteVehicle(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _vehicles_store__WEBPACK_IMPORTED_MODULE_0__.deleteVehicle,
+        variables: {
+          id: id
+        }
+      }).then(function (result) {
+        _this.$apollo.queries.vehicles.refetch();
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    }
+  },
+  components: {
+    'add-vehicle-modal': _modals_AddVehicleModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'edit-vehicle-modal': _modals_EditVehicleModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      firstName: '',
+      lastName: '',
+      emailAddress: '',
+      phoneNumber: ''
+    };
+  },
+  props: {
+    customer: {}
+  },
+  methods: {
+    addContact: function addContact() {
+      var _this = this;
+
+      var apollo = this.$store.state.apollo,
+          store = this.$store;
+      this.$apollo.mutate({
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewContactMutation,
+        variables: {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          emailAddress: this.emailAddress,
+          phoneNumber: this.phoneNumber,
+          customer_id: this.customer.id
+        }
+      }).then(function (result) {
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
+
+        store.dispatch('customersStore/setAddContactsModalState', false);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.addContact();
+    }
   }
 });
 
@@ -22658,7 +22821,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22671,13 +22834,13 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewCustomer,
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewCustomer,
         variables: {
           name: this.name
         }
       }).then(function (result) {
         apollo.queries.customers.refetch();
-        store.dispatch('customersDashboardStore/setAddCustomersModalClosed');
+        store.dispatch('customersStore/setAddCustomersModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this location');
@@ -22702,8 +22865,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
-/* harmony import */ var _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apps/LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -22718,13 +22881,24 @@ __webpack_require__.r(__webpack_exports__);
       customers: []
     };
   },
+  props: {
+    customer: {}
+  },
   methods: {
+    getCurrentCustomerID: function getCurrentCustomerID() {
+      if (this.customer) {
+        return this.customer.id;
+      }
+
+      return this.customerID;
+    },
     addLocation: function addLocation() {
+      var _this = this;
+
       var apollo = this.$store.state.apollo,
           store = this.$store;
-      console.log(this.customerID);
       this.$apollo.mutate({
-        mutation: _apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__.addNewLocationMutation,
+        mutation: _apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.addNewLocationMutation,
         variables: {
           name: this.name,
           unitNumber: this.unitNumber,
@@ -22732,11 +22906,18 @@ __webpack_require__.r(__webpack_exports__);
           streetName: this.streetName,
           suburb: this.suburb,
           city: this.city,
-          customer_id: this.customerID ? this.customerID : 0
+          customer_id: this.getCurrentCustomerID()
         }
       }).then(function (result) {
-        apollo.queries.locations.refetch();
-        store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+        if (apollo.queries.locations) {
+          apollo.queries.locations.refetch();
+        }
+
+        if (_this.customer) {
+          _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
+        }
+
+        store.dispatch('locationsStore/setAddLocationModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this location');
@@ -22747,11 +22928,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   apollo: {
-    customers: _apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery
+    customers: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.getCustomersQuery
   },
   computed: {
     modalOpened: function modalOpened() {
-      return this.$store.state['locationsDashboardStore'].getAddUserModalOpen;
+      return this.$store.state['locationsStore'].getAddUserModalOpen;
     }
   }
 });
@@ -22769,7 +22950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+/* harmony import */ var _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22785,7 +22966,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
+        mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
         variables: {
           name: this.name,
           email: this.email,
@@ -22793,7 +22974,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         apollo.queries.users.refetch();
-        store.dispatch('userDashboardStore/setAddUserModalClosed');
+        store.dispatch('usersStore/setAddUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -22805,8 +22986,119 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     modalOpened: function modalOpened() {
-      return this.$store.state['userDashboardStore'].getAddUserModalOpen;
+      return this.$store.state['usersStore'].getAddUserModalOpen;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      title: '',
+      registration: '',
+      loadWeight: '',
+      liftWeight: '',
+      wofExpiry: '',
+      registrationExpiry: '',
+      isActive: false
+    };
+  },
+  props: {
+    customer: {}
+  },
+  methods: {
+    addVehicle: function addVehicle() {
+      var apollo = this.$store.state.apollo,
+          store = this.$store;
+      this.$apollo.mutate({
+        mutation: _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.addNewVehicleMutation,
+        variables: {
+          title: this.title,
+          registration: this.registration,
+          loadWeight: this.loadWeight,
+          liftWeight: this.liftWeight,
+          wofExpiry: this.wofExpiry,
+          registrationExpiry: this.registrationExpiry,
+          isActive: this.isActive
+        }
+      }).then(function (result) {
+        apollo.queries.vehicles.refetch();
+        store.dispatch('vehiclesStore/setAddVehicleModalState', false);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.addVehicle();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    this.name = '';
+  },
+  props: {
+    customer: {}
+  },
+  methods: {
+    editCustomer: function editCustomer() {
+      var _this = this;
+
+      var apollo = this.$store.state.apollo,
+          store = this.$store;
+      this.$apollo.mutate({
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.updateCustomerMutation,
+        variables: {
+          id: this.customer.id,
+          name: this.name
+        }
+      }).then(function (result) {
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
+
+        store.dispatch('customersStore/setEditCustomerModalState');
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.editCustomer();
+    }
+  },
+  mounted: function mounted() {
+    this.name = this.customer.name;
   }
 });
 
@@ -22823,7 +23115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
+/* harmony import */ var _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22832,9 +23124,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentUser: function currentUser() {
-      this.name = '';
-      this.email = '';
-      return this.$store.state['userDashboardStore'].currentUser;
+      return this.$store.state['usersStore'].currentUser;
     }
   },
   methods: {
@@ -22842,7 +23132,7 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
+        mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
         variables: {
           id: this.currentUser.id,
           name: this.name,
@@ -22850,7 +23140,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         apollo.queries.users.refetch();
-        store.dispatch('userDashboardStore/setEditUserModalClosed');
+        store.dispatch('usersStore/setEditUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error adding this user');
@@ -22863,6 +23153,71 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.name = this.currentUser.name;
     this.email = this.currentUser.email;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    this.title = '', this.registration = '', this.loadWeight = '', this.liftWeight = '', this.wofExpiry = '', this.registrationExpiry = '', this.isActive = '';
+  },
+  computed: {
+    currentVehicle: function currentVehicle() {
+      return this.$store.state['vehiclesStore'].currentVehicle;
+    }
+  },
+  methods: {
+    editVehicle: function editVehicle() {
+      var apollo = this.$store.state.apollo,
+          store = this.$store;
+      this.$apollo.mutate({
+        mutation: _apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.updateVehicleMutation,
+        variables: {
+          id: this.currentVehicle.id,
+          title: this.title,
+          registration: this.registration,
+          loadWeight: this.loadWeight,
+          liftWeight: this.liftWeight,
+          wofExpiry: this.wofExpiry,
+          registrationExpiry: this.registrationExpiry,
+          isActive: this.isActive
+        }
+      }).then(function (result) {
+        store.dispatch('vehiclesStore/setEditVehicleModalState', {
+          open: false,
+          vehicle: false
+        });
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this user');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.editVehicle();
+    }
+  },
+  mounted: function mounted() {
+    this.title = this.currentVehicle.title;
+    this.registration = this.currentVehicle.registration;
+    this.loadWeight = this.currentVehicle.loadWeight;
+    this.liftWeight = this.currentVehicle.liftWeight;
+    this.wofExpiry = this.currentVehicle.wofExpiry;
+    this.registrationExpiry = this.currentVehicle.registrationExpiry;
+    this.isActive = this.currentVehicle.isActive;
   }
 });
 
@@ -22908,9 +23263,67 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login_modal), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
+    key: _ctx.$route.fullPath
+  }))], 64
   /* STABLE_FRAGMENT */
   );
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container"
+};
+var _hoisted_2 = {
+  "class": "detail-page__wrapper"
+};
+var _hoisted_3 = {
+  "class": "detail-page__section"
+};
+var _hoisted_4 = {
+  "class": "detail-page__header"
+};
+var _hoisted_5 = {
+  "class": "detail-page__title"
+};
+var _hoisted_6 = {
+  "class": "action-panel"
+};
+var _hoisted_7 = {
+  "class": "detail-page__content"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.lastName), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.deleteContact($options.contact.id);
+    }),
+    "class": "btn btn-primary btn--danger"
+  }, " Delete "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.$store.dispatch('contactsStore/setEditCustomerModalState', true);
+    }),
+    "class": "btn btn-primary"
+  }, " Edit ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.emailAddress) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.phoneNumber), 1
+  /* TEXT */
+  )])])]);
 }
 
 /***/ }),
@@ -22967,7 +23380,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddCustomersModalOpen');
+      return _ctx.$store.dispatch('customersStore/setAddCustomersModalOpen');
     }),
     "class": "btn btn-primary"
   }, " Add Customer ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customers, function (customer, index) {
@@ -23023,150 +23436,223 @@ var _hoisted_4 = {
   "class": "detail-page__title"
 };
 var _hoisted_5 = {
+  "class": "action-panel"
+};
+var _hoisted_6 = {
   "class": "detail-page__content"
 };
+var _hoisted_7 = {
+  "class": "detail-page__section"
+};
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "detail-page__sub-title"
 }, " Locations ", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_9 = {
   key: 0,
   "class": "detail-page__detail-grid"
 };
-var _hoisted_8 = {
+var _hoisted_10 = {
+  "class": "action-panel"
+};
+var _hoisted_11 = {
+  "class": "grid-view__wrapper"
+};
+var _hoisted_12 = {
+  "class": "grid-view"
+};
+var _hoisted_13 = {
+  "class": "grid-view__information"
+};
+var _hoisted_14 = {
+  "class": "grid-view__id"
+};
+var _hoisted_15 = {
+  "class": "grid-view__column"
+};
+var _hoisted_16 = {
+  key: 0,
+  "class": "grid-view__column"
+};
+var _hoisted_17 = {
+  "class": "grid-view__actions"
+};
+var _hoisted_18 = ["onClick"];
+var _hoisted_19 = {
   key: 1,
   "class": "detail-page__detail-grid detail-page__detail-grid--empty"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "detail-page__detail-grid-content"
 }, " Nothing here?, Add a location now ", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_21 = {
   "class": "detail-page__detail-grid-action-panel"
 };
+var _hoisted_22 = {
+  "class": "detail-page__section"
+};
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "detail-page__sub-title"
 }, " Contacts ", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = {
-  key: 2,
+var _hoisted_24 = {
+  key: 0,
   "class": "detail-page__detail-grid"
 };
-var _hoisted_13 = {
-  key: 3,
+var _hoisted_25 = {
+  "class": "action-panel"
+};
+var _hoisted_26 = {
+  "transition-duration": "0.3s",
+  "item-selector": ".contact-card__wrapper"
+};
+var _hoisted_27 = {
+  "class": "contact-cards__wrapper"
+};
+var _hoisted_28 = {
+  "class": "contact-card"
+};
+var _hoisted_29 = {
+  "class": "contact-card__title"
+};
+var _hoisted_30 = {
+  "class": "contact-card__list"
+};
+var _hoisted_31 = {
+  "class": "contact-card__list-item"
+};
+var _hoisted_32 = {
+  "class": "contact-card__list-item"
+};
+var _hoisted_33 = {
+  key: 1,
   "class": "detail-page__detail-grid detail-page__detail-grid--empty"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "detail-page__detail-grid-content"
 }, " Nothing here?, Add a contact now ", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = {
+var _hoisted_35 = {
   "class": "detail-page__detail-grid-action-panel"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
 
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.customer.name), 1
+  var _component_edit_customer_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-customer-modal");
+
+  var _component_add_contact_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-contact-modal");
+
+  var _directive_masonry_tile = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry-tile");
+
+  var _directive_masonry = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, $data.customer.locations > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary",
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
-    })
-  }, " Add a new location ")])])), _hoisted_11, $data.customer.contacts > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary",
+      return $options.deleteCustomer($options.customer.id);
+    }),
+    "class": "btn btn-primary btn--danger"
+  }, " Delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
-    })
-  }, " Add a new contact ")])]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal)]);
-}
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  "class": "container"
-};
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, " Locations Dashboard ", -1
-/* HOISTED */
-);
-
-var _hoisted_3 = {
-  "class": "action-panel"
-};
-var _hoisted_4 = {
-  "class": "grid-view__wrapper"
-};
-var _hoisted_5 = {
-  "class": "grid-view"
-};
-var _hoisted_6 = {
-  "class": "grid-view__information"
-};
-var _hoisted_7 = {
-  "class": "grid-view__id"
-};
-var _hoisted_8 = {
-  "class": "grid-view__column"
-};
-var _hoisted_9 = {
-  key: 0,
-  "class": "grid-view__column"
-};
-var _hoisted_10 = {
-  "class": "grid-view__actions"
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalOpen');
+      return _ctx.$store.dispatch('customersStore/setEditCustomerModalState', true);
     }),
     "class": "btn btn-primary"
-  }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.locations, function (location) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
+  }, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, $options.customer.locations && $options.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
+    }),
+    "class": "btn btn-primary"
+  }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.locations, function (location) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
     /* TEXT */
-    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
+    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
     /* TEXT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\r\n                        Edit\r\n                    </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: _cache[1] || (_cache[1] = function ($event) {
-        return _ctx.deleteUser(_ctx.user.id);
-      }),
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\r\n                                        Edit\r\n                                    </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick($event) {
+        return $options.deleteLocation(location.id);
+      },
       "class": "btn btn-primary btn--danger"
-    }, " Delete ")])])]);
+    }, " Delete ", 8
+    /* PROPS */
+    , _hoisted_18)])])]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal)]);
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-primary",
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
+    })
+  }, " Add a new location ")])]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, $options.customer.contacts && $options.customer.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-primary",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
+    })
+  }, " Add a new contact ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.customer.contacts, function (contact, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+      "class": "contact-card__wrapper",
+      to: {
+        path: '/customers/view-contact/' + contact.id
+      }
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.emailAddress), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.lastName), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.phoneNumber), 1
+        /* TEXT */
+        )])])];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["to"])])), [[_directive_masonry_tile]]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-primary",
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
+    })
+  }, " Add a new contact ")])]))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
+    customer: $options.customer
+  }, null, 8
+  /* PROPS */
+  , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_customer_modal, {
+    customer: $options.customer
+  }, null, 8
+  /* PROPS */
+  , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_contact_modal, {
+    customer: $options.customer
+  }, null, 8
+  /* PROPS */
+  , ["customer"])]);
 }
 
 /***/ }),
@@ -23229,7 +23715,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.$store.dispatch('userDashboardStore/setAddUserModalOpen');
+          return _ctx.$store.dispatch('usersStore/setAddUserModalOpen');
         }),
         "class": "btn btn-primary"
       }, " Add User ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.users, function (user) {
@@ -23241,7 +23727,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           onClick: function onClick($event) {
-            return _ctx.$store.dispatch('userDashboardStore/setEditUserModalOpen', user);
+            return _ctx.$store.dispatch('usersStore/setEditUserModalOpen', user);
           },
           "class": "btn btn-primary"
         }, " Edit ", 8
@@ -23257,6 +23743,104 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_user_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_user_modal)];
+    }),
+    _: 1
+    /* STABLE */
+
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, " Vehicles Dashboard ", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "action-panel"
+};
+var _hoisted_4 = {
+  "class": "grid-view__wrapper"
+};
+var _hoisted_5 = {
+  "class": "grid-view"
+};
+var _hoisted_6 = {
+  "class": "grid-view__information"
+};
+var _hoisted_7 = {
+  "class": "grid-view__id"
+};
+var _hoisted_8 = {
+  "class": "grid-view__column"
+};
+var _hoisted_9 = {
+  "class": "grid-view__column"
+};
+var _hoisted_10 = {
+  "class": "grid-view__actions"
+};
+var _hoisted_11 = ["onClick"];
+var _hoisted_12 = ["onClick"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_edit_vehicle_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-vehicle-modal");
+
+  var _component_add_vehicle_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-vehicle-modal");
+
+  var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.$store.dispatch('vehiclesStore/setAddVehicleModalState', true);
+        }),
+        "class": "btn btn-primary"
+      }, " Add Vehicle ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.vehicles, function (vehicle) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(vehicle.id), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(vehicle.title), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(vehicle.registration), 1
+        /* TEXT */
+        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          onClick: function onClick($event) {
+            return _ctx.$store.dispatch('vehiclesStore/setEditVehicleModalState', {
+              open: true,
+              vehicle: vehicle
+            });
+          },
+          "class": "btn btn-primary"
+        }, " Edit ", 8
+        /* PROPS */
+        , _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          onClick: function onClick($event) {
+            return $options.deleteVehicle(vehicle.id);
+          },
+          "class": "btn btn-primary btn--danger"
+        }, " Delete ", 8
+        /* PROPS */
+        , _hoisted_12)])])]);
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_vehicle_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_vehicle_modal)])];
     }),
     _: 1
     /* STABLE */
@@ -23322,22 +23906,19 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "navbar__item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#",
-  "class": "navbar__link"
-}, " Trucks ")], -1
-/* HOISTED */
-);
-
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "navbar__item"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Customers ");
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Vehicles ");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+var _hoisted_6 = {
+  "class": "navbar__item"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Customers ");
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "navbar__item"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#",
@@ -23346,58 +23927,205 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = {
+var _hoisted_9 = {
   "class": "navbar__item"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Locations ");
-
-var _hoisted_10 = {
-  "class": "navbar__item"
-};
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Users ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Users ");
 
 function render(_ctx, _cache) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "class": "navbar__link",
+    to: {
+      path: '/vehicles'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_5];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "navbar__link",
     to: {
       path: '/customers'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6];
+      return [_hoisted_7];
     }),
     _: 1
     /* STABLE */
 
-  })]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "class": "navbar__link",
-    to: {
-      path: '/locations'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "navbar__link",
     to: {
       path: '/users'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11];
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li class=\"navbar__item navbar__item--auth-panel\">\r\n                <a class=\"navbar__link\" href=\"{{ route('logout') }}\"\r\n                    onclick=\"event.preventDefault();\r\n                    document.getElementById('logout-form').submit();\r\n                \">\r\n                    {{ __('Logout') }}\r\n                </a>\r\n                <form id=\"logout-form\" action=\"{{ route('logout') }}\" method=\"POST\" class=\"d-none\">\r\n                    @csrf\r\n                </form>\r\n            </li> ")])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "dialog__title"
+}, " Add a new contact ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "emailAddress"
+}, " Email Address ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "firstName"
+}, " First Name ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "lastName"
+}, " Last Name ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "phoneNumber"
+}, " Phone Number ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['customersStore'].addContactsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', false);
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.emailAddress = $event;
+    }),
+    id: "emailAddress",
+    type: "email",
+    "class": "input input--text",
+    name: "emailAddress",
+    autocomplete: "off",
+    autofocus: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.emailAddress]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.firstName = $event;
+    }),
+    id: "firstName",
+    type: "text",
+    "class": "input input--text",
+    name: "firstName",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.firstName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.lastName = $event;
+    }),
+    id: "lastName",
+    type: "text",
+    "class": "input input--text",
+    name: "lastName",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.lastName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.phoneNumber = $event;
+    }),
+    id: "phoneNumber",
+    type: "text",
+    "class": "input input--text",
+    name: "phoneNumber",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.phoneNumber]])]), _hoisted_14], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -23460,9 +24188,9 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['customersDashboardStore'].addCustomersModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['customersStore'].addCustomersModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersDashboardStore/setAddCustomersModalClosed');
+      return _ctx.$store.dispatch('customersStore/setAddCustomersModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -23579,6 +24307,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_16 = {
+  key: 0,
   "class": "form__input-field"
 };
 
@@ -23603,9 +24332,9 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['locationsDashboardStore'].addLocationsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['locationsStore'].addLocationsModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('locationsDashboardStore/setAddLocationModalClosed');
+      return _ctx.$store.dispatch('locationsStore/setAddLocationModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -23668,7 +24397,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]])]), !$props.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "customer",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $data.customerID = $event;
@@ -23683,7 +24412,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.customerID]])]), _hoisted_19], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.customerID]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_19], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -23774,9 +24503,9 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['userDashboardStore'].addUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['usersStore'].addUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('userDashboardStore/setAddUserModalClosed');
+      return _ctx.$store.dispatch('usersStore/setAddUserModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -23836,6 +24565,311 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]])]), _hoisted_14], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "dialog__title"
+}, " Add a new vehicle ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "title"
+}, " Title ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "registration"
+}, " Registration ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "loadWeight"
+}, " Load Weight ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "liftWeight"
+}, " Lift Weight ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "wofExpiry"
+}, " Wof Expiry ", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "registrationExpiry"
+}, " Registration Expiry ", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "isActive"
+}, " Active? ", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['vehiclesStore'].AddVehiclesModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('vehiclesStore/setAddVehicleModalState', false);
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.title = $event;
+    }),
+    id: "title",
+    type: "text",
+    "class": "input input--text",
+    name: "title",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.registration = $event;
+    }),
+    id: "registration",
+    type: "text",
+    "class": "input input--text",
+    name: "registration",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registration]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.loadWeight = $event;
+    }),
+    id: "loadWeight",
+    type: "text",
+    "class": "input input--text",
+    name: "loadWeight",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loadWeight]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.liftWeight = $event;
+    }),
+    id: "liftWeight",
+    type: "text",
+    "class": "input input--text",
+    name: "liftWeight",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.liftWeight]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.wofExpiry = $event;
+    }),
+    id: "wofExpiry",
+    type: "date",
+    "class": "input input--date",
+    name: "wofExpiry",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.wofExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return $data.registrationExpiry = $event;
+    }),
+    id: "registrationExpiry",
+    type: "date",
+    "class": "input input--date",
+    name: "registrationExpiry",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registrationExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $data.isActive = $event;
+    }),
+    id: "isActive",
+    type: "checkbox",
+    "class": "input input--checkbox",
+    name: "isActive",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.isActive]])]), _hoisted_20], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+var _hoisted_5 = {
+  "class": "dialog__title"
+};
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "name"
+}, " Name ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = ["placeholder"];
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['customersStore'].editCustomerModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setEditCustomerModalState', false);
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.customer.name), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.name = $event;
+    }),
+    id: "name",
+    type: "name",
+    "class": "input input--text",
+    name: "name",
+    placeholder: $props.customer.name,
+    autocomplete: "off"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), _hoisted_9], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -23910,9 +24944,9 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.$store.state['userDashboardStore'].editUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return _ctx.$store.state['usersStore'].editUserModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('userDashboardStore/setEditUserModalClosed');
+      return _ctx.$store.dispatch('usersStore/setEditUserModalClosed');
     }),
     "class": "dialog__close-btn"
   }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentUser.name), 1
@@ -23948,6 +24982,241 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), _hoisted_12], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+var _hoisted_5 = {
+  "class": "dialog__title"
+};
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "title"
+}, " Title ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = ["placeholder"];
+var _hoisted_9 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "registration"
+}, " Registration ", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = ["placeholder"];
+var _hoisted_12 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "loadWeight"
+}, " Load Weight ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = ["placeholder"];
+var _hoisted_15 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "liftWeight"
+}, " Lift Weight ", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = ["placeholder"];
+var _hoisted_18 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "wofExpiry"
+}, " Wof Expiry ", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = ["placeholder"];
+var _hoisted_21 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "registrationExpiry"
+}, " Registration Expiry ", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = ["placeholder"];
+var _hoisted_24 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "isActive"
+}, " Active? ", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = ["checked"];
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['vehiclesStore'].EditVehicleModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('vehiclesStore/setEditVehicleModalState', false, false);
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_5, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentVehicle.title) + ": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentVehicle.registration), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.title = $event;
+    }),
+    id: "title",
+    type: "text",
+    "class": "input input--text",
+    name: "title",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.title
+  }, null, 8
+  /* PROPS */
+  , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.registration = $event;
+    }),
+    id: "registration",
+    type: "text",
+    "class": "input input--text",
+    name: "registration",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.registration
+  }, null, 8
+  /* PROPS */
+  , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.registration]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.loadWeight = $event;
+    }),
+    id: "loadWeight",
+    type: "text",
+    "class": "input input--text",
+    name: "loadWeight",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.loadWeight
+  }, null, 8
+  /* PROPS */
+  , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.loadWeight]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.liftWeight = $event;
+    }),
+    id: "liftWeight",
+    type: "text",
+    "class": "input input--text",
+    name: "liftWeight",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.liftWeight
+  }, null, 8
+  /* PROPS */
+  , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.liftWeight]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.wofExpiry = $event;
+    }),
+    id: "wofExpiry",
+    type: "text",
+    onfocus: "(this.type = 'date')",
+    onblur: "(this.type = 'text')",
+    "class": "input input--date",
+    name: "wofExpiry",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.wofExpiry
+  }, null, 8
+  /* PROPS */
+  , _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.wofExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.registrationExpiry = $event;
+    }),
+    id: "registrationExpiry",
+    type: "text",
+    onfocus: "(this.type = 'date')",
+    onblur: "(this.type = 'text')",
+    "class": "input input--date",
+    name: "registrationExpiry",
+    autocomplete: "off",
+    placeholder: $options.currentVehicle.registrationExpiry
+  }, null, 8
+  /* PROPS */
+  , _hoisted_23), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.registrationExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return _ctx.isActive = $event;
+    }),
+    id: "isActive",
+    type: "checkbox",
+    "class": "input input--checkbox",
+    name: "isActive",
+    autocomplete: "off",
+    checked: $options.currentVehicle.isActive
+  }, null, 8
+  /* PROPS */
+  , _hoisted_26), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.isActive]])]), _hoisted_27], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -24104,20 +25373,21 @@ __webpack_require__(/*! purecss */ "./node_modules/purecss/build/pure-min.css");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
 /* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/apollo-option */ "./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/App.vue */ "./resources/src/vue/App.vue");
 /* harmony import */ var _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue/apps/UserDashboard/UserDashboard */ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue");
-/* harmony import */ var _vue_apps_LocationsDashboard_LocationsDashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/LocationsDashboard */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue");
-/* harmony import */ var _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/CustomersDashboard */ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue");
+/* harmony import */ var _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/CustomersDashboard */ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue");
+/* harmony import */ var _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/VehiclesDashboard */ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue");
 /* harmony import */ var _vue_apps_CustomersDashboard_components_ViewCustomer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/components/ViewCustomer */ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue");
-/* harmony import */ var _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vue/compoments/Navbar */ "./resources/src/vue/compoments/Navbar.vue");
-/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
+/* harmony import */ var _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/components/ViewContact */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue");
+/* harmony import */ var _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./vue/compoments/Navbar */ "./resources/src/vue/compoments/Navbar.vue");
+/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/src/bootstrap.js");
 
 
@@ -24133,8 +25403,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/src/bootstrap.js");
 
 
 
-var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(),
-    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.ApolloClient({
+
+var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.InMemoryCache(),
+    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__.ApolloClient({
   uri: 'http://laravel.test/graphql',
   cache: cache
 }),
@@ -24142,7 +25413,7 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(
   defaultClient: apolloClient
 }),
     app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({}),
-    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_9__["default"])(),
+    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_10__["default"])(),
     routes = [{
   path: '/',
   component: _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -24150,30 +25421,33 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(
   path: '/users',
   component: _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
-  path: '/locations',
-  component: _vue_apps_LocationsDashboard_LocationsDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
-}, {
   path: '/customers',
-  component: _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, {
   path: '/customers/view-customer/:id',
   component: _vue_apps_CustomersDashboard_components_ViewCustomer__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
+  path: '/customers/view-contact/:id',
+  component: _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_7__["default"]
+}, {
+  path: '/vehicles',
+  component: _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
 }],
-    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createWebHistory)(),
+    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createWebHistory)(),
   routes: routes,
   strict: true
 });
 app.use(apolloProvider);
-app.use(_store__WEBPACK_IMPORTED_MODULE_10__.store);
+app.use(_store__WEBPACK_IMPORTED_MODULE_11__.store);
 app.use(router);
 app.config.globalProperties.emitter = emitter;
-app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_8__.VueMasonryPlugin);
+app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_9__.VueMasonryPlugin);
 app.component('app', _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-app.component('navbar', _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_7__["default"]);
+app.component('navbar', _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_8__["default"]);
 app.component('users-dashboard', _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]);
-app.component('locations-dashboard', _vue_apps_LocationsDashboard_LocationsDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]);
-app.component('customers-dashboard', _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]);
+app.component('customers-dashboard', _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]);
+app.component('vehicles-dashboard', _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]);
 app.mount('#app');
 
 /***/ }),
@@ -24189,15 +25463,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "store": () => (/* binding */ store)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
-/* harmony import */ var _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/user-dashboard-store */ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js");
-/* harmony import */ var _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/locations-dashboard-store */ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js");
-/* harmony import */ var _vue_apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/customers-dashboard-store */ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _vue_apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue/apps/UserDashboard/users-store */ "./resources/src/vue/apps/UserDashboard/users-store.js");
+/* harmony import */ var _vue_apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue/apps/LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _vue_apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _vue_apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+/* harmony import */ var _vue_apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/contacts-store */ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js");
 
 
 
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
+
+
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
   state: {
     apollo: false,
     currentUser: false,
@@ -24229,47 +25507,124 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
     }
   },
   modules: {
-    userDashboardStore: _vue_apps_UserDashboard_user_dashboard_store__WEBPACK_IMPORTED_MODULE_0__.userDashboardStore,
-    locationsDashboardStore: _vue_apps_LocationsDashboard_locations_dashboard_store__WEBPACK_IMPORTED_MODULE_1__.locationsDashboardStore,
-    customersDashboardStore: _vue_apps_CustomersDashboard_customers_dashboard_store__WEBPACK_IMPORTED_MODULE_2__.customersDashboardStore
+    usersStore: _vue_apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.usersStore,
+    locationsStore: _vue_apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.locationsStore,
+    customersStore: _vue_apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_2__.customersStore,
+    vehiclesStore: _vue_apps_VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_3__.vehiclesStore,
+    contactsStore: _vue_apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_4__.contactsStore
   }
 });
 
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js":
-/*!********************************************************************************!*\
-  !*** ./resources/src/vue/apps/CustomersDashboard/customers-dashboard-store.js ***!
-  \********************************************************************************/
+/***/ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js":
+/*!********************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/contacts-store.js ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
-/* harmony export */   "customersDashboardStore": () => (/* binding */ customersDashboardStore),
-/* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
-/* harmony export */   "getCustomersQuery": () => (/* binding */ getCustomersQuery)
+/* harmony export */   "contactsStore": () => (/* binding */ contactsStore),
+/* harmony export */   "deleteContact": () => (/* binding */ deleteContact)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query($id: ID!) {\n        contact(id: $id) {\n            id\n            firstName\n            lastName\n            phoneNumber\n            emailAddress\n        }\n    }\n"]))),
+    deleteContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteContact(id: $id) {\n                id\n                customer {\n                    id\n                }\n            }\n        }\n    "]))),
+    contactsStore = {
+  namespaced: true,
+  state: {
+    contacts: [],
+    currentContact: false
+  },
+  mutations: {
+    setCurrentContact: function setCurrentContact(state, contact) {
+      state.currentContact = contact;
+    }
+  },
+  actions: {
+    setCurrentContact: function setCurrentContact(_ref, payload) {
+      var commit = _ref.commit;
+
+      if (!payload) {
+        commit('setCurrentContact', false);
+      }
+
+      this.state.apollo.query({
+        query: getContact,
+        fetchPolicy: 'no-cache',
+        variables: {
+          id: payload
+        }
+      }).then(function (result) {
+        commit('setCurrentContact', result.data.contact);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/CustomersDashboard/customers-store.js":
+/*!**********************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/customers-store.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
+/* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
+/* harmony export */   "customersStore": () => (/* binding */ customersStore),
+/* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
+/* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
+/* harmony export */   "getCustomersQuery": () => (/* binding */ getCustomersQuery),
+/* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
+/* harmony export */ });
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n        }\n    }\n"]))),
-    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                }\n            }\n        }\n    "]))),
+    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n            }\n        }\n    "]))),
     addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
-    customersDashboardStore = {
+    updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
+    addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
+    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
+    customersStore = {
   namespaced: true,
   state: {
     customers: [],
-    addCustomersModalOpen: false
+    addCustomersModalOpen: false,
+    editCustomerModalOpen: false,
+    addContactsModalOpen: false,
+    currentCustomer: false
   },
   mutations: {
     setAddCustomersModalState: function setAddCustomersModalState(state, payload) {
       state.addCustomersModalOpen = payload;
+    },
+    setEditCustomerModalState: function setEditCustomerModalState(state, payload) {
+      state.editCustomerModalOpen = payload;
+    },
+    setAddContactsModalState: function setAddContactsModalState(state, payload) {
+      state.addContactsModalOpen = payload;
+    },
+    setCurrentCustomer: function setCurrentCustomer(state, payload) {
+      state.currentCustomer = payload;
     }
   },
   actions: {
@@ -24280,6 +25635,33 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     setAddCustomersModalClosed: function setAddCustomersModalClosed(_ref2) {
       var commit = _ref2.commit;
       commit('setAddCustomersModalState', false);
+    },
+    setEditCustomerModalState: function setEditCustomerModalState(_ref3, payload) {
+      var commit = _ref3.commit;
+      commit('setEditCustomerModalState', payload);
+    },
+    setAddContactsModalState: function setAddContactsModalState(_ref4, payload) {
+      var commit = _ref4.commit;
+      commit('setAddContactsModalState', payload);
+    },
+    setCurrentCustomer: function setCurrentCustomer(_ref5, payload) {
+      var commit = _ref5.commit;
+
+      if (!payload) {
+        commit('setCurrentCustomer', false);
+      }
+
+      this.state.apollo.query({
+        query: getCustomer,
+        fetchPolicy: 'no-cache',
+        variables: {
+          id: payload
+        }
+      }).then(function (result) {
+        commit('setCurrentCustomer', result.data.customer);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 };
@@ -24287,28 +25669,30 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js":
-/*!********************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/locations-dashboard-store.js ***!
-  \********************************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/locations-store.js":
+/*!**********************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/locations-store.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewLocationMutation": () => (/* binding */ addNewLocationMutation),
+/* harmony export */   "deleteLocationMutation": () => (/* binding */ deleteLocationMutation),
 /* harmony export */   "getLocationsQuery": () => (/* binding */ getLocationsQuery),
-/* harmony export */   "locationsDashboardStore": () => (/* binding */ locationsDashboardStore)
+/* harmony export */   "locationsStore": () => (/* binding */ locationsStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n                name\n            }\n        }\n    }\n"]))),
     addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String,\n            $customer_id: ID\n        ) {\n            addNewLocation(\n                unitNumber: $unitNumber,\n                streetNumber: $streetNumber,\n                streetName: $streetName,\n                suburb: $suburb,\n                city: $city,\n                customer_id: $customer_id\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n                customer {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
-    locationsDashboardStore = {
+    deleteLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteLocation(id: $id) {\n                id\n            }\n        }\n    "]))),
+    locationsStore = {
   namespaced: true,
   state: {
     locations: [],
@@ -24349,10 +25733,10 @@ var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/UserDashboard/user-dashboard-store.js":
-/*!**********************************************************************!*\
-  !*** ./resources/src/vue/apps/UserDashboard/user-dashboard-store.js ***!
-  \**********************************************************************/
+/***/ "./resources/src/vue/apps/UserDashboard/users-store.js":
+/*!*************************************************************!*\
+  !*** ./resources/src/vue/apps/UserDashboard/users-store.js ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24362,7 +25746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteUserMutation": () => (/* binding */ deleteUserMutation),
 /* harmony export */   "editUserMutation": () => (/* binding */ editUserMutation),
 /* harmony export */   "getUsersQuery": () => (/* binding */ getUsersQuery),
-/* harmony export */   "userDashboardStore": () => (/* binding */ userDashboardStore)
+/* harmony export */   "usersStore": () => (/* binding */ usersStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
@@ -24374,7 +25758,7 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
     addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!\n        ) {\n            addNewUser(\n                name: $name,\n                email: $email,\n                password: $password\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
     editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
-    userDashboardStore = {
+    usersStore = {
   namespaced: true,
   state: {
     editUserModalOpen: false,
@@ -24439,6 +25823,79 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     },
     getApolloClient: function getApolloClient() {
       return state.apollo;
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js":
+/*!********************************************************************!*\
+  !*** ./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewVehicleMutation": () => (/* binding */ addNewVehicleMutation),
+/* harmony export */   "deleteVehicle": () => (/* binding */ deleteVehicle),
+/* harmony export */   "getVehiclesQuery": () => (/* binding */ getVehiclesQuery),
+/* harmony export */   "updateVehicleMutation": () => (/* binding */ updateVehicleMutation),
+/* harmony export */   "vehiclesStore": () => (/* binding */ vehiclesStore)
+/* harmony export */ });
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        vehicles {\n            id\n            title\n            registration\n            loadWeight\n            liftWeight\n            wofExpiry\n            registrationExpiry\n            isActive\n        }\n    }\n"]))),
+    addNewVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String\n            $registration: String,\n            $loadWeight: String,\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            addNewVehicle(\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
+    updateVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $title: String\n            $registration: String\n            $loadWeight: String\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            updateVehicle(\n                id: $id,\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
+    deleteVehicle = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation($id: ID!) {\n            deleteVehicle(id: $id) {\n                id\n            }\n        }\n    "]))),
+    vehiclesStore = {
+  namespaced: true,
+  state: {
+    apollo: false,
+    AddVehiclesModalOpen: false,
+    EditVehicleModalOpen: false,
+    currentVehicle: false
+  },
+  mutations: {
+    setAddVehicleModalState: function setAddVehicleModalState(state, payload) {
+      state.AddVehiclesModalOpen = payload;
+    },
+    setEditVehicleModalState: function setEditVehicleModalState(state, payload) {
+      state.EditVehicleModalOpen = payload;
+    },
+    setCurrentVehicle: function setCurrentVehicle(state, payload) {
+      state.currentVehicle = payload;
+      console.log(state.currentVehicle);
+    }
+  },
+  actions: {
+    setAddVehicleModalState: function setAddVehicleModalState(_ref, state) {
+      var commit = _ref.commit;
+      commit('setAddVehicleModalState', state);
+    },
+    setEditVehicleModalState: function setEditVehicleModalState(_ref2, payload) {
+      var commit = _ref2.commit;
+      commit('setCurrentVehicle', payload.vehicle);
+      commit('setEditVehicleModalState', payload.open);
+    },
+    setApolloClient: function setApolloClient(_ref3, apollo) {
+      var commit = _ref3.commit;
+      commit('setApolloClient', apollo);
+    }
+  },
+  getters: {
+    getApolloClient: function getApolloClient() {
+      return state.apollo;
+    },
+    getCurrentVehicle: function getCurrentVehicle() {
+      return state.vehicle;
     }
   }
 };
@@ -45476,6 +46933,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ViewContact_vue_vue_type_template_id_0520a75e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ViewContact.vue?vue&type=template&id=0520a75e */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e");
+/* harmony import */ var _ViewContact_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ViewContact.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ViewContact_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ViewContact_vue_vue_type_template_id_0520a75e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue":
 /*!**************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue ***!
@@ -45532,34 +47017,6 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue":
-/*!**************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsDashboard.vue?vue&type=template&id=701cff3e */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e");
-/* harmony import */ var _LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsDashboard.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js");
-/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-
-
-
-
-;
-const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue"]])
-/* hot reload */
-if (false) {}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
-
-/***/ }),
-
 /***/ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue":
 /*!****************************************************************!*\
   !*** ./resources/src/vue/apps/UserDashboard/UserDashboard.vue ***!
@@ -45580,6 +47037,34 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/UserDashboard/UserDashboard.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue":
+/*!************************************************************************!*\
+  !*** ./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VehiclesDashboard_vue_vue_type_template_id_69b80ccc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VehiclesDashboard.vue?vue&type=template&id=69b80ccc */ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc");
+/* harmony import */ var _VehiclesDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VehiclesDashboard.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_VehiclesDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_VehiclesDashboard_vue_vue_type_template_id_69b80ccc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -45632,6 +47117,34 @@ const script = {}
 
 ;
 const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_Navbar_vue_vue_type_template_id_62d8562e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/compoments/Navbar.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddContactModal.vue":
+/*!******************************************************!*\
+  !*** ./resources/src/vue/modals/AddContactModal.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddContactModal_vue_vue_type_template_id_931c105e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddContactModal.vue?vue&type=template&id=931c105e */ "./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e");
+/* harmony import */ var _AddContactModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddContactModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddContactModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddContactModal_vue_vue_type_template_id_931c105e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/AddContactModal.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -45724,6 +47237,62 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/modals/AddVehicleModal.vue":
+/*!******************************************************!*\
+  !*** ./resources/src/vue/modals/AddVehicleModal.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddVehicleModal_vue_vue_type_template_id_61ff3a45__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddVehicleModal.vue?vue&type=template&id=61ff3a45 */ "./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45");
+/* harmony import */ var _AddVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddVehicleModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddVehicleModal_vue_vue_type_template_id_61ff3a45__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/AddVehicleModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditCustomerModal.vue":
+/*!********************************************************!*\
+  !*** ./resources/src/vue/modals/EditCustomerModal.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EditCustomerModal_vue_vue_type_template_id_45c58768__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditCustomerModal.vue?vue&type=template&id=45c58768 */ "./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768");
+/* harmony import */ var _EditCustomerModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditCustomerModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditCustomerModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditCustomerModal_vue_vue_type_template_id_45c58768__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/EditCustomerModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/EditUserModal.vue":
 /*!****************************************************!*\
   !*** ./resources/src/vue/modals/EditUserModal.vue ***!
@@ -45744,6 +47313,34 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditUserModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditUserModal_vue_vue_type_template_id_86da62ca__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/EditUserModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditVehicleModal.vue":
+/*!*******************************************************!*\
+  !*** ./resources/src/vue/modals/EditVehicleModal.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EditVehicleModal_vue_vue_type_template_id_3ff831f8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditVehicleModal.vue?vue&type=template&id=3ff831f8 */ "./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8");
+/* harmony import */ var _EditVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditVehicleModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditVehicleModal_vue_vue_type_template_id_3ff831f8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/EditVehicleModal.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -45796,6 +47393,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewContact_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewContact_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ViewContact.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=script&lang=js":
 /*!**************************************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=script&lang=js ***!
@@ -45828,22 +47441,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js":
-/*!**************************************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js ***!
-  \**************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsDashboard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=script&lang=js");
- 
-
-/***/ }),
-
 /***/ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=script&lang=js":
 /*!****************************************************************************************!*\
   !*** ./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=script&lang=js ***!
@@ -45856,6 +47453,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserDashboard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js":
+/*!************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VehiclesDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VehiclesDashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VehiclesDashboard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddContactModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddContactModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddContactModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -45908,6 +47537,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddVehicleModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js":
+/*!********************************************************************************!*\
+  !*** ./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditCustomerModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditCustomerModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditCustomerModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/EditUserModal.vue?vue&type=script&lang=js":
 /*!****************************************************************************!*\
   !*** ./resources/src/vue/modals/EditUserModal.vue?vue&type=script&lang=js ***!
@@ -45920,6 +47581,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditUserModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditUserModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditUserModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditUserModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditVehicleModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditVehicleModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -45956,6 +47633,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewContact_vue_vue_type_template_id_0520a75e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewContact_vue_vue_type_template_id_0520a75e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ViewContact.vue?vue&type=template&id=0520a75e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue?vue&type=template&id=0520a75e");
+
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=template&id=034b6c9e":
 /*!********************************************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue?vue&type=template&id=034b6c9e ***!
@@ -45988,22 +47681,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e":
-/*!********************************************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e ***!
-  \********************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsDashboard_vue_vue_type_template_id_701cff3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsDashboard.vue?vue&type=template&id=701cff3e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsDashboard.vue?vue&type=template&id=701cff3e");
-
-
-/***/ }),
-
 /***/ "./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=template&id=f1958cdc":
 /*!**********************************************************************************************!*\
   !*** ./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=template&id=f1958cdc ***!
@@ -46016,6 +47693,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserDashboard_vue_vue_type_template_id_f1958cdc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserDashboard.vue?vue&type=template&id=f1958cdc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/UserDashboard/UserDashboard.vue?vue&type=template&id=f1958cdc");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc":
+/*!******************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VehiclesDashboard_vue_vue_type_template_id_69b80ccc__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VehiclesDashboard_vue_vue_type_template_id_69b80ccc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VehiclesDashboard.vue?vue&type=template&id=69b80ccc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue?vue&type=template&id=69b80ccc");
 
 
 /***/ }),
@@ -46048,6 +47741,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navbar_vue_vue_type_template_id_62d8562e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navbar_vue_vue_type_template_id_62d8562e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Navbar.vue?vue&type=template&id=62d8562e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/Navbar.vue?vue&type=template&id=62d8562e");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e":
+/*!************************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddContactModal_vue_vue_type_template_id_931c105e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddContactModal_vue_vue_type_template_id_931c105e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddContactModal.vue?vue&type=template&id=931c105e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddContactModal.vue?vue&type=template&id=931c105e");
 
 
 /***/ }),
@@ -46100,6 +47809,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45":
+/*!************************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45 ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddVehicleModal_vue_vue_type_template_id_61ff3a45__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddVehicleModal_vue_vue_type_template_id_61ff3a45__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddVehicleModal.vue?vue&type=template&id=61ff3a45 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddVehicleModal.vue?vue&type=template&id=61ff3a45");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768":
+/*!**************************************************************************************!*\
+  !*** ./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768 ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditCustomerModal_vue_vue_type_template_id_45c58768__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditCustomerModal_vue_vue_type_template_id_45c58768__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditCustomerModal.vue?vue&type=template&id=45c58768 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditCustomerModal.vue?vue&type=template&id=45c58768");
+
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/EditUserModal.vue?vue&type=template&id=86da62ca":
 /*!**********************************************************************************!*\
   !*** ./resources/src/vue/modals/EditUserModal.vue?vue&type=template&id=86da62ca ***!
@@ -46112,6 +47853,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditUserModal_vue_vue_type_template_id_86da62ca__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditUserModal_vue_vue_type_template_id_86da62ca__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditUserModal.vue?vue&type=template&id=86da62ca */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditUserModal.vue?vue&type=template&id=86da62ca");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8":
+/*!*************************************************************************************!*\
+  !*** ./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8 ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditVehicleModal_vue_vue_type_template_id_3ff831f8__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditVehicleModal_vue_vue_type_template_id_3ff831f8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditVehicleModal.vue?vue&type=template&id=3ff831f8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/EditVehicleModal.vue?vue&type=template&id=3ff831f8");
 
 
 /***/ }),

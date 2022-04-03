@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog__wrapper" v-if="$store.state['userDashboardStore'].editUserModalOpen">
+    <div class="dialog__wrapper" v-if="$store.state['usersStore'].editUserModalOpen">
         <div class="dialog">
-            <button @click="$store.dispatch('userDashboardStore/setEditUserModalClosed')" class="dialog__close-btn">
+            <button @click="$store.dispatch('usersStore/setEditUserModalClosed')" class="dialog__close-btn">
                 <span class="sr-only">
                     Close
                 </span>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import { editUserMutation } from '../apps/UserDashboard/user-dashboard-store';
+    import { editUserMutation } from '../apps/UserDashboard/users-store';
 
     export default {
         data() {
@@ -44,9 +44,7 @@
         },
         computed: {
             currentUser() {
-                this.name = '';
-                this.email = '';
-                return this.$store.state['userDashboardStore'].currentUser;
+                return this.$store.state['usersStore'].currentUser;
             }
         },
         methods: {
@@ -63,7 +61,7 @@
                     }
                 }).then((result) => {
                     apollo.queries.users.refetch();
-                    store.dispatch('userDashboardStore/setEditUserModalClosed');
+                    store.dispatch('usersStore/setEditUserModalClosed');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this user');

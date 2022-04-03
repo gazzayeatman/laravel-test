@@ -49,7 +49,7 @@ const getUsersQuery = gql`
             }
         }
     `,
-    userDashboardStore = {
+    usersStore = {
         namespaced: true,
         state: {
             editUserModalOpen: false,
@@ -114,7 +114,7 @@ const getUsersQuery = gql`
     };
 
 export {
-    userDashboardStore,
+    usersStore,
     getUsersQuery,
     deleteUserMutation,
     addNewUserMutation,

@@ -5,7 +5,7 @@
                 Users Dashboard
             </h1>
             <div class="action-panel">
-                <button @click="$store.dispatch('userDashboardStore/setAddUserModalOpen')" class="btn btn-primary">
+                <button @click="$store.dispatch('usersStore/setAddUserModalOpen')" class="btn btn-primary">
                     Add User
                 </button>
             </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="grid-view__actions">
-                        <button @click="$store.dispatch('userDashboardStore/setEditUserModalOpen', user)" class="btn btn-primary">
+                        <button @click="$store.dispatch('usersStore/setEditUserModalOpen', user)" class="btn btn-primary">
                             Edit
                         </button>
                         <button @click="deleteUser(user.id)" class="btn btn-primary btn--danger">
@@ -40,8 +40,7 @@
 <script>
     import EditUserModal from '../../modals/EditUserModal.vue';
     import AddUserModal from '../../modals/AddUserModal.vue';
-    import { getUsersQuery } from './user-dashboard-store';
-    import { deleteUserMutation } from './user-dashboard-store';
+    import { getUsersQuery, deleteUserMutation } from './users-store';
 
     export default {
         data() {
