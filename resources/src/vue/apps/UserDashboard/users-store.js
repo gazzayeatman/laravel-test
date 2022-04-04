@@ -29,22 +29,21 @@ const getUsersQuery = gql`
             $name: String!,
             $email: String!,
             $password: String!,
-            $roles: [Int]
+            $roles: [ID]
         ) {
             addNewUser(
-                name: $name,
-                email: $email,
-                password: $password,
-                roles: {
-                    connect: $roles
+                input: {
+                    name: $name,
+                    email: $email,
+                    password: $password,
+                    roles: {
+                        connect: $roles
+                    }
                 }
             ) {
                 id
                 name
                 email
-                roles {
-                    id
-                }
             }
         }
     `,
