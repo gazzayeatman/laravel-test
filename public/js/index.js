@@ -22958,22 +22958,30 @@ __webpack_require__.r(__webpack_exports__);
       name: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      roles: [],
+      selectedRoles: []
     };
   },
   methods: {
     addUser: function addUser() {
+      var _this = this;
+
       var apollo = this.$store.state.apollo,
-          store = this.$store;
+          store = this.$store,
+          selectedRolesInt = this.selectedRoles.map(Number);
+      console.log(this.selectedRoles);
       this.$apollo.mutate({
         mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
         variables: {
           name: this.name,
           email: this.email,
-          password: this.password
+          password: this.password,
+          roles: selectedRolesInt
         }
       }).then(function (result) {
-        apollo.queries.users.refetch();
+        _this.$apollo.queries.users.refetch();
+
         store.dispatch('usersStore/setAddUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
@@ -22988,6 +22996,9 @@ __webpack_require__.r(__webpack_exports__);
     modalOpened: function modalOpened() {
       return this.$store.state['usersStore'].getAddUserModalOpen;
     }
+  },
+  apollo: {
+    roles: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.getRolesQuery
   }
 });
 
@@ -24482,7 +24493,23 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_14 = {
+  key: 0,
+  "class": "form__input-field"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "form__input-label"
+}, " Roles ", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
+  "class": "form__input-label"
+};
+var _hoisted_17 = ["value"];
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel form__action-panel--right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel-group"
@@ -24501,7 +24528,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     "class": "dialog__form",
-    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -24555,7 +24582,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]])]), _hoisted_14], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]])]), $data.roles.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.roles, function (role) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: role.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.title), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "checkbox",
+      name: "roles",
+      value: role.id,
+      "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+        return $data.selectedRoles = $event;
+      })
+    }, null, 8
+    /* PROPS */
+    , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selectedRoles]])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_18], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -25739,19 +25783,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addNewUserMutation": () => (/* binding */ addNewUserMutation),
 /* harmony export */   "deleteUserMutation": () => (/* binding */ deleteUserMutation),
 /* harmony export */   "editUserMutation": () => (/* binding */ editUserMutation),
+/* harmony export */   "getRolesQuery": () => (/* binding */ getRolesQuery),
 /* harmony export */   "getUsersQuery": () => (/* binding */ getUsersQuery),
 /* harmony export */   "usersStore": () => (/* binding */ usersStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            id\n            name\n            email\n        }\n    }\n"]))),
-    deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
-    addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!\n        ) {\n            addNewUser(\n                name: $name,\n                email: $email,\n                password: $password\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
-    editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
+    getRolesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        {\n            roles {\n                id\n                title\n            }\n        }\n    "]))),
+    deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
+    addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!,\n            $roles: [Int]\n        ) {\n            addNewUser(\n                name: $name,\n                email: $email,\n                password: $password,\n                roles: {\n                    connect: $roles\n                }\n            ) {\n                id\n                name\n                email\n                roles {\n                    id\n                }\n            }\n        }\n    "]))),
+    editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
     usersStore = {
   namespaced: true,
   state: {

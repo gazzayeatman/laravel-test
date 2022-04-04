@@ -1,0 +1,39 @@
+type Vehicle {
+  id: ID!
+  title: String
+  registration: String
+  loadWeight: String
+  liftWeight: String
+  wofExpiry: Date
+  registrationExpiry: Date
+  isActive: Boolean
+}
+
+extend type Query {
+  vehicles: [Vehicle!]! @all
+}
+
+extend type Mutation {
+  deleteVehicle(id: ID!) : Vehicle @delete
+
+  updateVehicle(
+    id: ID!
+    title: String,
+    registration: String,
+    loadWeight: String,
+    liftWeight: String,
+    wofExpiry: Date,
+    registrationExpiry: Date,
+    isActive: Boolean
+  ) : Vehicle @update
+
+  addNewVehicle(
+    title: String,
+    registration: String,
+    loadWeight: String,
+    liftWeight: String,
+    wofExpiry: Date,
+    registrationExpiry: Date,
+    isActive: Boolean
+  ) : Vehicle @create
+}

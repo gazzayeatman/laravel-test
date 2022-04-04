@@ -1,0 +1,26 @@
+type Contact {
+  id: ID!
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  emailAddress: String
+  customer: Customer
+}
+
+extend type Query {
+  contact(
+    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+  ): Contact @find
+}
+
+extend type Mutation {
+  deleteContact(id: ID!) : Contact @delete
+
+  addNewContact(
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    emailAddress: String,
+    customer_id: ID!
+  ) : Contact @create
+}

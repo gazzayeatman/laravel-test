@@ -9,6 +9,14 @@ const getUsersQuery = gql`
         }
     }
 `,
+    getRolesQuery = gql`
+        {
+            roles {
+                id
+                title
+            }
+        }
+    `,
     deleteUserMutation = gql`
         mutation ($id: ID!) {
             deleteUser(id: $id) {
@@ -20,16 +28,23 @@ const getUsersQuery = gql`
         mutation (
             $name: String!,
             $email: String!,
-            $password: String!
+            $password: String!,
+            $roles: [Int]
         ) {
             addNewUser(
                 name: $name,
                 email: $email,
-                password: $password
+                password: $password,
+                roles: {
+                    connect: $roles
+                }
             ) {
                 id
                 name
                 email
+                roles {
+                    id
+                }
             }
         }
     `,
@@ -118,5 +133,6 @@ export {
     getUsersQuery,
     deleteUserMutation,
     addNewUserMutation,
-    editUserMutation
+    editUserMutation,
+    getRolesQuery
 }
