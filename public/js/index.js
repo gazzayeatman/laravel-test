@@ -22465,16 +22465,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _modals_LoginModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modals/LoginModal.vue */ "./resources/src/vue/modals/LoginModal.vue");
+/* harmony import */ var _compoments_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./compoments/Navbar.vue */ "./resources/src/vue/compoments/Navbar.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      me: false,
       apollo: false
     };
   },
   components: {
-    'login-modal': _modals_LoginModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'login-modal': _modals_LoginModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'navbar': _compoments_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   mounted: function mounted() {
     this.$store.dispatch('setApolloClient', this.$apollo);
@@ -23139,8 +23141,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editUser: function editUser() {
-      var _this = this;
-
       var apollo = this.$store.state.apollo,
           store = this.$store,
           selectedRolesInt = this.selectedRoles.map(Number);
@@ -23153,7 +23153,6 @@ __webpack_require__.r(__webpack_exports__);
           roles: selectedRolesInt
         }
       }).then(function (result) {
-        console.log(_this.$apollo.queries);
         store.dispatch('usersStore/setEditUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
@@ -23165,12 +23164,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeUpdate: function beforeUpdate() {
-    var _this2 = this;
+    var _this = this;
 
     if (this.currentUser) {
       this.selectedRoles = [];
       this.currentUser.roles.map(function (role) {
-        return _this2.selectedRoles.push(role.id);
+        return _this.selectedRoles.push(role.id);
       });
     }
   },
@@ -25463,8 +25462,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
 /* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/apollo-option */ "./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/App.vue */ "./resources/src/vue/App.vue");
@@ -25473,11 +25472,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/VehiclesDashboard */ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue");
 /* harmony import */ var _vue_apps_CustomersDashboard_components_ViewCustomer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/components/ViewCustomer */ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue");
 /* harmony import */ var _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/components/ViewContact */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue");
-/* harmony import */ var _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./vue/compoments/Navbar */ "./resources/src/vue/compoments/Navbar.vue");
-/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
+/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
 __webpack_require__(/*! ../js/bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -25493,9 +25491,8 @@ __webpack_require__(/*! ../js/bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
-var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.InMemoryCache(),
-    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__.ApolloClient({
+var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(),
+    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.ApolloClient({
   uri: 'http://laravel.test/graphql',
   cache: cache
 }),
@@ -25503,11 +25500,8 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.InMemoryCache(
   defaultClient: apolloClient
 }),
     app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({}),
-    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_10__["default"])(),
+    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_9__["default"])(),
     routes = [{
-  path: '/',
-  component: _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
   path: '/users',
   component: _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
@@ -25523,18 +25517,16 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.InMemoryCache(
   path: '/vehicles',
   component: _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
 }],
-    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createWebHistory)(),
-  routes: routes,
-  strict: true
+    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createWebHistory)(),
+  routes: routes
 });
 app.use(apolloProvider);
-app.use(_store__WEBPACK_IMPORTED_MODULE_11__.store);
+app.use(_store__WEBPACK_IMPORTED_MODULE_10__.store);
 app.use(router);
 app.config.globalProperties.emitter = emitter;
-app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_9__.VueMasonryPlugin);
+app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_8__.VueMasonryPlugin);
 app.component('app', _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-app.component('navbar', _vue_compoments_Navbar__WEBPACK_IMPORTED_MODULE_8__["default"]);
 app.component('users-dashboard', _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('customers-dashboard', _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]);
 app.component('vehicles-dashboard', _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]);
@@ -25957,7 +25949,6 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
     },
     setCurrentVehicle: function setCurrentVehicle(state, payload) {
       state.currentVehicle = payload;
-      console.log(state.currentVehicle);
     }
   },
   actions: {

@@ -100,7 +100,6 @@ const getVehiclesQuery = gql`
             },
             setCurrentVehicle(state, payload) {
                 state.currentVehicle = payload;
-                console.log(state.currentVehicle);
             }
         },
         actions: {

@@ -5,19 +5,20 @@
 </template>
 <script>
     import LoginModal from './modals/LoginModal.vue';
+    import Navbar from './compoments/Navbar.vue';
 
     export default {
         data() {
             return {
-                me: false,
                 apollo: false
             }
         },
         components: {
-            'login-modal': LoginModal
+            'login-modal': LoginModal,
+            'navbar': Navbar
         },
         mounted() {
             this.$store.dispatch('setApolloClient', this.$apollo);
         }
-    }   
+    }
 </script>
