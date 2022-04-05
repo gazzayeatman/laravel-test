@@ -22970,7 +22970,6 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store,
           selectedRolesInt = this.selectedRoles.map(Number);
-      console.log(this.selectedRoles);
       this.$apollo.mutate({
         mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.addNewUserMutation,
         variables: {
@@ -23132,6 +23131,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     this.name = '';
     this.email = '';
+    this.roles = [];
+    this.selectedRoles = [];
   },
   computed: {
     currentUser: function currentUser() {
@@ -23141,13 +23142,15 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     editUser: function editUser() {
       var apollo = this.$store.state.apollo,
-          store = this.$store;
+          store = this.$store,
+          selectedRolesInt = this.selectedRoles.map(Number);
       this.$apollo.mutate({
         mutation: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.editUserMutation,
         variables: {
           id: this.currentUser.id,
           name: this.name,
-          email: this.email
+          email: this.email,
+          roles: selectedRolesInt
         }
       }).then(function (result) {
         apollo.queries.users.refetch();
@@ -23160,6 +23163,19 @@ __webpack_require__.r(__webpack_exports__);
     handleFormSubmit: function handleFormSubmit() {
       this.editUser();
     }
+  },
+  beforeUpdate: function beforeUpdate() {
+    var _this = this;
+
+    if (this.currentUser) {
+      this.selectedRoles = [];
+      this.currentUser.roles.map(function (role) {
+        return _this.selectedRoles.push(role.id);
+      });
+    }
+  },
+  apollo: {
+    roles: _apps_UserDashboard_users_store__WEBPACK_IMPORTED_MODULE_0__.getRolesQuery
   },
   mounted: function mounted() {
     this.name = this.currentUser.name;
@@ -24495,7 +24511,7 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_14 = {
   key: 0,
-  "class": "form__input-field"
+  "class": "form__input-field form__input-group"
 };
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -24504,10 +24520,10 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "form__input-label"
+var _hoisted_16 = ["value"];
+var _hoisted_17 = {
+  "class": "form__input-label form__input-label--checkbox"
 };
-var _hoisted_17 = ["value"];
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel form__action-panel--right"
@@ -24584,10 +24600,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.confirmPassword]])]), $data.roles.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.roles, function (role) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      key: role.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.title), 1
-    /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      key: role.id,
+      "class": "form__clickable-group"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      "class": "input input--checkbox",
       type: "checkbox",
       name: "roles",
       value: role.id,
@@ -24596,7 +24612,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })
     }, null, 8
     /* PROPS */
-    , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selectedRoles]])]);
+    , _hoisted_16), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selectedRoles]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.title), 1
+    /* TEXT */
+    )]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_18], 32
@@ -24966,8 +24984,23 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_11 = ["placeholder"];
+var _hoisted_12 = {
+  key: 0,
+  "class": "form__input-field form__input-group"
+};
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "form__input-label"
+}, " Roles ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = ["value"];
+var _hoisted_15 = {
+  "class": "form__input-label form__input-label--checkbox"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel form__action-panel--right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel-group"
@@ -24988,7 +25021,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     "class": "dialog__form",
-    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -25016,7 +25049,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 8
   /* PROPS */
-  , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), _hoisted_12], 32
+  , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), _ctx.roles.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [_hoisted_13, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.roles, function (role) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: role.id,
+      "class": "form__clickable-group"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      "class": "input input--checkbox",
+      type: "checkbox",
+      name: "roles",
+      value: role.id,
+      "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+        return _ctx.selectedRoles = $event;
+      })
+    }, null, 8
+    /* PROPS */
+    , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.selectedRoles]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.title), 1
+    /* TEXT */
+    )]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_16], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -25793,11 +25845,11 @@ var _templateObject, _templateObject2, _templateObject3, _templateObject4, _temp
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            id\n            name\n            email\n        }\n    }\n"]))),
+var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        users {\n            id\n            name\n            email\n            roles {\n                id\n                title\n            }\n        }\n    }\n"]))),
     getRolesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        {\n            roles {\n                id\n                title\n            }\n        }\n    "]))),
     deleteUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteUser(id: $id) {\n                id\n            }\n        }\n    "]))),
-    addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!,\n            $roles: [ID]\n        ) {\n            addNewUser(\n                input: {\n                    name: $name,\n                    email: $email,\n                    password: $password,\n                    roles: {\n                        connect: $roles\n                    }\n                }\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
-    editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String\n        ) {\n            updateUser(\n                id: $id,\n                name: $name,\n                email: $email,\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
+    addNewUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String!,\n            $email: String!,\n            $password: String!,\n            $roles: [ID]\n        ) {\n            addNewUser(\n                input: {\n                    name: $name,\n                    email: $email,\n                    password: $password,\n                    roles: {\n                        sync: $roles\n                    }\n                }\n            ) {\n                id\n                name\n                email\n            }\n        }\n    "]))),
+    editUserMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String,\n            $email: String,\n            $roles: [ID]\n        ) {\n            updateUser(\n                input: {\n                    id: $id,\n                    name: $name,\n                    email: $email,\n                    roles: {\n                        sync: $roles\n                    }\n                }\n            ) {\n                name\n                email\n            }\n        }\n    "]))),
     usersStore = {
   namespaced: true,
   state: {

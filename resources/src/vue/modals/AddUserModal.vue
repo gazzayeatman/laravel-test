@@ -34,15 +34,15 @@
                     </label>
                     <input v-model="confirmPassword" id="confirm-password" type="password" class="input input--text" name="confirm-password" autocomplete="off" />
                 </div>
-                <div class="form__input-field" v-if="roles.length > 0">
+                <div class="form__input-field form__input-group" v-if="roles.length > 0">
                     <span class="form__input-label">
                         Roles
                     </span>
-                    <div v-for="role of roles" :key="role.id">
-                        <label class="form__input-label">
+                    <div v-for="role of roles" :key="role.id" class="form__clickable-group">
+                        <input class="input input--checkbox" type="checkbox" name="roles" :value="role.id" v-model="selectedRoles"/>
+                        <label class="form__input-label form__input-label--checkbox">
                             {{ role.title }}
                         </label>
-                        <input type="checkbox" name="roles" :value="role.id" v-model="selectedRoles"/>
                     </div>
                 </div>
                 <div class="form__action-panel form__action-panel--right">
@@ -77,7 +77,6 @@
                     store = this.$store,
                     selectedRolesInt = this.selectedRoles.map(Number);
 
-                console.log(this.selectedRoles);
                 this.$apollo.mutate({
                     mutation: addNewUserMutation,
                     variables: {

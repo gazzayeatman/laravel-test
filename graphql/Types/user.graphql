@@ -5,7 +5,7 @@ type User {
   email_verified_at: DateTime
   created_at: DateTime!
   updated_at: DateTime!
-  roles: ID @hasMany
+  roles: [Role] @hasMany
   permissions: Permission
 }
 
@@ -22,14 +22,8 @@ extend type Query {
 
 extend type Mutation {
   deleteUser(id: ID!) : User @delete
-
   addNewUser(input: UserInput! @spread) : User @create
-
-  updateUser(
-    id: ID!,
-    name: String,
-    email: String
-  ) : User @update
+  updateUser(input: EditUserInput! @spread) : User @update
 }
 
 input UserInput {
@@ -39,6 +33,13 @@ input UserInput {
   roles: AddUserRolesHasOne @hasMany
 }
 
+input EditUserInput {
+  id: ID!
+  name: String
+  email: String
+  roles: AddUserRolesHasOne @hasMany
+}
+
 input AddUserRolesHasOne {
-  connect: [ID]
+  sync: [ID]
 }

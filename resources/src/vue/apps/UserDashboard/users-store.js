@@ -6,6 +6,10 @@ const getUsersQuery = gql`
             id
             name
             email
+            roles {
+                id
+                title
+            }
         }
     }
 `,
@@ -37,7 +41,7 @@ const getUsersQuery = gql`
                     email: $email,
                     password: $password,
                     roles: {
-                        connect: $roles
+                        sync: $roles
                     }
                 }
             ) {
@@ -51,12 +55,18 @@ const getUsersQuery = gql`
         mutation (
             $id: ID!
             $name: String,
-            $email: String
+            $email: String,
+            $roles: [ID]
         ) {
             updateUser(
-                id: $id,
-                name: $name,
-                email: $email,
+                input: {
+                    id: $id,
+                    name: $name,
+                    email: $email,
+                    roles: {
+                        sync: $roles
+                    }
+                }
             ) {
                 name
                 email
