@@ -86,7 +86,8 @@
                         roles: selectedRolesInt
                     }
                 }).then((result) => {
-                    this.$apollo.queries.users.refetch();
+                    console.log(apollo);
+                    apollo.queries.users.refetch();
                     store.dispatch('usersStore/setAddUserModalClosed');
                 }).catch((error) => {
                     console.log(error);

@@ -92,9 +92,6 @@ const getUsersQuery = gql`
             setCurrentUser(state, user) {
                 state.currentUser = user;
             },
-            setApolloClient(state, apollo) {
-                state.apollo = apollo;
-            },
             setUsers(state, users) {
                 state.users = users;
             }
@@ -113,9 +110,6 @@ const getUsersQuery = gql`
             },
             setAddUserModalClosed({commit}) {
                 commit('setAddUserModalState', false);
-            },
-            setApolloClient({commit}, apollo) {
-                commit('setApolloClient', apollo);
             }
         },
         getters: {

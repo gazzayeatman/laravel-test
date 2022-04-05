@@ -22965,8 +22965,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addUser: function addUser() {
-      var _this = this;
-
       var apollo = this.$store.state.apollo,
           store = this.$store,
           selectedRolesInt = this.selectedRoles.map(Number);
@@ -22979,8 +22977,8 @@ __webpack_require__.r(__webpack_exports__);
           roles: selectedRolesInt
         }
       }).then(function (result) {
-        _this.$apollo.queries.users.refetch();
-
+        console.log(apollo);
+        apollo.queries.users.refetch();
         store.dispatch('usersStore/setAddUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
@@ -23141,6 +23139,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editUser: function editUser() {
+      var _this = this;
+
       var apollo = this.$store.state.apollo,
           store = this.$store,
           selectedRolesInt = this.selectedRoles.map(Number);
@@ -23153,7 +23153,7 @@ __webpack_require__.r(__webpack_exports__);
           roles: selectedRolesInt
         }
       }).then(function (result) {
-        apollo.queries.users.refetch();
+        console.log(_this.$apollo.queries);
         store.dispatch('usersStore/setEditUserModalClosed');
       })["catch"](function (error) {
         console.log(error);
@@ -23165,12 +23165,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeUpdate: function beforeUpdate() {
-    var _this = this;
+    var _this2 = this;
 
     if (this.currentUser) {
       this.selectedRoles = [];
       this.currentUser.roles.map(function (role) {
-        return _this.selectedRoles.push(role.id);
+        return _this2.selectedRoles.push(role.id);
       });
     }
   },
@@ -25869,9 +25869,6 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     setCurrentUser: function setCurrentUser(state, user) {
       state.currentUser = user;
     },
-    setApolloClient: function setApolloClient(state, apollo) {
-      state.apollo = apollo;
-    },
     setUsers: function setUsers(state, users) {
       state.users = users;
     }
@@ -25894,10 +25891,6 @@ var getUsersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_tem
     setAddUserModalClosed: function setAddUserModalClosed(_ref4) {
       var commit = _ref4.commit;
       commit('setAddUserModalState', false);
-    },
-    setApolloClient: function setApolloClient(_ref5, apollo) {
-      var commit = _ref5.commit;
-      commit('setApolloClient', apollo);
     }
   },
   getters: {
@@ -25976,10 +25969,6 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
       var commit = _ref2.commit;
       commit('setCurrentVehicle', payload.vehicle);
       commit('setEditVehicleModalState', payload.open);
-    },
-    setApolloClient: function setApolloClient(_ref3, apollo) {
-      var commit = _ref3.commit;
-      commit('setApolloClient', apollo);
     }
   },
   getters: {

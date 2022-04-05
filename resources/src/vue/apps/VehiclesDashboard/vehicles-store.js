@@ -110,9 +110,6 @@ const getVehiclesQuery = gql`
             setEditVehicleModalState({commit}, payload) {
                 commit('setCurrentVehicle', payload.vehicle);
                 commit('setEditVehicleModalState', payload.open);
-            },
-            setApolloClient({commit}, apollo) {
-                commit('setApolloClient', apollo);
             }
         },
         getters: {

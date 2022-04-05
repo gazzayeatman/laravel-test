@@ -75,7 +75,7 @@
                         roles: selectedRolesInt
                     }
                 }).then((result) => {
-                    apollo.queries.users.refetch();
+                    console.log(this.$apollo.queries);
                     store.dispatch('usersStore/setEditUserModalClosed');
                 }).catch((error) => {
                     console.log(error);
