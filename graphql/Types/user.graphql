@@ -18,6 +18,10 @@ extend type Query {
   users(
     name: String @where(operator: "like")
   ): [User!]! @all
+
+  drivers(
+    name: String @where(operator: "like")
+  ): [User!]! @all
 }
 
 extend type Mutation {

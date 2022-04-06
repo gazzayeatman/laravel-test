@@ -22751,6 +22751,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
+  beforeCreate: function beforeCreate() {
+    this.$store.dispatch('vehiclesStore/getDrivers');
+  },
   components: {
     'add-vehicle-modal': _modals_AddVehicleModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     'edit-vehicle-modal': _modals_EditVehicleModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -24767,12 +24770,28 @@ var _hoisted_18 = {
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form__input-label",
+  "for": "mainDriver"
+}, " Main Driver ", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, " Test driver ", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = [_hoisted_20];
+var _hoisted_22 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
   "for": "isActive"
 }, " Active? ", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel form__action-panel--right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel-group"
@@ -24791,7 +24810,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     "class": "dialog__form",
-    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -24860,8 +24879,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registrationExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registrationExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $data.registrationExpiry = $event;
+    }),
+    id: "mainDriver",
+    type: "date",
+    "class": "input input--date",
+    name: "mainDriver"
+  }, _hoisted_21, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.registrationExpiry]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $data.isActive = $event;
     }),
     id: "isActive",
@@ -24871,7 +24900,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.isActive]])]), _hoisted_20], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.isActive]])]), _hoisted_24], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -25955,27 +25984,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewVehicleMutation": () => (/* binding */ addNewVehicleMutation),
 /* harmony export */   "deleteVehicle": () => (/* binding */ deleteVehicle),
+/* harmony export */   "getDrivers": () => (/* binding */ _getDrivers),
 /* harmony export */   "getVehiclesQuery": () => (/* binding */ getVehiclesQuery),
 /* harmony export */   "updateVehicleMutation": () => (/* binding */ updateVehicleMutation),
 /* harmony export */   "vehiclesStore": () => (/* binding */ vehiclesStore)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        vehicles {\n            id\n            title\n            registration\n            loadWeight\n            liftWeight\n            wofExpiry\n            registrationExpiry\n            isActive\n        }\n    }\n"]))),
     addNewVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String\n            $registration: String,\n            $loadWeight: String,\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            addNewVehicle(\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
     updateVehicleMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $title: String\n            $registration: String\n            $loadWeight: String\n            $liftWeight: String\n            $wofExpiry: Date\n            $registrationExpiry: Date\n            $isActive: Boolean\n        ) {\n            updateVehicle(\n                id: $id,\n                title: $title,\n                registration: $registration,\n                loadWeight: $loadWeight,\n                liftWeight: $liftWeight,\n                wofExpiry: $wofExpiry,\n                registrationExpiry: $registrationExpiry,\n                isActive: $isActive\n            ) {\n                id\n                title\n                registration\n                loadWeight\n                liftWeight\n                wofExpiry\n                registrationExpiry\n                isActive\n            }\n        }\n    "]))),
     deleteVehicle = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation($id: ID!) {\n            deleteVehicle(id: $id) {\n                id\n            }\n        }\n    "]))),
+    _getDrivers = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        {\n            users (drivers: true) {\n                id\n                name\n            }\n        }\n    "]))),
     vehiclesStore = {
   namespaced: true,
   state: {
-    apollo: false,
     AddVehiclesModalOpen: false,
     EditVehicleModalOpen: false,
-    currentVehicle: false
+    currentVehicle: false,
+    drivers: []
   },
   mutations: {
     setAddVehicleModalState: function setAddVehicleModalState(state, payload) {
@@ -25986,6 +26018,9 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
     },
     setCurrentVehicle: function setCurrentVehicle(state, payload) {
       state.currentVehicle = payload;
+    },
+    setDrivers: function setDrivers(state, payload) {
+      state.drivers = payload;
     }
   },
   actions: {
@@ -25993,8 +26028,15 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
       var commit = _ref.commit;
       commit('setAddVehicleModalState', state);
     },
-    setEditVehicleModalState: function setEditVehicleModalState(_ref2, payload) {
+    getDrivers: function getDrivers(_ref2, state) {
       var commit = _ref2.commit;
+      this.state.apollo.query({
+        query: _getDrivers,
+        variables: {}
+      }); // commit('setDrivers', state);
+    },
+    setEditVehicleModalState: function setEditVehicleModalState(_ref3, payload) {
+      var commit = _ref3.commit;
       commit('setCurrentVehicle', payload.vehicle);
       commit('setEditVehicleModalState', payload.open);
     }
@@ -26008,6 +26050,7 @@ var getVehiclesQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_
     }
   }
 };
+
 
 
 /***/ }),

@@ -66,6 +66,9 @@
                 });
             }
         },
+        beforeCreate() {
+            this.$store.dispatch('vehiclesStore/getDrivers');
+        },
         components: {
             'add-vehicle-modal': AddVehicleModal,
             'edit-vehicle-modal': EditVehicleModal

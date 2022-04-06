@@ -83,13 +83,21 @@ const getVehiclesQuery = gql`
             }
         }
     `,
+    getDrivers = gql`
+        {
+            users (drivers: true) {
+                id
+                name
+            }
+        }
+    `,
     vehiclesStore = {
         namespaced: true,
         state: {
-            apollo: false,
             AddVehiclesModalOpen: false,
             EditVehicleModalOpen: false,
-            currentVehicle: false
+            currentVehicle: false,
+            drivers: []
         },
         mutations: {
             setAddVehicleModalState(state, payload) {
@@ -100,11 +108,23 @@ const getVehiclesQuery = gql`
             },
             setCurrentVehicle(state, payload) {
                 state.currentVehicle = payload;
+            },
+            setDrivers(state, payload) {
+                state.drivers = payload;
             }
         },
         actions: {
             setAddVehicleModalState({commit}, state) {
                 commit('setAddVehicleModalState', state);
+            },
+            getDrivers({commit}, state) {
+                this.state.apollo.query({
+                    query: getDrivers,
+                    variables: {
+
+                    }
+                })
+                // commit('setDrivers', state);
             },
             setEditVehicleModalState({commit}, payload) {
                 commit('setCurrentVehicle', payload.vehicle);
@@ -126,5 +146,6 @@ export {
     getVehiclesQuery,
     addNewVehicleMutation,
     updateVehicleMutation,
-    deleteVehicle
+    deleteVehicle,
+    getDrivers
 }

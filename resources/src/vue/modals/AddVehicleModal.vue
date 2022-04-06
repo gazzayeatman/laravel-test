@@ -47,6 +47,16 @@
                     <input v-model="registrationExpiry" id="registrationExpiry" type="date" class="input input--date" name="registrationExpiry" autocomplete="off" />
                 </div>
                 <div class="form__input-field">
+                    <label class="form__input-label" for="mainDriver">
+                        Main Driver
+                    </label>
+                    <select v-model="registrationExpiry" id="mainDriver" type="date" class="input input--date" name="mainDriver">
+                        <option>
+                            Test driver
+                        </option>
+                    </select>
+                </div>
+                <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
                         Active?
                     </label>
