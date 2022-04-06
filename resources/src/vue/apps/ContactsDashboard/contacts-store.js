@@ -8,6 +8,9 @@ const getContact = gql`
             lastName
             phoneNumber
             emailAddress
+            customer {
+                id
+            }
         }
     }
 `,
