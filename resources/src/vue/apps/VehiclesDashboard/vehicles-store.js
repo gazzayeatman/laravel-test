@@ -85,7 +85,7 @@ const getVehiclesQuery = gql`
     `,
     getDrivers = gql`
         {
-            users (drivers: true) {
+            drivers {
                 id
                 name
             }
