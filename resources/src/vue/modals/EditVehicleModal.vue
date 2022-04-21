@@ -47,6 +47,16 @@
                     <input v-model="registrationExpiry" id="registrationExpiry" type="text" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" class="input input--date" name="registrationExpiry" autocomplete="off" :placeholder="currentVehicle.registrationExpiry" />
                 </div>
                 <div class="form__input-field">
+                    <label class="form__input-label" for="mainDriver">
+                        Main Driver
+                    </label>
+                    <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
+                        <option v-for="driver of drivers" :key="driver.id" :value="driver.id">
+                            {{ driver.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
                         Active?
                     </label>
@@ -75,12 +85,16 @@
             this.liftWeight = '',
             this.wofExpiry = '',
             this.registrationExpiry = '',
+            this.selectedDriver = false,
             this.isActive = ''
         },
         computed: {
             currentVehicle() {
                 return this.$store.state['vehiclesStore'].currentVehicle;
             }
+        },
+        props: {
+            drivers: {}
         },
         methods: {
             editVehicle() {
@@ -97,6 +111,7 @@
                         liftWeight: this.liftWeight,
                         wofExpiry: this.wofExpiry,
                         registrationExpiry: this.registrationExpiry,
+                        driver: this.selectedDriver.id,
                         isActive: this.isActive
                     }
                 }).then((result) => {
@@ -117,6 +132,7 @@
             this.liftWeight = this.currentVehicle.liftWeight;
             this.wofExpiry = this.currentVehicle.wofExpiry;
             this.registrationExpiry = this.currentVehicle.registrationExpiry;
+            this.selectedDriver = this.currentVehicle.driver,
             this.isActive = this.currentVehicle.isActive;
         }
     }

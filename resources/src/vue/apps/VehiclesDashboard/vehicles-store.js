@@ -10,6 +10,10 @@ const getVehiclesQuery = gql`
             liftWeight
             wofExpiry
             registrationExpiry
+            driver {
+                id
+                name
+            }
             isActive
         }
     }
@@ -22,16 +26,22 @@ const getVehiclesQuery = gql`
             $liftWeight: String
             $wofExpiry: Date
             $registrationExpiry: Date
+            $driver: ID
             $isActive: Boolean
         ) {
             addNewVehicle(
-                title: $title,
-                registration: $registration,
-                loadWeight: $loadWeight,
-                liftWeight: $liftWeight,
-                wofExpiry: $wofExpiry,
-                registrationExpiry: $registrationExpiry,
-                isActive: $isActive
+                input: {
+                    title: $title,
+                    registration: $registration,
+                    loadWeight: $loadWeight,
+                    liftWeight: $liftWeight,
+                    wofExpiry: $wofExpiry,
+                    registrationExpiry: $registrationExpiry,
+                    driver: {
+                        sync: $driver
+                    },
+                    isActive: $isActive
+                }
             ) {
                 id
                 title
@@ -53,17 +63,24 @@ const getVehiclesQuery = gql`
             $liftWeight: String
             $wofExpiry: Date
             $registrationExpiry: Date
+            $driver: ID
             $isActive: Boolean
         ) {
             updateVehicle(
-                id: $id,
-                title: $title,
-                registration: $registration,
-                loadWeight: $loadWeight,
-                liftWeight: $liftWeight,
-                wofExpiry: $wofExpiry,
-                registrationExpiry: $registrationExpiry,
-                isActive: $isActive
+                input: {
+                    id: $id,
+                    title: $title,
+                    registration: $registration,
+                    loadWeight: $loadWeight,
+                    liftWeight: $liftWeight,
+                    wofExpiry: $wofExpiry,
+                    registrationExpiry: $registrationExpiry,
+                    driver: {
+                        connect: $driver
+                    },
+                    isActive: $isActive
+                }
+                
             ) {
                 id
                 title
@@ -73,6 +90,10 @@ const getVehiclesQuery = gql`
                 wofExpiry
                 registrationExpiry
                 isActive
+                driver {
+                    id
+                    name
+                }
             }
         }
     `,
@@ -117,14 +138,8 @@ const getVehiclesQuery = gql`
             setAddVehicleModalState({commit}, state) {
                 commit('setAddVehicleModalState', state);
             },
-            getDrivers({commit}, state) {
-                this.state.apollo.query({
-                    query: getDrivers,
-                    variables: {
-
-                    }
-                })
-                // commit('setDrivers', state);
+            setDrivers({commit}, state) {
+                commit('setDrivers', state);
             },
             setEditVehicleModalState({commit}, payload) {
                 commit('setCurrentVehicle', payload.vehicle);

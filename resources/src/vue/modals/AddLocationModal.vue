@@ -45,7 +45,7 @@
                         Customer
                     </label>
                    <select name="customer" v-model="customerID">
-                       <option :value="customer.id" v-for="customer in customers">
+                       <option :value="customer.id" v-for="customer in customers" :key="customer.id">
                            {{ customer.name }}
                         </option>
                     </select>
