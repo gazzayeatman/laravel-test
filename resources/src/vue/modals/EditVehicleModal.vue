@@ -51,7 +51,10 @@
                         Main Driver
                     </label>
                     <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver.id">
+                        <option value="">
+                            None
+                        </option>
+                        <option v-for="driver of drivers" :key="driver.id" :value="driver.id" :selected="currentVehicle.driver.id">
                             {{ driver.name }}
                         </option>
                     </select>
@@ -101,6 +104,8 @@
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
 
+                console.log(this.selectedDriver);
+
                 this.$apollo.mutate({
                     mutation: updateVehicleMutation,
                     variables: {
@@ -111,7 +116,7 @@
                         liftWeight: this.liftWeight,
                         wofExpiry: this.wofExpiry,
                         registrationExpiry: this.registrationExpiry,
-                        driver: this.selectedDriver.id,
+                        driver: this.selectedDriver,
                         isActive: this.isActive
                     }
                 }).then((result) => {
@@ -125,7 +130,7 @@
                this.editVehicle();
             }
         },
-        mounted() {
+        beforeUpdate() {
             this.title = this.currentVehicle.title;
             this.registration = this.currentVehicle.registration;
             this.loadWeight = this.currentVehicle.loadWeight;
