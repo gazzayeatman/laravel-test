@@ -47,6 +47,17 @@
                     <input v-model="registrationExpiry" id="registrationExpiry" type="text" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" class="input input--date" name="registrationExpiry" autocomplete="off" :placeholder="currentVehicle.registrationExpiry" />
                 </div>
                 <div class="form__input-field">
+                    <label class="form__input-label" for="mainDriver">
+                        Main Driver
+                    </label>
+                    <FormKit
+                        type="select"
+                        name="driver"
+                        label="Driver"
+                        :options="drivers"
+                    />
+                </div>
+                <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
                         Active?
                     </label>
@@ -75,6 +86,7 @@
             this.liftWeight = '',
             this.wofExpiry = '',
             this.registrationExpiry = '',
+            this.selectedDriver = false,
             this.isActive = ''
         },
         computed: {
@@ -82,10 +94,15 @@
                 return this.$store.state['vehiclesStore'].currentVehicle;
             }
         },
+        props: {
+            drivers: {}
+        },
         methods: {
             editVehicle() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
+
+                console.log(this.selectedDriver);
 
                 this.$apollo.mutate({
                     mutation: updateVehicleMutation,
@@ -97,6 +114,7 @@
                         liftWeight: this.liftWeight,
                         wofExpiry: this.wofExpiry,
                         registrationExpiry: this.registrationExpiry,
+                        driver: this.selectedDriver,
                         isActive: this.isActive
                     }
                 }).then((result) => {
@@ -110,13 +128,14 @@
                this.editVehicle();
             }
         },
-        mounted() {
+        beforeUpdate() {
             this.title = this.currentVehicle.title;
             this.registration = this.currentVehicle.registration;
             this.loadWeight = this.currentVehicle.loadWeight;
             this.liftWeight = this.currentVehicle.liftWeight;
             this.wofExpiry = this.currentVehicle.wofExpiry;
             this.registrationExpiry = this.currentVehicle.registrationExpiry;
+            this.selectedDriver = this.currentVehicle.driver,
             this.isActive = this.currentVehicle.isActive;
         }
     }

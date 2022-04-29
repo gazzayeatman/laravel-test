@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <back-button />
+        <back-button :link="getBackLink" />
         <div class="detail-page__wrapper">
             <div class="detail-page__section">
                 <div class="detail-page__header">
@@ -33,6 +33,12 @@
         computed: {
             contact() {
                 return this.$store.state['contactsStore'].currentContact;
+            },
+            getBackLink() {
+                if (this.contact && this.contact.customer) {
+                    const customerID = this.contact.customer.id;
+                    return `/customers/view-customer/${customerID}`;
+                }
             }
         },
         created() {
@@ -49,7 +55,6 @@
                         id: id
                     }
                 }).then((result) => {
-                    console.log(result.data.deleteContact);
                     this.$store.dispatch('contactsStore/setCurrentContact', false);
                     this.$router.push(`/customers/view-customer/${result.data.deleteContact.customer.id}`);
                 }).catch((error) => {

@@ -19,18 +19,8 @@ h6 {
 }
 
 h1 {
-	font-size: 36px;
+	font-size: 40px;
 	font-weight: 700;
-
-	@include respond(sm) {
-		font-size: 50px;
-		font-weight: 700;
-	}
-
-	@include respond(lg) {
-		font-size: 100px;
-		font-weight: 700;
-	}
 
 	&.heading-alt {
 		font-size: 90px;
@@ -38,7 +28,7 @@ h1 {
 }
 
 h2 {
-	font-size: 50px;
+	font-size: 34px;
 	font-weight: 700;
 
 	&.heading-alt {
@@ -47,7 +37,7 @@ h2 {
 }
 
 h3 {
-	font-size: 30px;
+	font-size: 26px;
 	font-weight: 700;
 
 	&.heading-alt {

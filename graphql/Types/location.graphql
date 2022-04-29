@@ -1,0 +1,26 @@
+type Location {
+  id: ID!
+  unitNumber: String
+  streetNumber: String
+  streetName: String
+  suburb: String
+  city: String
+  customer: Customer @belongsTo
+}
+
+extend type Query {
+  locations: [Location!]! @all
+}
+
+extend type Mutation {
+  deleteLocation(id: ID!) : Location @delete
+
+  addNewLocation(
+    unitNumber: String,
+    streetNumber: String,
+    streetName: String,
+    suburb: String,
+    city: String,
+    customer_id: ID
+  ) : Location @create
+}

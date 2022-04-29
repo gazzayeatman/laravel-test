@@ -9,7 +9,7 @@
                     Add Vehicle
                 </button>
             </div>
-            <div class="grid-view__wrapper" v-for="vehicle of vehicles">
+            <div class="grid-view__wrapper" v-for="vehicle of vehicles" :key="vehicle.id">
                 <div class="grid-view">
                     <div class="grid-view__information">
                         <div class="grid-view__id">
@@ -32,24 +32,26 @@
                     </div>
                 </div>
             </div>
-            <edit-vehicle-modal />
-            <add-vehicle-modal />
+            <edit-vehicle-modal :drivers="this.drivers" />
+            <add-vehicle-modal :drivers="this.drivers" />
         </div>
     </router-view>
 </template>
 <script>
-    import { getVehiclesQuery, deleteVehicle } from './vehicles-store';
+    import { getVehiclesQuery, deleteVehicle, getDrivers } from './vehicles-store';
     import AddVehicleModal from '../../modals/AddVehicleModal.vue';
     import EditVehicleModal from '../../modals/EditVehicleModal.vue';
 
     export default {
         data() {
             return {
-                vehicles: []
+                vehicles: [],
+                drivers: []
             }
         },
         apollo: {
-            vehicles: getVehiclesQuery
+            vehicles: getVehiclesQuery,
+            drivers: getDrivers
         },
         methods: {
             deleteVehicle(id) {

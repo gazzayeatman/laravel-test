@@ -18,8 +18,7 @@
     }
 
     &__input-field {
-        display: flex;
-        flex-direction: column;
+        display: block;
         margin: 25px 0px 50px 0px;
 
         &:first-of-type {
@@ -29,6 +28,10 @@
         &--horizontal {
             flex-direction: row;
         }
+
+        &--group {
+            display: flex;
+        }
     }
 
     &__input-label {
@@ -36,6 +39,22 @@
         text-decoration: underline;
         margin: 0px 0px 5px 0px;
         font-size: 14px;
+        display: block;
+
+        &--checkbox {
+            text-decoration: none;
+            display: flex;
+            margin: 0px;
+        }
+    }
+
+    &__clickable-group {
+        display: inline-flex;
+        margin: 10px 15px;
+
+        &:first-of-type {
+            margin: 10px 15px 10px 0px;
+        }
     }
 
     &__action-panel {

@@ -1,0 +1,48 @@
+type Vehicle {
+  id: ID!
+  title: String
+  registration: String
+  loadWeight: String
+  liftWeight: String
+  wofExpiry: Date
+  registrationExpiry: Date
+  driver: User @hasOne
+  isActive: Boolean
+}
+
+extend type Query {
+  vehicles: [Vehicle!]! @all
+}
+
+extend type Mutation {
+  deleteVehicle(id: ID!) : Vehicle @delete
+  updateVehicle(input: EditVehicleInput! @spread) : Vehicle @update
+  addNewVehicle(input: AddVehicleInput! @spread) : Vehicle @create
+}
+
+input AddVehicleInput {
+  title: String,
+  registration: String,
+  loadWeight: String,
+  liftWeight: String,
+  wofExpiry: Date,
+  registrationExpiry: Date,
+  driver: AddDriverHasOne @hasOne
+  isActive: Boolean
+}
+
+input EditVehicleInput {
+  id: ID!
+  title: String,
+  registration: String,
+  loadWeight: String,
+  liftWeight: String,
+  wofExpiry: Date,
+  registrationExpiry: Date,
+  driver: AddDriverHasOne @hasOne
+  isActive: Boolean
+}
+
+input AddDriverHasOne {
+  connect: ID
+}

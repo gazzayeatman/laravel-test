@@ -283,6 +283,8 @@ body {
 }
 .input--checkbox {
   display: flex;
+  margin: 0px 8px 0px 0px;
+  align-self: center;
 }
 .input__message {
   font-size: 12px;
@@ -4224,27 +4226,15 @@ Headings come in two styles. To use the alternate style, add
 Styleguide 3.1
 */
 h1 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
-}
-@media screen and (min-width: 35.5em) {
-  h1 {
-    font-size: 50px;
-    font-weight: 700;
-  }
-}
-@media screen and (min-width: 64em) {
-  h1 {
-    font-size: 100px;
-    font-weight: 700;
-  }
 }
 h1.heading-alt {
   font-size: 90px;
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 34px;
   font-weight: 700;
 }
 h2.heading-alt {
@@ -4252,7 +4242,7 @@ h2.heading-alt {
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
 }
 h3.heading-alt {
@@ -4552,8 +4542,7 @@ footer {
   z-index: -1;
 }
 .form__input-field {
-  display: flex;
-  flex-direction: column;
+  display: block;
   margin: 25px 0px 50px 0px;
 }
 .form__input-field:first-of-type {
@@ -4562,11 +4551,27 @@ footer {
 .form__input-field--horizontal {
   flex-direction: row;
 }
+.form__input-field--group {
+  display: flex;
+}
 .form__input-label {
   font-weight: 700;
   text-decoration: underline;
   margin: 0px 0px 5px 0px;
   font-size: 14px;
+  display: block;
+}
+.form__input-label--checkbox {
+  text-decoration: none;
+  display: flex;
+  margin: 0px;
+}
+.form__clickable-group {
+  display: inline-flex;
+  margin: 10px 15px;
+}
+.form__clickable-group:first-of-type {
+  margin: 10px 15px 10px 0px;
 }
 .form__action-panel {
   display: flex;

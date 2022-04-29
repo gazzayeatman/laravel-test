@@ -10,6 +10,10 @@ const getVehiclesQuery = gql`
             liftWeight
             wofExpiry
             registrationExpiry
+            driver {
+                id
+                name
+            }
             isActive
         }
     }
@@ -22,16 +26,22 @@ const getVehiclesQuery = gql`
             $liftWeight: String
             $wofExpiry: Date
             $registrationExpiry: Date
+            $driver: ID
             $isActive: Boolean
         ) {
             addNewVehicle(
-                title: $title,
-                registration: $registration,
-                loadWeight: $loadWeight,
-                liftWeight: $liftWeight,
-                wofExpiry: $wofExpiry,
-                registrationExpiry: $registrationExpiry,
-                isActive: $isActive
+                input: {
+                    title: $title,
+                    registration: $registration,
+                    loadWeight: $loadWeight,
+                    liftWeight: $liftWeight,
+                    wofExpiry: $wofExpiry,
+                    registrationExpiry: $registrationExpiry,
+                    driver: {
+                        sync: $driver
+                    },
+                    isActive: $isActive
+                }
             ) {
                 id
                 title
@@ -53,17 +63,24 @@ const getVehiclesQuery = gql`
             $liftWeight: String
             $wofExpiry: Date
             $registrationExpiry: Date
+            $driver: ID
             $isActive: Boolean
         ) {
             updateVehicle(
-                id: $id,
-                title: $title,
-                registration: $registration,
-                loadWeight: $loadWeight,
-                liftWeight: $liftWeight,
-                wofExpiry: $wofExpiry,
-                registrationExpiry: $registrationExpiry,
-                isActive: $isActive
+                input: {
+                    id: $id,
+                    title: $title,
+                    registration: $registration,
+                    loadWeight: $loadWeight,
+                    liftWeight: $liftWeight,
+                    wofExpiry: $wofExpiry,
+                    registrationExpiry: $registrationExpiry,
+                    driver: {
+                        connect: $driver
+                    },
+                    isActive: $isActive
+                }
+                
             ) {
                 id
                 title
@@ -73,6 +90,10 @@ const getVehiclesQuery = gql`
                 wofExpiry
                 registrationExpiry
                 isActive
+                driver {
+                    id
+                    name
+                }
             }
         }
     `,
@@ -83,13 +104,21 @@ const getVehiclesQuery = gql`
             }
         }
     `,
+    getDrivers = gql`
+        {
+            drivers {
+                id
+                name
+            }
+        }
+    `,
     vehiclesStore = {
         namespaced: true,
         state: {
-            apollo: false,
             AddVehiclesModalOpen: false,
             EditVehicleModalOpen: false,
-            currentVehicle: false
+            currentVehicle: false,
+            drivers: []
         },
         mutations: {
             setAddVehicleModalState(state, payload) {
@@ -100,19 +129,21 @@ const getVehiclesQuery = gql`
             },
             setCurrentVehicle(state, payload) {
                 state.currentVehicle = payload;
-                console.log(state.currentVehicle);
+            },
+            setDrivers(state, payload) {
+                state.drivers = payload;
             }
         },
         actions: {
             setAddVehicleModalState({commit}, state) {
                 commit('setAddVehicleModalState', state);
             },
+            setDrivers({commit}, state) {
+                commit('setDrivers', state);
+            },
             setEditVehicleModalState({commit}, payload) {
                 commit('setCurrentVehicle', payload.vehicle);
                 commit('setEditVehicleModalState', payload.open);
-            },
-            setApolloClient({commit}, apollo) {
-                commit('setApolloClient', apollo);
             }
         },
         getters: {
@@ -130,5 +161,6 @@ export {
     getVehiclesQuery,
     addNewVehicleMutation,
     updateVehicleMutation,
-    deleteVehicle
+    deleteVehicle,
+    getDrivers
 }

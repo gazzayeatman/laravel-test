@@ -1,0 +1,32 @@
+type Customer {
+  id: ID!
+  name: String
+  mainContact: Contact
+  locations: [Location] @hasMany
+  contacts: [Contact] @hasMany
+}
+
+extend type Query {
+    customers(
+        id: ID @eq
+        name: String @where(operator: "like")
+    ): [Customer!]! @all
+
+    customer(
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+    ): Customer @find
+}
+
+extend type Mutation {
+    deleteCustomer(id: ID!) : Customer @delete
+
+    updateCustomer(
+        id: ID!,
+        name: String
+    ) : Customer @update
+
+    addNewCustomer(
+        name: String
+        mainContact: Contact
+    ) : Customer @create
+}

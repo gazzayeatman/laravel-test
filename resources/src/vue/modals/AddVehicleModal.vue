@@ -47,6 +47,16 @@
                     <input v-model="registrationExpiry" id="registrationExpiry" type="date" class="input input--date" name="registrationExpiry" autocomplete="off" />
                 </div>
                 <div class="form__input-field">
+                    <label class="form__input-label" for="mainDriver">
+                        Main Driver
+                    </label>
+                    <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
+                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
+                            {{ driver.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
                         Active?
                     </label>
@@ -76,11 +86,12 @@
                 liftWeight: '',
                 wofExpiry: '',
                 registrationExpiry: '',
-                isActive: false
+                isActive: false,
+                selectedDriver: false
             }
         },
         props: {
-            customer: {}
+            drivers: {}
         },
         methods: {
             addVehicle() {
@@ -96,6 +107,7 @@
                         liftWeight: this.liftWeight,
                         wofExpiry: this.wofExpiry,
                         registrationExpiry: this.registrationExpiry,
+                        driver: this.selectedDriver.id,
                         isActive: this.isActive
                     }
                 }).then((result) => {

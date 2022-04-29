@@ -6,9 +6,21 @@ const getUsersQuery = gql`
             id
             name
             email
+            roles {
+                id
+                title
+            }
         }
     }
 `,
+    getRolesQuery = gql`
+        {
+            roles {
+                id
+                title
+            }
+        }
+    `,
     deleteUserMutation = gql`
         mutation ($id: ID!) {
             deleteUser(id: $id) {
@@ -20,12 +32,18 @@ const getUsersQuery = gql`
         mutation (
             $name: String!,
             $email: String!,
-            $password: String!
+            $password: String!,
+            $roles: [ID]
         ) {
             addNewUser(
-                name: $name,
-                email: $email,
-                password: $password
+                input: {
+                    name: $name,
+                    email: $email,
+                    password: $password,
+                    roles: {
+                        sync: $roles
+                    }
+                }
             ) {
                 id
                 name
@@ -37,12 +55,18 @@ const getUsersQuery = gql`
         mutation (
             $id: ID!
             $name: String,
-            $email: String
+            $email: String,
+            $roles: [ID]
         ) {
             updateUser(
-                id: $id,
-                name: $name,
-                email: $email,
+                input: {
+                    id: $id,
+                    name: $name,
+                    email: $email,
+                    roles: {
+                        sync: $roles
+                    }
+                }
             ) {
                 name
                 email
@@ -68,9 +92,6 @@ const getUsersQuery = gql`
             setCurrentUser(state, user) {
                 state.currentUser = user;
             },
-            setApolloClient(state, apollo) {
-                state.apollo = apollo;
-            },
             setUsers(state, users) {
                 state.users = users;
             }
@@ -89,9 +110,6 @@ const getUsersQuery = gql`
             },
             setAddUserModalClosed({commit}) {
                 commit('setAddUserModalState', false);
-            },
-            setApolloClient({commit}, apollo) {
-                commit('setApolloClient', apollo);
             }
         },
         getters: {
@@ -118,5 +136,6 @@ export {
     getUsersQuery,
     deleteUserMutation,
     addNewUserMutation,
-    editUserMutation
+    editUserMutation,
+    getRolesQuery
 }

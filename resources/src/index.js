@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('../js/bootstrap');
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option'
 import { createApp } from 'vue';
@@ -8,8 +8,8 @@ import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard
 import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
-import Navbar from './vue/compoments/Navbar';
 import { VueMasonryPlugin } from 'vue-masonry';
+import { plugin, defaultConfig } from '@formkit/vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import mitt from 'mitt';
 import { store } from './store';
@@ -25,7 +25,6 @@ const cache = new InMemoryCache(),
     app = createApp({}),
     emitter = mitt(),
     routes = [
-        { path: '/', component: App },
         { path: '/users', component: UserDashboard },
         { path: '/customers', component: CustomersDashboard },
         { path: '/customers/view-customer/:id', component: ViewCustomer },
@@ -34,17 +33,16 @@ const cache = new InMemoryCache(),
     ],
     router = createRouter({
         history: createWebHistory(),
-        routes,
-        strict: true
+        routes
     });
 
     app.use(apolloProvider);
     app.use(store);
     app.use(router);
+    app.use(plugin, defaultConfig);
     app.config.globalProperties.emitter = emitter
     app.use(VueMasonryPlugin);
     app.component('app', App);
-    app.component('navbar', Navbar);
     app.component('users-dashboard', UserDashboard);
     app.component('customers-dashboard', CustomersDashboard);
     app.component('vehicles-dashboard', VehiclesDashboard);
