@@ -9,6 +9,7 @@ import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
 import { VueMasonryPlugin } from 'vue-masonry';
+import { plugin, defaultConfig } from '@formkit/vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import mitt from 'mitt';
 import { store } from './store';
@@ -38,6 +39,7 @@ const cache = new InMemoryCache(),
     app.use(apolloProvider);
     app.use(store);
     app.use(router);
+    app.use(plugin, defaultConfig);
     app.config.globalProperties.emitter = emitter
     app.use(VueMasonryPlugin);
     app.component('app', App);

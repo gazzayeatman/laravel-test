@@ -50,14 +50,12 @@
                     <label class="form__input-label" for="mainDriver">
                         Main Driver
                     </label>
-                    <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
-                        <option value="">
-                            None
-                        </option>
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver.id" :selected="currentVehicle.driver.id">
-                            {{ driver.name }}
-                        </option>
-                    </select>
+                    <FormKit
+                        type="select"
+                        name="driver"
+                        label="Driver"
+                        :options="drivers"
+                    />
                 </div>
                 <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
