@@ -54,4 +54,11 @@
         overflow: hidden;
         white-space: nowrap;
     }
+
+    &__tag {
+        background-color: $color-orange-web;
+        padding: 5px 10px;
+        margin: 0px 5px 0px 0px;
+        font-size: 14px;
+    }
 }

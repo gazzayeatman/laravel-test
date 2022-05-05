@@ -23771,10 +23771,13 @@ var _hoisted_9 = {
   "class": "grid-view__column"
 };
 var _hoisted_10 = {
+  "class": "grid-view__column"
+};
+var _hoisted_11 = {
   "class": "grid-view__actions"
 };
-var _hoisted_11 = ["onClick"];
 var _hoisted_12 = ["onClick"];
+var _hoisted_13 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_edit_user_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-user-modal");
 
@@ -23796,21 +23799,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.name), 1
         /* TEXT */
-        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(user.roles, function (role) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+            "class": "grid-view__tag",
+            key: role.id
+          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.title), 1
+          /* TEXT */
+          );
+        }), 128
+        /* KEYED_FRAGMENT */
+        ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           onClick: function onClick($event) {
             return _ctx.$store.dispatch('usersStore/setEditUserModalOpen', user);
           },
           "class": "btn btn-primary"
         }, " Edit ", 8
         /* PROPS */
-        , _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           onClick: function onClick($event) {
             return $options.deleteUser(user.id);
           },
           "class": "btn btn-primary btn--danger"
         }, " Delete ", 8
         /* PROPS */
-        , _hoisted_12)])])]);
+        , _hoisted_13)])])]);
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_user_modal), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_user_modal)];
