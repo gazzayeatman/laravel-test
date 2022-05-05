@@ -37,6 +37,7 @@
         "sass-resources-loader": "^2.2.4",
         "vue": "^3.2.30",
         "vue-masonry": "^0.15.0",
+        "vue-router": "^4.0.14",
         "vuex": "^4.0.2"
     }
 }

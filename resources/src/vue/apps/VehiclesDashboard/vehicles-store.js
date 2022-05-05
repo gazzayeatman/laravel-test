@@ -38,7 +38,7 @@ const getVehiclesQuery = gql`
                     wofExpiry: $wofExpiry,
                     registrationExpiry: $registrationExpiry,
                     driver: {
-                        sync: $driver
+                        connect: $driver
                     },
                     isActive: $isActive
                 }

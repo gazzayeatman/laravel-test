@@ -50,12 +50,11 @@
                     <label class="form__input-label" for="mainDriver">
                         Main Driver
                     </label>
-                    <FormKit
-                        type="select"
-                        name="driver"
-                        label="Driver"
-                        :options="drivers"
-                    />
+                    <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
+                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
+                            {{ driver.name }}
+                        </option>
+                    </select>
                 </div>
                 <div class="form__input-field">
                     <label class="form__input-label" for="isActive">
@@ -102,8 +101,6 @@
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
 
-                console.log(this.selectedDriver);
-
                 this.$apollo.mutate({
                     mutation: updateVehicleMutation,
                     variables: {
@@ -114,11 +111,11 @@
                         liftWeight: this.liftWeight,
                         wofExpiry: this.wofExpiry,
                         registrationExpiry: this.registrationExpiry,
-                        driver: this.selectedDriver,
+                        driver: this.selectedDriver.id,
                         isActive: this.isActive
                     }
                 }).then((result) => {
-                    store.dispatch('vehiclesStore/setEditVehicleModalState', { open: false, vehicle: false });
+                    store.dispatch('vehiclesStore/setEditVehicleModalState', { open: false, vehicle: result.data.updateVehicle });
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error adding this user');
@@ -129,14 +126,16 @@
             }
         },
         beforeUpdate() {
-            this.title = this.currentVehicle.title;
-            this.registration = this.currentVehicle.registration;
-            this.loadWeight = this.currentVehicle.loadWeight;
-            this.liftWeight = this.currentVehicle.liftWeight;
-            this.wofExpiry = this.currentVehicle.wofExpiry;
-            this.registrationExpiry = this.currentVehicle.registrationExpiry;
-            this.selectedDriver = this.currentVehicle.driver,
-            this.isActive = this.currentVehicle.isActive;
+            if (this.currentVehicle) {
+                this.title = this.currentVehicle.title;
+                this.registration = this.currentVehicle.registration;
+                this.loadWeight = this.currentVehicle.loadWeight;
+                this.liftWeight = this.currentVehicle.liftWeight;
+                this.wofExpiry = this.currentVehicle.wofExpiry;
+                this.registrationExpiry = this.currentVehicle.registrationExpiry;
+                this.selectedDriver = this.currentVehicle.driver,
+                this.isActive = this.currentVehicle.isActive;
+            }
         }
     }
 </script>
