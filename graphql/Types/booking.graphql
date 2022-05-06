@@ -1,0 +1,59 @@
+type Booking {
+  id: ID!
+  name: String
+  orderNumber: String
+  inWaitingList: Boolean
+  vehicle: Vehicle @hasOne
+  location: Location @hasOne
+  driver: User @hasOne
+  mainContact: Contact @hasOne
+}
+
+extend type Query {
+  booking(
+    id: ID @eq 
+  ): Booking @find
+}
+
+extend type Mutation {
+  deleteBooking(id: ID!) : Booking @delete
+  addNewBooking(input: AddBookingInput! @spread) : Booking @create
+  editNewBooking(input: EditBookingInput! @spread) : Booking @update
+}
+
+input AddBookingInput {
+  name: String,
+  orderNumber: String,
+  inWaitingList: Boolean,
+  vehicle: AddVehicleHasOne @hasOne
+  location: AddLocationHasOne @hasOne
+  driver: AddDriverHasOne @hasOne
+  mainContact: AddMainContactHasOne @hasOne
+}
+
+input EditBookingInput {
+  id: ID!
+  name: String,
+  orderNumber: String,
+  inWaitingList: Boolean,
+  vehicle: AddVehicleHasOne @hasOne
+  location: AddLocationHasOne @hasOne
+  driver: AddDriverHasOne @hasOne
+  mainContact: AddMainContactHasOne @hasOne
+}
+
+input AddVehicleHasOne {
+  connect: ID
+}
+
+input AddLocationHasOne {
+  connect: ID
+}
+
+input AddDriverHasOne {
+  connect: ID
+}
+
+input AddMainContactHasOne {
+  connect: ID
+}

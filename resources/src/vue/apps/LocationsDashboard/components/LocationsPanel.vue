@@ -46,11 +46,11 @@
     </div>
 </template>
 <script>
-    import BackButton from '../../compoments/BackButton.vue';
-    import AddLocationModal from '../../modals/AddLocationModal.vue';
-    import EditCustomerModal from '../../modals/EditCustomerModal.vue';
-    import { deleteLocationMutation } from './locations-store';
-    import { deleteCustomerMutation } from '../CustomersDashboard/customers-store';
+    import BackButton from '../../../compoments/BackButton.vue';
+    import AddLocationModal from '../../../modals/AddLocationModal.vue';
+    import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
+    import { deleteLocationMutation } from '../locations-store';
+    import { deleteCustomerMutation } from '../../CustomersDashboard/customers-store';
 
     export default {
         props: {

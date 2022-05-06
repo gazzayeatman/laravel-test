@@ -18,6 +18,7 @@
             <div class="detail-page__content">
                 <locations-panel :customer="customer" />
                 <contacts-panel :customer="customer" />
+                <bookings-panel :customer="customer" />
             </div>
         </div>
         <add-location-modal :customer="customer" />
@@ -31,8 +32,9 @@
     import AddLocationModal from '../../../modals/AddLocationModal.vue';
     import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
     import AddContactModal from '../../../modals/AddContactModal.vue';
-    import LocationsPanel from '../../LocationsDashboard/LocationsPanel.vue';
-    import ContactsPanel from '../../ContactsDashboard/ContactsPanel.vue';
+    import LocationsPanel from '../../LocationsDashboard/components/LocationsPanel.vue';
+    import ContactsPanel from '../../ContactsDashboard/components/ContactsPanel.vue';
+    import BookingsPanel from '../../CustomersDashboard/components/BookingsPanel.vue';
 
     export default {
         computed: {
@@ -80,7 +82,8 @@
             'edit-customer-modal': EditCustomerModal,
             'add-contact-modal': AddContactModal,
             'locations-panel': LocationsPanel,
-            'contacts-panel': ContactsPanel
+            'contacts-panel': ContactsPanel,
+            'bookings-panel': BookingsPanel
         }
     }
 </script>

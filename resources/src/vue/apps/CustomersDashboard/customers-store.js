@@ -94,6 +94,58 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    getBookingsQuery = gql`
+        {
+            bookings {
+                id
+                title
+                orderNumber
+                vehicle {
+                    id
+                }
+                location {
+                    id
+                }
+                driver {
+                    id
+                }
+                mainContact {
+                    id
+                }
+            }
+        }
+    `,
+    addNewBookingMutation = gql`
+        mutation (
+            $title: String,
+            $orderNumber: String,
+            $inWaitingList: Boolean,
+            $vehicle: ID
+            $location: ID
+            $driver: ID
+            $mainContact: ID
+        ) {
+            addNewBooking(
+                input: {
+                    title: $title,
+                    orderNumber: $orderNumber,
+                    inWaitingList: $inWaitingList,
+                    vehicle: {
+                        connect: $vehicle
+                    },
+                    location: {
+                        connect: $location
+                    }
+                    driver: {
+                        connect: $driver
+                    }
+                    mainContact: {
+                        connect: $mainContact
+                    }
+                }
+            )
+        }
+    `,
     customersStore = {
         namespaced: true,
         state: {
@@ -101,6 +153,8 @@ const getCustomersQuery = gql`
             addCustomersModalOpen: false,
             editCustomerModalOpen: false,
             addContactsModalOpen: false,
+            addBookingModalOpen: false,
+            editBookingModalOpen: false,
             currentCustomer: false
         },
         mutations: {
@@ -112,6 +166,12 @@ const getCustomersQuery = gql`
             },
             setAddContactsModalState(state, payload) {
                 state.addContactsModalOpen = payload;
+            },
+            setAddBookingsModalState(state, payload) {
+                state.addBookingModalOpen = payload;
+            },
+            setEditBookingModalState(state, payload) {
+                state.editBookingModalOpen = payload;
             },
             setCurrentCustomer(state, payload) {
                 state.currentCustomer = payload;
@@ -126,6 +186,18 @@ const getCustomersQuery = gql`
             },
             setEditCustomerModalState({commit}, payload) {
                 commit('setEditCustomerModalState', payload);
+            },
+            setAddBookingsModalOpen({commit}, payload) {
+                commit('setAddBookingModalState', payload);
+            },
+            setAddBookingsModalClosed({commit}, payload) {
+                commit('setAddBookingModalState', payload);
+            },
+            setEditBookingsModalOpen({commit}, payload) {
+                commit('setEditBookingModalState', payload);
+            },
+            setEditBookingsModalClosed({commit}, payload) {
+                commit('setEditBookingModalState', payload);
             },
             setAddContactsModalState({commit}, payload) {
                 commit('setAddContactsModalState', payload);
@@ -157,5 +229,7 @@ export {
     getCustomer,
     updateCustomerMutation,
     addNewContactMutation,
-    deleteCustomerMutation
+    deleteCustomerMutation,
+    getBookingsQuery,
+    addNewBookingMutation
 }

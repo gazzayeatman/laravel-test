@@ -1,0 +1,50 @@
+<template>
+    <div class="detail-page__section">
+        <h3 class="detail-page__sub-title">
+            Bookings
+        </h3>
+        <div v-if="customer.bookings && customer.bookings.length > 0" class="detail-page__detail-grid">
+            <div class="action-panel">
+                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingsModalState', true)">
+                    Add a new booking
+                </button>
+            </div>
+            <div v-masonry="containerId" transition-duration="0.3s" item-selector=".contact-card__wrapper">
+                <div v-masonry-tile class="contact-cards__wrapper" v-for="(booking, index) in customer.bookings" :key="index">
+                    <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-booking/' + booking.id }">
+                        <div class="contact-card">
+                            <h3 class="contact-card__title">
+                                {{ booking.title }}
+                            </h3>
+                        </div>
+                    </router-link >
+                </div>
+            </div>
+        </div>
+        <div v-else class="detail-page__detail-grid detail-page__detail-grid--empty">
+            <div class="detail-page__detail-grid-content">
+                Nothing here?, Add a booking now
+            </div>
+            <div class="detail-page__detail-grid-action-panel">
+                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
+                    Add a new booking
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import BackButton from '../../../compoments/BackButton.vue';
+
+    export default {
+        props: {
+            customer: {}
+        },
+        methods: {
+            
+        },
+        components: {
+            'back-button': BackButton
+        }
+    }
+</script>

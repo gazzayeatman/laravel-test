@@ -22485,10 +22485,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22496,11 +22496,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
-/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
-/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
+/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 
 
@@ -22645,6 +22645,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    customer: {}
+  },
+  methods: {},
+  components: {
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js ***!
@@ -22656,13 +22681,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
 /* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
 /* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
 /* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
-/* harmony import */ var _LocationsDashboard_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/LocationsPanel.vue */ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue");
-/* harmony import */ var _ContactsDashboard_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ContactsDashboard/ContactsPanel.vue */ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue");
+/* harmony import */ var _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/components/LocationsPanel.vue */ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue");
+/* harmony import */ var _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ContactsDashboard/components/ContactsPanel.vue */ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue");
+/* harmony import */ var _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../CustomersDashboard/components/BookingsPanel.vue */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue");
+
 
 
 
@@ -22678,7 +22705,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var store = this.$store;
-    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)().params.id;
+    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRoute)().params.id;
     store.dispatch('customersStore/setCurrentCustomer', this.customerID);
   },
   methods: {
@@ -22718,17 +22745,18 @@ __webpack_require__.r(__webpack_exports__);
     'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     'add-contact-modal': _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    'locations-panel': _LocationsDashboard_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    'contacts-panel': _ContactsDashboard_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    'locations-panel': _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'contacts-panel': _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    'bookings-panel': _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22736,11 +22764,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
-/* harmony import */ var _locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
-/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
+/* harmony import */ var _locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 
 
@@ -23473,10 +23501,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2 ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23727,6 +23755,105 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "detail-page__section"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__sub-title"
+}, " Bookings ", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  key: 0,
+  "class": "detail-page__detail-grid"
+};
+var _hoisted_4 = {
+  "class": "action-panel"
+};
+var _hoisted_5 = {
+  "transition-duration": "0.3s",
+  "item-selector": ".contact-card__wrapper"
+};
+var _hoisted_6 = {
+  "class": "contact-card"
+};
+var _hoisted_7 = {
+  "class": "contact-card__title"
+};
+var _hoisted_8 = {
+  key: 1,
+  "class": "detail-page__detail-grid detail-page__detail-grid--empty"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "detail-page__detail-grid-content"
+}, " Nothing here?, Add a booking now ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "detail-page__detail-grid-action-panel"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  var _directive_masonry_tile = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry-tile");
+
+  var _directive_masonry = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, $props.customer.bookings && $props.customer.bookings.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-primary",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddBookingsModalState', true);
+    })
+  }, " Add a new booking ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.bookings, function (booking, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "contact-cards__wrapper",
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+      "class": "contact-card__wrapper",
+      to: {
+        path: '/customers/view-booking/' + booking.id
+      }
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.title), 1
+        /* TEXT */
+        )])];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["to"])])), [[_directive_masonry_tile]]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-primary",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
+    })
+  }, " Add a new booking ")])]))]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=template&id=22b32526":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=template&id=22b32526 ***!
@@ -23765,6 +23892,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_contacts_panel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("contacts-panel");
 
+  var _component_bookings_panel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("bookings-panel");
+
   var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
 
   var _component_edit_customer_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-customer-modal");
@@ -23795,6 +23924,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     customer: $options.customer
   }, null, 8
   /* PROPS */
+  , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_bookings_panel, {
+    customer: $options.customer
+  }, null, 8
+  /* PROPS */
   , ["customer"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
     customer: $options.customer
   }, null, 8
@@ -23812,10 +23945,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4 ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032 ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25980,16 +26113,18 @@ var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templa
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewBookingMutation": () => (/* binding */ addNewBookingMutation),
 /* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
 /* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
 /* harmony export */   "customersStore": () => (/* binding */ customersStore),
 /* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
+/* harmony export */   "getBookingsQuery": () => (/* binding */ getBookingsQuery),
 /* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
 /* harmony export */   "getCustomersQuery": () => (/* binding */ getCustomersQuery),
 /* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -26000,6 +26135,8 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
     addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
     deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
+    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                title\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n        ) {\n            addNewBooking(\n                input: {\n                    title: $title,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                }\n            )\n        }\n    "]))),
     customersStore = {
   namespaced: true,
   state: {
@@ -26007,6 +26144,8 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     addCustomersModalOpen: false,
     editCustomerModalOpen: false,
     addContactsModalOpen: false,
+    addBookingModalOpen: false,
+    editBookingModalOpen: false,
     currentCustomer: false
   },
   mutations: {
@@ -26018,6 +26157,12 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     },
     setAddContactsModalState: function setAddContactsModalState(state, payload) {
       state.addContactsModalOpen = payload;
+    },
+    setAddBookingsModalState: function setAddBookingsModalState(state, payload) {
+      state.addBookingModalOpen = payload;
+    },
+    setEditBookingModalState: function setEditBookingModalState(state, payload) {
+      state.editBookingModalOpen = payload;
     },
     setCurrentCustomer: function setCurrentCustomer(state, payload) {
       state.currentCustomer = payload;
@@ -26036,12 +26181,28 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
       var commit = _ref3.commit;
       commit('setEditCustomerModalState', payload);
     },
-    setAddContactsModalState: function setAddContactsModalState(_ref4, payload) {
+    setAddBookingsModalOpen: function setAddBookingsModalOpen(_ref4, payload) {
       var commit = _ref4.commit;
+      commit('setAddBookingModalState', payload);
+    },
+    setAddBookingsModalClosed: function setAddBookingsModalClosed(_ref5, payload) {
+      var commit = _ref5.commit;
+      commit('setAddBookingModalState', payload);
+    },
+    setEditBookingsModalOpen: function setEditBookingsModalOpen(_ref6, payload) {
+      var commit = _ref6.commit;
+      commit('setEditBookingModalState', payload);
+    },
+    setEditBookingsModalClosed: function setEditBookingsModalClosed(_ref7, payload) {
+      var commit = _ref7.commit;
+      commit('setEditBookingModalState', payload);
+    },
+    setAddContactsModalState: function setAddContactsModalState(_ref8, payload) {
+      var commit = _ref8.commit;
       commit('setAddContactsModalState', payload);
     },
-    setCurrentCustomer: function setCurrentCustomer(_ref5, payload) {
-      var commit = _ref5.commit;
+    setCurrentCustomer: function setCurrentCustomer(_ref9, payload) {
+      var commit = _ref9.commit;
 
       if (!payload) {
         commit('setCurrentCustomer', false);
@@ -46919,10 +47080,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue":
-/*!********************************************************************!*\
-  !*** ./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue ***!
-  \********************************************************************/
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -46930,15 +47091,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ContactsPanel_vue_vue_type_template_id_493c9af2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactsPanel.vue?vue&type=template&id=493c9af2 */ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2");
-/* harmony import */ var _ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactsPanel.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js");
+/* harmony import */ var _ContactsPanel_vue_vue_type_template_id_70917cf2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactsPanel.vue?vue&type=template&id=70917cf2 */ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2");
+/* harmony import */ var _ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactsPanel.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ContactsPanel_vue_vue_type_template_id_493c9af2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ContactsPanel_vue_vue_type_template_id_70917cf2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47003,6 +47164,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue":
+/*!********************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingsPanel.vue?vue&type=template&id=0769f410 */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410");
+/* harmony import */ var _BookingsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingsPanel.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue":
 /*!*******************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue ***!
@@ -47031,10 +47220,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue":
-/*!**********************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue ***!
-  \**********************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue":
+/*!*********************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -47042,15 +47231,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LocationsPanel_vue_vue_type_template_id_c26c80a4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsPanel.vue?vue&type=template&id=c26c80a4 */ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4");
-/* harmony import */ var _LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsPanel.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js");
+/* harmony import */ var _LocationsPanel_vue_vue_type_template_id_fed98032__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsPanel.vue?vue&type=template&id=fed98032 */ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032");
+/* harmony import */ var _LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsPanel.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LocationsPanel_vue_vue_type_template_id_c26c80a4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LocationsPanel_vue_vue_type_template_id_fed98032__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47437,10 +47626,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js":
-/*!********************************************************************************************!*\
-  !*** ./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js ***!
-  \********************************************************************************************/
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -47448,7 +47637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ContactsPanel.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ContactsPanel.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -47485,6 +47674,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookingsPanel.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js":
 /*!*******************************************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js ***!
@@ -47501,10 +47706,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js":
-/*!**********************************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js ***!
-  \**********************************************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -47512,7 +47717,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsPanel.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsPanel.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -47725,18 +47930,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2":
-/*!**************************************************************************************************!*\
-  !*** ./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2 ***!
-  \**************************************************************************************************/
+/***/ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2 ***!
+  \*************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_template_id_493c9af2__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_template_id_70917cf2__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_template_id_493c9af2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ContactsPanel.vue?vue&type=template&id=493c9af2 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/ContactsPanel.vue?vue&type=template&id=493c9af2");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ContactsPanel_vue_vue_type_template_id_70917cf2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ContactsPanel.vue?vue&type=template&id=70917cf2 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue?vue&type=template&id=70917cf2");
 
 
 /***/ }),
@@ -47773,6 +47978,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410 ***!
+  \**************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookingsPanel.vue?vue&type=template&id=0769f410 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410");
+
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=template&id=22b32526":
 /*!*************************************************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=template&id=22b32526 ***!
@@ -47789,18 +48010,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4":
-/*!****************************************************************************************************!*\
-  !*** ./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4 ***!
-  \****************************************************************************************************/
+/***/ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032 ***!
+  \***************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_template_id_c26c80a4__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_template_id_fed98032__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_template_id_c26c80a4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsPanel.vue?vue&type=template&id=c26c80a4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/LocationsPanel.vue?vue&type=template&id=c26c80a4");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LocationsPanel_vue_vue_type_template_id_fed98032__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LocationsPanel.vue?vue&type=template&id=fed98032 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue?vue&type=template&id=fed98032");
 
 
 /***/ }),
