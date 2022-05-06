@@ -98,7 +98,7 @@ const getCustomersQuery = gql`
         {
             bookings {
                 id
-                title
+                name
                 orderNumber
                 vehicle {
                     id
@@ -117,7 +117,7 @@ const getCustomersQuery = gql`
     `,
     addNewBookingMutation = gql`
         mutation (
-            $title: String,
+            $name: String,
             $orderNumber: String,
             $inWaitingList: Boolean,
             $vehicle: ID
@@ -127,7 +127,7 @@ const getCustomersQuery = gql`
         ) {
             addNewBooking(
                 input: {
-                    title: $title,
+                    name: $name,
                     orderNumber: $orderNumber,
                     inWaitingList: $inWaitingList,
                     vehicle: {
@@ -167,7 +167,7 @@ const getCustomersQuery = gql`
             setAddContactsModalState(state, payload) {
                 state.addContactsModalOpen = payload;
             },
-            setAddBookingsModalState(state, payload) {
+            setAddBookingModalState(state, payload) {
                 state.addBookingModalOpen = payload;
             },
             setEditBookingModalState(state, payload) {
@@ -187,10 +187,7 @@ const getCustomersQuery = gql`
             setEditCustomerModalState({commit}, payload) {
                 commit('setEditCustomerModalState', payload);
             },
-            setAddBookingsModalOpen({commit}, payload) {
-                commit('setAddBookingModalState', payload);
-            },
-            setAddBookingsModalClosed({commit}, payload) {
+            setAddBookingModalState({commit}, payload) {
                 commit('setAddBookingModalState', payload);
             },
             setEditBookingsModalOpen({commit}, payload) {

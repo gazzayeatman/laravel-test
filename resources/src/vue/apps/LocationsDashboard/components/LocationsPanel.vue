@@ -43,14 +43,15 @@
                 </button>
             </div>
         </div>
+        <add-location-modal :customer="customer" />
     </div>
 </template>
 <script>
     import BackButton from '../../../compoments/BackButton.vue';
-    import AddLocationModal from '../../../modals/AddLocationModal.vue';
     import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
     import { deleteLocationMutation } from '../locations-store';
     import { deleteCustomerMutation } from '../../CustomersDashboard/customers-store';
+    import AddLocationModal from '../../../modals/AddLocationModal.vue';
 
     export default {
         props: {
@@ -87,7 +88,8 @@
         components: {
             'back-button': BackButton,
             'add-location-modal': AddLocationModal,
-            'edit-customer-modal': EditCustomerModal
+            'edit-customer-modal': EditCustomerModal,
+            'add-location-modal': AddLocationModal,
         }
     }
 </script>

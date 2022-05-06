@@ -5,7 +5,7 @@
         </h3>
         <div v-if="customer.bookings && customer.bookings.length > 0" class="detail-page__detail-grid">
             <div class="action-panel">
-                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingsModalState', true)">
+                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
                     Add a new booking
                 </button>
             </div>
@@ -26,17 +26,30 @@
                 Nothing here?, Add a booking now
             </div>
             <div class="detail-page__detail-grid-action-panel">
-                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
+                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
                     Add a new booking
                 </button>
             </div>
         </div>
+        <add-booking-modal :drivers="this.drivers" :vehicles="this.vehicles" />
     </div>
 </template>
 <script>
+    import { getVehiclesQuery, getDrivers } from '../../VehiclesDashboard/vehicles-store';
     import BackButton from '../../../compoments/BackButton.vue';
+    import AddBookingModal from '../../../modals/AddBookingModal.vue';
 
     export default {
+        data() {
+            return {
+                vehicles: [],
+                drivers: []
+            }
+        },
+        apollo: {
+            vehicles: getVehiclesQuery,
+            drivers: getDrivers
+        },
         props: {
             customer: {}
         },
@@ -44,7 +57,8 @@
             
         },
         components: {
-            'back-button': BackButton
+            'back-button': BackButton,
+            'add-booking-modal': AddBookingModal
         }
     }
 </script>

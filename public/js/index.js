@@ -22497,12 +22497,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
-/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
-/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
-
-
+/* harmony import */ var _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../LocationsDashboard/locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
 
 
 
@@ -22511,31 +22507,16 @@ __webpack_require__.r(__webpack_exports__);
     customer: {}
   },
   methods: {
-    deleteCustomer: function deleteCustomer(id) {
+    deleteLocation: function deleteLocation(id) {
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__.deleteCustomerMutation,
+        mutation: _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.deleteLocationMutation,
         variables: {
           id: id
         }
       }).then(function () {
-        _this.$router.push('/customers');
-      })["catch"](function (error) {
-        console.log(error);
-        alert('there was an error deleting this user');
-      });
-    },
-    deleteLocation: function deleteLocation(id) {
-      var _this2 = this;
-
-      this.$apollo.mutate({
-        mutation: _LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_3__.deleteLocationMutation,
-        variables: {
-          id: id
-        }
-      }).then(function () {
-        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customerID);
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customerID);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error deleting this user');
@@ -22544,8 +22525,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    'add-contact-modal': _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -22656,15 +22636,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../VehiclesDashboard/vehicles-store */ "./resources/src/vue/apps/VehiclesDashboard/vehicles-store.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _modals_AddBookingModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/AddBookingModal.vue */ "./resources/src/vue/modals/AddBookingModal.vue");
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      vehicles: [],
+      drivers: []
+    };
+  },
+  apollo: {
+    vehicles: _VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.getVehiclesQuery,
+    drivers: _VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.getDrivers
+  },
   props: {
     customer: {}
   },
   methods: {},
   components: {
-    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'add-booking-modal': _modals_AddBookingModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -22681,15 +22676,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
-/* harmony import */ var _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modals/AddContactModal.vue */ "./resources/src/vue/modals/AddContactModal.vue");
-/* harmony import */ var _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LocationsDashboard/components/LocationsPanel.vue */ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue");
-/* harmony import */ var _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ContactsDashboard/components/ContactsPanel.vue */ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue");
-/* harmony import */ var _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../CustomersDashboard/components/BookingsPanel.vue */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue");
-
+/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
+/* harmony import */ var _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../LocationsDashboard/components/LocationsPanel.vue */ "./resources/src/vue/apps/LocationsDashboard/components/LocationsPanel.vue");
+/* harmony import */ var _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../ContactsDashboard/components/ContactsPanel.vue */ "./resources/src/vue/apps/ContactsDashboard/components/ContactsPanel.vue");
+/* harmony import */ var _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../CustomersDashboard/components/BookingsPanel.vue */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue");
+/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
 
 
 
@@ -22705,7 +22698,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var store = this.$store;
-    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRoute)().params.id;
+    this.customerID = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)().params.id;
     store.dispatch('customersStore/setCurrentCustomer', this.customerID);
   },
   methods: {
@@ -22713,7 +22706,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: deleteCustomerMutation,
+        mutation: _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_5__.deleteCustomerMutation,
         variables: {
           id: id
         }
@@ -22723,31 +22716,14 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
         alert('there was an error deleting this user');
       });
-    },
-    deleteLocation: function deleteLocation(id) {
-      var _this2 = this;
-
-      this.$apollo.mutate({
-        mutation: deleteLocationMutation,
-        variables: {
-          id: id
-        }
-      }).then(function () {
-        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customerID);
-      })["catch"](function (error) {
-        console.log(error);
-        alert('there was an error deleting this user');
-      });
     }
   },
   components: {
     'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    'add-contact-modal': _modals_AddContactModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    'locations-panel': _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    'contacts-panel': _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    'bookings-panel': _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'locations-panel': _LocationsDashboard_components_LocationsPanel_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'contacts-panel': _ContactsDashboard_components_ContactsPanel_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    'bookings-panel': _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 });
 
@@ -22765,10 +22741,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
-/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
-/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
-/* harmony import */ var _locations_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
-/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modals/EditCustomerModal.vue */ "./resources/src/vue/modals/EditCustomerModal.vue");
+/* harmony import */ var _locations_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../locations-store */ "./resources/src/vue/apps/LocationsDashboard/locations-store.js");
+/* harmony import */ var _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../modals/AddLocationModal.vue */ "./resources/src/vue/modals/AddLocationModal.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -22783,7 +22761,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$apollo.mutate({
-        mutation: _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_4__.deleteCustomerMutation,
+        mutation: _CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_3__.deleteCustomerMutation,
         variables: {
           id: id
         }
@@ -22798,7 +22776,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.$apollo.mutate({
-        mutation: _locations_store__WEBPACK_IMPORTED_MODULE_3__.deleteLocationMutation,
+        mutation: _locations_store__WEBPACK_IMPORTED_MODULE_2__.deleteLocationMutation,
         variables: {
           id: id
         }
@@ -22810,11 +22788,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  components: {
+  components: _defineProperty({
     'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
+    'add-location-modal': _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'edit-customer-modal': _modals_EditCustomerModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }, "add-location-modal", _modals_AddLocationModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"])
 });
 
 /***/ }),
@@ -22944,6 +22922,57 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     backLink: function backLink() {
       return this.link ? this.link : this.defaultLink;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    this.title = '', this.orderNumber = '', this.selectedVehicle = false, this.selectedDriver = false, this.selectedLocation = false;
+    this.selectedMainContact = false;
+  },
+  props: {
+    drivers: {}
+  },
+  methods: {
+    addBooking: function addBooking() {
+      var apollo = this.$store.state.apollo,
+          store = this.$store;
+      this.$apollo.mutate({
+        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewBookingMutation,
+        variables: {
+          name: this.name,
+          orderNumber: this.orderNumber,
+          inWaitingList: false,
+          vehicle: this.selectedVehicle.id,
+          location: this.selectedLocation.id,
+          driver: this.selectedDriver.id,
+          mainContact: this.selectedMainContact.id
+        }
+      }).then(function (result) {
+        store.dispatch('customersStore/setAddBookingModalState', false);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error adding this booking');
+      });
+    },
+    handleFormSubmit: function handleFormSubmit() {
+      this.addBooking();
     }
   }
 });
@@ -23570,6 +23599,8 @@ var _hoisted_14 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
+  var _component_add_contact_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-contact-modal");
+
   var _directive_masonry_tile = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry-tile");
 
   var _directive_masonry = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry");
@@ -23608,7 +23639,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
     })
-  }, " Add a new contact ")])]))]);
+  }, " Add a new contact ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_contact_modal, {
+    customer: $props.customer
+  }, null, 8
+  /* PROPS */
+  , ["customer"])]);
 }
 
 /***/ }),
@@ -23812,6 +23847,8 @@ var _hoisted_10 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
+  var _component_add_booking_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-booking-modal");
+
   var _directive_masonry_tile = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry-tile");
 
   var _directive_masonry = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry");
@@ -23819,7 +23856,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, $props.customer.bookings && $props.customer.bookings.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$store.dispatch('customersStore/setAddBookingsModalState', true);
+      return _ctx.$store.dispatch('customersStore/setAddBookingModalState', true);
     })
   }, " Add a new booking ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.bookings, function (booking, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -23847,9 +23884,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$store.dispatch('customersStore/setAddContactsModalState', true);
+      return _ctx.$store.dispatch('customersStore/setAddBookingModalState', true);
     })
-  }, " Add a new booking ")])]))]);
+  }, " Add a new booking ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_booking_modal, {
+    drivers: this.drivers,
+    vehicles: this.vehicles
+  }, null, 8
+  /* PROPS */
+  , ["drivers", "vehicles"])]);
 }
 
 /***/ }),
@@ -23894,11 +23936,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_bookings_panel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("bookings-panel");
 
-  var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
-
   var _component_edit_customer_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit-customer-modal");
-
-  var _component_add_contact_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-contact-modal");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.customer.name), 1
   /* TEXT */
@@ -23928,15 +23966,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     customer: $options.customer
   }, null, 8
   /* PROPS */
-  , ["customer"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
-    customer: $options.customer
-  }, null, 8
-  /* PROPS */
-  , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_customer_modal, {
-    customer: $options.customer
-  }, null, 8
-  /* PROPS */
-  , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_contact_modal, {
+  , ["customer"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit_customer_modal, {
     customer: $options.customer
   }, null, 8
   /* PROPS */
@@ -24013,6 +24043,8 @@ var _hoisted_15 = {
   "class": "detail-page__detail-grid-action-panel"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_add_location_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("add-location-modal");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, $props.customer.locations && $props.customer.locations.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
@@ -24040,7 +24072,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
     })
-  }, " Add a new location ")])]))]);
+  }, " Add a new location ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_location_modal, {
+    customer: $props.customer
+  }, null, 8
+  /* PROPS */
+  , ["customer"])]);
 }
 
 /***/ }),
@@ -24376,6 +24412,235 @@ function render(_ctx, _cache) {
     /* STABLE */
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li class=\"navbar__item navbar__item--auth-panel\">\r\n                <a class=\"navbar__link\" href=\"{{ route('logout') }}\"\r\n                    onclick=\"event.preventDefault();\r\n                    document.getElementById('logout-form').submit();\r\n                \">\r\n                    {{ __('Logout') }}\r\n                </a>\r\n                <form id=\"logout-form\" action=\"{{ route('logout') }}\" method=\"POST\" class=\"d-none\">\r\n                    @csrf\r\n                </form>\r\n            </li> ")])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "dialog__wrapper"
+};
+var _hoisted_2 = {
+  "class": "dialog"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Close ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "dialog__title"
+}, " Add new Booking ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "name"
+}, " Name ", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "orderNumber"
+}, " Order Number ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "bookedVehicle"
+}, " Booked Vehicle ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = ["value"];
+var _hoisted_13 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "bookedDriver"
+}, " Booked Driver ", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = ["value"];
+var _hoisted_16 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "bookingLocation"
+}, " Booking Location ", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = ["value"];
+var _hoisted_19 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "mainContact"
+}, " Main Contact ", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = ["value"];
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel form__action-panel--right"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__action-panel-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, " Save ")])], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.$store.state['customersStore'].addBookingModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$store.dispatch('customersStore/setAddBookingModalState', false);
+    }),
+    "class": "dialog__close-btn"
+  }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "dialog__form",
+    onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.name = $event;
+    }),
+    id: "name",
+    type: "text",
+    "class": "input input--text",
+    name: "name",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.name = $event;
+    }),
+    id: "orderNumber",
+    type: "text",
+    "class": "input input--text",
+    name: "orderNumber",
+    autocomplete: "off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.selectedDriver = $event;
+    }),
+    id: "bookedVehicle",
+    "class": "input",
+    name: "bookedVehicle"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.drivers, function (driver) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: driver.id,
+      value: driver
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(driver.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_12);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.selectedDriver = $event;
+    }),
+    id: "bookedDriver",
+    "class": "input",
+    name: "bookedDriver"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.drivers, function (driver) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: driver.id,
+      value: driver
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(driver.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_15);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.selectedDriver = $event;
+    }),
+    id: "bookingLocation",
+    "class": "input",
+    name: "bookingLocation"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.drivers, function (driver) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: driver.id,
+      value: driver
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(driver.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_18);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.selectedDriver = $event;
+    }),
+    id: "mainContact",
+    "class": "input",
+    name: "mainContact"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.drivers, function (driver) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: driver.id,
+      value: driver
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(driver.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_21);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), _hoisted_22], 32
+  /* HYDRATE_EVENTS */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -26135,8 +26400,8 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
     addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
     deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
-    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                title\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
-    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $title: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n        ) {\n            addNewBooking(\n                input: {\n                    title: $title,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                }\n            )\n        }\n    "]))),
+    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                }\n            )\n        }\n    "]))),
     customersStore = {
   namespaced: true,
   state: {
@@ -26158,7 +26423,7 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     setAddContactsModalState: function setAddContactsModalState(state, payload) {
       state.addContactsModalOpen = payload;
     },
-    setAddBookingsModalState: function setAddBookingsModalState(state, payload) {
+    setAddBookingModalState: function setAddBookingModalState(state, payload) {
       state.addBookingModalOpen = payload;
     },
     setEditBookingModalState: function setEditBookingModalState(state, payload) {
@@ -26181,28 +26446,24 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
       var commit = _ref3.commit;
       commit('setEditCustomerModalState', payload);
     },
-    setAddBookingsModalOpen: function setAddBookingsModalOpen(_ref4, payload) {
+    setAddBookingModalState: function setAddBookingModalState(_ref4, payload) {
       var commit = _ref4.commit;
       commit('setAddBookingModalState', payload);
     },
-    setAddBookingsModalClosed: function setAddBookingsModalClosed(_ref5, payload) {
+    setEditBookingsModalOpen: function setEditBookingsModalOpen(_ref5, payload) {
       var commit = _ref5.commit;
-      commit('setAddBookingModalState', payload);
+      commit('setEditBookingModalState', payload);
     },
-    setEditBookingsModalOpen: function setEditBookingsModalOpen(_ref6, payload) {
+    setEditBookingsModalClosed: function setEditBookingsModalClosed(_ref6, payload) {
       var commit = _ref6.commit;
       commit('setEditBookingModalState', payload);
     },
-    setEditBookingsModalClosed: function setEditBookingsModalClosed(_ref7, payload) {
+    setAddContactsModalState: function setAddContactsModalState(_ref7, payload) {
       var commit = _ref7.commit;
-      commit('setEditBookingModalState', payload);
-    },
-    setAddContactsModalState: function setAddContactsModalState(_ref8, payload) {
-      var commit = _ref8.commit;
       commit('setAddContactsModalState', payload);
     },
-    setCurrentCustomer: function setCurrentCustomer(_ref9, payload) {
-      var commit = _ref9.commit;
+    setCurrentCustomer: function setCurrentCustomer(_ref8, payload) {
+      var commit = _ref8.commit;
 
       if (!payload) {
         commit('setCurrentCustomer', false);
@@ -47358,6 +47619,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/modals/AddBookingModal.vue":
+/*!******************************************************!*\
+  !*** ./resources/src/vue/modals/AddBookingModal.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddBookingModal_vue_vue_type_template_id_e06e7890__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddBookingModal.vue?vue&type=template&id=e06e7890 */ "./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890");
+/* harmony import */ var _AddBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddBookingModal.vue?vue&type=script&lang=js */ "./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddBookingModal_vue_vue_type_template_id_e06e7890__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/modals/AddBookingModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/AddContactModal.vue":
 /*!******************************************************!*\
   !*** ./resources/src/vue/modals/AddContactModal.vue ***!
@@ -47770,6 +48059,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddBookingModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddBookingModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js":
 /*!******************************************************************************!*\
   !*** ./resources/src/vue/modals/AddContactModal.vue?vue&type=script&lang=js ***!
@@ -48086,6 +48391,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navbar_vue_vue_type_template_id_62d8562e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navbar_vue_vue_type_template_id_62d8562e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Navbar.vue?vue&type=template&id=62d8562e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/Navbar.vue?vue&type=template&id=62d8562e");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890":
+/*!************************************************************************************!*\
+  !*** ./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890 ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddBookingModal_vue_vue_type_template_id_e06e7890__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddBookingModal_vue_vue_type_template_id_e06e7890__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddBookingModal.vue?vue&type=template&id=e06e7890 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=template&id=e06e7890");
 
 
 /***/ }),

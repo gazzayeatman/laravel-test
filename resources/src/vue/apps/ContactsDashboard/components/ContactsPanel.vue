@@ -39,33 +39,19 @@
                 </button>
             </div>
         </div>
+        <add-contact-modal :customer="customer" />
     </div>
 </template>
 <script>
     import BackButton from '../../../compoments/BackButton.vue';
-    import AddLocationModal from '../../../modals/AddLocationModal.vue';
-    import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
     import { deleteLocationMutation } from '../../LocationsDashboard/locations-store';
-    import { deleteCustomerMutation } from '../../CustomersDashboard/customers-store';
+    import AddContactModal from '../../../modals/AddContactModal.vue';
 
     export default {
         props: {
             customer: {}
         },
         methods: {
-            deleteCustomer(id) {
-                this.$apollo.mutate({
-                    mutation: deleteCustomerMutation,
-                    variables: {
-                        id: id
-                    }
-                }).then(() => {
-                    this.$router.push('/customers') 
-                }).catch((error) => {
-                    console.log(error);
-                    alert('there was an error deleting this user');
-                });
-            },
             deleteLocation(id) {
                 this.$apollo.mutate({
                     mutation: deleteLocationMutation,
@@ -82,8 +68,7 @@
         },
         components: {
             'back-button': BackButton,
-            'add-location-modal': AddLocationModal,
-            'edit-customer-modal': EditCustomerModal
+            'add-contact-modal': AddContactModal,
         }
     }
 </script>

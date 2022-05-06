@@ -21,20 +21,17 @@
                 <bookings-panel :customer="customer" />
             </div>
         </div>
-        <add-location-modal :customer="customer" />
         <edit-customer-modal :customer="customer" />
-        <add-contact-modal :customer="customer" />
     </div>
 </template>
 <script>
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
-    import AddLocationModal from '../../../modals/AddLocationModal.vue';
     import EditCustomerModal from '../../../modals/EditCustomerModal.vue';
-    import AddContactModal from '../../../modals/AddContactModal.vue';
     import LocationsPanel from '../../LocationsDashboard/components/LocationsPanel.vue';
     import ContactsPanel from '../../ContactsDashboard/components/ContactsPanel.vue';
     import BookingsPanel from '../../CustomersDashboard/components/BookingsPanel.vue';
+    import { deleteCustomerMutation } from '../../CustomersDashboard/customers-store';
 
     export default {
         computed: {
@@ -62,25 +59,10 @@
                     alert('there was an error deleting this user');
                 });
             },
-            deleteLocation(id) {
-                this.$apollo.mutate({
-                    mutation: deleteLocationMutation,
-                    variables: {
-                        id: id
-                    }
-                }).then(() => {
-                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customerID);
-                }).catch((error) => {
-                    console.log(error);
-                    alert('there was an error deleting this user');
-                });
-            }
         },
         components: {
             'back-button': BackButton,
-            'add-location-modal': AddLocationModal,
             'edit-customer-modal': EditCustomerModal,
-            'add-contact-modal': AddContactModal,
             'locations-panel': LocationsPanel,
             'contacts-panel': ContactsPanel,
             'bookings-panel': BookingsPanel
