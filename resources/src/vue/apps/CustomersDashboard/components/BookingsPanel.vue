@@ -31,7 +31,7 @@
                 </button>
             </div>
         </div>
-        <add-booking-modal :drivers="this.drivers" :vehicles="this.vehicles" />
+        <add-booking-modal :locations="customer.locations" :drivers="this.drivers" :vehicles="this.vehicles" />
     </div>
 </template>
 <script>

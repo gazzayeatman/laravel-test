@@ -286,6 +286,15 @@ body {
   margin: 0px 8px 0px 0px;
   align-self: center;
 }
+.input--select {
+  width: 100%;
+  padding: 5px 0px;
+  box-shadow: 0px 1px 0px 0px #14213dff;
+  font-size: 25px;
+}
+.input--select:focus {
+  box-shadow: 0px 2px 0px 0px #fca311ff;
+}
 .input__message {
   font-size: 12px;
 }

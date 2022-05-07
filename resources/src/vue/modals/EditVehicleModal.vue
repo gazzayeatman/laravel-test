@@ -50,7 +50,7 @@
                     <label class="form__input-label" for="mainDriver">
                         Main Driver
                     </label>
-                    <select v-model="selectedDriver" id="mainDriver" class="input" name="mainDriver">
+                    <select v-model="selectedDriver" id="mainDriver" class="input input--select" name="mainDriver">
                         <option v-for="driver of drivers" :key="driver.id" :value="driver">
                             {{ driver.name }}
                         </option>

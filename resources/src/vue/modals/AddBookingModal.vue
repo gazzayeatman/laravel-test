@@ -26,9 +26,9 @@
                     <label class="form__input-label" for="bookedVehicle">
                         Booked Vehicle
                     </label>
-                    <select v-model="selectedDriver" id="bookedVehicle" class="input" name="bookedVehicle">
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
-                            {{ driver.name }}
+                    <select v-model="selectedVehicle" @change="handleVehicleChange()" id="bookedVehicle" class="input input--select" name="bookedVehicle">
+                        <option v-for="vehicle of vehicles" :key="vehicle.id" :value="vehicle">
+                            {{ vehicle.title }} - {{ vehicle.registration }}
                         </option>
                     </select>
                 </div>
@@ -36,7 +36,7 @@
                     <label class="form__input-label" for="bookedDriver">
                         Booked Driver
                     </label>
-                    <select v-model="selectedDriver" id="bookedDriver" class="input" name="bookedDriver">
+                    <select v-model="selectedDriver" id="bookedDriver" class="input input--select" name="bookedDriver">
                         <option v-for="driver of drivers" :key="driver.id" :value="driver">
                             {{ driver.name }}
                         </option>
@@ -46,9 +46,12 @@
                     <label class="form__input-label" for="bookingLocation">
                         Booking Location
                     </label>
-                    <select v-model="selectedDriver" id="bookingLocation" class="input" name="bookingLocation">
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
-                            {{ driver.name }}
+                    <select v-model="selectedLocation" @change="handleLocationChange()" id="bookingLocation" class="input input--select" name="bookingLocation">
+                        <option v-for="location of locations" :key="location.id" :value="location">
+                            <span v-if="location.unitNumber">
+                                {{ location.unitNumber }} / 
+                            </span>
+                            {{ location.streetNumber }} {{ location.streetName }} {{ location.suburb }} {{ location.city }}
                         </option>
                     </select>
                 </div>
@@ -56,9 +59,9 @@
                     <label class="form__input-label" for="mainContact">
                         Main Contact
                     </label>
-                    <select v-model="selectedDriver" id="mainContact" class="input" name="mainContact">
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
-                            {{ driver.name }}
+                    <select v-model="selectedMainContact" id="mainContact" class="input input--select" name="mainContact">
+                        <option v-for="contact of contacts" :key="contact.id" :value="contact">
+                            {{ contact.firstName }} {{ contact.lastName }}
                         </option>
                     </select>
                 </div>
@@ -79,14 +82,17 @@
 
     export default {
         data() {
-            this.title = '',
-            this.orderNumber = '',
-            this.selectedVehicle = false,
-            this.selectedDriver = false,
-            this.selectedLocation = false
-            this.selectedMainContact = false
+            this.title = '';
+            this.orderNumber = '';
+            this.selectedVehicle = false;
+            this.selectedDriver = false;
+            this.selectedLocation = false;
+            this.selectedMainContact = false;
+            this.contacts = [];
         },
         props: {
+            vehicles: {},
+            locations: {},
             drivers: {}
         },
         methods: {
@@ -111,6 +117,12 @@
                     console.log(error);
                     alert('there was an error adding this booking');
                 });
+            },
+            handleVehicleChange() {
+                this.selectedDriver = this.selectedVehicle.driver;
+            },
+            handleLocationChange() {
+                this.con
             },
             handleFormSubmit() {
                this.addBooking();

@@ -23,15 +23,21 @@ const getLocationsQuery = gql`
             $streetName: String,
             $suburb: String,
             $city: String,
+            $contactIDs: [ID],
             $customer_id: ID
         ) {
             addNewLocation(
-                unitNumber: $unitNumber,
-                streetNumber: $streetNumber,
-                streetName: $streetName,
-                suburb: $suburb,
-                city: $city,
-                customer_id: $customer_id
+                input : {
+                    unitNumber: $unitNumber,
+                    streetNumber: $streetNumber,
+                    streetName: $streetName,
+                    suburb: $suburb,
+                    city: $city,
+                    contactIDs: {
+                        sync: $contactIDs
+                    }
+                    customer_id: $customer_id
+                }
             ) {
                 id
                 unitNumber

@@ -5,6 +5,7 @@ type Location {
   streetName: String
   suburb: String
   city: String
+  contacts: [Contact] @hasMany
   customer: Customer @belongsTo
 }
 
@@ -14,13 +15,31 @@ extend type Query {
 
 extend type Mutation {
   deleteLocation(id: ID!) : Location @delete
+  addNewLocation(input: {AddLocationInput! @spread}) : Location @create
+  editLocation(input: {EditLocationInput! @spread}) : Location @update
+}
 
-  addNewLocation(
-    unitNumber: String,
-    streetNumber: String,
-    streetName: String,
-    suburb: String,
-    city: String,
-    customer_id: ID
-  ) : Location @create
+input AddLocationInput {
+  unitNumber: String
+  streetNumber: String
+  streetName: String
+  suburb: String
+  city: String
+  contacts: AddContactsHasMany @hasMany
+  customer: Customer @belongsTo
+}
+
+input EditLocationInput {
+  id: ID
+  unitNumber: String
+  streetNumber: String
+  streetName: String
+  suburb: String
+  city: String
+  contacts: AddContactsHasMany @hasMany
+  customer: Customer @belongsTo
+}
+
+input AddContactsHasMany {
+  sync: ID
 }
