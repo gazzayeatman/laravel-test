@@ -20,7 +20,7 @@
                     <label class="form__input-label" for="orderNumber">
                         Order Number
                     </label>
-                    <input v-model="name" id="orderNumber" type="text" class="input input--text" name="orderNumber" autocomplete="off" />
+                    <input v-model="orderNumber" id="orderNumber" type="text" class="input input--text" name="orderNumber" autocomplete="off" />
                 </div>
                 <div class="form__input-field">
                     <label class="form__input-label" for="bookedVehicle">
@@ -114,6 +114,7 @@
                         customer: this.customer.id
                     }
                 }).then((result) => {
+                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
                     store.dispatch('customersStore/setAddBookingModalState', false);
                 }).catch((error) => {
                     console.log(error);

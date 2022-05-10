@@ -22959,6 +22959,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addBooking: function addBooking() {
+      var _this = this;
+
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
@@ -22974,6 +22976,8 @@ __webpack_require__.r(__webpack_exports__);
           customer: this.customer.id
         }
       }).then(function (result) {
+        _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
+
         store.dispatch('customersStore/setAddBookingModalState', false);
       })["catch"](function (error) {
         console.log(error);
@@ -24028,40 +24032,37 @@ var _hoisted_4 = {
   "class": "action-panel"
 };
 var _hoisted_5 = {
-  "class": "grid-view__wrapper"
-};
-var _hoisted_6 = {
   "class": "grid-view"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "grid-view__information"
 };
-var _hoisted_8 = {
+var _hoisted_7 = {
   "class": "grid-view__id"
 };
-var _hoisted_9 = {
+var _hoisted_8 = {
   "class": "grid-view__column"
 };
-var _hoisted_10 = {
+var _hoisted_9 = {
   key: 0,
   "class": "grid-view__column"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "grid-view__actions"
 };
-var _hoisted_12 = ["onClick"];
-var _hoisted_13 = {
+var _hoisted_11 = ["onClick"];
+var _hoisted_12 = {
   key: 1,
   "class": "detail-page__detail-grid detail-page__detail-grid--empty"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "detail-page__detail-grid-content"
 }, " Nothing here?, Add a location now ", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = {
+var _hoisted_14 = {
   "class": "detail-page__detail-grid-action-panel"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24073,23 +24074,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "btn btn-primary"
   }, " Add Location ")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.locations, function (location) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "grid-view__wrapper",
+      key: location.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.id), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
     /* TEXT */
-    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
+    ), location.customer && location.customer.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.customer.name), 1
     /* TEXT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\n                            Edit\n                        </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"$store.dispatch('locationsDashboardStore/setEditUserModalOpen', user)\" class=\"btn btn-primary\">\n                            Edit\n                        </button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.deleteLocation(location.id);
       },
       "class": "btn btn-primary btn--danger"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_12)])])]);
-  }), 256
-  /* UNKEYED_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_11)])])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('locationsStore/setAddLocationModalOpen');
@@ -24583,7 +24587,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.name = $event;
+      return _ctx.orderNumber = $event;
     }),
     id: "orderNumber",
     type: "text",
@@ -24592,7 +24596,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.orderNumber]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return _ctx.selectedVehicle = $event;
     }),

@@ -9,7 +9,7 @@
                     Add Location
                 </button>
             </div>
-            <div class="grid-view__wrapper" v-for="location of customer.locations">
+            <div class="grid-view__wrapper" v-for="location of customer.locations" :key="location.id">
                 <div class="grid-view">
                     <div class="grid-view__information">
                         <div class="grid-view__id">
