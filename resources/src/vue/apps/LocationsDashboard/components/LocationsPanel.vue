@@ -78,7 +78,7 @@
                         id: id
                     }
                 }).then(() => {
-                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customerID);
+                    this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error deleting this user');

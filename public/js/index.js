@@ -22542,9 +22542,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
 /* harmony import */ var _contacts_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contacts-store */ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js");
+/* harmony import */ var _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../CustomersDashboard/components/BookingsPanel.vue */ "./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue");
+
 
 
 
@@ -22562,7 +22564,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var store = this.$store;
-    this.contactID = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)().params.id;
+    this.contactID = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute)().params.id;
     store.dispatch('contactsStore/setCurrentContact', this.contactID);
   },
   methods: {
@@ -22585,7 +22587,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'bookings-panel': _CustomersDashboard_components_BookingsPanel_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -22781,7 +22784,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           id: id
         }
       }).then(function () {
-        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customerID);
+        _this2.$store.dispatch('customersStore/setCurrentCustomer', _this2.customer.id);
       })["catch"](function (error) {
         console.log(error);
         alert('there was an error deleting this user');
@@ -23709,6 +23712,8 @@ var _hoisted_7 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
 
+  var _component_bookings_panel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("bookings-panel");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button, {
     link: $options.getBackLink
   }, null, 8
@@ -23727,7 +23732,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-primary"
   }, " Edit ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.emailAddress) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.phoneNumber), 1
   /* TEXT */
-  )])])]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_bookings_panel, {
+    customer: $options.contact
+  }, null, 8
+  /* PROPS */
+  , ["customer"])])])]);
 }
 
 /***/ }),
@@ -26405,7 +26414,7 @@ var _templateObject, _templateObject2, _templateObject3;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query($id: ID!) {\n        contact(id: $id) {\n            id\n            firstName\n            lastName\n            phoneNumber\n            emailAddress\n            customer {\n                id\n            }\n        }\n    }\n"]))),
+var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query($id: ID!) {\n        contact(id: $id) {\n            id\n            firstName\n            lastName\n            phoneNumber\n            emailAddress\n            customer {\n                id\n            }\n            bookings {\n                id\n                name\n            }\n        }\n    }\n"]))),
     deleteContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteContact(id: $id) {\n                id\n                customer {\n                    id\n                }\n            }\n        }\n    "]))),
     addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer: ID!\n        ) {\n            addNewContact(\n                input: {\n                    firstName: $firstName\n                    lastName: $lastName,\n                    emailAddress: $emailAddress,\n                    phoneNumber: $phoneNumber,\n                    customer: {\n                        connect: $customer\n                    }\n                }\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
     contactsStore = {

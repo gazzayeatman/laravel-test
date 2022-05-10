@@ -11,6 +11,10 @@ const getContact = gql`
             customer {
                 id
             }
+            bookings {
+                id
+                name
+            }
         }
     }
 `,

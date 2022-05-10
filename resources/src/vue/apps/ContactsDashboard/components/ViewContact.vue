@@ -20,6 +20,7 @@
                     {{ contact.emailAddress }}
                     {{ contact.phoneNumber }}
                 </div>
+                <bookings-panel :customer="contact" />
             </div>
         </div>
     </div>
@@ -28,6 +29,7 @@
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
     import { deleteContact } from '../contacts-store';
+    import BookingsPanel from '../../CustomersDashboard/components/BookingsPanel.vue';
 
     export default {
         computed: {
@@ -65,6 +67,7 @@
         },
         components: {
             'back-button': BackButton,
+            'bookings-panel': BookingsPanel,
         }
     }
 </script>
