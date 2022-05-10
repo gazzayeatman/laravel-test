@@ -13,6 +13,11 @@ const getLocationsQuery = gql`
                 id
                 name
             }
+            contacts {
+                id
+                firstName
+                lastName
+            }
         }
     }
 `,
@@ -24,7 +29,7 @@ const getLocationsQuery = gql`
             $suburb: String,
             $city: String,
             $contactIDs: [ID],
-            $customer_id: ID
+            $customer: ID
         ) {
             addNewLocation(
                 input : {
@@ -33,10 +38,12 @@ const getLocationsQuery = gql`
                     streetName: $streetName,
                     suburb: $suburb,
                     city: $city,
-                    contactIDs: {
+                    contacts: {
                         sync: $contactIDs
                     }
-                    customer_id: $customer_id
+                    customer: {
+                        connect: $customer
+                    }
                 }
             ) {
                 id
@@ -48,6 +55,11 @@ const getLocationsQuery = gql`
                 customer {
                     id
                     name
+                }
+                contacts {
+                    id
+                    firstName
+                    lastName
                 }
             }
         }

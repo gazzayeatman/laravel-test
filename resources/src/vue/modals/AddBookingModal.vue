@@ -55,12 +55,12 @@
                         </option>
                     </select>
                 </div>
-                <div class="form__input-field">
+                <div class="form__input-field" v-if="$store.state['customersStore'].availableContacts.length > 0">
                     <label class="form__input-label" for="mainContact">
                         Main Contact
                     </label>
                     <select v-model="selectedMainContact" id="mainContact" class="input input--select" name="mainContact">
-                        <option v-for="contact of contacts" :key="contact.id" :value="contact">
+                        <option v-for="contact of $store.state['customersStore'].availableContacts" :key="contact.id" :value="contact">
                             {{ contact.firstName }} {{ contact.lastName }}
                         </option>
                     </select>
@@ -93,7 +93,8 @@
         props: {
             vehicles: {},
             locations: {},
-            drivers: {}
+            drivers: {},
+            customer: {}
         },
         methods: {
             addBooking() {
@@ -109,7 +110,8 @@
                         vehicle: this.selectedVehicle.id,
                         location: this.selectedLocation.id,
                         driver: this.selectedDriver.id,
-                        mainContact: this.selectedMainContact.id
+                        mainContact: this.selectedMainContact.id,
+                        customer: this.customer.id
                     }
                 }).then((result) => {
                     store.dispatch('customersStore/setAddBookingModalState', false);
@@ -122,7 +124,7 @@
                 this.selectedDriver = this.selectedVehicle.driver;
             },
             handleLocationChange() {
-                this.con
+                this.$store.dispatch('customersStore/setAvailableContacts', this.selectedLocation.contacts);
             },
             handleFormSubmit() {
                this.addBooking();

@@ -22954,7 +22954,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     vehicles: {},
     locations: {},
-    drivers: {}
+    drivers: {},
+    customer: {}
   },
   methods: {
     addBooking: function addBooking() {
@@ -22969,7 +22970,8 @@ __webpack_require__.r(__webpack_exports__);
           vehicle: this.selectedVehicle.id,
           location: this.selectedLocation.id,
           driver: this.selectedDriver.id,
-          mainContact: this.selectedMainContact.id
+          mainContact: this.selectedMainContact.id,
+          customer: this.customer.id
         }
       }).then(function (result) {
         store.dispatch('customersStore/setAddBookingModalState', false);
@@ -22982,7 +22984,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedDriver = this.selectedVehicle.driver;
     },
     handleLocationChange: function handleLocationChange() {
-      this.con;
+      this.$store.dispatch('customersStore/setAvailableContacts', this.selectedLocation.contacts);
     },
     handleFormSubmit: function handleFormSubmit() {
       this.addBooking();
@@ -23003,7 +23005,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/ContactsDashboard/contacts-store */ "./resources/src/vue/apps/ContactsDashboard/contacts-store.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -23024,13 +23026,14 @@ __webpack_require__.r(__webpack_exports__);
       var apollo = this.$store.state.apollo,
           store = this.$store;
       this.$apollo.mutate({
-        mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewContactMutation,
+        mutation: _apps_ContactsDashboard_contacts_store__WEBPACK_IMPORTED_MODULE_0__.addNewContactMutation,
         variables: {
           firstName: this.firstName,
           lastName: this.lastName,
           emailAddress: this.emailAddress,
           phoneNumber: this.phoneNumber,
-          customer_id: this.customer.id
+          contacts: [],
+          customer: this.customer.id
         }
       }).then(function (result) {
         _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
@@ -23117,6 +23120,7 @@ __webpack_require__.r(__webpack_exports__);
       suburb: '',
       city: '',
       customerID: 0,
+      selectedContacts: [],
       customers: []
     };
   },
@@ -23135,7 +23139,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var apollo = this.$store.state.apollo,
-          store = this.$store;
+          store = this.$store,
+          selectedContactIDs = this.selectedContacts.map(Number);
+      console.log(selectedContactIDs);
       this.$apollo.mutate({
         mutation: _apps_LocationsDashboard_locations_store__WEBPACK_IMPORTED_MODULE_1__.addNewLocationMutation,
         variables: {
@@ -23145,7 +23151,8 @@ __webpack_require__.r(__webpack_exports__);
           streetName: this.streetName,
           suburb: this.suburb,
           city: this.city,
-          customer_id: this.getCurrentCustomerID()
+          contactIDs: selectedContactIDs,
+          customer: this.getCurrentCustomerID()
         }
       }).then(function (result) {
         if (apollo.queries.locations) {
@@ -23882,7 +23889,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.title), 1
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.name), 1
         /* TEXT */
         )])];
       }),
@@ -23900,12 +23907,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$store.dispatch('customersStore/setAddBookingModalState', true);
     })
   }, " Add a new booking ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_booking_modal, {
+    customer: $props.customer,
     locations: $props.customer.locations,
     drivers: this.drivers,
     vehicles: this.vehicles
   }, null, 8
   /* PROPS */
-  , ["locations", "drivers", "vehicles"])]);
+  , ["customer", "locations", "drivers", "vehicles"])]);
 }
 
 /***/ }),
@@ -24527,6 +24535,7 @@ var _hoisted_19 = {
   key: 0
 };
 var _hoisted_20 = {
+  key: 0,
   "class": "form__input-field"
 };
 
@@ -24647,14 +24656,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedLocation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedLocation]])]), _ctx.$store.state['customersStore'].availableContacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return _ctx.selectedMainContact = $event;
     }),
     id: "mainContact",
     "class": "input input--select",
     name: "mainContact"
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.contacts, function (contact) {
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$store.state['customersStore'].availableContacts, function (contact) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: contact.id,
       value: contact
@@ -24665,7 +24674,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedMainContact]])]), _hoisted_23], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedMainContact]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_23], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -25003,19 +25012,34 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_16 = {
   key: 0,
+  "class": "form__input-field form__input-group"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "form__input-label"
+}, " Contacts ", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = ["value"];
+var _hoisted_19 = {
+  "class": "form__input-label form__input-label--checkbox"
+};
+var _hoisted_20 = {
+  key: 1,
   "class": "form__input-field"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form__input-label",
   "for": "customer"
 }, " Customer ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = ["value"];
+var _hoisted_22 = ["value"];
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel form__action-panel--right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form__action-panel-group"
@@ -25034,7 +25058,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "dialog__close-btn"
   }, _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     "class": "dialog__form",
-    onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.handleFormSubmit && $options.handleFormSubmit.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -25092,9 +25116,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]])]), !$props.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.city]])]), $props.customer && $props.customer.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.contacts, function (contact) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: contact.id,
+      "class": "form__clickable-group"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      "class": "input input--checkbox",
+      type: "checkbox",
+      name: "contacts",
+      value: contact.id,
+      "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+        return $data.selectedContacts = $event;
+      })
+    }, null, 8
+    /* PROPS */
+    , _hoisted_18), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selectedContacts]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.lastName), 1
+    /* TEXT */
+    )]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$props.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "customer",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $data.customerID = $event;
     })
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customers, function (customer) {
@@ -25103,12 +25146,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: customer.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(customer.name), 9
     /* TEXT, PROPS */
-    , _hoisted_18);
+    , _hoisted_22);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.customerID]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_19], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.customerID]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_23], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -26348,17 +26391,19 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
 /* harmony export */   "contactsStore": () => (/* binding */ contactsStore),
 /* harmony export */   "deleteContact": () => (/* binding */ deleteContact)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query($id: ID!) {\n        contact(id: $id) {\n            id\n            firstName\n            lastName\n            phoneNumber\n            emailAddress\n            customer {\n                id\n            }\n        }\n    }\n"]))),
     deleteContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteContact(id: $id) {\n                id\n                customer {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer: ID!\n        ) {\n            addNewContact(\n                input: {\n                    firstName: $firstName\n                    lastName: $lastName,\n                    emailAddress: $emailAddress,\n                    phoneNumber: $phoneNumber,\n                    customer: {\n                        connect: $customer\n                    }\n                }\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
     contactsStore = {
   namespaced: true,
   state: {
@@ -26406,7 +26451,6 @@ var getContact = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templa
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewBookingMutation": () => (/* binding */ addNewBookingMutation),
-/* harmony export */   "addNewContactMutation": () => (/* binding */ addNewContactMutation),
 /* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
 /* harmony export */   "customersStore": () => (/* binding */ customersStore),
 /* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
@@ -26416,19 +26460,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n        }\n    }\n"]))),
-    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n            }\n        }\n    "]))),
-    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
-    updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                id: $id\n                name: $name\n            ) {\n                name\n            }\n        }\n    "]))),
-    addNewContactMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $firstName: String,\n            $lastName: String,\n            $phoneNumber: String,\n            $emailAddress: String,\n            $customer_id: ID!\n        ) {\n            addNewContact(\n                firstName: $firstName\n                lastName: $lastName,\n                emailAddress: $emailAddress,\n                phoneNumber: $phoneNumber,\n                customer_id: $customer_id\n            ) {\n                firstName,\n                lastName,\n                phoneNumber,\n                emailAddress\n            }\n        }\n    "]))),
-    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
-    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
-    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                }\n            )\n        }\n    "]))),
+    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                    contacts {\n                        id\n                        firstName\n                        lastName\n                    }\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n                bookings {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
+    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                input: {\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
+    updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                input: {\n                    id: $id\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
+    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
+    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n            $customer: ID\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                    customer: {\n                        connect: $customer\n                    }\n                }\n            ) {\n                id\n            }\n        }\n    "]))),
     customersStore = {
   namespaced: true,
   state: {
@@ -26438,7 +26481,8 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     addContactsModalOpen: false,
     addBookingModalOpen: false,
     editBookingModalOpen: false,
-    currentCustomer: false
+    currentCustomer: false,
+    availableContacts: []
   },
   mutations: {
     setAddCustomersModalState: function setAddCustomersModalState(state, payload) {
@@ -26458,6 +26502,9 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     },
     setCurrentCustomer: function setCurrentCustomer(state, payload) {
       state.currentCustomer = payload;
+    },
+    setAvailableContacts: function setAvailableContacts(state, payload) {
+      state.availableContacts = payload;
     }
   },
   actions: {
@@ -26507,6 +26554,10 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    setAvailableContacts: function setAvailableContacts(_ref9, payload) {
+      var commit = _ref9.commit;
+      commit('setAvailableContacts', payload);
     }
   }
 };
@@ -26534,8 +26585,8 @@ var _templateObject, _templateObject2, _templateObject3;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n                name\n            }\n        }\n    }\n"]))),
-    addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String,\n            $contactIDs: [ID],\n            $customer_id: ID\n        ) {\n            addNewLocation(\n                input : {\n                    unitNumber: $unitNumber,\n                    streetNumber: $streetNumber,\n                    streetName: $streetName,\n                    suburb: $suburb,\n                    city: $city,\n                    contactIDs: {\n                        sync: $contactIDs\n                    }\n                    customer_id: $customer_id\n                }\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n                customer {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
+var getLocationsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        locations {\n            id\n            unitNumber\n            streetNumber\n            streetName\n            suburb\n            city\n            customer {\n                id\n                name\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n        }\n    }\n"]))),
+    addNewLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        mutation (\n            $unitNumber: String,\n            $streetNumber: String,\n            $streetName: String,\n            $suburb: String,\n            $city: String,\n            $contactIDs: [ID],\n            $customer: ID\n        ) {\n            addNewLocation(\n                input : {\n                    unitNumber: $unitNumber,\n                    streetNumber: $streetNumber,\n                    streetName: $streetName,\n                    suburb: $suburb,\n                    city: $city,\n                    contacts: {\n                        sync: $contactIDs\n                    }\n                    customer: {\n                        connect: $customer\n                    }\n                }\n            ) {\n                id\n                unitNumber\n                streetNumber\n                streetName\n                suburb\n                city\n                customer {\n                    id\n                    name\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                }\n            }\n        }\n    "]))),
     deleteLocationMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        mutation ($id: ID!) {\n            deleteLocation(id: $id) {\n                id\n            }\n        }\n    "]))),
     locationsStore = {
   namespaced: true,

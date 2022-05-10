@@ -14,7 +14,7 @@
                     <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-booking/' + booking.id }">
                         <div class="contact-card">
                             <h3 class="contact-card__title">
-                                {{ booking.title }}
+                                {{ booking.name }}
                             </h3>
                         </div>
                     </router-link >
@@ -31,7 +31,7 @@
                 </button>
             </div>
         </div>
-        <add-booking-modal :locations="customer.locations" :drivers="this.drivers" :vehicles="this.vehicles" />
+        <add-booking-modal :customer="customer" :locations="customer.locations" :drivers="this.drivers" :vehicles="this.vehicles" />
     </div>
 </template>
 <script>

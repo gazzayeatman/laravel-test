@@ -1,26 +1,48 @@
 type Contact {
-  id: ID!
-  firstName: String
-  lastName: String
-  phoneNumber: String
-  emailAddress: String
-  customer: Customer
+    id: ID!
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    emailAddress: String
+    customer: Customer
+    locations: [Location]
 }
 
 extend type Query {
-  contact(
-    id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-  ): Contact @find
+    contact(
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+    ): Contact @find
 }
 
 extend type Mutation {
-  deleteContact(id: ID!) : Contact @delete
+    deleteContact(id: ID!) : Contact @delete
+    addNewContact(input: AddContactInput! @spread) : Contact @create
+    editContact(input: EditContactInput! @spread) : Contact @update
+}
 
-  addNewContact(
+input AddContactInput {
     firstName: String,
     lastName: String,
     phoneNumber: String,
     emailAddress: String,
-    customer_id: ID!
-  ) : Contact @create
+    customer: AddCustomerBelongsToOne @belongsTo
+    locations: AddLocationsBelongsToMany @belongsToMany
+}
+
+input EditContactInput {
+    id: ID!,
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    emailAddress: String,
+    customer: AddCustomerBelongsToOne @belongsTo
+    locations: AddLocationsBelongsToMany @belongsToMany
+}
+
+input AddCustomerBelongsToOne {
+    connect: ID
+}
+
+input AddLocationsBelongsToMany {
+    sync: [ID]
 }

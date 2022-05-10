@@ -3,10 +3,11 @@ type Booking {
   name: String
   orderNumber: String
   inWaitingList: Boolean
-  vehicle: Vehicle @hasOne
-  location: Location @hasOne
-  driver: User @hasOne
-  mainContact: Contact @hasOne
+  vehicle: Vehicle @belongsTo
+  location: Location @belongsTo
+  driver: User @belongsTo
+  mainContact: Contact @belongsTo
+  customer: Customer @belongsTo
 }
 
 extend type Query {
@@ -25,10 +26,11 @@ input AddBookingInput {
   name: String,
   orderNumber: String,
   inWaitingList: Boolean,
-  vehicle: AddVehicleHasOne @hasOne
-  location: AddLocationHasOne @hasOne
-  driver: AddDriverHasOne @hasOne
-  mainContact: AddMainContactHasOne @hasOne
+  vehicle: AddVehicleBelongsTo @belongsTo
+  location: AddLocationBelongsTo @belongsTo
+  driver: AddDriverBelongsTo @belongsTo
+  mainContact: AddMainContactBelongsTo @belongsTo
+  customer: AddCustomerBelongsTo @belongsTo
 }
 
 input EditBookingInput {
@@ -36,24 +38,29 @@ input EditBookingInput {
   name: String,
   orderNumber: String,
   inWaitingList: Boolean,
-  vehicle: AddVehicleHasOne @hasOne
-  location: AddLocationHasOne @hasOne
-  driver: AddDriverHasOne @hasOne
-  mainContact: AddMainContactHasOne @hasOne
+  vehicle: AddVehicleBelongsTo @belongsTo
+  location: AddLocationBelongsTo @belongsTo
+  driver: AddDriverBelongsTo @belongsTo
+  mainContact: AddMainContactBelongsTo @belongsTo
+  customer: AddCustomerBelongsTo @belongsTo
 }
 
-input AddVehicleHasOne {
+input AddVehicleBelongsTo {
   connect: ID
 }
 
-input AddLocationHasOne {
+input AddLocationBelongsTo {
   connect: ID
 }
 
-input AddDriverHasOne {
+input AddDriverBelongsTo {
   connect: ID
 }
 
-input AddMainContactHasOne {
+input AddMainContactBelongsTo {
+  connect: ID
+}
+
+input AddCustomerBelongsTo {
   connect: ID
 }

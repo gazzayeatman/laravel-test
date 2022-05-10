@@ -1,9 +1,10 @@
 type Customer {
-  id: ID!
-  name: String
-  mainContact: Contact
-  locations: [Location] @hasMany
-  contacts: [Contact] @hasMany
+    id: ID!
+    name: String
+    mainContact: Contact
+    locations: [Location] @hasMany
+    contacts: [Contact] @hasMany
+    bookings: [Booking] @hasMany
 }
 
 extend type Query {
@@ -19,14 +20,30 @@ extend type Query {
 
 extend type Mutation {
     deleteCustomer(id: ID!) : Customer @delete
+    updateCustomer(input: EditCustomerInput! @spread) : Customer @update
+    addNewCustomer(input: AddCustomerInput! @spread) : Customer @create
+}
 
-    updateCustomer(
-        id: ID!,
-        name: String
-    ) : Customer @update
+input AddCustomerInput {
+    name: String
+}
 
-    addNewCustomer(
-        name: String
-        mainContact: Contact
-    ) : Customer @create
+input EditCustomerInput {
+    id: ID!
+    name: String
+    mainContact: Contact
+    locations: AddLocationsHasMany @hasMany
+    contacts: AddContactsHasMany @hasMany
+}
+
+input AddMainContact {
+    connect: ID
+}
+
+input AddLocationsHasMany {
+     sync: [ID]
+}
+
+input AddContactsHasMany {
+    sync: [ID]
 }

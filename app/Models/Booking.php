@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Booking extends Model
 {
     use HasFactory;
 
-    public function vehicle(): HasOne
+    public function vehicle(): BelongsTo
     {
-        return $this->hasOne(Vehicle::class, 'vehicle_id');
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
-    public function location(): HasOne
+    public function location(): BelongsTo
     {
-        return $this->hasOne(Location::class, 'location_id');
+        return $this->belongsTo(Location::class, 'location_id');
     }
 
     public function bookingTimes(): HasMany
@@ -26,18 +27,23 @@ class Booking extends Model
         return $this->hasMany(BookingTime::class);
     }
 
-    public function driver(): HasOne
+    public function driver(): BelongsTo
     {
-        return $this->hasOne(Driver::class, 'driver_id');
+        return $this->belongsTo(User::class, 'driver_id');
     }
 
-    public function mainContact(): HasOne
+    public function mainContact(): BelongsTo
     {
-        return $this->hasOne(Contact::class, 'main_contact_id');
+        return $this->belongsTo(Contact::class, 'main_contact_id');
     }
 
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class);
+    }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 }

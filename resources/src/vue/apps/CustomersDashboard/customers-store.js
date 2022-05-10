@@ -28,6 +28,11 @@ const getCustomersQuery = gql`
                     streetName
                     suburb
                     city
+                    contacts {
+                        id
+                        firstName
+                        lastName
+                    }
                 }
                 contacts {
                     id
@@ -35,6 +40,10 @@ const getCustomersQuery = gql`
                     lastName
                     emailAddress
                     phoneNumber
+                }
+                bookings {
+                    id
+                    name
                 }
             }
         }
@@ -44,7 +53,9 @@ const getCustomersQuery = gql`
             $name: String
         ) {
             addNewCustomer(
-                name: $name
+                input: {
+                    name: $name
+                }
             ) {
                 name
             }
@@ -56,32 +67,12 @@ const getCustomersQuery = gql`
             $name: String
         ) {
             updateCustomer(
-                id: $id
-                name: $name
+                input: {
+                    id: $id
+                    name: $name
+                }
             ) {
                 name
-            }
-        }
-    `,
-    addNewContactMutation = gql`
-        mutation (
-            $firstName: String,
-            $lastName: String,
-            $phoneNumber: String,
-            $emailAddress: String,
-            $customer_id: ID!
-        ) {
-            addNewContact(
-                firstName: $firstName
-                lastName: $lastName,
-                emailAddress: $emailAddress,
-                phoneNumber: $phoneNumber,
-                customer_id: $customer_id
-            ) {
-                firstName,
-                lastName,
-                phoneNumber,
-                emailAddress
             }
         }
     `,
@@ -124,6 +115,7 @@ const getCustomersQuery = gql`
             $location: ID
             $driver: ID
             $mainContact: ID
+            $customer: ID
         ) {
             addNewBooking(
                 input: {
@@ -142,8 +134,13 @@ const getCustomersQuery = gql`
                     mainContact: {
                         connect: $mainContact
                     }
+                    customer: {
+                        connect: $customer
+                    }
                 }
-            )
+            ) {
+                id
+            }
         }
     `,
     customersStore = {
@@ -155,7 +152,8 @@ const getCustomersQuery = gql`
             addContactsModalOpen: false,
             addBookingModalOpen: false,
             editBookingModalOpen: false,
-            currentCustomer: false
+            currentCustomer: false,
+            availableContacts: []
         },
         mutations: {
             setAddCustomersModalState(state, payload) {
@@ -175,6 +173,9 @@ const getCustomersQuery = gql`
             },
             setCurrentCustomer(state, payload) {
                 state.currentCustomer = payload;
+            },
+            setAvailableContacts(state, payload) {
+                state.availableContacts = payload;
             }
         },
         actions: {
@@ -215,6 +216,9 @@ const getCustomersQuery = gql`
                 ).then((result) => {
                     commit('setCurrentCustomer', result.data.customer);
                 }).catch((err) => console.log(err));
+            },
+            setAvailableContacts({commit}, payload) {
+                commit('setAvailableContacts', payload);
             }
         }
     };
@@ -225,7 +229,6 @@ export {
     addNewCustomer,
     getCustomer,
     updateCustomerMutation,
-    addNewContactMutation,
     deleteCustomerMutation,
     getBookingsQuery,
     addNewBookingMutation
