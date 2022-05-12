@@ -41,10 +41,6 @@ const getCustomersQuery = gql`
                     emailAddress
                     phoneNumber
                 }
-                bookings {
-                    id
-                    name
-                }
             }
         }
     `,

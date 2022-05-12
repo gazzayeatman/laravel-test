@@ -1,66 +1,66 @@
 type Booking {
-  id: ID!
-  name: String
-  orderNumber: String
-  inWaitingList: Boolean
-  vehicle: Vehicle @belongsTo
-  location: Location @belongsTo
-  driver: User @belongsTo
-  mainContact: Contact @belongsTo
-  customer: Customer @belongsTo
+    id: ID!
+    name: String
+    orderNumber: String
+    inWaitingList: Boolean
+    vehicle: Vehicle @belongsTo
+    location: Location @belongsTo
+    driver: User @belongsTo
+    mainContact: Contact @belongsTo
+    customer: Customer @belongsTo
 }
 
 extend type Query {
-  booking(
-    id: ID @eq 
-  ): Booking @find
+    booking(
+        id: ID @eq 
+    ): Booking @find
 }
 
 extend type Mutation {
-  deleteBooking(id: ID!) : Booking @delete
-  addNewBooking(input: AddBookingInput! @spread) : Booking @create
-  editNewBooking(input: EditBookingInput! @spread) : Booking @update
+    deleteBooking(id: ID!) : Booking @delete
+    addNewBooking(input: AddBookingInput! @spread) : Booking @create
+    editNewBooking(input: EditBookingInput! @spread) : Booking @update
 }
 
 input AddBookingInput {
-  name: String,
-  orderNumber: String,
-  inWaitingList: Boolean,
-  vehicle: AddVehicleBelongsTo @belongsTo
-  location: AddLocationBelongsTo @belongsTo
-  driver: AddDriverBelongsTo @belongsTo
-  mainContact: AddMainContactBelongsTo @belongsTo
-  customer: AddCustomerBelongsTo @belongsTo
+    name: String,
+    orderNumber: String,
+    inWaitingList: Boolean,
+    vehicle: AddVehicleBelongsTo @belongsTo
+    location: AddLocationBelongsTo @belongsTo
+    driver: AddDriverBelongsTo @belongsTo
+    mainContact: AddMainContactBelongsTo @belongsTo
+    customer: AddCustomerBelongsTo @belongsTo
 }
 
 input EditBookingInput {
-  id: ID!
-  name: String,
-  orderNumber: String,
-  inWaitingList: Boolean,
-  vehicle: AddVehicleBelongsTo @belongsTo
-  location: AddLocationBelongsTo @belongsTo
-  driver: AddDriverBelongsTo @belongsTo
-  mainContact: AddMainContactBelongsTo @belongsTo
-  customer: AddCustomerBelongsTo @belongsTo
+    id: ID!
+    name: String,
+    orderNumber: String,
+    inWaitingList: Boolean,
+    vehicle: AddVehicleBelongsTo @belongsTo
+    location: AddLocationBelongsTo @belongsTo
+    driver: AddDriverBelongsTo @belongsTo
+    mainContact: AddMainContactBelongsTo @belongsTo
+    customer: AddCustomerBelongsTo @belongsTo
 }
 
 input AddVehicleBelongsTo {
-  connect: ID
+    connect: ID
 }
 
 input AddLocationBelongsTo {
-  connect: ID
+    connect: ID
 }
 
 input AddDriverBelongsTo {
-  connect: ID
+    connect: ID
 }
 
 input AddMainContactBelongsTo {
-  connect: ID
+    connect: ID
 }
 
 input AddCustomerBelongsTo {
-  connect: ID
+    connect: ID
 }

@@ -22,11 +22,6 @@ class Booking extends Model
         return $this->belongsTo(Location::class, 'location_id');
     }
 
-    public function bookingTimes(): HasMany
-    {
-        return $this->hasMany(BookingTime::class);
-    }
-
     public function driver(): BelongsTo
     {
         return $this->belongsTo(User::class, 'driver_id');
@@ -37,13 +32,18 @@ class Booking extends Model
         return $this->belongsTo(Contact::class, 'main_contact_id');
     }
 
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class);
     }
 
-    public function customer(): BelongsTo
+    public function bookingTimes(): HasMany
     {
-        return $this->belongsTo(Customer::class, 'customer_id');
+        return $this->hasMany(BookingTime::class);
     }
 }

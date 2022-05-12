@@ -22657,7 +22657,8 @@ __webpack_require__.r(__webpack_exports__);
     drivers: _VehiclesDashboard_vehicles_store__WEBPACK_IMPORTED_MODULE_0__.getDrivers
   },
   props: {
-    customer: {}
+    customer: {},
+    canAddBooking: false
   },
   methods: {},
   components: {
@@ -23732,11 +23733,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-primary"
   }, " Edit ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.emailAddress) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.contact.phoneNumber), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_bookings_panel, {
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_bookings_panel, {
+    "can-add-booking": false,
     customer: $options.contact
   }, null, 8
   /* PROPS */
-  , ["customer"])])])]);
+  , ["customer"])]);
 }
 
 /***/ }),
@@ -23867,16 +23869,30 @@ var _hoisted_8 = {
   key: 1,
   "class": "detail-page__detail-grid detail-page__detail-grid--empty"
 };
+var _hoisted_9 = {
+  key: 0
+};
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "detail-page__detail-grid-content"
 }, " Nothing here?, Add a booking now ", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_11 = {
   "class": "detail-page__detail-grid-action-panel"
 };
+var _hoisted_12 = {
+  key: 1
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "detail-page__detail-grid-content"
+}, " There are no bookings to display ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = [_hoisted_13];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -23886,12 +23902,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _directive_masonry = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("masonry");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, $props.customer.bookings && $props.customer.bookings.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, $props.customer.bookings && $props.customer.bookings.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [$props.canAddBooking ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
     "class": "btn btn-primary",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$store.dispatch('customersStore/setAddBookingModalState', true);
     })
-  }, " Add a new booking ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.bookings, function (booking, index) {
+  }, " Add a new booking ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.customer.bookings, function (booking, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "contact-cards__wrapper",
       key: index
@@ -23914,12 +23931,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["to"])])), [[_directive_masonry_tile]]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ))])), [[_directive_masonry, _ctx.containerId]])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [$props.canAddBooking ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [$props.canAddBooking ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
     "class": "btn btn-primary",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('customersStore/setAddBookingModalState', true);
     })
-  }, " Add a new booking ")])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_booking_modal, {
+  }, " Add a new booking ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, _hoisted_14))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_booking_modal, {
     customer: $props.customer,
     locations: $props.customer.locations,
     drivers: this.drivers,
@@ -23998,6 +24016,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["customer"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_bookings_panel, {
+    "can-add-booking": true,
     customer: $options.customer
   }, null, 8
   /* PROPS */
@@ -26479,7 +26498,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n        }\n    }\n"]))),
-    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                    contacts {\n                        id\n                        firstName\n                        lastName\n                    }\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n                bookings {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
+    getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                    contacts {\n                        id\n                        firstName\n                        lastName\n                    }\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n            }\n        }\n    "]))),
     addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                input: {\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                input: {\n                    id: $id\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
     deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),

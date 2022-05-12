@@ -20,9 +20,9 @@
                     {{ contact.emailAddress }}
                     {{ contact.phoneNumber }}
                 </div>
-                <bookings-panel :customer="contact" />
             </div>
         </div>
+        <bookings-panel :can-add-booking="false" :customer="contact" />
     </div>
 </template>
 <script>

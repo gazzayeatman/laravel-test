@@ -5,8 +5,8 @@ type Contact {
     phoneNumber: String
     emailAddress: String
     customer: Customer
-    locations: [Location] @hasMany
-    bookings: [Bookings] @hasMany
+    locations: [Location]
+    bookings: [Booking]
 }
 
 extend type Query {
@@ -39,7 +39,6 @@ input EditContactInput {
     emailAddress: String,
     customer: AddCustomerBelongsToOne @belongsTo
     locations: AddLocationsBelongsToMany @belongsToMany
-    bookings: AddBookingsHasMany @hasMany
 }
 
 input AddCustomerBelongsToOne {
@@ -47,6 +46,10 @@ input AddCustomerBelongsToOne {
 }
 
 input AddLocationsBelongsToMany {
+    sync: [ID]
+}
+
+input AddBookingsHasMany {
     sync: [ID]
 }
 

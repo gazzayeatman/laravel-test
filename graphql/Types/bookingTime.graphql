@@ -1,42 +1,42 @@
 type BookingTime {
-  id: ID!
-  startTime: DateTime
-  endTime: DateTime
-  booking: Booking @belongsTo
-  driver: User @hasOne
+    id: ID!
+    startTime: DateTime
+    endTime: DateTime
+    booking: Booking @belongsTo
+    driver: User @hasOne
 }
 
 extend type Query {
-  booking(
-    id: ID @eq 
-  ): Booking @find
+    bookingTime(
+        id: ID @eq 
+    ): Booking @find
 }
 
 extend type Mutation {
-  deleteBookingTime(id: ID!) : BookingTime @delete
-  addNewBookingTime(input: AddBookingTimeInput! @spread) : BookingTime @create
-  editBookingTime(input: EditBookingTimeInput! @spread) : BookingTime @update
+    deleteBookingTime(id: ID!) : BookingTime @delete
+    addNewBookingTime(input: AddBookingTimeInput! @spread) : BookingTime @create
+    editBookingTime(input: EditBookingTimeInput! @spread) : BookingTime @update
 }
 
 input AddBookingTimeInput {
-  startTime: DateTime
-  endTIme: DateTime
-  booking: AddBookingBelongsTo @belongsTo
-  driver: AddDriverHasOne @hasOne
+    startTime: DateTime
+    endTIme: DateTime
+    booking: AddBookingBelongsTo @belongsTo
+    driver: AddDriverHasOne @hasOne
 }
 
 input EditBookingInput {
-  id: ID!
-  startTime: DateTime
-  endTIme: DateTime
-  booking: AddBookingBelongsTo @belongsTo
-  driver: AddDriverHasOne @hasOne
+    id: ID!
+    startTime: DateTime
+    endTIme: DateTime
+    booking: AddBookingBelongsTo @belongsTo
+    driver: AddDriverHasOne @hasOne
 }
 
 input AddBookingBelongsTo {
-  connect: ID
+    connect: ID
 }
 
 input AddDriverHasOne {
-  connect: ID
+    connect: ID
 }

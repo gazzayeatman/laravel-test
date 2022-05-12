@@ -5,7 +5,7 @@
         </h3>
         <div v-if="customer.bookings && customer.bookings.length > 0" class="detail-page__detail-grid">
             <div class="action-panel">
-                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
+                <button v-if="canAddBooking" class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
                     Add a new booking
                 </button>
             </div>
@@ -22,13 +22,20 @@
             </div>
         </div>
         <div v-else class="detail-page__detail-grid detail-page__detail-grid--empty">
-            <div class="detail-page__detail-grid-content">
-                Nothing here?, Add a booking now
+            <div v-if="canAddBooking">
+                <div class="detail-page__detail-grid-content">
+                    Nothing here?, Add a booking now
+                </div>
+                <div class="detail-page__detail-grid-action-panel">
+                    <button v-if="canAddBooking" class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
+                        Add a new booking
+                    </button>
+                </div>
             </div>
-            <div class="detail-page__detail-grid-action-panel">
-                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddBookingModalState', true)">
-                    Add a new booking
-                </button>
+            <div v-else>
+                <div class="detail-page__detail-grid-content">
+                    There are no bookings to display
+                </div>
             </div>
         </div>
         <add-booking-modal :customer="customer" :locations="customer.locations" :drivers="this.drivers" :vehicles="this.vehicles" />
@@ -51,7 +58,8 @@
             drivers: getDrivers
         },
         props: {
-            customer: {}
+            customer: {},
+            canAddBooking: false
         },
         methods: {
             

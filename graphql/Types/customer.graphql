@@ -34,6 +34,7 @@ input EditCustomerInput {
     mainContact: Contact
     locations: AddLocationsHasMany @hasMany
     contacts: AddContactsHasMany @hasMany
+    bookings: AddBookinsHasMany @hasMany
 }
 
 input AddMainContact {
@@ -45,5 +46,9 @@ input AddLocationsHasMany {
 }
 
 input AddContactsHasMany {
+    sync: [ID]
+}
+
+input AddBookinsHasMany {
     sync: [ID]
 }

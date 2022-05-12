@@ -18,7 +18,7 @@
             <div class="detail-page__content">
                 <locations-panel :customer="customer" />
                 <contacts-panel :customer="customer" />
-                <bookings-panel :customer="customer" />
+                <bookings-panel :can-add-booking="true" :customer="customer" />
             </div>
         </div>
         <edit-customer-modal :customer="customer" />
