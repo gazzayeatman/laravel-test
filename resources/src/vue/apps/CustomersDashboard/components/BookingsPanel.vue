@@ -61,9 +61,6 @@
             customer: {},
             canAddBooking: false
         },
-        methods: {
-            
-        },
         components: {
             'back-button': BackButton,
             'add-booking-modal': AddBookingModal

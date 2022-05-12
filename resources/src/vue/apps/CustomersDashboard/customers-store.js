@@ -13,6 +13,10 @@ const getCustomersQuery = gql`
                 firstName
                 lastName
             }
+            bookings {
+                id
+                name
+            }
         }
     }
 `,
@@ -40,6 +44,10 @@ const getCustomersQuery = gql`
                     lastName
                     emailAddress
                     phoneNumber
+                }
+                bookings {
+                    id
+                    name
                 }
             }
         }
