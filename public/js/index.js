@@ -22944,7 +22944,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    this.bookingTimes = [];
+    return {
+      bookingTimes: [{}]
+    };
+  },
+  methods: {
+    handleAddBookingTime: function handleAddBookingTime() {
+      this.bookingTimes.push({});
+    },
+    handleDeleteBookingTime: function handleDeleteBookingTime(index) {
+      this.bookingTimes = this.bookingTimes.splice(index, 1);
+    }
   }
 });
 
@@ -24418,12 +24428,92 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "booking-time-form__wrapper"
 };
+var _hoisted_2 = {
+  "class": "booking-time-form"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"booking-time-form\"><h3 class=\"booking-time-form__title\"> Booking Times </h3><div class=\"booking-time-form__fields-wrapper\"><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> Booking Date </label><input type=\"date\" name=\"booking-time-date\"></div><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> Start Time </label><input type=\"time\" name=\"booking-start-time\"></div><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> End Time </label><input type=\"time\" name=\"booking-end-time\"></div></div></div>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "booking-time-form__title"
+}, " Booking Times ", -1
+/* HOISTED */
+);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_4 = ["onClick"];
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, " Delete this booking time ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "booking-time-form__field-wrapper"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "booking-time-form__label"
+}, " Booking Date "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  name: "booking-time-date",
+  type: "text",
+  onfocus: "(this.type = 'date')",
+  onblur: "(this.type = 'text')"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "booking-time-form__field-wrapper"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "booking-time-form__label"
+}, " Start Time "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  name: "booking-start-time",
+  type: "text",
+  onfocus: "(this.type = 'time')",
+  onblur: "(this.type = 'text')"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "booking-time-form__field-wrapper"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "booking-time-form__label"
+}, " End Time "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  name: "booking-end-time",
+  type: "text",
+  onfocus: "(this.type = 'time')",
+  onblur: "(this.type = 'text')"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "booking-time-form__actions"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.bookingTimes, function (booking, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "booking-time-form__fields-wrapper",
+      key: index
+    }, [index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: 0,
+      type: "button",
+      "class": "booking-time-form__close-button",
+      onClick: function onClick($event) {
+        return $options.handleDeleteBookingTime(index);
+      }
+    }, _hoisted_6, 8
+    /* PROPS */
+    , _hoisted_4)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_7, _hoisted_8, _hoisted_9]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.handleAddBookingTime();
+    }),
+    "class": "booking-time-form__action"
+  }, " Add a booking time ")])])]);
 }
 
 /***/ }),
