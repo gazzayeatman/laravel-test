@@ -65,6 +65,7 @@
                         </option>
                     </select>
                 </div>
+                <booking-times-field />
                 <div class="form__action-panel form__action-panel--right">
                     <div class="form__action-panel-group">
                         <button type="submit" class="btn btn-primary">
@@ -79,6 +80,7 @@
 
 <script>
     import { addNewBookingMutation } from '../apps/CustomersDashboard/customers-store';
+    import BookingTimesField from '../compoments/BookingTimesField.vue';
 
     export default {
         data() {
@@ -130,6 +132,9 @@
             handleFormSubmit() {
                this.addBooking();
             }
+        },
+        components: {
+            'booking-times-field': BookingTimesField
         }
     }
 </script>

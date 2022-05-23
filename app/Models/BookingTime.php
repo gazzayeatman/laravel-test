@@ -12,10 +12,10 @@ class BookingTime extends Model
 {
     use HasFactory;
 
-    // public function booking(): BelongsTo
-    // {
-    //     return $this->belongsTo(Booking::class, 'booking_id');
-    // }
+    public function booking(): BelongsTo
+    {
+        return $this->belongsTo(Booking::class, 'booking_id');
+    }
 
     public function driver(): HasOne
     {

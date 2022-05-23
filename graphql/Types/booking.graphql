@@ -8,6 +8,7 @@ type Booking {
     driver: User @belongsTo
     mainContact: Contact @belongsTo
     customer: Customer @belongsTo
+    bookingTimes: [BookingTimes] @hasMany
 }
 
 extend type Query {
@@ -31,6 +32,7 @@ input AddBookingInput {
     driver: AddDriverBelongsTo @belongsTo
     mainContact: AddMainContactBelongsTo @belongsTo
     customer: AddCustomerBelongsTo @belongsTo
+    bookingTimes: AddBookingTimesHasMany @hasMany
 }
 
 input EditBookingInput {
@@ -43,6 +45,7 @@ input EditBookingInput {
     driver: AddDriverBelongsTo @belongsTo
     mainContact: AddMainContactBelongsTo @belongsTo
     customer: AddCustomerBelongsTo @belongsTo
+    bookingTimes: AddBookingTimesHasMany @hasMany
 }
 
 input AddVehicleBelongsTo {
@@ -63,4 +66,8 @@ input AddMainContactBelongsTo {
 
 input AddCustomerBelongsTo {
     connect: ID
+}
+
+input AddBookingTimesHasMany {
+    sync: [ID]
 }

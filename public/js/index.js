@@ -22931,6 +22931,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    this.bookingTimes = [];
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js ***!
@@ -22943,6 +22962,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apps/CustomersDashboard/customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+/* harmony import */ var _compoments_BookingTimesField_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../compoments/BookingTimesField.vue */ "./resources/src/vue/compoments/BookingTimesField.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22996,6 +23017,9 @@ __webpack_require__.r(__webpack_exports__);
     handleFormSubmit: function handleFormSubmit() {
       this.addBooking();
     }
+  },
+  components: {
+    'booking-times-field': _compoments_BookingTimesField_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -24378,6 +24402,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "booking-time-form__wrapper"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"booking-time-form\"><h3 class=\"booking-time-form__title\"> Booking Times </h3><div class=\"booking-time-form__fields-wrapper\"><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> Booking Date </label><input type=\"date\" name=\"booking-time-date\"></div><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> Start Time </label><input type=\"time\" name=\"booking-start-time\"></div><div class=\"booking-time-form__field-wrapper\"><label class=\"booking-time-form__label\"> End Time </label><input type=\"time\" name=\"booking-end-time\"></div></div></div>", 1);
+
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/Navbar.vue?vue&type=template&id=62d8562e":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/Navbar.vue?vue&type=template&id=62d8562e ***!
@@ -24591,6 +24641,8 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_booking_times_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("booking-times-field");
+
   return _ctx.$store.state['customersStore'].addBookingModalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$store.dispatch('customersStore/setAddBookingModalState', false);
@@ -24705,7 +24757,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedMainContact]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_23], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedMainContact]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_booking_times_field), _hoisted_23], 32
   /* HYDRATE_EVENTS */
   )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
@@ -47702,6 +47754,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/compoments/BookingTimesField.vue":
+/*!************************************************************!*\
+  !*** ./resources/src/vue/compoments/BookingTimesField.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BookingTimesField_vue_vue_type_template_id_bcbdd942__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingTimesField.vue?vue&type=template&id=bcbdd942 */ "./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942");
+/* harmony import */ var _BookingTimesField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingTimesField.vue?vue&type=script&lang=js */ "./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js");
+/* harmony import */ var _Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_garryyeatman_Sites_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookingTimesField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookingTimesField_vue_vue_type_template_id_bcbdd942__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/compoments/BookingTimesField.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/compoments/Navbar.vue":
 /*!*************************************************!*\
   !*** ./resources/src/vue/compoments/Navbar.vue ***!
@@ -48168,6 +48248,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js":
+/*!************************************************************************************!*\
+  !*** ./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingTimesField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingTimesField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookingTimesField.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js":
 /*!******************************************************************************!*\
   !*** ./resources/src/vue/modals/AddBookingModal.vue?vue&type=script&lang=js ***!
@@ -48484,6 +48580,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BackButton_vue_vue_type_template_id_24c1f997__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BackButton_vue_vue_type_template_id_24c1f997__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BackButton.vue?vue&type=template&id=24c1f997 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BackButton.vue?vue&type=template&id=24c1f997");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942":
+/*!******************************************************************************************!*\
+  !*** ./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942 ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingTimesField_vue_vue_type_template_id_bcbdd942__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingTimesField_vue_vue_type_template_id_bcbdd942__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookingTimesField.vue?vue&type=template&id=bcbdd942 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/compoments/BookingTimesField.vue?vue&type=template&id=bcbdd942");
 
 
 /***/ }),

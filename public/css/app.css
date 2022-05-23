@@ -4463,6 +4463,32 @@ table tbody tr:first-child td {
   margin: 25px 0px;
 }
 
+.booking-time-form {
+  width: 100%;
+}
+.booking-time-form__wrapper {
+  display: flex;
+  margin: 25px 0px;
+}
+.booking-time-form__title {
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 0px 0px 5px 0px;
+  font-size: 14px;
+  display: block;
+}
+.booking-time-form__fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.booking-time-form__field-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
+
 .contact-card {
   padding: 15px 15px 25px 15px;
   background-color: #ffffffff;
