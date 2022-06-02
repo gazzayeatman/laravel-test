@@ -4,7 +4,7 @@ type BookingTime {
     startTime: Time
     endTime: Time
     booking: Booking @belongsTo
-    driver: User @hasOne
+    driver: User @belongsTo
 }
 
 extend type Query {
@@ -24,7 +24,7 @@ input AddBookingTimeInput {
     startTime: Time
     endTime: Time
     booking: AddBookingBelongsTo @belongsTo
-    driver: AddDriverHasOne @hasOne
+    driver: AddDriverBelongsTo @belongsTo
 }
 
 input EditBookingInput {
@@ -33,13 +33,13 @@ input EditBookingInput {
     startTime: Time
     endTime: Time
     booking: AddBookingBelongsTo @belongsTo
-    driver: AddDriverHasOne @hasOne
+    driver: AddDriverBelongsTo @belongsTo
 }
 
 input AddBookingBelongsTo {
     connect: ID
 }
 
-input AddDriverHasOne {
+input AddDriverBelongsTo {
     connect: ID
 }

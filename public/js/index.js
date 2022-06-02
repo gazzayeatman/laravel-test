@@ -23008,7 +23008,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var apollo = this.$store.state.apollo,
-          store = this.$store;
+          store = this.$store,
+          bookingTimes = this.$store.state.temporaryBookingTimes;
       console.log(this.$store.state);
       this.$apollo.mutate({
         mutation: _apps_CustomersDashboard_customers_store__WEBPACK_IMPORTED_MODULE_0__.addNewBookingMutation,
@@ -23021,7 +23022,7 @@ __webpack_require__.r(__webpack_exports__);
           driver: this.selectedDriver.id,
           mainContact: this.selectedMainContact.id,
           customer: this.customer.id,
-          bookingTimes: this.$store.state.temporaryBookingTimes
+          bookingTimes: bookingTimes
         }
       }).then(function (result) {
         _this.$store.dispatch('customersStore/setCurrentCustomer', _this.customer.id);
@@ -24727,27 +24728,27 @@ var _hoisted_13 = {
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form__input-label",
-  "for": "bookedDriver"
-}, " Booked Driver ", -1
-/* HOISTED */
-);
-
-var _hoisted_15 = ["value"];
-var _hoisted_16 = {
-  "class": "form__input-field"
-};
-
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form__input-label",
   "for": "bookingLocation"
 }, " Booking Location ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = ["value"];
-var _hoisted_19 = {
+var _hoisted_15 = ["value"];
+var _hoisted_16 = {
   key: 0
 };
+var _hoisted_17 = {
+  "class": "form__input-field"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form__input-label",
+  "for": "bookedDriver"
+}, " Booked Driver ", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = ["value"];
 var _hoisted_20 = {
   key: 0,
   "class": "form__input-field"
@@ -24831,6 +24832,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS, NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedVehicle]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.selectedLocation = $event;
+    }),
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.handleLocationChange();
+    }),
+    id: "bookingLocation",
+    "class": "input input--select",
+    name: "bookingLocation"
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.locations, function (location) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: location.id,
+      value: location
+    }, [location.unitNumber ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " / ", 1
+    /* TEXT */
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
+    /* TEXT */
+    )], 8
+    /* PROPS */
+    , _hoisted_15);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedLocation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return _ctx.selectedDriver = $event;
     }),
     id: "bookedDriver",
@@ -24842,37 +24868,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: driver
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(driver.name), 9
     /* TEXT, PROPS */
-    , _hoisted_15);
+    , _hoisted_19);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return _ctx.selectedLocation = $event;
-    }),
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $options.handleLocationChange();
-    }),
-    id: "bookingLocation",
-    "class": "input input--select",
-    name: "bookingLocation"
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.locations, function (location) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      key: location.id,
-      value: location
-    }, [location.unitNumber ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.unitNumber) + " / ", 1
-    /* TEXT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(location.city), 1
-    /* TEXT */
-    )], 8
-    /* PROPS */
-    , _hoisted_18);
-  }), 128
-  /* KEYED_FRAGMENT */
-  ))], 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedLocation]])]), _ctx.$store.state['customersStore'].availableContacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.selectedDriver]])]), _ctx.$store.state['customersStore'].availableContacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return _ctx.selectedMainContact = $event;
     }),

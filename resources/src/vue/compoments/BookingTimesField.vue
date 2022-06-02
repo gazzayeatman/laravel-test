@@ -56,7 +56,7 @@
             handleAddBookingTime() {
                 this.bookingTimes.push(
                     {
-                         date: '',
+                        date: '',
                         startTime: '',
                         endTime: ''
                     }

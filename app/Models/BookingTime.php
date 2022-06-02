@@ -17,9 +17,9 @@ class BookingTime extends Model
         return $this->belongsTo(Booking::class, 'booking_id');
     }
 
-    public function driver(): HasOne
+    public function driver(): BelongsTo
     {
-        return $this->hasOne(User::class, 'driver_id');
+        return $this->belongsTo(User::class, 'driver_id');
     }
 
     public function notes(): HasMany

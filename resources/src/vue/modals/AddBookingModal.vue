@@ -33,16 +33,6 @@
                     </select>
                 </div>
                 <div class="form__input-field">
-                    <label class="form__input-label" for="bookedDriver">
-                        Booked Driver
-                    </label>
-                    <select v-model="selectedDriver" id="bookedDriver" class="input input--select" name="bookedDriver">
-                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
-                            {{ driver.name }}
-                        </option>
-                    </select>
-                </div>
-                <div class="form__input-field">
                     <label class="form__input-label" for="bookingLocation">
                         Booking Location
                     </label>
@@ -52,6 +42,16 @@
                                 {{ location.unitNumber }} / 
                             </span>
                             {{ location.streetNumber }} {{ location.streetName }} {{ location.suburb }} {{ location.city }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form__input-field">
+                    <label class="form__input-label" for="bookedDriver">
+                        Booked Driver
+                    </label>
+                    <select v-model="selectedDriver" id="bookedDriver" class="input input--select" name="bookedDriver">
+                        <option v-for="driver of drivers" :key="driver.id" :value="driver">
+                            {{ driver.name }}
                         </option>
                     </select>
                 </div>
@@ -101,7 +101,8 @@
         methods: {
             addBooking() {
                 const apollo = this.$store.state.apollo,
-                    store = this.$store;
+                    store = this.$store,
+                    bookingTimes = this.$store.state.temporaryBookingTimes;
 
                 console.log(this.$store.state);
 
@@ -116,7 +117,7 @@
                         driver: this.selectedDriver.id,
                         mainContact: this.selectedMainContact.id,
                         customer: this.customer.id,
-                        bookingTimes: this.$store.state.temporaryBookingTimes
+                        bookingTimes: bookingTimes
                     }
                 }).then((result) => {
                     this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
