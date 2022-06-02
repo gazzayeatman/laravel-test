@@ -1,7 +1,8 @@
 type BookingTime {
     id: ID!
-    startTime: DateTime
-    endTime: DateTime
+    date: Date
+    startTime: Time
+    endTime: Time
     booking: Booking @belongsTo
     driver: User @hasOne
 }
@@ -19,16 +20,18 @@ extend type Mutation {
 }
 
 input AddBookingTimeInput {
-    startTime: DateTime
-    endTIme: DateTime
+    date: Date
+    startTime: Time
+    endTime: Time
     booking: AddBookingBelongsTo @belongsTo
     driver: AddDriverHasOne @hasOne
 }
 
 input EditBookingInput {
     id: ID!
-    startTime: DateTime
-    endTIme: DateTime
+    date: Date
+    startTime: Time
+    endTime: Time
     booking: AddBookingBelongsTo @belongsTo
     driver: AddDriverHasOne @hasOne
 }

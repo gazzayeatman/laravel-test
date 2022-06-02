@@ -119,7 +119,9 @@ const getCustomersQuery = gql`
             $location: ID
             $driver: ID
             $mainContact: ID
-            $customer: ID
+            $customer: ID,
+            $bookingTimes: [CreateBookingTimeInput]
+
         ) {
             addNewBooking(
                 input: {
@@ -140,10 +142,16 @@ const getCustomersQuery = gql`
                     }
                     customer: {
                         connect: $customer
+                    },
+                    bookingTimes: {
+                        create: $bookingTimes
                     }
                 }
             ) {
                 id
+                bookingTimes {
+                    date
+                }
             }
         }
     `,

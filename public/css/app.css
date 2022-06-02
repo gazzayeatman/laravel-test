@@ -4518,6 +4518,43 @@ table tbody tr:first-child td {
   background-size: cover;
 }
 
+.booking-times-field {
+  display: block;
+  border: 1px solid #14213dff;
+  padding: 15px;
+  margin: 25px 0px;
+}
+.booking-times-field__field {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
+.booking-times-field__actions {
+  display: flex;
+  margin: 30px 0px 0px 0px;
+}
+.booking-times-field__action {
+  padding: 10px 35px;
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #14213dff;
+  color: #ffffffff;
+  transition: color 0.3s, background-color 0.3s;
+}
+.booking-times-field__action--secondary {
+  padding: 5px 15px;
+  color: #000000ff;
+  background-color: #e5e5e5ff;
+}
+.booking-times-field__action:hover, .booking-times-field__action:focus {
+  background-color: #fca311ff;
+}
+.booking-times-field__action:last-of-type {
+  margin: 0 0 0 auto;
+}
+
 .contact-card {
   padding: 15px 15px 25px 15px;
   background-color: #ffffffff;

@@ -14,24 +14,27 @@
                     <label class="booking-time-form__label">
                         Booking Date
                     </label>
-                    <input name="booking-time-date" type="text" onfocus="(this.type = 'date')" onblur="(this.type = 'text')"  />
+                    <input name="booking-time-date" type="text" v-model="booking.date" onfocus="(this.type = 'date')" onblur="(this.type = 'text')"  />
                 </div>
                 <div class="booking-time-form__field-wrapper">
                     <label class="booking-time-form__label">
                         Start Time
                     </label>
-                    <input name="booking-start-time" type="text" onfocus="(this.type = 'time')" onblur="(this.type = 'text')" />
+                    <input name="booking-start-time" v-model="booking.startTime" type="text" onfocus="(this.type = 'time')" onblur="(this.type = 'text')" />
                 </div>
                 <div class="booking-time-form__field-wrapper">
                     <label class="booking-time-form__label">
                         End Time
                     </label>
-                    <input name="booking-end-time" type="text" onfocus="(this.type = 'time')" onblur="(this.type = 'text')"  />
+                    <input name="booking-end-time" type="text" v-model="booking.endTime" onfocus="(this.type = 'time')" onblur="(this.type = 'text')"  />
                 </div>
             </div>
             <div class="booking-time-form__actions">
                 <button type="button" @click="handleAddBookingTime()" class="booking-time-form__action">
-                    Add a booking time
+                    Add an booking time
+                </button>
+                 <button type="button" @click="handleConfirmBookingTimes()" class="booking-time-form__action">
+                    Confirm booking times
                 </button>
             </div>
         </div>
@@ -42,15 +45,29 @@
     export default {
         data() {
             return {
-                bookingTimes: [{}]
+                bookingTimes: [{
+                    date: '',
+                    startTime: '',
+                    endTime: ''
+                }]
             }
         },
         methods: {
             handleAddBookingTime() {
-                this.bookingTimes.push({});
+                this.bookingTimes.push(
+                    {
+                         date: '',
+                        startTime: '',
+                        endTime: ''
+                    }
+                );
             },
             handleDeleteBookingTime(index) {
-                this.bookingTimes = this.bookingTimes.splice(index, 1);
+                this.bookingTimes.splice(index, 1);
+                this.$store.dispatch('setTemporaryBookingTimes', this.bookingTimes);
+            },
+            handleConfirmBookingTimes() {
+                this.$store.dispatch('setTemporaryBookingTimes', this.bookingTimes);
             }
         }
     }

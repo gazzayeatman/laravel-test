@@ -103,6 +103,8 @@
                 const apollo = this.$store.state.apollo,
                     store = this.$store;
 
+                console.log(this.$store.state);
+
                 this.$apollo.mutate({
                     mutation: addNewBookingMutation,
                     variables: {
@@ -113,7 +115,8 @@
                         location: this.selectedLocation.id,
                         driver: this.selectedDriver.id,
                         mainContact: this.selectedMainContact.id,
-                        customer: this.customer.id
+                        customer: this.customer.id,
+                        bookingTimes: this.$store.state.temporaryBookingTimes
                     }
                 }).then((result) => {
                     this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);

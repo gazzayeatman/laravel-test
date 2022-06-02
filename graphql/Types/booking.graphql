@@ -8,7 +8,7 @@ type Booking {
     driver: User @belongsTo
     mainContact: Contact @belongsTo
     customer: Customer @belongsTo
-    bookingTimes: [BookingTimes] @hasMany
+    bookingTimes: [BookingTime] @hasMany
 }
 
 extend type Query {
@@ -69,5 +69,12 @@ input AddCustomerBelongsTo {
 }
 
 input AddBookingTimesHasMany {
-    sync: [ID]
+    sync: [ID],
+    create: [CreateBookingTimeInput]
+}
+
+input CreateBookingTimeInput {
+    date: Date
+    startTime: Time
+    endTime: Time
 }
