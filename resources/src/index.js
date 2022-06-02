@@ -7,6 +7,7 @@ import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
 import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
 import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
+import ViewBooking from './vue/apps/CustomersDashboard/components/ViewBooking';
 import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
 import { VueMasonryPlugin } from 'vue-masonry';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -27,6 +28,7 @@ const cache = new InMemoryCache(),
         { path: '/users', component: UserDashboard },
         { path: '/customers', component: CustomersDashboard },
         { path: '/customers/view-customer/:id', component: ViewCustomer },
+        { path: '/customers/view-customer/view-booking/:id', component: ViewBooking },
         { path: '/customers/view-contact/:id', component: ViewContact },
         { path: '/vehicles', component: VehiclesDashboard }
     ],

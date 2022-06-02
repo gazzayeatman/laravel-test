@@ -22668,6 +22668,41 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: {
+    booking: function booking() {
+      console.log(this.$store.state['customersStore'].currentBooking);
+      return this.$store.state['customersStore'].currentBooking;
+    }
+  },
+  created: function created() {
+    var store = this.$store;
+    this.bookingID = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.useRoute)().params.id;
+    store.dispatch('customersStore/setCurrentBooking', this.bookingID);
+  },
+  methods: {},
+  components: {
+    'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js ***!
@@ -23963,7 +23998,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       "class": "contact-card__wrapper",
       to: {
-        path: '/customers/view-booking/' + booking.id
+        path: '/customers/view-customer/view-booking/' + booking.id
       }
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23993,6 +24028,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["customer", "locations", "drivers", "vehicles"])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container"
+};
+var _hoisted_2 = {
+  "class": "detail-page__wrapper"
+};
+var _hoisted_3 = {
+  "class": "detail-page__header"
+};
+var _hoisted_4 = {
+  "class": "detail-page__title"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "detail-page__content"
+}, null, -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button, {
+    link: "/view-customer/{{booking.customer.id}}"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.name), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"action-panel\">\r\n                <button @click=\"deleteCustomer(customer.id)\" class=\"btn btn-primary btn--danger\">\r\n                    Delete {{ customer.name }}\r\n                </button>\r\n                <button @click=\"$store.dispatch('customersStore/setEditCustomerModalState', true)\" class=\"btn btn-primary\">\r\n                    Edit {{ customer.name }}\r\n                </button>\r\n            </div> "), _hoisted_5])]);
 }
 
 /***/ }),
@@ -26461,8 +26540,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
-/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js");
+/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @apollo/client/core */ "./node_modules/@apollo/client/core/ApolloClient.js");
 /* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/apollo-option */ "./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue/App.vue */ "./resources/src/vue/App.vue");
@@ -26470,11 +26549,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/CustomersDashboard */ "./resources/src/vue/apps/CustomersDashboard/CustomersDashboard.vue");
 /* harmony import */ var _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vue/apps/VehiclesDashboard/VehiclesDashboard */ "./resources/src/vue/apps/VehiclesDashboard/VehiclesDashboard.vue");
 /* harmony import */ var _vue_apps_CustomersDashboard_components_ViewCustomer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/components/ViewCustomer */ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue");
-/* harmony import */ var _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/components/ViewContact */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue");
-/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
+/* harmony import */ var _vue_apps_CustomersDashboard_components_ViewBooking__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vue/apps/CustomersDashboard/components/ViewBooking */ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue");
+/* harmony import */ var _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./vue/apps/ContactsDashboard/components/ViewContact */ "./resources/src/vue/apps/ContactsDashboard/components/ViewContact.vue");
+/* harmony import */ var vue_masonry__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-masonry */ "./node_modules/vue-masonry/src/masonry.plugin.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var mitt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mitt */ "./node_modules/mitt/dist/mitt.mjs");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./store */ "./resources/src/store.js");
 __webpack_require__(/*! ../js/bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -26490,8 +26570,9 @@ __webpack_require__(/*! ../js/bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(),
-    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.ApolloClient({
+
+var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_12__.InMemoryCache(),
+    apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_13__.ApolloClient({
   uri: 'http://laravel.test/graphql',
   cache: cache
 }),
@@ -26499,7 +26580,7 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(
   defaultClient: apolloClient
 }),
     app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({}),
-    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_9__["default"])(),
+    emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_10__["default"])(),
     routes = [{
   path: '/users',
   component: _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -26510,21 +26591,24 @@ var cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_11__.InMemoryCache(
   path: '/customers/view-customer/:id',
   component: _vue_apps_CustomersDashboard_components_ViewCustomer__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
+  path: '/customers/view-customer/view-booking/:id',
+  component: _vue_apps_CustomersDashboard_components_ViewBooking__WEBPACK_IMPORTED_MODULE_7__["default"]
+}, {
   path: '/customers/view-contact/:id',
-  component: _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _vue_apps_ContactsDashboard_components_ViewContact__WEBPACK_IMPORTED_MODULE_8__["default"]
 }, {
   path: '/vehicles',
   component: _vue_apps_VehiclesDashboard_VehiclesDashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
 }],
-    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_13__.createWebHistory)(),
+    router = (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_14__.createWebHistory)(),
   routes: routes
 });
 app.use(apolloProvider);
-app.use(_store__WEBPACK_IMPORTED_MODULE_10__.store);
+app.use(_store__WEBPACK_IMPORTED_MODULE_11__.store);
 app.use(router);
 app.config.globalProperties.emitter = emitter;
-app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_8__.VueMasonryPlugin);
+app.use(vue_masonry__WEBPACK_IMPORTED_MODULE_9__.VueMasonryPlugin);
 app.component('app', _vue_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.component('users-dashboard', _vue_apps_UserDashboard_UserDashboard__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('customers-dashboard', _vue_apps_CustomersDashboard_CustomersDashboard__WEBPACK_IMPORTED_MODULE_4__["default"]);
@@ -26685,18 +26769,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n            bookings {\n                id\n                name\n            }\n        }\n    }\n"]))),
     getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                    contacts {\n                        id\n                        firstName\n                        lastName\n                    }\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n                bookings {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
-    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                input: {\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
-    updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                input: {\n                    id: $id\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
-    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
-    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
-    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n            $customer: ID,\n            $bookingTimes: [CreateBookingTimeInput]\n\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                    customer: {\n                        connect: $customer\n                    },\n                    bookingTimes: {\n                        create: $bookingTimes\n                    }\n                }\n            ) {\n                id\n                bookingTimes {\n                    date\n                }\n            }\n        }\n    "]))),
+    getBooking = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        query($id: ID) {\n            booking(id: $id) {\n                id\n                name\n                orderNumber\n                inWaitingList\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n                customer {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                input: {\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
+    updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                input: {\n                    id: $id\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
+    deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
+    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n            $customer: ID,\n            $bookingTimes: [CreateBookingTimeInput]\n\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                    customer: {\n                        connect: $customer\n                    },\n                    bookingTimes: {\n                        create: $bookingTimes\n                    }\n                }\n            ) {\n                id\n                bookingTimes {\n                    date\n                }\n            }\n        }\n    "]))),
     customersStore = {
   namespaced: true,
   state: {
@@ -26707,6 +26792,7 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     addBookingModalOpen: false,
     editBookingModalOpen: false,
     currentCustomer: false,
+    currentBooking: false,
     availableContacts: []
   },
   mutations: {
@@ -26727,6 +26813,9 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
     },
     setCurrentCustomer: function setCurrentCustomer(state, payload) {
       state.currentCustomer = payload;
+    },
+    setCurrentBooking: function setCurrentBooking(state, payload) {
+      state.currentBooking = payload;
     },
     setAvailableContacts: function setAvailableContacts(state, payload) {
       state.availableContacts = payload;
@@ -26780,8 +26869,27 @@ var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(
         return console.log(err);
       });
     },
-    setAvailableContacts: function setAvailableContacts(_ref9, payload) {
+    setCurrentBooking: function setCurrentBooking(_ref9, payload) {
       var commit = _ref9.commit;
+
+      if (!payload) {
+        commit('setCurrentBooking', false);
+      }
+
+      this.state.apollo.query({
+        query: getBooking,
+        fetchPolicy: 'no-cache',
+        variables: {
+          id: payload
+        }
+      }).then(function (result) {
+        commit('setCurrentBooking', result.data.booking);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    setAvailableContacts: function setAvailableContacts(_ref10, payload) {
+      var commit = _ref10.commit;
       commit('setAvailableContacts', payload);
     }
   }
@@ -47756,6 +47864,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ViewBooking_vue_vue_type_template_id_0987f19a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ViewBooking.vue?vue&type=template&id=0987f19a */ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a");
+/* harmony import */ var _ViewBooking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ViewBooking.vue?vue&type=script&lang=js */ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js");
+/* harmony import */ var C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_source_laravel_test_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ViewBooking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ViewBooking_vue_vue_type_template_id_0987f19a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue":
 /*!*******************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue ***!
@@ -48310,6 +48446,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewBooking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewBooking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ViewBooking.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js":
 /*!*******************************************************************************************************!*\
   !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewCustomer.vue?vue&type=script&lang=js ***!
@@ -48642,6 +48794,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookingsPanel_vue_vue_type_template_id_0769f410__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookingsPanel.vue?vue&type=template&id=0769f410 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/BookingsPanel.vue?vue&type=template&id=0769f410");
+
+
+/***/ }),
+
+/***/ "./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a":
+/*!************************************************************************************************************!*\
+  !*** ./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewBooking_vue_vue_type_template_id_0987f19a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ViewBooking_vue_vue_type_template_id_0987f19a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ViewBooking.vue?vue&type=template&id=0987f19a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/src/vue/apps/CustomersDashboard/components/ViewBooking.vue?vue&type=template&id=0987f19a");
 
 
 /***/ }),

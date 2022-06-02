@@ -11,7 +11,7 @@
             </div>
             <div v-masonry="containerId" transition-duration="0.3s" item-selector=".contact-card__wrapper">
                 <div v-masonry-tile class="contact-cards__wrapper" v-for="(booking, index) in customer.bookings" :key="index">
-                    <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-booking/' + booking.id }">
+                    <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-customer/view-booking/' + booking.id }">
                         <div class="contact-card">
                             <h3 class="contact-card__title">
                                 {{ booking.name }}

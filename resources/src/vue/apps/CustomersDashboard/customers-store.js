@@ -52,6 +52,31 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    getBooking = gql`
+        query($id: ID) {
+            booking(id: $id) {
+                id
+                name
+                orderNumber
+                inWaitingList
+                vehicle {
+                    id
+                }
+                location {
+                    id
+                }
+                driver {
+                    id
+                }
+                mainContact {
+                    id
+                }
+                customer {
+                    id
+                }
+            }
+        }
+    `,
     addNewCustomer = gql`
          mutation (
             $name: String
@@ -165,6 +190,7 @@ const getCustomersQuery = gql`
             addBookingModalOpen: false,
             editBookingModalOpen: false,
             currentCustomer: false,
+            currentBooking: false,
             availableContacts: []
         },
         mutations: {
@@ -185,6 +211,9 @@ const getCustomersQuery = gql`
             },
             setCurrentCustomer(state, payload) {
                 state.currentCustomer = payload;
+            },
+            setCurrentBooking(state, payload) {
+                state.currentBooking = payload;
             },
             setAvailableContacts(state, payload) {
                 state.availableContacts = payload;
@@ -227,6 +256,23 @@ const getCustomersQuery = gql`
                     }
                 ).then((result) => {
                     commit('setCurrentCustomer', result.data.customer);
+                }).catch((err) => console.log(err));
+            },
+            setCurrentBooking({commit}, payload) {
+                if (!payload) {
+                    commit('setCurrentBooking', false);
+                }
+
+                this.state.apollo.query(
+                    {
+                        query: getBooking,
+                        fetchPolicy: 'no-cache',
+                        variables: {
+                            id: payload
+                        }
+                    }
+                ).then((result) => {
+                    commit('setCurrentBooking', result.data.booking);
                 }).catch((err) => console.log(err));
             },
             setAvailableContacts({commit}, payload) {
