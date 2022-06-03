@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <back-button link='/view-customer/{{booking.customer.id}}' />
+        <back-button :link="backURL" />
         <div class="detail-page__wrapper">
             <div class="detail-page__header">
                 <h2 class="detail-page__title">
@@ -27,8 +27,10 @@
     export default {
         computed: {
             booking() {
-                console.log(this.$store.state['customersStore'].currentBooking);
                 return this.$store.state['customersStore'].currentBooking;
+            },
+            backURL() {
+                return `/customers/view-customer/${this.booking.customer.id}`;
             }
         },
         created() {
