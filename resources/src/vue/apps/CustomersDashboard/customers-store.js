@@ -74,6 +74,12 @@ const getCustomersQuery = gql`
                 customer {
                     id
                 }
+                bookingTimes {
+                    id
+                    date
+                    startTime
+                    endTime
+                }
             }
         }
     `,

@@ -15,6 +15,6 @@ class Time extends DateScalar
     protected function parse($value): Carbon
     {
         // @phpstan-ignore-next-line We know the format to be good, so this can never return `false`
-        return Carbon::createFromFormat('H:i', $value);
+        return Carbon::createFromFormat('H:i:s', $value);
     }
 }

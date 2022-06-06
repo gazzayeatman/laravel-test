@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div v-masonry="containerId" transition-duration="0.3s" item-selector=".contact-card__wrapper">
-                <div v-masonry-tile class="contact-cards__wrapper" v-for="(contact, index) in customer.contacts">
+                <div v-masonry-tile class="contact-cards__wrapper" v-for="(contact, index) in customer.contacts" :key="index">
                     <router-link class="contact-card__wrapper" :to="{ path: '/customers/view-contact/' + contact.id }">
                         <div class="contact-card">
                             <h3 class="contact-card__title">
