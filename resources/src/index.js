@@ -9,6 +9,7 @@ import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
 import ViewBooking from './vue/apps/CustomersDashboard/components/ViewBooking';
 import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
+import CalendarDashboard from './vue/apps/CalendarDashboard/ViewCalendar';
 import { VueMasonryPlugin } from 'vue-masonry';
 import { createRouter, createWebHistory } from 'vue-router';
 import mitt from 'mitt';
@@ -30,7 +31,8 @@ const cache = new InMemoryCache(),
         { path: '/customers/view-customer/:id', component: ViewCustomer },
         { path: '/customers/view-customer/view-booking/:id', component: ViewBooking },
         { path: '/customers/view-contact/:id', component: ViewContact },
-        { path: '/vehicles', component: VehiclesDashboard }
+        { path: '/vehicles', component: VehiclesDashboard },
+        { path: '/calendar', component: CalendarDashboard }
     ],
     router = createRouter({
         history: createWebHistory(),
