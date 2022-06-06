@@ -61,18 +61,29 @@ const getCustomersQuery = gql`
                 inWaitingList
                 vehicle {
                     id
+                    title
                 }
                 location {
                     id
+                    unitNumber
+                    streetNumber
+                    streetName
+                    suburb
+                    city
                 }
                 driver {
                     id
+                    name
                 }
                 mainContact {
                     id
+                    emailAddress
+                    firstName
+                    lastName
                 }
                 customer {
                     id
+                    name
                 }
                 bookingTimes {
                     id
@@ -116,6 +127,15 @@ const getCustomersQuery = gql`
             $id: ID!
         ) {
             deleteCustomer(id: $id) {
+                id
+            }
+        }
+    `,
+    deleteBookingMutation = gql`
+        mutation(
+            $id: ID!
+        ) {
+            deleteBooking(id: $id) {
                 id
             }
         }
@@ -295,5 +315,6 @@ export {
     updateCustomerMutation,
     deleteCustomerMutation,
     getBookingsQuery,
-    addNewBookingMutation
+    addNewBookingMutation,
+    deleteBookingMutation
 }

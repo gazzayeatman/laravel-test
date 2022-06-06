@@ -22679,8 +22679,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../compoments/BackButton.vue */ "./resources/src/vue/compoments/BackButton.vue");
+/* harmony import */ var _customers_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../customers-store */ "./resources/src/vue/apps/CustomersDashboard/customers-store.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -22695,8 +22697,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var store = this.$store,
-        bookingID = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.useRoute)().params.id;
+        bookingID = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)().params.id;
     store.dispatch('customersStore/setCurrentBooking', bookingID);
+  },
+  methods: {
+    dayOfTheWeek: function dayOfTheWeek(day) {
+      var result = new Date(day),
+          daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      return daysOfWeek[result.getDay()];
+    },
+    formattedDate: function formattedDate(day) {
+      console.log(day);
+      var date = new Date(day),
+          result = "".concat(date.getDate(), "/").concat(date.getMonth() + 1, "/").concat(date.getFullYear());
+      return result;
+    },
+    deleteBooking: function deleteBooking(id) {
+      var _this = this;
+
+      this.$apollo.mutate({
+        mutation: _customers_store__WEBPACK_IMPORTED_MODULE_1__.deleteBookingMutation,
+        variables: {
+          id: id
+        }
+      }).then(function () {
+        _this.$router.push(_this.backURL);
+      })["catch"](function (error) {
+        console.log(error);
+        alert('there was an error deleting this user');
+      });
+    }
   },
   components: {
     'back-button': _compoments_BackButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -24078,25 +24108,93 @@ var _hoisted_10 = {
   key: 0,
   "class": "detail-page__info-panel"
 };
-var _hoisted_11 = {
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Driver ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
   key: 1,
   "class": "detail-page__info-panel"
 };
-var _hoisted_12 = {
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Booked Vehicle ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
   key: 2,
   "class": "detail-page__info-panel"
 };
-var _hoisted_13 = {
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Booking Main Contact ", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
   key: 3,
   "class": "detail-page__info-panel"
 };
-var _hoisted_14 = {
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Customer ", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  key: 4,
+  "class": "detail-page__info-panel"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Booking Location ", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
   key: 0
 };
-var _hoisted_15 = {
-  key: 4,
+var _hoisted_21 = {
+  key: 0,
   "class": "detail-page__booking-times-wrapper"
 };
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "detail-page__info-panel-title"
+}, " Booking Times ", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  "class": "detail-page__booking-time"
+};
+var _hoisted_24 = {
+  "class": "detail-page__booking-time-detail"
+};
+var _hoisted_25 = {
+  "class": "detail-page__booking-time-detail detail-page__booking-time-detail--time"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, " Start Time ", -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "detail-page__booking-time-detail detail-page__booking-time-detail--time"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, " End Time ", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
 
@@ -24110,7 +24208,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.deleteBooking($options.booking.id);
+      return $options.deleteBooking($options.booking.id);
     }),
     "class": "btn btn-primary btn--danger"
   }, " Delete " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.name), 1
@@ -24122,26 +24220,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-primary"
   }, " Edit " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$options.booking.driver ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.driver.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.driver.lastName), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$options.booking.driver ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.driver.name), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.mainContact ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.mainContact.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.mainContact.lastName), 1
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.vehicle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.vehicle.title), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.customer.name), 1
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.mainContact ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.mainContact.firstName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.mainContact.lastName), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.location ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [$options.booking.location.unitNumber ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.unitNumber), 1
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.customer.name), 1
+  /* TEXT */
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.location ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [_hoisted_19, $options.booking.location.unitNumber ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.unitNumber), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.streetNumber) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.streetName) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.suburb) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.booking.location.city), 1
   /* TEXT */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.booking.bookingTimes.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.booking.bookingTimes, function (time, index) {
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $options.booking.bookingTimes.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [_hoisted_22, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.booking.bookingTimes, function (time, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      "class": "detail-page__booking-time",
+      "class": "detail-page__booking-time-wrapper",
       key: index
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(time.date) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(time.startTime) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(time.endTime), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.dayOfTheWeek(time.date)) + ": ", 1
     /* TEXT */
-    );
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formattedDate(time.date)), 1
+    /* TEXT */
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(time.startTime), 1
+    /* TEXT */
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(time.endTime), 1
+    /* TEXT */
+    )])])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]);
 }
 
 /***/ }),
@@ -26832,6 +26938,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addNewBookingMutation": () => (/* binding */ addNewBookingMutation),
 /* harmony export */   "addNewCustomer": () => (/* binding */ addNewCustomer),
 /* harmony export */   "customersStore": () => (/* binding */ customersStore),
+/* harmony export */   "deleteBookingMutation": () => (/* binding */ deleteBookingMutation),
 /* harmony export */   "deleteCustomerMutation": () => (/* binding */ deleteCustomerMutation),
 /* harmony export */   "getBookingsQuery": () => (/* binding */ getBookingsQuery),
 /* harmony export */   "getCustomer": () => (/* binding */ getCustomer),
@@ -26839,19 +26946,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updateCustomerMutation": () => (/* binding */ updateCustomerMutation)
 /* harmony export */ });
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/lib/index.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var getCustomersQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    {\n        customers {\n            id\n            name\n            locations {\n                id\n            }\n            contacts {\n                id\n                firstName\n                lastName\n            }\n            bookings {\n                id\n                name\n            }\n        }\n    }\n"]))),
     getCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        query($id: ID!) {\n            customer(id: $id) {\n                id\n                name\n                locations {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                    contacts {\n                        id\n                        firstName\n                        lastName\n                    }\n                }\n                contacts {\n                    id\n                    firstName\n                    lastName\n                    emailAddress\n                    phoneNumber\n                }\n                bookings {\n                    id\n                    name\n                }\n            }\n        }\n    "]))),
-    getBooking = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        query($id: ID) {\n            booking(id: $id) {\n                id\n                name\n                orderNumber\n                inWaitingList\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n                customer {\n                    id\n                }\n                bookingTimes {\n                    id\n                    date\n                    startTime\n                    endTime\n                }\n            }\n        }\n    "]))),
+    getBooking = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        query($id: ID) {\n            booking(id: $id) {\n                id\n                name\n                orderNumber\n                inWaitingList\n                vehicle {\n                    id\n                    title\n                }\n                location {\n                    id\n                    unitNumber\n                    streetNumber\n                    streetName\n                    suburb\n                    city\n                }\n                driver {\n                    id\n                    name\n                }\n                mainContact {\n                    id\n                    emailAddress\n                    firstName\n                    lastName\n                }\n                customer {\n                    id\n                    name\n                }\n                bookingTimes {\n                    id\n                    date\n                    startTime\n                    endTime\n                }\n            }\n        }\n    "]))),
     addNewCustomer = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n         mutation (\n            $name: String\n        ) {\n            addNewCustomer(\n                input: {\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
     updateCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        mutation (\n            $id: ID!\n            $name: String\n        ) {\n            updateCustomer(\n                input: {\n                    id: $id\n                    name: $name\n                }\n            ) {\n                name\n            }\n        }\n    "]))),
     deleteCustomerMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteCustomer(id: $id) {\n                id\n            }\n        }\n    "]))),
-    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
-    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n            $customer: ID,\n            $bookingTimes: [CreateBookingTimeInput]\n\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                    customer: {\n                        connect: $customer\n                    },\n                    bookingTimes: {\n                        create: $bookingTimes\n                    }\n                }\n            ) {\n                id\n                bookingTimes {\n                    date\n                }\n            }\n        }\n    "]))),
+    deleteBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n        mutation(\n            $id: ID!\n        ) {\n            deleteBooking(id: $id) {\n                id\n            }\n        }\n    "]))),
+    getBookingsQuery = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        {\n            bookings {\n                id\n                name\n                orderNumber\n                vehicle {\n                    id\n                }\n                location {\n                    id\n                }\n                driver {\n                    id\n                }\n                mainContact {\n                    id\n                }\n            }\n        }\n    "]))),
+    addNewBookingMutation = (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__["default"])(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n        mutation (\n            $name: String,\n            $orderNumber: String,\n            $inWaitingList: Boolean,\n            $vehicle: ID\n            $location: ID\n            $driver: ID\n            $mainContact: ID\n            $customer: ID,\n            $bookingTimes: [CreateBookingTimeInput]\n\n        ) {\n            addNewBooking(\n                input: {\n                    name: $name,\n                    orderNumber: $orderNumber,\n                    inWaitingList: $inWaitingList,\n                    vehicle: {\n                        connect: $vehicle\n                    },\n                    location: {\n                        connect: $location\n                    }\n                    driver: {\n                        connect: $driver\n                    }\n                    mainContact: {\n                        connect: $mainContact\n                    }\n                    customer: {\n                        connect: $customer\n                    },\n                    bookingTimes: {\n                        create: $bookingTimes\n                    }\n                }\n            ) {\n                id\n                bookingTimes {\n                    date\n                }\n            }\n        }\n    "]))),
     customersStore = {
   namespaced: true,
   state: {

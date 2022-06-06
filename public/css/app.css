@@ -4621,6 +4621,45 @@ table tbody tr:first-child td {
 .detail-page__sub-title {
   margin: 0px 0px 12px 0px;
 }
+.detail-page__info-panel-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.detail-page__info-panel {
+  display: flex;
+  margin: 15px;
+  background-color: #ffffffff;
+  padding: 10px 25px;
+  flex-direction: column;
+  width: 100%;
+}
+.detail-page__info-panel:first-of-type {
+  margin: 15px 15px 15px 0px;
+}
+.detail-page__info-panel:last-of-type {
+  margin: 15px 0px 15px 15px;
+}
+.detail-page__info-panel-title {
+  margin: 10px 0px 12px 0px;
+}
+.detail-page__booking-times-wrapper {
+  margin: 25px 0px;
+}
+.detail-page__booking-time-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.detail-page__booking-time {
+  display: flex;
+  flex-direction: column;
+  width: 33.3333333333%;
+  background-color: #ffffffff;
+  padding: 15px 25px;
+}
+.detail-page__booking-time-detail--time:first-of-type {
+  margin: 25px 0px 0px 0px;
+}
 
 footer {
   background: green;

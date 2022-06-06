@@ -34,4 +34,56 @@
     &__sub-title {
         margin: 0px 0px 12px 0px;
     }
+
+    &__info-panel-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info-panel {
+        display: flex;
+        margin: 15px;
+        background-color: $color-white;
+        padding: 10px 25px;
+        flex-direction: column;
+        width: 100%;
+
+        &:first-of-type {
+            margin: 15px 15px 15px 0px;
+        }
+
+        &:last-of-type {
+            margin: 15px 0px 15px 15px;
+        }
+    }
+
+    &__info-panel-title {
+        margin: 10px 0px 12px 0px;
+    }
+
+    &__booking-times-wrapper {
+        margin: 25px 0px;
+    }
+
+    &__booking-time-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    &__booking-time {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% / 3);
+        background-color: $color-white;
+        padding: 15px 25px;
+    }
+
+    &__booking-time-detail {
+        &--time {
+            &:first-of-type {
+                margin: 25px 0px 0px 0px;
+            }
+        }
+    }
 }
