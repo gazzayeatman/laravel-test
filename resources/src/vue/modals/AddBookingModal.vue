@@ -104,8 +104,6 @@
                     store = this.$store,
                     bookingTimes = this.$store.state.temporaryBookingTimes;
 
-                console.log(this.$store.state);
-
                 this.$apollo.mutate({
                     mutation: addNewBookingMutation,
                     variables: {

@@ -12,9 +12,8 @@
                 </div>
                 <div class="detail-page__content">
                     <vue-cal
-                        show-week-numbers
                         :disable-views="['years', 'year', 'month', 'week']"
-                        time-from="6 * 60"
+                        :time-from="6 * 60"
                         :time-to="20 * 60"
                         :time-step="15"
                         :events="getCurrentBookings()"
@@ -48,6 +47,12 @@
             }
         },
         methods: {
+            formatTime(time, day) {
+                const dateString = `${day} ${time}`,
+                    date = new Date(dateString);
+
+                return dateString;
+            },
             getCurrentVehicles() {
                 const currentVehicles = this.vehicles.filter((vehicle, key) => vehicle.isActive),
                     result = [];
@@ -55,7 +60,7 @@
                 currentVehicles.forEach((vehicle, key) => {
                     result.push(
                         {
-                            id: key,
+                            id: vehicle.id,
                             label: vehicle.registration
                         }
                     )
@@ -63,26 +68,30 @@
 
                 return result;
             },
+            structureBookingData(booking, time) {
+                return {
+                    start: this.formatTime(time.startTime, time.date),
+                    end: this.formatTime(time.endTime, time.date),
+                    title: `${booking.orderNumber} - ${booking.name}`,
+                    content: '<i class="icon material-icons">block</i><br>I am not draggable, not resizable and not deletable.',
+                    class: 'blue-event',
+                    deletable: true,
+                    resizable: true,
+                    draggable: true,
+                    split: booking.vehicle.id
+                }
+            },
             getCurrentBookings() {
-                // {
-                //     start: '2018-11-20 14:00',
-                //     end: '2018-11-20 17:30',
-                //     title: 'Boring event',
-                //     content: '<i class="icon material-icons">block</i><br>I am not draggable, not resizable and not deletable.',
-                //     class: 'blue-event',
-                //     deletable: false,
-                //     resizable: false,
-                //     draggable: false
-                // },
-                const result = [],
-                    currentBookings = this.bookings.forEach((booking, key) => {
-                        console.log(booking);
-                        // result.push(
-                        //     {
-                        //         start: bookingTimes
-                        //     }
-                        // )
+                const result = [];
+
+                this.bookings.forEach((booking, key) => {
+                    booking.bookingTimes.forEach((time, key) => {
+                        result.push(this.structureBookingData(booking, time));
                     });
+                });
+
+                console.log(result);
+                return result;
             }
         }
     }
