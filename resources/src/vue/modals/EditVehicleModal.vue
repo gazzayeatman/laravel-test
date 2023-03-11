@@ -94,14 +94,14 @@
             }
         },
         props: {
-            drivers: {}
+            drivers: {},
+            apollo: {}
         },
         methods: {
             editVehicle() {
-                const apollo = this.$store.state.apollo,
-                    store = this.$store;
+                const store = this.$store;
 
-                this.$apollo.mutate({
+                this.apollo.mutate({
                     mutation: updateVehicleMutation,
                     variables: {
                         id: this.currentVehicle.id,

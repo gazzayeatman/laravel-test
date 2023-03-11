@@ -38,8 +38,8 @@
                 </div>
             </div>
         </div>
-        <edit-user-modal />
-        <add-user-modal />
+        <edit-user-modal :apollo="this.$apollo" />
+        <add-user-modal :apollo="this.$apollo" />
     </router-view>
 </template>
 <script>

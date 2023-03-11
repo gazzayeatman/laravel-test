@@ -189,6 +189,17 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    addNewBookingTimeToBookingMutation = gql`
+        mutation (
+            $bookingTimes: String
+            $booking: ID
+        ) {
+            addNewBookingTimeToBooking(
+                booking: $booking,
+                bookingTimes: $bookingTimes
+            )
+        }
+    `,
     addNewBookingMutation = gql`
         mutation (
             $name: String,
@@ -352,5 +363,6 @@ export {
     getBookingsQuery,
     addNewBookingMutation,
     deleteBookingMutation,
-    addNewBookingTimesMutation
+    addNewBookingTimesMutation,
+    addNewBookingTimeToBookingMutation
 }

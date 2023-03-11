@@ -36,18 +36,20 @@
                 name: '',
             }
         },
+        props: {
+            apollo: {}
+        },
         methods: {
             addCustomer() {
-                const apollo = this.$store.state.apollo,
-                    store = this.$store;
+                const store = this.$store;
 
-                this.$apollo.mutate({
+                this.apollo.mutate({
                     mutation: addNewCustomer,
                     variables: {
                         name: this.name
                     }
                 }).then((result) => {
-                    apollo.queries.customers.refetch();
+                    this.apollo.queries.customers.refetch();
                     store.dispatch('customersStore/setAddCustomersModalClosed');
                 }).catch((error) => {
                     console.log(error);

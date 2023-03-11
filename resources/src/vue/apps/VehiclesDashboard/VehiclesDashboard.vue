@@ -32,8 +32,8 @@
                     </div>
                 </div>
             </div>
-            <edit-vehicle-modal :drivers="this.drivers" />
-            <add-vehicle-modal :drivers="this.drivers" />
+            <edit-vehicle-modal :drivers="this.drivers" :apollo="this.$apollo" />
+            <add-vehicle-modal :drivers="this.drivers" :apollo="this.$apollo" />
         </div>
     </router-view>
 </template>

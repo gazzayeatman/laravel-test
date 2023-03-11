@@ -15,7 +15,11 @@ extend type Query {
 
 extend type Mutation {
     deleteBookingTime(id: ID!) : BookingTime @delete
-    addNewBookingTime(input: AddBookingTimeInput! @spread) : BookingTime @create
+    addNewBookingTimeToBooking(
+        booking: ID
+        bookingTimes: String
+    ) : Boolean! @field(resolver: "App\\GraphQL\\Mutations\\AddBookingTimesResolver")
+    # addNewBookingTimeToBooking(input: [AddBookingTimeToBookingInput]! @spread) : BookingTime! @create
     editBookingTime(input: EditBookingTimeInput! @spread) : BookingTime @update
 }
 

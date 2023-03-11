@@ -91,14 +91,14 @@
             }
         },
         props: {
-            drivers: {}
+            drivers: {},
+            apollo: {}
         },
         methods: {
             addVehicle() {
-                const apollo = this.$store.state.apollo,
-                    store = this.$store;
+                const store = this.$store;
 
-                this.$apollo.mutate({
+                this.apollo.mutate({
                     mutation: addNewVehicleMutation,
                     variables: {
                         title: this.title,
@@ -111,7 +111,7 @@
                         isActive: this.isActive
                     }
                 }).then((result) => {
-                    apollo.queries.vehicles.refetch();
+                    this.apollo.queries.vehicles.refetch();
                     store.dispatch('vehiclesStore/setAddVehicleModalState', false);
                 }).catch((error) => {
                     console.log(error);

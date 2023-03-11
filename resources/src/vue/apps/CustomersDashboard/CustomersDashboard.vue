@@ -22,7 +22,7 @@
                 </router-link >
             </div>
         </div>
-        <add-customer-modal />
+        <add-customer-modal :apollo="this.$apollo" />
     </div>
 </template>
 <script>

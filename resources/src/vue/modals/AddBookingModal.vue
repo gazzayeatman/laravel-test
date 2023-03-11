@@ -102,7 +102,18 @@
             addBooking() {
                 const apollo = this.$store.state.apollo,
                     store = this.$store,
-                    bookingTimes = this.$store.state.temporaryBookingTimes;
+                    bookingTimes = this.$store.state.temporaryBookingTimes,
+                    bookingTimesToSend = [];
+
+                    bookingTimes.forEach((time) => {
+                        bookingTimesToSend.push(
+                            {
+                                date: time.date,
+                                startTime : `${time.startTime}:00`,
+                                endTime: `${time.endTime}:00`
+                            }
+                        )
+                    });
 
                 this.$apollo.mutate({
                     mutation: addNewBookingMutation,
@@ -115,7 +126,7 @@
                         driver: this.selectedDriver.id,
                         mainContact: this.selectedMainContact.id,
                         customer: this.customer.id,
-                        bookingTimes: bookingTimes
+                        bookingTimes: bookingTimesToSend
                     }
                 }).then((result) => {
                     this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);
