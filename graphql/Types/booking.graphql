@@ -1,0 +1,80 @@
+type Booking {
+    id: ID!
+    name: String
+    orderNumber: String
+    inWaitingList: Boolean
+    vehicle: Vehicle @belongsTo
+    location: Location @belongsTo
+    driver: User @belongsTo
+    mainContact: Contact @belongsTo
+    customer: Customer @belongsTo
+    bookingTimes: [BookingTime] @hasMany
+}
+
+extend type Query {
+    booking(
+        id: ID @eq 
+    ): Booking @find
+}
+
+extend type Mutation {
+    deleteBooking(id: ID!) : Booking @delete
+    addNewBooking(input: AddBookingInput! @spread) : Booking @create
+    editNewBooking(input: EditBookingInput! @spread) : Booking @update
+}
+
+input AddBookingInput {
+    name: String,
+    orderNumber: String,
+    inWaitingList: Boolean,
+    vehicle: AddVehicleBelongsTo @belongsTo
+    location: AddLocationBelongsTo @belongsTo
+    driver: AddDriverBelongsTo @belongsTo
+    mainContact: AddMainContactBelongsTo @belongsTo
+    customer: AddCustomerBelongsTo @belongsTo
+    bookingTimes: AddBookingTimesHasMany @hasMany
+}
+
+input EditBookingInput {
+    id: ID!
+    name: String,
+    orderNumber: String,
+    inWaitingList: Boolean,
+    vehicle: AddVehicleBelongsTo @belongsTo
+    location: AddLocationBelongsTo @belongsTo
+    driver: AddDriverBelongsTo @belongsTo
+    mainContact: AddMainContactBelongsTo @belongsTo
+    customer: AddCustomerBelongsTo @belongsTo
+    bookingTimes: AddBookingTimesHasMany @hasMany
+}
+
+input AddVehicleBelongsTo {
+    connect: ID
+}
+
+input AddLocationBelongsTo {
+    connect: ID
+}
+
+input AddDriverBelongsTo {
+    connect: ID
+}
+
+input AddMainContactBelongsTo {
+    connect: ID
+}
+
+input AddCustomerBelongsTo {
+    connect: ID
+}
+
+input AddBookingTimesHasMany {
+    sync: [ID],
+    create: [CreateBookingTimeInput]
+}
+
+input CreateBookingTimeInput {
+    date: Date
+    startTime: Time
+    endTime: Time
+}

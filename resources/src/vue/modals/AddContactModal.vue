@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import { addNewContactMutation } from '../apps/CustomersDashboard/customers-store';
+    import { addNewContactMutation } from '../apps/ContactsDashboard/contacts-store';
 
     export default {
         data() {
@@ -73,7 +73,8 @@
                         lastName: this.lastName,
                         emailAddress: this.emailAddress,
                         phoneNumber: this.phoneNumber,
-                        customer_id: this.customer.id
+                        contacts: [],
+                        customer: this.customer.id
                     }
                 }).then((result) => {
                     this.$store.dispatch('customersStore/setCurrentCustomer', this.customer.id);

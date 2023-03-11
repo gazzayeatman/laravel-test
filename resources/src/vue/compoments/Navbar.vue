@@ -2,7 +2,7 @@
     <nav class="navbar__wrapper">
         <ul class="navbar"> 
             <li class="navbar__item">
-                <a href="#" class="navbar__link">
+                <a href="/calendar" class="navbar__link">
                     Calendar
                 </a>
             </li>

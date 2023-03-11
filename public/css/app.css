@@ -258,8 +258,10 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   overflow: scroll;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 .dialog__title {
   font-size: 36px;
@@ -285,6 +287,15 @@ body {
   display: flex;
   margin: 0px 8px 0px 0px;
   align-self: center;
+}
+.input--select {
+  width: 100%;
+  padding: 5px 0px;
+  box-shadow: 0px 1px 0px 0px #14213dff;
+  font-size: 25px;
+}
+.input--select:focus {
+  box-shadow: 0px 2px 0px 0px #fca311ff;
 }
 .input__message {
   font-size: 12px;
@@ -4452,6 +4463,98 @@ table tbody tr:first-child td {
   margin: 25px 0px;
 }
 
+.booking-time-form {
+  width: 100%;
+}
+.booking-time-form__wrapper {
+  display: flex;
+  margin: 25px 0px;
+}
+.booking-time-form__title {
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 0px 0px 5px 0px;
+  font-size: 14px;
+  display: block;
+}
+.booking-time-form__fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fafafa;
+  box-shadow: 2px 2px 10px #e6e6e6;
+  padding: 25px 15px 15px 15px;
+  margin: 15px 0px;
+  position: relative;
+}
+.booking-time-form__field-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
+.booking-time-form__actions {
+  display: flex;
+  margin: 15px 0px;
+  justify-content: flex-end;
+}
+.booking-time-form__action {
+  background-color: #14213dff;
+  padding: 5px 25px;
+  color: #ffffffff;
+  transition: background-color 0.3s;
+}
+.booking-time-form__action:hover, .booking-time-form__action:focus {
+  background-color: #fca311ff;
+}
+.booking-time-form__close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24px' height='24px' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' stroke='%23FF0000'%3E %3Cpath d='M6.22566 4.81096C5.83514 4.42044 5.20197 4.42044 4.81145 4.81096C4.42092 5.20148 4.42092 5.83465 4.81145 6.22517L10.5862 11.9999L4.81151 17.7746C4.42098 18.1651 4.42098 18.7983 4.81151 19.1888C5.20203 19.5793 5.8352 19.5793 6.22572 19.1888L12.0004 13.4141L17.7751 19.1888C18.1656 19.5793 18.7988 19.5793 19.1893 19.1888C19.5798 18.7983 19.5798 18.1651 19.1893 17.7746L13.4146 11.9999L19.1893 6.22517C19.5799 5.83465 19.5799 5.20148 19.1893 4.81096C18.7988 4.42044 18.1657 4.42044 17.7751 4.81096L12.0004 10.5857L6.22566 4.81096Z'/%3E %3C/svg%3E");
+  height: 15px;
+  width: 15px;
+  background-position: center;
+  background-size: cover;
+}
+
+.booking-times-field {
+  display: block;
+  border: 1px solid #14213dff;
+  padding: 15px;
+  margin: 25px 0px;
+}
+.booking-times-field__field {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
+.booking-times-field__actions {
+  display: flex;
+  margin: 30px 0px 0px 0px;
+}
+.booking-times-field__action {
+  padding: 10px 35px;
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #14213dff;
+  color: #ffffffff;
+  transition: color 0.3s, background-color 0.3s;
+}
+.booking-times-field__action--secondary {
+  padding: 5px 15px;
+  color: #000000ff;
+  background-color: #e5e5e5ff;
+}
+.booking-times-field__action:hover, .booking-times-field__action:focus {
+  background-color: #fca311ff;
+}
+.booking-times-field__action:last-of-type {
+  margin: 0 0 0 auto;
+}
+
 .contact-card {
   padding: 15px 15px 25px 15px;
   background-color: #ffffffff;
@@ -4517,6 +4620,46 @@ table tbody tr:first-child td {
 }
 .detail-page__sub-title {
   margin: 0px 0px 12px 0px;
+}
+.detail-page__info-panel-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.detail-page__info-panel {
+  display: flex;
+  margin: 15px;
+  background-color: #ffffffff;
+  padding: 10px 25px;
+  flex-direction: column;
+  width: 100%;
+}
+.detail-page__info-panel:first-of-type {
+  margin: 15px 15px 15px 0px;
+}
+.detail-page__info-panel:last-of-type {
+  margin: 15px 0px 15px 15px;
+}
+.detail-page__info-panel-title {
+  margin: 10px 0px 12px 0px;
+}
+.detail-page__booking-times-wrapper {
+  margin: 25px 0px;
+}
+.detail-page__booking-time-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 25px 0px 0px 0px;
+}
+.detail-page__booking-time {
+  display: flex;
+  flex-direction: column;
+  width: 33.3333333333%;
+  background-color: #ffffffff;
+  padding: 15px 25px;
+}
+.detail-page__booking-time-detail--time:first-of-type {
+  margin: 25px 0px 0px 0px;
 }
 
 footer {
@@ -4631,6 +4774,12 @@ footer {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+.grid-view__tag {
+  background-color: #fca311ff;
+  padding: 5px 10px;
+  margin: 0px 5px 0px 0px;
+  font-size: 14px;
 }
 
 .navbar {

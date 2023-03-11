@@ -7,10 +7,12 @@ import UserDashboard from './vue/apps/UserDashboard/UserDashboard';
 import CustomersDashboard from './vue/apps/CustomersDashboard/CustomersDashboard';
 import VehiclesDashboard from './vue/apps/VehiclesDashboard/VehiclesDashboard';
 import ViewCustomer from './vue/apps/CustomersDashboard/components/ViewCustomer';
+import ViewBooking from './vue/apps/CustomersDashboard/components/ViewBooking';
 import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
+import CalendarDashboard from './vue/apps/CalendarDashboard/ViewCalendar';
 import { VueMasonryPlugin } from 'vue-masonry';
-import { plugin, defaultConfig } from '@formkit/vue'
 import { createRouter, createWebHistory } from 'vue-router';
+import FullCalendar from 'vue-full-calendar'
 import mitt from 'mitt';
 import { store } from './store';
 
@@ -28,8 +30,10 @@ const cache = new InMemoryCache(),
         { path: '/users', component: UserDashboard },
         { path: '/customers', component: CustomersDashboard },
         { path: '/customers/view-customer/:id', component: ViewCustomer },
+        { path: '/customers/view-customer/view-booking/:id', component: ViewBooking },
         { path: '/customers/view-contact/:id', component: ViewContact },
-        { path: '/vehicles', component: VehiclesDashboard }
+        { path: '/vehicles', component: VehiclesDashboard },
+        { path: '/calendar', component: CalendarDashboard }
     ],
     router = createRouter({
         history: createWebHistory(),
@@ -39,9 +43,9 @@ const cache = new InMemoryCache(),
     app.use(apolloProvider);
     app.use(store);
     app.use(router);
-    app.use(plugin, defaultConfig);
-    app.config.globalProperties.emitter = emitter
+    app.config.globalProperties.emitter = emitter;
     app.use(VueMasonryPlugin);
+    app.use(FullCalendar);
     app.component('app', App);
     app.component('users-dashboard', UserDashboard);
     app.component('customers-dashboard', CustomersDashboard);

@@ -21,6 +21,11 @@
                         <div class="grid-view__column">
                             {{ user.name }}
                         </div>
+                        <div class="grid-view__column">
+                            <span class="grid-view__tag" v-for="role in user.roles" :key="role.id">
+                                {{ role.title }}
+                            </span>
+                        </div>
                     </div>
                     <div class="grid-view__actions">
                         <button @click="$store.dispatch('usersStore/setEditUserModalOpen', user)" class="btn btn-primary">

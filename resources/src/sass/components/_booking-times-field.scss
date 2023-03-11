@@ -1,0 +1,41 @@
+.booking-times-field {
+    display: block;
+    border: 1px solid $color-oxford-blue;
+    padding: 15px;
+    margin: 25px 0px;
+
+    &__field {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0px;
+    }
+
+    &__actions {
+        display: flex;
+        margin: 30px 0px 0px 0px;
+    }
+
+    &__action {
+        padding: 10px 35px;
+        display: flex;
+        height: fit-content;
+        background-color: $color-oxford-blue;
+        color: $color-white;
+        transition: color .3s, background-color .3s;
+
+        &--secondary {
+            padding: 5px 15px;
+            color: $color-black;
+            background-color: $color-platinum;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color-orange-web;
+        }
+
+        &:last-of-type {
+            margin: 0 0 0 auto;
+        }
+    }
+}

@@ -13,21 +13,21 @@ class Customer extends Model
 
     public function locations(): HasMany
     {
-        return $this->hasMany(Location::class);
+        return $this->hasMany(Location::class, 'customer_id', 'id');
     }
 
     public function contacts(): HasMany
     {
-        return $this->hasMany(Contact::class);
+        return $this->hasMany(Contact::class, 'customer_id', 'id');
     }
 
     public function mainContact(): HasOne
     {
-        return $this->hasOne(Contact::class. 'main_contact_id');
+        return $this->hasOne(Contact::class. 'main_contact_id', 'id');
     }
 
     public function bookings(): HasMany
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class, 'customer_id', 'id');
     }
 }

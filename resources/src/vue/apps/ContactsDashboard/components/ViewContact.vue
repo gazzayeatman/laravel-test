@@ -22,12 +22,14 @@
                 </div>
             </div>
         </div>
+        <bookings-panel :can-add-booking="false" :customer="contact" />
     </div>
 </template>
 <script>
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
     import { deleteContact } from '../contacts-store';
+    import BookingsPanel from '../../CustomersDashboard/components/BookingsPanel.vue';
 
     export default {
         computed: {
@@ -65,6 +67,7 @@
         },
         components: {
             'back-button': BackButton,
+            'bookings-panel': BookingsPanel,
         }
     }
 </script>

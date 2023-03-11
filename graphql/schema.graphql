@@ -1,4 +1,5 @@
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+scalar Time @scalar(class: "App\\GraphQL\\Scalars\\Time")
 
 #import Types/*.graphql

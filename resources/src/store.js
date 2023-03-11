@@ -9,7 +9,8 @@ const store = createStore({
         state: {
             apollo: false,
             currentUser: false,
-            loginModalOpen: false
+            loginModalOpen: false,
+            temporaryBookingTimes: []
         },
         mutations: {
             setApolloClient(state, apollo) {
@@ -17,6 +18,9 @@ const store = createStore({
             },
             setCurrentUser(state, payload) {
                 state.currentUser = payload;
+            },
+            setTemporaryBookingTimes(state, payload) {
+                state.temporaryBookingTimes = payload;
             },
             setLoginModalOpen(state, payload) {
                 state.loginModalOpen = payload;
@@ -31,7 +35,10 @@ const store = createStore({
             },
             setLoginModalOpen({commit}, payload) {
                 commit('setLoginModalOpen', payload);
-            }
+            },
+            setTemporaryBookingTimes({commit}, payload) {
+                commit('setTemporaryBookingTimes', payload);
+            },
         },
         modules: {
             usersStore,

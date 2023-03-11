@@ -11,6 +11,10 @@ const getContact = gql`
             customer {
                 id
             }
+            bookings {
+                id
+                name
+            }
         }
     }
 `,
@@ -23,6 +27,32 @@ const getContact = gql`
                 customer {
                     id
                 }
+            }
+        }
+    `,
+    addNewContactMutation = gql`
+        mutation (
+            $firstName: String,
+            $lastName: String,
+            $phoneNumber: String,
+            $emailAddress: String,
+            $customer: ID!
+        ) {
+            addNewContact(
+                input: {
+                    firstName: $firstName
+                    lastName: $lastName,
+                    emailAddress: $emailAddress,
+                    phoneNumber: $phoneNumber,
+                    customer: {
+                        connect: $customer
+                    }
+                }
+            ) {
+                firstName,
+                lastName,
+                phoneNumber,
+                emailAddress
             }
         }
     `,
@@ -60,5 +90,6 @@ const getContact = gql`
 
 export {
     contactsStore,
-    deleteContact
+    deleteContact,
+    addNewContactMutation
 }

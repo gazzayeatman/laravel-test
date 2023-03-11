@@ -40,6 +40,17 @@
                     </label>
                     <input v-model="city" id="city" type="text" class="input input--text" name="city" autocomplete="off" />
                 </div>
+                <div class="form__input-field form__input-group" v-if="customer && customer.contacts.length > 0">
+                    <span class="form__input-label">
+                        Contacts
+                    </span>
+                    <div v-for="contact of customer.contacts" :key="contact.id" class="form__clickable-group">
+                        <input class="input input--checkbox" type="checkbox" name="contacts" :value="contact.id" v-model="selectedContacts"/>
+                        <label class="form__input-label form__input-label--checkbox">
+                            {{ contact.firstName }} {{ contact.lastName }}
+                        </label>
+                    </div>
+                </div>
                 <div class="form__input-field" v-if="!customer">
                     <label class="form__input-label" for="customer">
                         Customer
@@ -75,6 +86,7 @@
                 suburb: '',
                 city: '',
                 customerID: 0,
+                selectedContacts: [],
                 customers: []
             }
         },
@@ -91,7 +103,10 @@
             },
             addLocation() {
                 const apollo = this.$store.state.apollo,
-                    store = this.$store;
+                    store = this.$store,
+                    selectedContactIDs = this.selectedContacts.map(Number);
+
+                console.log(selectedContactIDs);
 
                 this.$apollo.mutate({
                     mutation: addNewLocationMutation,
@@ -102,7 +117,8 @@
                         streetName: this.streetName,
                         suburb: this.suburb,
                         city: this.city,
-                        customer_id: this.getCurrentCustomerID()
+                        contactIDs: selectedContactIDs,
+                        customer: this.getCurrentCustomerID()
                     }
                 }).then((result) => {
                     if (apollo.queries.locations) {
