@@ -4238,7 +4238,14 @@ Styleguide 3.1
 */
 h1 {
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 300;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #fca311ff;
+          text-decoration-color: #fca311ff;
+  text-decoration-thickness: 2px;
+  -webkit-text-decoration-skip-ink: all;
+          text-decoration-skip-ink: all;
+  text-underline-offset: 3px;
 }
 h1.heading-alt {
   font-size: 90px;
@@ -4246,7 +4253,7 @@ h1.heading-alt {
 
 h2 {
   font-size: 34px;
-  font-weight: 700;
+  font-weight: 300;
 }
 h2.heading-alt {
   font-size: 70px;
@@ -4567,6 +4574,10 @@ table tbody tr:first-child td {
 .contact-card__title {
   text-decoration: underline;
   font-size: 20px;
+}
+
+.vuecal__title-bar.vuecal__title-bar {
+  background-color: #fca311ff;
 }
 
 .customer-card {
