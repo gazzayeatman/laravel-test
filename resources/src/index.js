@@ -12,6 +12,7 @@ import ViewContact from './vue/apps/ContactsDashboard/components/ViewContact';
 import CalendarDashboard from './vue/apps/CalendarDashboard/ViewCalendar';
 import { VueMasonryPlugin } from 'vue-masonry';
 import { createRouter, createWebHistory } from 'vue-router';
+import FullCalendar from 'vue-full-calendar'
 import mitt from 'mitt';
 import { store } from './store';
 
@@ -44,6 +45,7 @@ const cache = new InMemoryCache(),
     app.use(router);
     app.config.globalProperties.emitter = emitter;
     app.use(VueMasonryPlugin);
+    app.use(FullCalendar);
     app.component('app', App);
     app.component('users-dashboard', UserDashboard);
     app.component('customers-dashboard', CustomersDashboard);

@@ -62,6 +62,11 @@
                         <h3 class="detail-page__info-panel-title">
                             Booking Times
                         </h3>
+                        <div class="detail-page__detail-grid-action-panel">
+                            <button @click="$store.dispatch('customersStore/setAddBookingTimesModalState', true)" type="submit" class="btn btn-primary">
+                                Add a new booking time
+                            </button>
+                        </div>
                         <div v-for="(time, index) in booking.bookingTimes" class="detail-page__booking-time-wrapper" :key="index">
                             <div class="detail-page__booking-time">
                                 <span class="detail-page__booking-time-detail">
@@ -87,6 +92,7 @@
                     </div>
                 </div>
             </div>
+            <add-booking-times-modal-open :booking="booking" />
         </div>
     </div>
 </template>
@@ -94,6 +100,7 @@
     import { useRoute } from 'vue-router';
     import BackButton from '../../../compoments/BackButton.vue';
     import { deleteBookingMutation } from '../customers-store';
+    import addBookingTimesModalOpen from '../../../modals/AddBookingTimesModal.vue';
 
     export default {
         computed: {
@@ -128,8 +135,6 @@
                 return daysOfWeek[result.getDay()];
             },
             formattedDate(day) {
-                console.log(day);
-
                 const date = new Date(day),
                     result = `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()}`;
                 
@@ -150,7 +155,8 @@
             }
         },
         components: {
-            'back-button': BackButton
+            'back-button': BackButton,
+            'add-booking-times-modal-open': addBookingTimesModalOpen
         }
     }
 </script>

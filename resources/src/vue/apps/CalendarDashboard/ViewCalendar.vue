@@ -18,10 +18,7 @@
     </div>
 </template>
 <script>
-    import '@fullcalendar/core/vdom'; // solves problem with Vite
-    import FullCalendar from '@fullcalendar/vue';
-    import dayGridPlugin from '@fullcalendar/daygrid';
-    import interactionPlugin from '@fullcalendar/interaction';
+    import { FullCalendar } from 'vue-full-calendar';
 
     export default {
         components: {
@@ -30,10 +27,6 @@
         data() {
             return {
                 calendarOptions: {
-                    plugins: [
-                        dayGridPlugin,
-                        interactionPlugin
-                    ],
                     initialView: 'dayGridMonth'
                 }
             }

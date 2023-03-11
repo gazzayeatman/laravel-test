@@ -10,6 +10,9 @@ const getUsersQuery = gql`
                 id
                 title
             }
+            pivot {
+                id
+            }
         }
     }
 `,

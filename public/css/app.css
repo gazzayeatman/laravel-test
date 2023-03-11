@@ -4649,6 +4649,7 @@ table tbody tr:first-child td {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin: 25px 0px 0px 0px;
 }
 .detail-page__booking-time {
   display: flex;

@@ -161,6 +161,26 @@ const getCustomersQuery = gql`
             }
         }
     `,
+    addNewBookingTimesMutation = gql`
+        mutation (
+            $bookingID: ID
+            $bookingTimes: [CreateBookingTimeInput]
+
+        ) {
+            addNewBookingTime(
+                input: {
+                    bookingTimes: {
+                        create: $bookingTimes
+                    }
+                }
+            ) {
+                id
+                date
+                startTime
+                endTime
+            }
+        }
+    `,
     addNewBookingMutation = gql`
         mutation (
             $name: String,
@@ -214,6 +234,7 @@ const getCustomersQuery = gql`
             editCustomerModalOpen: false,
             addContactsModalOpen: false,
             addBookingModalOpen: false,
+            addBookingTimesModalOpen: false,
             editBookingModalOpen: false,
             currentCustomer: false,
             currentBooking: false,
@@ -231,6 +252,9 @@ const getCustomersQuery = gql`
             },
             setAddBookingModalState(state, payload) {
                 state.addBookingModalOpen = payload;
+            },
+            setAddBookingTimeModalState(state, payload) {
+                state.addBookingTimesModalOpen = payload;
             },
             setEditBookingModalState(state, payload) {
                 state.editBookingModalOpen = payload;
@@ -257,6 +281,9 @@ const getCustomersQuery = gql`
             },
             setAddBookingModalState({commit}, payload) {
                 commit('setAddBookingModalState', payload);
+            },
+            setAddBookingTimesModalState({commit}, payload) {
+                commit('setAddBookingTimeModalState', payload);
             },
             setEditBookingsModalOpen({commit}, payload) {
                 commit('setEditBookingModalState', payload);
@@ -316,5 +343,6 @@ export {
     deleteCustomerMutation,
     getBookingsQuery,
     addNewBookingMutation,
-    deleteBookingMutation
+    deleteBookingMutation,
+    addNewBookingTimesMutation
 }

@@ -5,7 +5,7 @@
         </h3>
         <div v-if="customer.contacts && customer.contacts.length > 0" class="detail-page__detail-grid">
             <div class="action-panel">
-                <button class="btn btn-primary"  @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
+                <button class="btn btn-primary" @click="$store.dispatch('customersStore/setAddContactsModalState', true)">
                     Add a new contact
                 </button>
             </div>

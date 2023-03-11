@@ -38,7 +38,10 @@
         "purecss": "^2.1.0",
         "sass-resources-loader": "^2.2.4",
         "vue": "^3.2.30",
+        "vue-final-modal": "^3.4.4",
+        "vue-full-calendar": "^2.8.1-0",
         "vue-masonry": "^0.15.0",
+        "vue-multiselect": "^2.1.6",
         "vue-router": "^4.0.14",
         "vuex": "^4.0.2"
     }

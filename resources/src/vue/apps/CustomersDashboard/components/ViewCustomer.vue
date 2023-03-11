@@ -53,7 +53,7 @@
                         id: id
                     }
                 }).then(() => {
-                    this.$router.push('/customers') 
+                    this.$router.push('/customers');
                 }).catch((error) => {
                     console.log(error);
                     alert('there was an error deleting this user');
