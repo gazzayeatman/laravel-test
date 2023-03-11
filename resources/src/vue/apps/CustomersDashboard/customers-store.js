@@ -158,6 +158,14 @@ const getCustomersQuery = gql`
                 mainContact {
                     id
                 }
+                bookingTimes {
+                    date,
+                    startTime,
+                    endTime,
+                    driver {
+                        name
+                    }
+                }
             }
         }
     `,
