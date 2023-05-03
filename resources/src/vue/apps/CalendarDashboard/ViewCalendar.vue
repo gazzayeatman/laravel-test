@@ -24,6 +24,7 @@
                 </div>
                 <div class="detail-page__content">
                     <vue-cal
+                        ref="vuecal"
                         :disable-views="['years', 'year', 'month', 'week']"
                         :time-from="6 * 60"
                         :time-to="20 * 60"
@@ -36,6 +37,11 @@
                         stickySplitLabels
                         editableEvents
                         class="custom-calendar"
+                        @cell-dblclick="$refs.vuecal.createEvent(
+                            $event,
+                            120,
+                            { title: 'New Event', class: 'blue-event' }
+                        )">
                     >
                     </vue-cal>
                 </div>
