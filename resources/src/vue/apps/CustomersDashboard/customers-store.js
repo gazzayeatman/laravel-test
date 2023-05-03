@@ -158,6 +158,14 @@ const getCustomersQuery = gql`
                 mainContact {
                     id
                 }
+                bookingTimes {
+                    date,
+                    startTime,
+                    endTime,
+                    driver {
+                        name
+                    }
+                }
             }
         }
     `,
@@ -179,6 +187,17 @@ const getCustomersQuery = gql`
                 startTime
                 endTime
             }
+        }
+    `,
+    addNewBookingTimeToBookingMutation = gql`
+        mutation (
+            $bookingTimes: String
+            $booking: ID
+        ) {
+            addNewBookingTimeToBooking(
+                booking: $booking,
+                bookingTimes: $bookingTimes
+            )
         }
     `,
     addNewBookingMutation = gql`
@@ -344,5 +363,6 @@ export {
     getBookingsQuery,
     addNewBookingMutation,
     deleteBookingMutation,
-    addNewBookingTimesMutation
+    addNewBookingTimesMutation,
+    addNewBookingTimeToBookingMutation
 }

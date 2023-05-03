@@ -20,7 +20,12 @@ h6 {
 
 h1 {
 	font-size: 40px;
-	font-weight: 700;
+	font-weight: 300;
+	text-decoration: underline;
+	text-decoration-color: $color-orange-web;
+	text-decoration-thickness: 2px;
+	text-decoration-skip-ink: all;
+	text-underline-offset: 3px;
 
 	&.heading-alt {
 		font-size: 90px;
@@ -29,7 +34,7 @@ h1 {
 
 h2 {
 	font-size: 34px;
-	font-weight: 700;
+	font-weight: 300;
 
 	&.heading-alt {
 		font-size: 70px;

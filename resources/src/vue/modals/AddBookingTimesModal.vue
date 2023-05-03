@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import { addNewBookingTimesMutation } from '../apps/CustomersDashboard/customers-store';
+    import { addNewBookingTimeToBookingMutation } from '../apps/CustomersDashboard/customers-store';
     import BookingTimesField from '../compoments/BookingTimesField.vue';
 
     export default {
@@ -33,17 +33,27 @@
         },
         methods: {
             addBookingTimes() {
-                const apollo = this.$store.state.apollo,
-                    store = this.$store,
-                    bookingTimes = this.$store.state.temporaryBookingTimes;
+                const store = this.$store,
+                    bookingTimes = this.$store.state.temporaryBookingTimes,
+                    bookingTimesToSend = [];
 
-                console.log(this.$store.state);
+                    bookingTimes.forEach((time) => {
+                        bookingTimesToSend.push(
+                            {
+                                date: time.date,
+                                startTime : `${time.startTime}:00`,
+                                endTime: `${time.endTime}:00`
+                            }
+                        )
+                    });
+                
+                console.log(this.booking);
 
                 this.$apollo.mutate({
-                    mutation: addNewBookingTimesMutation,
+                    mutation: addNewBookingTimeToBookingMutation,
                     variables: {
-                        bookingID: this.booking.id,
-                        bookingTimes: bookingTimes
+                        booking: this.booking.id,
+                        bookingTimes: JSON.stringify(bookingTimesToSend)
                     }
                 }).then((result) => {
                     store.dispatch('customersStore/setAddBookingTimesModalState', false);

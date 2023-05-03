@@ -20,13 +20,13 @@
                     <label class="booking-time-form__label">
                         Start Time
                     </label>
-                    <input name="booking-start-time" v-model="booking.startTime" type="text" onfocus="(this.type = 'time')" onblur="(this.type = 'text')" />
+                    <input name="booking-start-time" v-model="booking.startTime" min="08:00" max="18:00" type="text" onfocus="(this.type = 'time')" onblur="(this.type = 'text')" />
                 </div>
                 <div class="booking-time-form__field-wrapper">
                     <label class="booking-time-form__label">
                         End Time
                     </label>
-                    <input name="booking-end-time" type="text" v-model="booking.endTime" onfocus="(this.type = 'time')" onblur="(this.type = 'text')"  />
+                    <input name="booking-end-time" type="text" min="08:00" max="18:00" v-model="booking.endTime" onfocus="(this.type = 'time')" onblur="(this.type = 'text')"  />
                 </div>
             </div>
             <div class="booking-time-form__actions">

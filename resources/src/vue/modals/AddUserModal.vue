@@ -71,13 +71,15 @@
                 selectedRoles: []
             }
         },
+        props: {
+            apollo: {}
+        },
         methods: {
             addUser() {
-                const apollo = this.$store.state.apollo,
-                    store = this.$store,
+                const store = this.$store,
                     selectedRolesInt = this.selectedRoles.map(Number);
 
-                this.$apollo.mutate({
+                this.apollo.mutate({
                     mutation: addNewUserMutation,
                     variables: {
                         name: this.name,
@@ -86,8 +88,7 @@
                         roles: selectedRolesInt
                     }
                 }).then((result) => {
-                    console.log(apollo);
-                    apollo.queries.users.refetch();
+                    this.apollo.queries.users.refetch();
                     store.dispatch('usersStore/setAddUserModalClosed');
                 }).catch((error) => {
                     console.log(error);
@@ -95,6 +96,7 @@
                 });
             },
             handleFormSubmit() {
+                console.log(this.apollo);
                 this.addUser();
             }
         },
