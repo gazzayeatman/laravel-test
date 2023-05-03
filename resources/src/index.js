@@ -18,7 +18,7 @@ import { store } from './store';
 
 const cache = new InMemoryCache(),
     apolloClient = new ApolloClient({
-        uri: 'http://laravel.test/graphql',
+        uri: 'http://calendar.yeatman.co.nz/graphql',
         cache,
     }),
     apolloProvider = createApolloProvider({
